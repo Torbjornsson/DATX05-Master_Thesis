@@ -142,7 +142,7 @@ public class OVRPlayerController : MonoBehaviour
 	public float InitialYRotation { get; private set; }
 	private float MoveScaleMultiplier = 1.0f;
 	private float RotationScaleMultiplier = 1.0f;
-	private bool SkipMouseRotation = true; // It is rare to want to use mouse movement in VR, so ignore the mouse by default.
+	public bool SkipMouseRotation = true; // It is rare to want to use mouse movement in VR, so ignore the mouse by default.
 	private bool HaltUpdateMovement = false;
 	private bool prevHatLeft = false;
 	private bool prevHatRight = false;
@@ -430,7 +430,10 @@ public class OVRPlayerController : MonoBehaviour
 
 #if !UNITY_ANDROID || UNITY_EDITOR
 			if (!SkipMouseRotation)
+			{
 				euler.y += Input.GetAxis("Mouse X") * rotateInfluence * 3.25f;
+				euler.x -= Input.GetAxis("Mouse Y") * rotateInfluence * 3.25f;
+			}
 #endif
 
 			if (SnapRotation)
