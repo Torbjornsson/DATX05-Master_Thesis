@@ -1043,21 +1043,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayerController
       objectReference: {fileID: 0}
-    - target: {fileID: 1992598305438739728, guid: 1f722eab40099d04c89efa1cb9bf1d65,
-        type: 3}
-      propertyPath: _trackingOriginType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1992598305440230706, guid: 1f722eab40099d04c89efa1cb9bf1d65,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1992598305440230706, guid: 1f722eab40099d04c89efa1cb9bf1d65,
-        type: 3}
-      propertyPath: m_Height
-      value: 1.5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
 --- !u!1 &1693674643
