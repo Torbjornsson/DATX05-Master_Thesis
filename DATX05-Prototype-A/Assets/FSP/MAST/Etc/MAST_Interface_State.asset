@@ -1,0 +1,405 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d5fd28d118e3f54681cbd57341ebc04, type: 3}
+  m_Name: MAST_Interface_State
+  m_EditorClassIdentifier: 
+  gridExists: 1
+  selectedDrawToolIndex: -1
+  selectedItemIndex: -1
+  lastPrefabPath: /home/borge/Dev/Masters/DATX05-Master_Thesis/DATX05-Prototype-A/Assets/FSP/Temple/Prefabs
+  prefabs:
+  - {fileID: 8939740247444772193, guid: 8c475fd4d07a0504186a0e67a09052b3, type: 3}
+  - {fileID: 2437229136276273722, guid: b1d62a9222f57d28ab779a23ecfe9525, type: 3}
+  - {fileID: 2071267751220659483, guid: 11205dfe6d55b45b492ce6902350df56, type: 3}
+  - {fileID: 6810149049806273827, guid: c740f39e066564f7dab077e887ee2a85, type: 3}
+  - {fileID: 3710847542754173879, guid: 796bc2e71e1a2aa08be4f84c775a498f, type: 3}
+  - {fileID: 3496923026749600938, guid: 4d327a4d746aaad8f8d54fec299cfe50, type: 3}
+  - {fileID: 8864981444316038838, guid: 739ae2353757309a1882543837851e29, type: 3}
+  - {fileID: 4981059682600510091, guid: f86696fb4db86dfdf854cc2e0ae953bd, type: 3}
+  - {fileID: 3763496999822245818, guid: c1a62db6d6aac73f8ba6da169a4c4fd2, type: 3}
+  - {fileID: 1680212833112615226, guid: 57b59c03621679d579af547c966f4841, type: 3}
+  - {fileID: 4003781545960761297, guid: 67e84fa5c7bb1e3a0bd8700726e7b066, type: 3}
+  - {fileID: 3839829783872393327, guid: 8d9060112a26ea5509fcec2e0c0a447f, type: 3}
+  - {fileID: 1911235120694608645, guid: 2c6b5a93355b6ba5a9e67dd28a345a50, type: 3}
+  - {fileID: 2747957916685315802, guid: 26aed3d2001ffd77b89d392587c95553, type: 3}
+  - {fileID: 6939253332263245740, guid: ea51ee387283f212d98f2c7e22ff1035, type: 3}
+  - {fileID: 7117183445200033642, guid: 0f239ffc2fbd8e0e9accdf4cbc37099d, type: 3}
+  - {fileID: 1656433743967846674, guid: 441b57b46c16f8aa2935d615932139ed, type: 3}
+  - {fileID: 7734544487540493785, guid: a566d4b483c0ec06bad0f2f7da4092a1, type: 3}
+  - {fileID: 6939372813106441685, guid: 588d7ab01acca4d0f898a387a2ad19a1, type: 3}
+  - {fileID: 6663744005785798654, guid: a8753a463535fecd4b0462bdf8d4355d, type: 3}
+  - {fileID: 4743574419611931082, guid: 8d997e484751af6709198988ab5aaf69, type: 3}
+  - {fileID: 7951694190652222640, guid: 95047fd3b4cd3a8df82243fc3b94b66f, type: 3}
+  - {fileID: 8287875174905227118, guid: 8d16674bba81abc7d801f40a8ddebd40, type: 3}
+  - {fileID: 5278868088046961268, guid: f056222708ac09e47b6ce2aaede5ba94, type: 3}
+  - {fileID: 3282820251132489342, guid: 87ebb40bb57f438908f6ad0a9f8cd76e, type: 3}
+  - {fileID: 9006196001828171989, guid: f0dc5e6ff0db51cb8bd5e0ff52363b71, type: 3}
+  - {fileID: 3443358172613615007, guid: 2bf11bf3f7bd78e1e93113fade172a48, type: 3}
+  - {fileID: 8678756578449632207, guid: ed44a029c274b8358a85b5202e6d876c, type: 3}
+  - {fileID: 8383219223891263371, guid: 14dea1bc94273d4489951f3466d79e1d, type: 3}
+  - {fileID: 3851365606968067479, guid: 66c7cab86008b283ba6219ca3e794d80, type: 3}
+  - {fileID: 4111435936134865590, guid: 3c1e6c70dadca97dcb0ca80f6e218e58, type: 3}
+  - {fileID: 2700459965354306387, guid: 0c553f583f21473fe92fc0bbbd66dbcf, type: 3}
+  - {fileID: 8076122516449564605, guid: bc35f3621c78c154897be2818222ccb8, type: 3}
+  - {fileID: 4339836959774420863, guid: cd1bc96aaf7655a2298ac6c931cca4e4, type: 3}
+  - {fileID: 4077932244573473073, guid: 33212570cc336896dae19d6529e735fc, type: 3}
+  - {fileID: 2881345645876253599, guid: 1a78f2940802e5fa99375bd31c446057, type: 3}
+  - {fileID: 5074434410971081029, guid: 5421bb5b601acd883a96e7a3fea949f4, type: 3}
+  - {fileID: 3178873448837784173, guid: 35fd3718f8e39afac9d07249cad991dc, type: 3}
+  - {fileID: 8907319924452759673, guid: b9d9cdec38dbe48f3ae91db8fc9f9dd4, type: 3}
+  - {fileID: 2642452457002421730, guid: 26311b3243635d66eb5d52fc27d24a0c, type: 3}
+  - {fileID: 1827869263159727045, guid: 89d06af8b2cff7256a85ef9480c8c6ab, type: 3}
+  - {fileID: 1765943953709256922, guid: 788c79d1a0855cdeb985beb267d9b664, type: 3}
+  - {fileID: 8223863201591124581, guid: b1f4a0f5915f78b268f853a93e190502, type: 3}
+  - {fileID: 7870467665910815692, guid: 4bd3430d96b2d6c8eb3514d55939d805, type: 3}
+  - {fileID: 8559119426974127272, guid: 88374e8b1f4cc2caeaff2c1d7260e84e, type: 3}
+  - {fileID: 4918142759288245949, guid: 707e01fcb750d783e9ea1e1c13c06986, type: 3}
+  - {fileID: 536813909586860661, guid: 2d6599c0a710cbeb3b619ec4f1654c6f, type: 3}
+  - {fileID: 8249165511167579213, guid: dea2010aa1c580361b4e1c5fbea38d94, type: 3}
+  - {fileID: 4603095932374876362, guid: c53efa2964365a94aa316daf14ae7285, type: 3}
+  paletteItemTooltip:
+  - 'Tower
+
+    Wall
+
+    Tall
+
+    Doorway'
+  - 'Wall
+
+    Arch
+
+    Corner
+
+    Inner'
+  - 'Wall
+
+    Arch
+
+    Corner
+
+    Outer'
+  - 'Wall
+
+    Arch
+
+    Straight'
+  - 'Wall
+
+    Curved
+
+    Large
+
+    Base'
+  - 'Wall
+
+    Curved
+
+    Large
+
+    Coping'
+  - 'Wall
+
+    Curved
+
+    Large
+
+    Middle'
+  - 'Wall
+
+    Curved
+
+    Large
+
+    Top'
+  - 'Wall
+
+    Curved
+
+    Small
+
+    Base'
+  - 'Wall
+
+    Curved
+
+    Small
+
+    Coping'
+  - 'Wall
+
+    Curved
+
+    Small
+
+    Middle'
+  - 'Wall
+
+    Curved
+
+    Small
+
+    Top'
+  - 'Wall
+
+    Curved
+
+    Small
+
+    Window'
+  - 'Wall
+
+    Curved
+
+    Small
+
+    Window
+
+    Tall'
+  - 'Wall
+
+    End
+
+    Base'
+  - 'Wall
+
+    End
+
+    Coping'
+  - 'Wall
+
+    End
+
+    Middle'
+  - 'Wall
+
+    End
+
+    Top'
+  - 'Wall
+
+    Ruined
+
+    Corner
+
+    Inner
+
+    1'
+  - 'Wall
+
+    Ruined
+
+    Corner
+
+    Inner
+
+    2'
+  - 'Wall
+
+    Ruined
+
+    Corner
+
+    Outer
+
+    1'
+  - 'Wall
+
+    Ruined
+
+    Corner
+
+    Outer
+
+    2'
+  - 'Wall
+
+    Ruined
+
+    Full
+
+    1'
+  - 'Wall
+
+    Ruined
+
+    Full
+
+    2'
+  - 'Wall
+
+    Ruined
+
+    Full
+
+    Cracked
+
+    1'
+  - 'Wall
+
+    Ruined
+
+    Full
+
+    Cracked
+
+    2'
+  - 'Wall
+
+    Ruined
+
+    Half
+
+    1'
+  - 'Wall
+
+    Ruined
+
+    Half
+
+    2'
+  - 'Wall
+
+    Straight
+
+    Arch
+
+    Top'
+  - 'Wall
+
+    Straight
+
+    Base'
+  - 'Wall
+
+    Straight
+
+    Coping'
+  - 'Wall
+
+    Straight
+
+    Cubby'
+  - 'Wall
+
+    Straight
+
+    Door'
+  - 'Wall
+
+    Straight
+
+    Door
+
+    Eclipse'
+  - 'Wall
+
+    Straight
+
+    Door
+
+    Large'
+  - 'Wall
+
+    Straight
+
+    Door
+
+    Large
+
+    Pocket'
+  - 'Wall
+
+    Straight
+
+    Door
+
+    Moon'
+  - 'Wall
+
+    Straight
+
+    Door
+
+    Stars'
+  - 'Wall
+
+    Straight
+
+    Door
+
+    Sun'
+  - 'Wall
+
+    Straight
+
+    Doorway'
+  - 'Wall
+
+    Straight
+
+    Doorway
+
+    Large'
+  - 'Wall
+
+    Straight
+
+    Doorway
+
+    Large
+
+    Extension'
+  - 'Wall
+
+    Straight
+
+    Doorway
+
+    Large
+
+    Pocket'
+  - 'Wall
+
+    Straight
+
+    Middle'
+  - 'Wall
+
+    Straight
+
+    Top'
+  - 'Wall
+
+    Straight
+
+    Window'
+  - 'Wall
+
+    Straight
+
+    Window
+
+    Tall'
+  - 'Wall
+
+    Straight
+
+    Windows'
+  - 'Wall
+
+    Straight
+
+    Windows
+
+    Tall'
+  columnCount: 2

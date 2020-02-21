@@ -1,0 +1,82 @@
+MAST Revision Log:
+
+----------------------------------------------------------
+10/29/2019 - Version 1.1
+----------------------------------------------------------
+- Changes and Additions:
+
+    - While in Scene view:  Shift + Mouse Scrollwheel
+      now cycles through all prefabs in the palette.
+
+
+- Bug Fixes:
+
+    - Fixed MAST interface persistence/state issues
+      when going fullscreen or running the game
+        - Prefab palette is now saved to PNG in the
+          Mast/etc/temp folder
+        - Selected draw tool, selected prefab, and grid
+          visibility are saved to a scriptable object
+
+    - Lag issues when going fullscreen or running game
+      are greatly reduced.
+
+
+- Miscellaneous:
+
+    - Category ID added to the MAST Prefab Component
+      script to be used in upcoming features.
+
+----------------------------------------------------------
+11/8/2019 - Version 1.2
+----------------------------------------------------------
+- Changes and Additions:
+
+    - Added scaling option (0.5 - 1.0) for MAST GUI
+      buttons located in Settings under the GUI tab
+
+    - Added tooltips to Draw Single, Draw Continuous,
+      Paint Area, Randomizer, and Eraser
+
+    - Replaced each method that loaded from the selected
+      folder, with a folder select dialog window
+
+    - Grid Unit Size has been split into x/z and y, and
+      renamed to "XZ Unit Size" and "Y Unit Size"
+
+    - Randomizer Changes:
+
+        - Added "replaceable" to the MAST Component Script
+            - Randomly replaces currently selected prefab
+              with another in the same category
+
+        - Replaced rotate x, y, and z bools with x, y,
+          and z floats
+            - Set to zero for no rotation, otherwise it
+              will use the value as a rotation factor/step
+                - (ie. A value of 45 randomly chooses
+                   0, 45, 90, 135, 180, 225, 270, or 315)
+
+    - Removed custom inspector for MAST prefab component
+      scripts
+        - It was not allowing the same value to be
+          modified over multiple prefabs at the same time
+        - Formatted the actual MAST prefab component
+          script to have headers and spacing
+
+    - Renamed and rearranged MAST scripts in an attempt
+      to apply some logic to a chaotic situation
+
+
+- Bug Fixes:
+
+    - MAST no longer causes project build errors
+
+    - Palette no longer loses the column count when
+      returning from fullscreen or playing
+
+    - Snapshot Camera now pulls back properly to take
+      pictures of prefabs without colliders
+
+    - Eraser tool no longer deletes the top parent
+      GameObject if the prefab parent contains a collider
