@@ -134,7 +134,18 @@ MonoBehaviour:
   m_materialColorField: 
   grabStartEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 114939956910318088}
+        m_MethodName: CatchGrabStartEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   grabEndEvent:
     m_PersistentCalls:
       m_Calls:
@@ -180,6 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myAttachZone: {fileID: 5833788368093079580}
+  targetAttachZone: {fileID: 0}
 --- !u!1 &689725484027071199
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,7 +372,7 @@ GameObject:
   - component: {fileID: 5833788368093079580}
   m_Layer: 9
   m_Name: AttachZone
-  m_TagString: AttachZone
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

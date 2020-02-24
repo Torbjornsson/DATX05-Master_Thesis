@@ -561,6 +561,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 382635661}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &526540619 stripped
+BoxCollider:
+  m_CorrespondingSourceObject: {fileID: 5895740291868493839, guid: fde8c015e986893468cb49ad573e308f,
+    type: 3}
+  m_PrefabInstance: {fileID: 424877037387190333}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &538302367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1848,6 +1854,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2032456901}
     m_Modifications:
+    - target: {fileID: 114939956910318088, guid: ec267bb2b133f7241b3e56406e60fe1c,
+        type: 3}
+      propertyPath: targetAttachZone
+      value: 
+      objectReference: {fileID: 526540619}
     - target: {fileID: 689725483663075232, guid: ec267bb2b133f7241b3e56406e60fe1c,
         type: 3}
       propertyPath: m_LocalPosition.x
