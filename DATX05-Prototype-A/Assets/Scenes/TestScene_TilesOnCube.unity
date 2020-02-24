@@ -1859,6 +1859,11 @@ PrefabInstance:
       propertyPath: targetAttachZone
       value: 
       objectReference: {fileID: 526540619}
+    - target: {fileID: 114939956910318088, guid: ec267bb2b133f7241b3e56406e60fe1c,
+        type: 3}
+      propertyPath: originalParent
+      value: 
+      objectReference: {fileID: 2032456900}
     - target: {fileID: 689725483663075232, guid: ec267bb2b133f7241b3e56406e60fe1c,
         type: 3}
       propertyPath: m_LocalPosition.x

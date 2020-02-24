@@ -113,7 +113,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
+  m_CollisionDetection: 3
 --- !u!114 &5320312792427054960
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -192,6 +192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAttachZone: {fileID: 5833788368093079580}
   targetAttachZone: {fileID: 0}
+  originalParent: {fileID: 0}
+  rb: {fileID: 5104387654293321622}
 --- !u!1 &689725484027071199
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +205,6 @@ GameObject:
   - component: {fileID: 689725484027071196}
   - component: {fileID: 689725484027071195}
   - component: {fileID: 689725484027071194}
-  - component: {fileID: 689725484027071197}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -270,19 +271,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &689725484027071197
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689725484027071199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7011646377377633701
 GameObject:
   m_ObjectHideFlags: 0

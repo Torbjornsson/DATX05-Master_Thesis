@@ -6,6 +6,8 @@ public class Attachable : MonoBehaviour
 {
     public BoxCollider myAttachZone;
     public BoxCollider targetAttachZone;
+    public GameObject originalParent;
+    public Rigidbody rb;
 
     private GameObject overlappingTarget = null;
 
@@ -26,10 +28,11 @@ public class Attachable : MonoBehaviour
     }
 
     void FixedUpdate() {
-        if (attachedTo != null) {
-            transform.position = attachedTo.transform.position + attachedOffset;
-            Debug.Log("Attached to: "+attachedTo+", position: "+attachedTo.transform.position + attachedOffset);
-        }
+        // if (attachedTo != null) {
+        //     transform.position = attachedTo.transform.position + attachedOffset;
+        //     transform.rotation = attachedTo.transform.rotation;
+        //     Debug.Log("Attached to: "+attachedTo+", position: "+attachedTo.transform.position + attachedOffset);
+        // }
     }
 
     void OnTriggerEnter(Collider other) {
@@ -58,21 +61,26 @@ public class Attachable : MonoBehaviour
         // var hits = Physics.OverlapBoxNonAlloc(pos, size, results, myAttachZone.transform.rotation);
 
         // if (hits > 0 && results[0].tag.Equals("TargetZone")) {
-        if (overlappingTarget) {
+        if (overlappingTarget && attachedTo == null) {
             AttachToObject(overlappingTarget);
         }
     }
 
     public void AttachToObject(GameObject go) {
-        // Debug.Log("Attach to object! - "+go.name);
+        Debug.Log("Attach to object! - "+go.name);
 
-        GetComponent<Rigidbody>().isKinematic = true;
+        transform.position = go.transform.position;
+        transform.rotation = go.transform.rotation;
+
+        rb.isKinematic = true;
         attachedTo = go;
-        attachedOffset = transform.position - go.transform.position;
+        gameObject.transform.SetParent(go.transform);
+        // attachedOffset = transform.position - go.transform.position;
     }
 
     public void CatchGrabStartEvent(OVRGrabbable grabbable) {
         if (attachedTo != null) {
+            gameObject.transform.SetParent(originalParent.transform);
             attachedTo = null;
             attachedOffset = Vector3.zero;
         }
