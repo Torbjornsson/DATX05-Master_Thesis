@@ -1133,6 +1133,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1035299808379825172, guid: 1f722eab40099d04c89efa1cb9bf1d65,
+        type: 3}
+      propertyPath: grabStartEvent.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035299808379825172, guid: 1f722eab40099d04c89efa1cb9bf1d65,
+        type: 3}
+      propertyPath: grabStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1035299808379825172, guid: 1f722eab40099d04c89efa1cb9bf1d65,
+        type: 3}
+      propertyPath: grabStartEvent.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1992598305427899604, guid: 1f722eab40099d04c89efa1cb9bf1d65,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1193,7 +1208,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayerController
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8542142239852513531, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
 --- !u!1 &1693674643
 GameObject:
