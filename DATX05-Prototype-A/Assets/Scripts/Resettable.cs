@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class Resettable : MonoBehaviour
 {
+    public Renderer[] renderers;
     public GameObject resetObjectVolume;
     public float fadeSpeed = 5;
     [Range(0,0.5f)] public float stillnessBuffer = 0.001f;
 
     private Vector3 startingPosition;
     private Rigidbody rb;
-    private Material material;
+    private Material[] material;
     private BoxCollider startingArea;
     private Collider myCollider;
 
@@ -34,12 +35,22 @@ public class Resettable : MonoBehaviour
         }
 
         rb = GetComponent<Rigidbody>();
-        material = GetComponent<Renderer>().material;
         myCollider = GetComponent<Collider>();
+
+        if (renderers.Length > 0) {
+            material = new Material[renderers.Length];
+            for(int i = 0; i < renderers.Length; i++) {
+                material[i] = renderers[i].GetComponent<Renderer>().material;
+            }
+            // material = graphicComponent.GetComponent<Renderer>().material;
+        } else {
+            material = new Material[1];
+            material[0] = GetComponent<Renderer>().material;
+        }
 
         if (!rb)
             Debug.LogError("Rigidbody was not found!");
-        if (!material)
+        if (!material[0])
             Debug.LogError("Material was not found!");
         if (!myCollider)
             Debug.LogError("Collider was not found!");
@@ -74,9 +85,12 @@ public class Resettable : MonoBehaviour
                     FadeInDone();
                 }
             }
-            var col = material.color;
-            col.a = alpha;
-            material.color = col;
+
+            foreach (Material m in material) {
+                var col = m.color;
+                col.a = alpha;
+                m.color = col;
+            }
         }
 
         // collidingWithAnything = false;
@@ -129,7 +143,7 @@ public class Resettable : MonoBehaviour
                 transform.position = startingPosition;
             else if (collidingWithAnything) {
                 var pos = transform.position;
-                pos += GenerateRandomVector() * transform.localScale.x;
+                pos += GenerateRandomVector() * Mathf.Max(myCollider.bounds.size.x, myCollider.bounds.size.y, myCollider.bounds.size.z);
                 transform.position = pos;
             }
             // outsideStartingArea = startingArea != null && !startingArea.bounds.Intersects(myCollider.bounds);
