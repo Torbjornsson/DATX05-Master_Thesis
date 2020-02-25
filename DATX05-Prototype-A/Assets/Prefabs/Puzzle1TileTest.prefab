@@ -190,6 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 957bda1f4361eed40bba33515ba463a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myCollider: {fileID: 65516038554640390}
   myAttachZone: {fileID: 5833788368093079580}
   targetAttachZone: {fileID: 0}
   originalParent: {fileID: 0}
