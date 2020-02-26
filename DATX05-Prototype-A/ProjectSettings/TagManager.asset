@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ResetVolume
   - Grabbable
+  - TargetZone
   layers:
   - Default
   - TransparentFX

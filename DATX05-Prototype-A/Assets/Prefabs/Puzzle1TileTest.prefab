@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 23576646326791182}
   - component: {fileID: 65516038554640390}
   - component: {fileID: 5104387654293321622}
-  - component: {fileID: 6538613059249860479}
+  - component: {fileID: 5320312792427054960}
   - component: {fileID: 8184001795961249109}
+  - component: {fileID: 114939956910318088}
   m_Layer: 0
   m_Name: Puzzle1TileTest
   m_TagString: Untagged
@@ -112,8 +113,8 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 2
---- !u!114 &6538613059249860479
+  m_CollisionDetection: 3
+--- !u!114 &5320312792427054960
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -122,7 +123,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 689725483663075235}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d1a7708e76601b4ea829921c33bc624, type: 3}
+  m_Script: {fileID: 11500000, guid: bbb4284cdbd24e84ba4e47a45a2d6b7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_allowOffhandGrab: 1
@@ -131,6 +132,34 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_materialColorField: 
+  grabStartEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114939956910318088}
+        m_MethodName: CatchGrabStartEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  grabEndEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 114939956910318088}
+        m_MethodName: CatchGrabEndEvent
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8184001795961249109
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,6 +178,23 @@ MonoBehaviour:
   resetObjectVolume: {fileID: 0}
   fadeSpeed: 5
   stillnessBuffer: 0.001
+--- !u!114 &114939956910318088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 689725483663075235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 957bda1f4361eed40bba33515ba463a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCollider: {fileID: 65516038554640390}
+  myAttachZone: {fileID: 5833788368093079580}
+  targetAttachZone: {fileID: 0}
+  originalParent: {fileID: 0}
+  rb: {fileID: 5104387654293321622}
 --- !u!1 &689725484027071199
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,7 +206,6 @@ GameObject:
   - component: {fileID: 689725484027071196}
   - component: {fileID: 689725484027071195}
   - component: {fileID: 689725484027071194}
-  - component: {fileID: 689725484027071197}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -207,7 +252,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bfd8c2748fe5bd540a2d8db61dd6aee0, type: 2}
+  - {fileID: 2100000, guid: 645e86fbb91f40846b1e90a46e342fc3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -227,19 +272,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &689725484027071197
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 689725484027071199}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7011646377377633701
 GameObject:
   m_ObjectHideFlags: 0
@@ -326,6 +358,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6060235664792944544}
+  - component: {fileID: 5833788368093079580}
   m_Layer: 9
   m_Name: AttachZone
   m_TagString: Untagged
@@ -347,3 +380,16 @@ Transform:
   m_Father: {fileID: 689725483663075232}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5833788368093079580
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8476429698489813962}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.15, y: 0.05, z: 0.15}
+  m_Center: {x: 0, y: -0.02, z: 0}
