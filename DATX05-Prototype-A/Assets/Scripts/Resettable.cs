@@ -14,7 +14,7 @@ public class Resettable : MonoBehaviour
     private Rigidbody rb;
     private Material[] material;
     private BoxCollider startingArea;
-    public OVRGrabbable_EventExtension grabbableScript;
+    private OVRGrabbable_EventExtension grabbableScript;
     // private GameObject resetStartingPoint;
     private Collider myCollider;
 
