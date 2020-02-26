@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5224206565620723347}
   - component: {fileID: 424877038853444131}
   - component: {fileID: 424877038853444128}
-  - component: {fileID: 5632712339022783361}
+  - component: {fileID: 2543215489435952002}
   - component: {fileID: 424877038853444127}
   - component: {fileID: 7633843195217981845}
   m_Layer: 9
@@ -114,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &5632712339022783361
+--- !u!114 &2543215489435952002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_allowGrab: 1
-  m_materialColorField: 
+  m_allowHandSwitch: 1
   grabStartEvent:
     m_PersistentCalls:
       m_Calls: []

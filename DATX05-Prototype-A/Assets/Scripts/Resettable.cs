@@ -14,7 +14,7 @@ public class Resettable : MonoBehaviour
     private Rigidbody rb;
     private Material[] material;
     private BoxCollider startingArea;
-    public DistanceGrabbable_EventExtension grabbableScript;
+    public OVRGrabbable_EventExtension grabbableScript;
     // private GameObject resetStartingPoint;
     private Collider myCollider;
 
@@ -38,7 +38,7 @@ public class Resettable : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
-        grabbableScript = GetComponent<DistanceGrabbable_EventExtension>();
+        grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
 
         if (renderers.Length > 0) {
             material = new Material[renderers.Length];
@@ -90,11 +90,6 @@ public class Resettable : MonoBehaviour
                 }
             }
 
-            // foreach (Material m in material) {
-            //     var col = m.color;
-            //     col.a = alpha;
-            //     m.color = col;
-            // }
             UpdateMaterialAlpha();
         }
     }

@@ -189,6 +189,8 @@ public class OVRGrabber : MonoBehaviour
 
     void OnTriggerEnter(Collider otherCollider)
     {
+        Debug.Log("Found a grabber!? "+otherCollider.gameObject.name);
+
         // Get the grab trigger
 		OVRGrabbable grabbable = otherCollider.GetComponent<OVRGrabbable>() ?? otherCollider.GetComponentInParent<OVRGrabbable>();
         if (grabbable == null) return;
@@ -249,10 +251,10 @@ public class OVRGrabber : MonoBehaviour
                 continue;
             }
 
-            if (grabbable.isGrabbed && grabbable.allowHandSwitch) {
-                Debug.Log("Grabbed but grabbed again!");
-                grabbable.GrabEnd(Vector3.zero, Vector3.zero);
-            }
+            // if (grabbable.isGrabbed && grabbable.allowHandSwitch) {
+            //     Debug.Log("Grabbed but grabbed again!");
+            //     grabbable.GrabEnd(Vector3.zero, Vector3.zero);
+            // }
 
             for (int j = 0; j < grabbable.grabPoints.Length; ++j)
             {
