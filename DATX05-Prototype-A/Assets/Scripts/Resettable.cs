@@ -51,13 +51,13 @@ public class Resettable : MonoBehaviour
         }
 
         if (!rb)
-            Debug.LogError("Rigidbody was not found!");
+            Debug.LogError(gameObject.name+": Rigidbody was not found!");
         if (!material[0])
-            Debug.LogError("Material was not found!");
+            Debug.LogError(gameObject.name+": Material was not found!");
         if (!myCollider)
-            Debug.LogError("Collider was not found!");
+            Debug.LogError(gameObject.name+": Collider was not found!");
         if (!grabbableScript)
-            Debug.LogError("Grabber script was not found!");
+            Debug.LogError(gameObject.name+": Grabber script was not found!");
 
         // Debug.Log("starting area: "+startingArea+", "+(startingArea != null)+", my collider: "+myCollider);
     }
