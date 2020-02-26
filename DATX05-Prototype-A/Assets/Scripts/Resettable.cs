@@ -5,7 +5,8 @@ using UnityEngine;
 public class Resettable : MonoBehaviour
 {
     public Renderer[] renderers;
-    public GameObject resetObjectVolume;
+    // public GameObject resetObjectVolume;
+    public bool useResetStartingPoint = true;
     public float fadeSpeed = 5;
     [Range(0,0.5f)] public float stillnessBuffer = 0.001f;
 
@@ -14,6 +15,7 @@ public class Resettable : MonoBehaviour
     private Material[] material;
     private BoxCollider startingArea;
     public DistanceGrabbable_EventExtension grabbableScript;
+    // private GameObject resetStartingPoint;
     private Collider myCollider;
 
     private bool pending = false;
@@ -26,7 +28,8 @@ public class Resettable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (resetObjectVolume) {
+        GameObject resetObjectVolume = GameObject.FindGameObjectWithTag("ResetStartingPoint");
+        if (useResetStartingPoint && resetObjectVolume) {
             startingPosition = resetObjectVolume.transform.position;
             startingArea = resetObjectVolume.GetComponent<BoxCollider>();
         } else {

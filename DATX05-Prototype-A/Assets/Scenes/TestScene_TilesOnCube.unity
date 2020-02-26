@@ -576,7 +576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderers: []
-  resetObjectVolume: {fileID: 2034600797}
+  useResetStartingPoint: 1
   fadeSpeed: 5
   stillnessBuffer: 0.001
   grabbableScript: {fileID: 0}
@@ -1836,8 +1836,8 @@ GameObject:
   - component: {fileID: 2034600798}
   - component: {fileID: 2034600799}
   m_Layer: 0
-  m_Name: ResetObjectVolume
-  m_TagString: Untagged
+  m_Name: ResetStartingPoint
+  m_TagString: ResetStartingPoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1918,6 +1918,11 @@ PrefabInstance:
       propertyPath: resetObjectVolume
       value: 
       objectReference: {fileID: 2034600797}
+    - target: {fileID: 424877038853444127, guid: fde8c015e986893468cb49ad573e308f,
+        type: 3}
+      propertyPath: useResetStartingPoint
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 424877038853444129, guid: fde8c015e986893468cb49ad573e308f,
         type: 3}
       propertyPath: m_RootOrder
