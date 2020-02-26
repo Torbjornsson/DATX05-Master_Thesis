@@ -5,7 +5,8 @@ using UnityEngine;
 public class Resettable : MonoBehaviour
 {
     public Renderer[] renderers;
-    public GameObject resetObjectVolume;
+    // public GameObject resetObjectVolume;
+    public bool useResetStartingPoint = true;
     public float fadeSpeed = 5;
     [Range(0,0.5f)] public float stillnessBuffer = 0.001f;
 
@@ -13,6 +14,8 @@ public class Resettable : MonoBehaviour
     private Rigidbody rb;
     private Material[] material;
     private BoxCollider startingArea;
+    public DistanceGrabbable_EventExtension grabbableScript;
+    // private GameObject resetStartingPoint;
     private Collider myCollider;
 
     private bool pending = false;
@@ -21,13 +24,12 @@ public class Resettable : MonoBehaviour
 
     private float alpha;
     private Vector3 previousPosition;
-    // private bool collidingWithAnything;
-    // private bool outsideStartingArea;
 
     // Start is called before the first frame update
     void Start()
     {
-        if (resetObjectVolume) {
+        GameObject resetObjectVolume = GameObject.FindGameObjectWithTag("ResetStartingPoint");
+        if (useResetStartingPoint && resetObjectVolume) {
             startingPosition = resetObjectVolume.transform.position;
             startingArea = resetObjectVolume.GetComponent<BoxCollider>();
         } else {
@@ -36,13 +38,13 @@ public class Resettable : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
+        grabbableScript = GetComponent<DistanceGrabbable_EventExtension>();
 
         if (renderers.Length > 0) {
             material = new Material[renderers.Length];
             for(int i = 0; i < renderers.Length; i++) {
                 material[i] = renderers[i].GetComponent<Renderer>().material;
             }
-            // material = graphicComponent.GetComponent<Renderer>().material;
         } else {
             material = new Material[1];
             material[0] = GetComponent<Renderer>().material;
@@ -54,6 +56,8 @@ public class Resettable : MonoBehaviour
             Debug.LogError("Material was not found!");
         if (!myCollider)
             Debug.LogError("Collider was not found!");
+        if (!grabbableScript)
+            Debug.LogError("Grabber script was not found!");
 
         // Debug.Log("starting area: "+startingArea+", "+(startingArea != null)+", my collider: "+myCollider);
     }
@@ -86,15 +90,21 @@ public class Resettable : MonoBehaviour
                 }
             }
 
-            foreach (Material m in material) {
-                var col = m.color;
-                col.a = alpha;
-                m.color = col;
-            }
+            // foreach (Material m in material) {
+            //     var col = m.color;
+            //     col.a = alpha;
+            //     m.color = col;
+            // }
+            UpdateMaterialAlpha();
         }
+    }
 
-        // collidingWithAnything = false;
-        // outsideStartingArea = startingArea != null;
+    private void UpdateMaterialAlpha() {
+        foreach (Material m in material) {
+            var col = m.color;
+            col.a = alpha;
+            m.color = col;
+        }
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -103,17 +113,11 @@ public class Resettable : MonoBehaviour
         }
     }
 
-    // private void OnTriggerStay(Collider other) {
-    //     if (other.Equals(startingArea)) {
-    //         outsideStartingArea = false;
-    //     }
-    // }
-
-    // private void OnCollisionStay(Collision collisionInfo) {
-    //     if (collisionInfo.collider.gameObject.tag.Equals("Grabbable")) {
-    //         collidingWithAnything = true;
-    //     }
-    // }
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject.tag.Equals("ResetVolume")) {
+            StopPendingReset();
+        }
+    }
 
     private void StartPendingReset() {
         pending = true;
@@ -123,22 +127,32 @@ public class Resettable : MonoBehaviour
         alpha = 1;
     }
 
+    private void StopPendingReset() {
+        if (pending) {
+            pending = false;
+        }
+        if (fadeOut) {
+            fadeOut = false;
+            alpha = 1;
+            UpdateMaterialAlpha();
+        }
+    }
+
     private void StartFadeOut() {
         pending = false;
         fadeOut = true;
+        // grabbableScript.enabled = false;
+        grabbableScript.allowGrab = false;
     }
 
     private void ResetToStartingPositon() {
         int infCounter = 0;
         transform.position = startingPosition;
-        // bool outsideStartingArea = startingArea != null && !startingArea.bounds.Intersects(myCollider.bounds);
-        // bool outsideStartingArea = startingArea != null && Physics;
 
         bool outsideStartingArea = OutsideStartingArea();
         bool collidingWithAnything = CollidingWithOtherGrabbables();
 
         while (infCounter < 50 && (outsideStartingArea || collidingWithAnything)) {
-            // Debug.Log("Count: "+infCounter+", outside starting area: "+outsideStartingArea+", colliding with anything: "+collidingWithAnything);
             if (outsideStartingArea)
                 transform.position = startingPosition;
             else if (collidingWithAnything) {
@@ -146,7 +160,6 @@ public class Resettable : MonoBehaviour
                 pos += GenerateRandomVector() * Mathf.Max(myCollider.bounds.size.x, myCollider.bounds.size.y, myCollider.bounds.size.z);
                 transform.position = pos;
             }
-            // outsideStartingArea = startingArea != null && !startingArea.bounds.Intersects(myCollider.bounds);
             outsideStartingArea = OutsideStartingArea();
             collidingWithAnything = CollidingWithOtherGrabbables();
             infCounter++;
@@ -162,6 +175,8 @@ public class Resettable : MonoBehaviour
     private void FadeInDone() {
         rb.isKinematic = false;
         fadeIn = false;
+        // grabbableScript.enabled = true;
+        grabbableScript.allowGrab = true;
     }
 
     public void SetResetPosition(Vector3 position) {

@@ -243,7 +243,7 @@ namespace OculusSampleFramework
             foreach (OVRGrabbable cg in m_grabCandidates.Keys)
             {
                 DistanceGrabbable grabbable = cg as DistanceGrabbable;
-				bool canGrab = grabbable != null && grabbable.InRange && !(grabbable.isGrabbed && !grabbable.allowOffhandGrab);
+				bool canGrab = grabbable != null && grabbable.InRange && !(grabbable.isGrabbed && !grabbable.allowOffhandGrab) && grabbable.allowGrab;
 				if (canGrab && m_grabObjectsInLayer >= 0) canGrab = grabbable.gameObject.layer == m_grabObjectsInLayer;
                 if (!canGrab)
                 {
