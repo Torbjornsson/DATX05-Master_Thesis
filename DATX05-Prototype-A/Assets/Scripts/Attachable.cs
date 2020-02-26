@@ -5,15 +5,14 @@ using UnityEngine;
 public class Attachable : MonoBehaviour
 {
     public Collider myCollider;
-    // public BoxCollider myAttachZone;
-    // public BoxCollider targetAttachZone;
     public Rigidbody rb;
 
     private GameObject originalParent;
     private GameObject overlappingTarget = null;
 
     private GameObject attachedTo = null;
-    private Vector3 attachedOffset;
+
+    private AttachableTarget target;
 
     // Start is called before the first frame update
     void Start()
@@ -49,23 +48,30 @@ public class Attachable : MonoBehaviour
     }
 
     public void AttachToObject(GameObject go) {
-        Debug.Log("Attach to object! - "+go.name);
+        // Debug.Log("Attach to object! - "+go.name);
+
+        target = go.GetComponentInParent<AttachableTarget>();
+        if (target.IsOccupied()) return;
+
+        target.AttachObject();
 
         transform.position = go.transform.position;
         transform.rotation = go.transform.rotation;
 
-        // rb.isKinematic = true;
         myCollider.enabled = false;
-            
+        rb.isKinematic = true;
+        
         attachedTo = go;
         gameObject.transform.SetParent(go.transform);
     }
 
     public void DetachFromObject()
     {
-        gameObject.transform.SetParent(originalParent.transform);
-        attachedTo = null;
-        attachedOffset = Vector3.zero;
+        target.DetachObject();
+
         myCollider.enabled = true;
+        
+        attachedTo = null;
+        gameObject.transform.SetParent(originalParent.transform);
     }
 }

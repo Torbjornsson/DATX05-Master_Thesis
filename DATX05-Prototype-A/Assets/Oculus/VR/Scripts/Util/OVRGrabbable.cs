@@ -37,6 +37,9 @@ public class OVRGrabbable : MonoBehaviour
     protected Collider m_grabbedCollider = null;
     protected OVRGrabber m_grabbedBy = null;
 
+    [SerializeField]
+    protected bool m_allowGrab = true;
+
 	/// <summary>
 	/// If true, the object can currently be grabbed.
 	/// </summary>
@@ -107,6 +110,15 @@ public class OVRGrabbable : MonoBehaviour
     public Collider[] grabPoints
     {
         get { return m_grabPoints; }
+    }
+
+    /// <summary>
+	/// If true, the object can currently be grabbed.
+	/// </summary>
+    public bool allowGrab
+    {
+        get { return m_allowGrab; }
+        set { m_allowGrab = value; }
     }
 
 	/// <summary>
