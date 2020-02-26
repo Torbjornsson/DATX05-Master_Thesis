@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 7633843195217981845}
   m_Layer: 9
   m_Name: Puzzle1CubeTest
-  m_TagString: Grabbable
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,6 +131,7 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+  m_allowGrab: 1
   m_materialColorField: 
   grabStartEvent:
     m_PersistentCalls:
@@ -153,9 +154,10 @@ MonoBehaviour:
   renderers:
   - {fileID: 580045361330318450}
   - {fileID: 6475177007290141151}
-  resetObjectVolume: {fileID: 0}
+  useResetStartingPoint: 1
   fadeSpeed: 5
   stillnessBuffer: 0.001
+  grabbableScript: {fileID: 0}
 --- !u!114 &7633843195217981845
 MonoBehaviour:
   m_ObjectHideFlags: 0

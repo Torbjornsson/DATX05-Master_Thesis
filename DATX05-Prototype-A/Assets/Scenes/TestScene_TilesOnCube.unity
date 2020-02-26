@@ -1918,11 +1918,6 @@ PrefabInstance:
       propertyPath: resetObjectVolume
       value: 
       objectReference: {fileID: 2034600797}
-    - target: {fileID: 424877038853444127, guid: fde8c015e986893468cb49ad573e308f,
-        type: 3}
-      propertyPath: useResetStartingPoint
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 424877038853444129, guid: fde8c015e986893468cb49ad573e308f,
         type: 3}
       propertyPath: m_RootOrder
@@ -1962,6 +1957,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Puzzle1CubeTest
+      objectReference: {fileID: 0}
+    - target: {fileID: 424877038853444134, guid: fde8c015e986893468cb49ad573e308f,
+        type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fde8c015e986893468cb49ad573e308f, type: 3}
