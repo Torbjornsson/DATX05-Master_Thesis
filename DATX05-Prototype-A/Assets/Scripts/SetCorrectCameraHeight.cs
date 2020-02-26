@@ -13,7 +13,7 @@ public class SetCorrectCameraHeight : MonoBehaviour
 
     [SerializeField]
     [Tooltip("Decide if experience is Room Scale or Stationary. Note this option does nothing for mobile VR experiences, these experience will default to Stationary")]
-    TrackingSpace m_TrackingSpace = TrackingSpace.Stationary;
+    TrackingSpace m_TrackingSpace = TrackingSpace.RoomScale;
 
     [SerializeField]
     [Tooltip("Camera Height - overwritten by device settings when using Room Scale ")]
