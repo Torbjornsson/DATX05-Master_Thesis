@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -210,11 +210,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2032456901}
     m_Modifications:
-    - target: {fileID: 23576646326791182, guid: ec267bb2b133f7241b3e56406e60fe1c,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d622ededad0420649bb21338d4f58b56, type: 2}
     - target: {fileID: 114939956910318088, guid: ec267bb2b133f7241b3e56406e60fe1c,
         type: 3}
       propertyPath: targetAttachZone
@@ -290,6 +285,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 689725484027071194, guid: ec267bb2b133f7241b3e56406e60fe1c,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: d622ededad0420649bb21338d4f58b56, type: 2}
     - target: {fileID: 689725484027071199, guid: ec267bb2b133f7241b3e56406e60fe1c,
         type: 3}
       propertyPath: m_Layer
@@ -579,6 +579,7 @@ MonoBehaviour:
   resetObjectVolume: {fileID: 2034600797}
   fadeSpeed: 5
   stillnessBuffer: 0.001
+  grabbableScript: {fileID: 0}
 --- !u!114 &382635664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -596,6 +597,7 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
+  m_allowGrab: 1
   m_materialColorField: 
 --- !u!54 &382635665
 Rigidbody:
