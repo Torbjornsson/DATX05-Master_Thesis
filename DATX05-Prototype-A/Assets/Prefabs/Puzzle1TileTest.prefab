@@ -131,7 +131,8 @@ MonoBehaviour:
   m_snapOrientation: 0
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
-  m_materialColorField: 
+  m_allowGrab: 1
+  m_allowHandSwitch: 1
   grabStartEvent:
     m_PersistentCalls:
       m_Calls:
@@ -175,7 +176,7 @@ MonoBehaviour:
   renderers:
   - {fileID: 689725484027071194}
   - {fileID: 5378163266822017590}
-  resetObjectVolume: {fileID: 0}
+  useResetStartingPoint: 1
   fadeSpeed: 5
   stillnessBuffer: 0.001
 --- !u!114 &114939956910318088

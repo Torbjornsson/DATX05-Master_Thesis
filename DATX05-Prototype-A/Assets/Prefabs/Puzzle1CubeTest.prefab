@@ -157,7 +157,6 @@ MonoBehaviour:
   useResetStartingPoint: 1
   fadeSpeed: 5
   stillnessBuffer: 0.001
-  grabbableScript: {fileID: 0}
 --- !u!114 &7633843195217981845
 MonoBehaviour:
   m_ObjectHideFlags: 0

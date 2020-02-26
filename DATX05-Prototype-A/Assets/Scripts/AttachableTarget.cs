@@ -27,6 +27,12 @@ public class AttachableTarget : MonoBehaviour
         
     }
 
+    public void FixedUpdate() {
+        // if (attachedTo != null) {
+        //     transform.position = attachedTo.transform.position;
+        // }
+    }
+
     public void AttachObject() {
         isOccupied = true;
         myMainCollider.size = attachedColliderSize;
