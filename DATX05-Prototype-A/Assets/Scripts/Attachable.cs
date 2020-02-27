@@ -48,21 +48,16 @@ public class Attachable : MonoBehaviour
     }
 
     public void AttachToObject(GameObject go) {
-        // Debug.Log("Attach to object! - "+go.name);
-
         target = go.GetComponentInParent<AttachableTarget>();
         if (target.IsOccupied()) return;
 
-        target.AttachObject();
+        target.AttachObject(this);
 
         transform.position = go.transform.position;
         transform.rotation = go.transform.rotation;
 
         myCollider.enabled = false;
-        rb.isKinematic = true;
-        
         attachedTo = go;
-        gameObject.transform.SetParent(go.transform);
     }
 
     public void DetachFromObject()
@@ -70,8 +65,6 @@ public class Attachable : MonoBehaviour
         target.DetachObject();
 
         myCollider.enabled = true;
-        
         attachedTo = null;
-        gameObject.transform.SetParent(originalParent.transform);
     }
 }

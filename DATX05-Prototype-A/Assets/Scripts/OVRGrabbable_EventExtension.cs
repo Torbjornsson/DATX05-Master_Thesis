@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using OculusSampleFramework;
 
-public class DistanceGrabbable_EventExtension : DistanceGrabbable
+public class OVRGrabbable_EventExtension : OVRGrabbable
 {
     [Space]
     public GrabEvent grabStartEvent;
