@@ -8,6 +8,8 @@ TagManager:
   - Grabbable
   - TargetZone
   - ResetStartingPoint
+  - LeftHand
+  - RightHand
   layers:
   - Default
   - TransparentFX
