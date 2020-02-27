@@ -52,7 +52,7 @@ public class Attachable : MonoBehaviour
 
     public void AttachToObject(GameObject go) {
         target = go.GetComponentInParent<AttachableTarget>();
-        if (target.IsOccupied()) return;
+        if (target.IsOccupied() || !target.allowAttaching) return;
 
         target.AttachObject(this);
 

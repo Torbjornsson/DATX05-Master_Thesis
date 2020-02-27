@@ -7,14 +7,16 @@ public class AttachableTarget : MonoBehaviour
     public BoxCollider myGrabCollider;
     public BoxCollider myExtraCollider;
     public GameObject attachTarget;
+    public Attachable attachedObject {get; private set;}
     public Vector3 attachedColliderCenter;
     public Vector3 attachedColliderSize;
+
+    [HideInInspector] public bool allowAttaching = true;
 
 
     private Vector3 unAttachedColliderCenter;
     private Vector3 unAttachedColliderSize;
     private bool isOccupied;
-    public Attachable attachedObject {get; private set;}
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +53,7 @@ public class AttachableTarget : MonoBehaviour
         myExtraCollider.gameObject.SetActive(true);
 
         if (attachable.correctSolution) {
-            GameMasterScript.instance.goalCriteriaSatisfied = true;
+            GameMaster.instance.goalCriteriaSatisfied = true;
         }
     }
 
@@ -65,7 +67,7 @@ public class AttachableTarget : MonoBehaviour
 
         myExtraCollider.gameObject.SetActive(false);
 
-        GameMasterScript.instance.goalCriteriaSatisfied = false;
+        GameMaster.instance.goalCriteriaSatisfied = false;
     }
 
     public bool IsOccupied() {

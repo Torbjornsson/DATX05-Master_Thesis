@@ -5,11 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - ResetVolume
-  - Grabbable
   - TargetZone
   - ResetStartingPoint
   - LeftHand
   - RightHand
+  - PuzzleCube
   layers:
   - Default
   - TransparentFX
