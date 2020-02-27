@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5224206565620723347}
   - component: {fileID: 424877038853444131}
   - component: {fileID: 424877038853444128}
-  - component: {fileID: 5632712339022783361}
+  - component: {fileID: 2543215489435952002}
   - component: {fileID: 424877038853444127}
   - component: {fileID: 7633843195217981845}
   m_Layer: 9
@@ -114,7 +114,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 3
---- !u!114 &5632712339022783361
+--- !u!114 &2543215489435952002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,7 +132,7 @@ MonoBehaviour:
   m_snapOffset: {fileID: 0}
   m_grabPoints: []
   m_allowGrab: 1
-  m_materialColorField: 
+  m_allowHandSwitch: 1
   grabStartEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -157,7 +157,6 @@ MonoBehaviour:
   useResetStartingPoint: 1
   fadeSpeed: 5
   stillnessBuffer: 0.001
-  grabbableScript: {fileID: 0}
 --- !u!114 &7633843195217981845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMainCollider: {fileID: 424877038853444131}
+  attachTarget: {fileID: 8315139118126587009}
   attachedColliderCenter: {x: 0, y: -0.04, z: 0}
   attachedColliderSize: {x: 0.1, y: 0.02, z: 0.1}
 --- !u!1 &4328647867246221885

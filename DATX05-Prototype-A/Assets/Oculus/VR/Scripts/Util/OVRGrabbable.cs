@@ -39,6 +39,8 @@ public class OVRGrabbable : MonoBehaviour
 
     [SerializeField]
     protected bool m_allowGrab = true;
+    [SerializeField]
+    protected bool m_allowHandSwitch = true;
 
 	/// <summary>
 	/// If true, the object can currently be grabbed.
@@ -119,6 +121,14 @@ public class OVRGrabbable : MonoBehaviour
     {
         get { return m_allowGrab; }
         set { m_allowGrab = value; }
+    }
+
+    /// <summary>
+	/// If true, the object can currently be grabbed by another hand.
+	/// </summary>
+    public bool allowHandSwitch
+    {
+        get { return m_allowHandSwitch; }
     }
 
 	/// <summary>

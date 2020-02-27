@@ -14,7 +14,7 @@ public class Resettable : MonoBehaviour
     private Rigidbody rb;
     private Material[] material;
     private BoxCollider startingArea;
-    public DistanceGrabbable_EventExtension grabbableScript;
+    private OVRGrabbable_EventExtension grabbableScript;
     // private GameObject resetStartingPoint;
     private Collider myCollider;
 
@@ -38,7 +38,7 @@ public class Resettable : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
-        grabbableScript = GetComponent<DistanceGrabbable_EventExtension>();
+        grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
 
         if (renderers.Length > 0) {
             material = new Material[renderers.Length];
@@ -51,13 +51,13 @@ public class Resettable : MonoBehaviour
         }
 
         if (!rb)
-            Debug.LogError("Rigidbody was not found!");
+            Debug.LogError(gameObject.name+": Rigidbody was not found!");
         if (!material[0])
-            Debug.LogError("Material was not found!");
+            Debug.LogError(gameObject.name+": Material was not found!");
         if (!myCollider)
-            Debug.LogError("Collider was not found!");
+            Debug.LogError(gameObject.name+": Collider was not found!");
         if (!grabbableScript)
-            Debug.LogError("Grabber script was not found!");
+            Debug.LogError(gameObject.name+": Grabber script was not found!");
 
         // Debug.Log("starting area: "+startingArea+", "+(startingArea != null)+", my collider: "+myCollider);
     }
@@ -90,11 +90,6 @@ public class Resettable : MonoBehaviour
                 }
             }
 
-            // foreach (Material m in material) {
-            //     var col = m.color;
-            //     col.a = alpha;
-            //     m.color = col;
-            // }
             UpdateMaterialAlpha();
         }
     }

@@ -237,18 +237,26 @@ namespace OculusSampleFramework
             collOut = null;
             float closestMagSq = float.MaxValue;
 
+            // Debug.Log("Grab candidates: "+m_grabCandidates.Count);
+
             // First test for objects within the grab volume, if we're using those.
             // (Some usage of DistanceGrabber will not use grab volumes, and will only 
             // use spherecasts, and that's supported.)
             foreach (OVRGrabbable cg in m_grabCandidates.Keys)
             {
                 DistanceGrabbable grabbable = cg as DistanceGrabbable;
-				bool canGrab = grabbable != null && grabbable.InRange && !(grabbable.isGrabbed && !grabbable.allowOffhandGrab) && grabbable.allowGrab;
+				bool canGrab = grabbable != null && grabbable.InRange && (!grabbable.isGrabbed || grabbable.allowHandSwitch) && grabbable.allowOffhandGrab && grabbable.allowGrab;
+                // Debug.Log("Trying to grab object: "+grabbable.name+", can grab: "+canGrab);
 				if (canGrab && m_grabObjectsInLayer >= 0) canGrab = grabbable.gameObject.layer == m_grabObjectsInLayer;
                 if (!canGrab)
                 {
                     continue;
                 }
+
+                // if (grabbable.isGrabbed && grabbable.allowHandSwitch) {
+                //     Debug.Log("Grabbed but grabbed again!");
+                //     grabbable.GrabEnd(Vector3.zero, Vector3.zero);
+                // }
 
                 for (int j = 0; j < grabbable.grabPoints.Length; ++j)
                 {
