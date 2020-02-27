@@ -66,7 +66,7 @@ public class Attachable : MonoBehaviour
         transform.rotation = go.transform.rotation;
 
         myCollider.enabled = false;
-        rb.isKinematic = true;
+        // rb.isKinematic = true;
         // Destroy(rb);
         
         attachedTo = go;

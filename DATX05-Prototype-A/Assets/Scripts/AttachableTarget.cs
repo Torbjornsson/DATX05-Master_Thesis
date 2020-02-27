@@ -13,10 +13,11 @@ public class AttachableTarget : MonoBehaviour
     private Vector3 unAttachedColliderCenter;
     private Vector3 unAttachedColliderSize;
     private bool isOccupied;
-    // private Attachable attachedObject;
-    private Rigidbody attachedObjectRB;
+    private Attachable attachedObject;
+    private GameObject attachedObjectDummy;
+    // private Rigidbody attachedObjectRB;
     // private Rigidbody targetRB;
-    private Rigidbody myRB;
+    // private Rigidbody myRB;
 
     // Start is called before the first frame update
     void Start()
@@ -25,16 +26,21 @@ public class AttachableTarget : MonoBehaviour
         unAttachedColliderSize = myMainCollider.size;
         unAttachedColliderCenter = myMainCollider.center;
         // targetRB = attachTarget.GetComponent<Rigidbody>();
-        myRB = GetComponent<Rigidbody>();
+        // myRB = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (attachedObjectRB != null) {
+        // if (attachedObjectRB != null) {
+        //     // attachedObjectRB.position = myRB.position + attachTarget.transform.localPosition;
+        //     attachedObjectRB.position = attachTarget.transform.position;
+        //     attachedObjectRB.rotation = attachTarget.transform.rotation;
+        // }
+        if (attachedObject != null) {
             // attachedObjectRB.position = myRB.position + attachTarget.transform.localPosition;
-            attachedObjectRB.position = attachTarget.transform.position;
-            attachedObjectRB.rotation = attachTarget.transform.rotation;
+            attachedObject.transform.position = attachTarget.transform.position;
+            attachedObject.transform.rotation = attachTarget.transform.rotation;
         }
     }
 
@@ -49,16 +55,16 @@ public class AttachableTarget : MonoBehaviour
         isOccupied = true;
         myMainCollider.size = attachedColliderSize;
         myMainCollider.center = attachedColliderCenter;
-        // attachedObject = attachable;
-        attachedObjectRB = attachable.gameObject.GetComponent<Rigidbody>();
+        attachedObject = attachable;
+        // attachedObjectRB = attachable.gameObject.GetComponent<Rigidbody>();
     }
 
     public void DetachObject() {
         isOccupied = false;
         myMainCollider.size = unAttachedColliderSize;
         myMainCollider.center = unAttachedColliderCenter;
-        // attachedObject = null;
-        attachedObjectRB = null;
+        attachedObject = null;
+        // attachedObjectRB = null;
     }
 
     public bool IsOccupied() {
