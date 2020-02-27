@@ -48,15 +48,11 @@ public class AttachableTarget : MonoBehaviour
         
         attachedObject = attachable;
 
-        // myExtraCollider = gameObject.AddComponent<BoxCollider>();
-        // myExtraCollider.center = attachTarget.transform.position;
-        // myExtraCollider.size = attachable.mySolidCollider.size;
-        // myExtraCollider.enabled = true;
-
-        // Vector3 size = mySolidCollider.size;
-        // size.y += attachable.mySolidCollider.transform.localScale.y;
-
         myExtraCollider.gameObject.SetActive(true);
+
+        if (attachable.correctSolution) {
+            GameMasterScript.instance.goalCriteriaSatisfied = true;
+        }
     }
 
     public void DetachObject() {
@@ -67,10 +63,9 @@ public class AttachableTarget : MonoBehaviour
 
         attachedObject = null;
 
-        // Destroy(myExtraCollider);
-        // myExtraCollider.enabled = false;
-
         myExtraCollider.gameObject.SetActive(false);
+
+        GameMasterScript.instance.goalCriteriaSatisfied = false;
     }
 
     public bool IsOccupied() {

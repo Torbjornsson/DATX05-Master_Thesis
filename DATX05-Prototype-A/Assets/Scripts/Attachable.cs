@@ -6,7 +6,8 @@ public class Attachable : MonoBehaviour
 {
     public Collider myGrabCollider;
     public BoxCollider mySolidCollider;
-    public Rigidbody rb;
+    // public Rigidbody rb;
+    public bool correctSolution = false;
 
     private GameObject originalParent;
     private GameObject overlappingTarget = null;
