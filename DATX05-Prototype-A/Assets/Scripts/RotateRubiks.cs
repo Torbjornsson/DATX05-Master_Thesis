@@ -7,14 +7,16 @@ public class RotateRubiks : MonoBehaviour
     SmallCube[] smallCubes;
     GameObject frontFace, backFace;
     bool isRotationStarted = false;
+
+    OVRGrabbable grabbable;
     // Start is called before the first frame update
     void Start()
     {
+        grabbable = GetComponent<OVRGrabbable>();
         frontFace = new GameObject();
         backFace = new GameObject();
         SetFace(frontFace);
         SetFace(backFace);
-
         smallCubes = GetComponentsInChildren<SmallCube>();
     }
 
@@ -23,12 +25,38 @@ public class RotateRubiks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetAxis("Oculus_GearVR_LIndexTrigger") > 0 && !isRotationStarted)
-            RotateFront();
+        if (grabbable.isGrabbed)
+        {
+            Debug.Log("Grabbed by: " + grabbable.grabbedBy.tag);
+            switch(grabbable.grabbedBy.tag)
+            {
+                case "RightHand":
+                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.7f && !isRotationStarted)
+                    {
+                        RotateFront();
+                    }
 
-        if (Input.GetAxis("Oculus_GearVR_LIndexTrigger") == 0 && isRotationStarted)
-            StopRotation(frontFace);
-        
+                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) <= 0.5f && isRotationStarted)
+                        StopRotation(frontFace);
+                    break;
+
+                case "LeftHand":
+                    if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.7f && !isRotationStarted)
+                    {
+                        RotateFront();
+                    }
+
+                    if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) <= 0.5f && isRotationStarted)
+                        StopRotation(frontFace);
+                    break;
+
+                default:
+                    if(isRotationStarted)
+                        StopRotation(frontFace);
+                    break;
+            }
+        }
+
     }
 
     void StartRotation(Vector3 axis, int side)
@@ -85,7 +113,7 @@ public class RotateRubiks : MonoBehaviour
     void RotateFront()
     {
         StartRotation(Vector3.forward, 0);
-        frontFace.transform.localEulerAngles = new Vector3(0, 0, 60);
+        frontFace.transform.localEulerAngles = new Vector3(0, 0, 30);
     }
 
     void SetFace(GameObject face)
