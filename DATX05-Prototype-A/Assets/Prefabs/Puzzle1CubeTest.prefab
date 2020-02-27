@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myMainCollider: {fileID: 424877038853444131}
+  attachTarget: {fileID: 8315139118126587009}
   attachedColliderCenter: {x: 0, y: -0.04, z: 0}
   attachedColliderSize: {x: 0.1, y: 0.02, z: 0.1}
 --- !u!1 &4328647867246221885
