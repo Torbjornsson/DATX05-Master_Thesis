@@ -5,17 +5,17 @@ using UnityEngine;
 public class Resettable : MonoBehaviour
 {
     public Renderer[] renderers;
-    // public GameObject resetObjectVolume;
     public bool useResetStartingPoint = true;
     public float fadeSpeed = 5;
     [Range(0,0.5f)] public float stillnessBuffer = 0.001f;
 
     private Vector3 startingPosition;
     private Rigidbody rb;
-    private Material[] material;
+    public Material[] materials {get; private set;}
     private BoxCollider startingArea;
     private OVRGrabbable_EventExtension grabbableScript;
-    // private GameObject resetStartingPoint;
+    private AttachableTarget attachableTarget;
+    private Material[] attachedMaterials = null;
     private Collider myCollider;
 
     private bool pending = false;
@@ -39,20 +39,21 @@ public class Resettable : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
         grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
+        attachableTarget = GetComponent<AttachableTarget>();
 
         if (renderers.Length > 0) {
-            material = new Material[renderers.Length];
+            materials = new Material[renderers.Length];
             for(int i = 0; i < renderers.Length; i++) {
-                material[i] = renderers[i].GetComponent<Renderer>().material;
+                materials[i] = renderers[i].GetComponent<Renderer>().material;
             }
         } else {
-            material = new Material[1];
-            material[0] = GetComponent<Renderer>().material;
+            materials = new Material[1];
+            materials[0] = GetComponent<Renderer>().material;
         }
 
         if (!rb)
             Debug.LogError(gameObject.name+": Rigidbody was not found!");
-        if (!material[0])
+        if (!materials[0])
             Debug.LogError(gameObject.name+": Material was not found!");
         if (!myCollider)
             Debug.LogError(gameObject.name+": Collider was not found!");
@@ -65,6 +66,13 @@ public class Resettable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (attachableTarget != null && attachableTarget.attachedObject != null && attachedMaterials == null) {
+            attachedMaterials = attachableTarget.attachedObject.gameObject.GetComponent<Resettable>().materials;
+        } else if (attachableTarget != null && attachableTarget.attachedObject == null && attachedMaterials != null) {
+            attachedMaterials = null;
+        }
+        
         if (pending) {
             if (rb.velocity.magnitude < stillnessBuffer) {
                 StartFadeOut();
@@ -95,10 +103,18 @@ public class Resettable : MonoBehaviour
     }
 
     private void UpdateMaterialAlpha() {
-        foreach (Material m in material) {
+        foreach (Material m in materials) {
             var col = m.color;
             col.a = alpha;
             m.color = col;
+        }
+        if (attachedMaterials != null) {
+
+            foreach (Material m in attachedMaterials) {
+                var col = m.color;
+                col.a = alpha;
+                m.color = col;
+            }
         }
     }
 

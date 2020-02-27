@@ -13,7 +13,7 @@ public class AttachableTarget : MonoBehaviour
     private Vector3 unAttachedColliderCenter;
     private Vector3 unAttachedColliderSize;
     private bool isOccupied;
-    private Attachable attachedObject;
+    public Attachable attachedObject {get; private set;}
 
     // Start is called before the first frame update
     void Start()
