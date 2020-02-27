@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AttachableTarget : MonoBehaviour
 {
-    public BoxCollider myMainCollider;
+    public BoxCollider myGrabCollider;
+    public BoxCollider myExtraCollider;
     public GameObject attachTarget;
     public Vector3 attachedColliderCenter;
     public Vector3 attachedColliderSize;
@@ -18,9 +19,16 @@ public class AttachableTarget : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (!myGrabCollider)
+            Debug.LogError(gameObject.name+": Grab collider was not found!");
+        if (!myExtraCollider)
+            Debug.LogError(gameObject.name+": Extra collider was not found!");
+        if (!attachTarget)
+            Debug.LogError(gameObject.name+": Attach target was not found!");
+
         isOccupied = false;
-        unAttachedColliderSize = myMainCollider.size;
-        unAttachedColliderCenter = myMainCollider.center;
+        unAttachedColliderSize = myGrabCollider.size;
+        unAttachedColliderCenter = myGrabCollider.center;
     }
 
     // Update is called once per frame
@@ -34,16 +42,35 @@ public class AttachableTarget : MonoBehaviour
 
     public void AttachObject(Attachable attachable) {
         isOccupied = true;
-        myMainCollider.size = attachedColliderSize;
-        myMainCollider.center = attachedColliderCenter;
+
+        myGrabCollider.size = attachedColliderSize;
+        myGrabCollider.center = attachedColliderCenter;
+        
         attachedObject = attachable;
+
+        // myExtraCollider = gameObject.AddComponent<BoxCollider>();
+        // myExtraCollider.center = attachTarget.transform.position;
+        // myExtraCollider.size = attachable.mySolidCollider.size;
+        // myExtraCollider.enabled = true;
+
+        // Vector3 size = mySolidCollider.size;
+        // size.y += attachable.mySolidCollider.transform.localScale.y;
+
+        myExtraCollider.gameObject.SetActive(true);
     }
 
     public void DetachObject() {
         isOccupied = false;
-        myMainCollider.size = unAttachedColliderSize;
-        myMainCollider.center = unAttachedColliderCenter;
+
+        myGrabCollider.size = unAttachedColliderSize;
+        myGrabCollider.center = unAttachedColliderCenter;
+
         attachedObject = null;
+
+        // Destroy(myExtraCollider);
+        // myExtraCollider.enabled = false;
+
+        myExtraCollider.gameObject.SetActive(false);
     }
 
     public bool IsOccupied() {

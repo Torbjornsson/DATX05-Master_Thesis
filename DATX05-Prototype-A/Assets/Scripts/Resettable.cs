@@ -18,6 +18,8 @@ public class Resettable : MonoBehaviour
     private Material[] attachedMaterials = null;
     private Collider myCollider;
 
+    private bool insideResetVolume = false;
+
     private bool pending = false;
     private bool fadeOut = false;
     private bool fadeIn = false;
@@ -66,6 +68,11 @@ public class Resettable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (insideResetVolume && !grabbableScript.isGrabbed && !pending && !fadeOut) {
+            StartPendingReset();
+        } else  if (!insideResetVolume && (pending || fadeOut)) {
+            StopPendingReset();
+        }
 
         if (attachableTarget != null && attachableTarget.attachedObject != null && attachedMaterials == null) {
             attachedMaterials = attachableTarget.attachedObject.gameObject.GetComponent<Resettable>().materials;
@@ -109,7 +116,6 @@ public class Resettable : MonoBehaviour
             m.color = col;
         }
         if (attachedMaterials != null) {
-
             foreach (Material m in attachedMaterials) {
                 var col = m.color;
                 col.a = alpha;
@@ -120,17 +126,20 @@ public class Resettable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag.Equals("ResetVolume")) {
-            StartPendingReset();
+            // StartPendingReset();
+            insideResetVolume = true;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.tag.Equals("ResetVolume")) {
-            StopPendingReset();
+            // StopPendingReset();
+            insideResetVolume = false;
         }
     }
 
     private void StartPendingReset() {
+        Debug.Log("Start pending");
         pending = true;
         fadeOut = false;
         fadeIn = false;
@@ -139,6 +148,7 @@ public class Resettable : MonoBehaviour
     }
 
     private void StopPendingReset() {
+        Debug.Log("STOP pending");
         if (pending) {
             pending = false;
         }
@@ -181,6 +191,7 @@ public class Resettable : MonoBehaviour
         fadeOut = false;
         fadeIn = true;
         rb.isKinematic = true;
+        insideResetVolume = false;
     }
 
     private void FadeInDone() {
