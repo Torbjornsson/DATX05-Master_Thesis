@@ -16,6 +16,7 @@ public class AttachableTarget : MonoBehaviour
 
     private Vector3 unAttachedColliderCenter;
     private Vector3 unAttachedColliderSize;
+    private Rigidbody attachedObjectRB;
     private bool isOccupied;
 
     // Start is called before the first frame update
@@ -37,6 +38,8 @@ public class AttachableTarget : MonoBehaviour
     void Update()
     {
         if (attachedObject != null) {
+            Debug.DrawLine(attachedObject.transform.position, attachTarget.transform.position, Color.red);
+            Debug.Log("Previous position: "+attachedObject.transform.position+", new position: "+attachTarget.transform.position);
             attachedObject.transform.position = attachTarget.transform.position;
             attachedObject.transform.rotation = attachTarget.transform.rotation;
         }
@@ -49,6 +52,8 @@ public class AttachableTarget : MonoBehaviour
         myGrabCollider.center = attachedColliderCenter;
         
         attachedObject = attachable;
+        attachedObjectRB = attachable.GetComponent<Rigidbody>();
+        attachedObjectRB.useGravity = false;
 
         myExtraCollider.gameObject.SetActive(true);
 
@@ -63,6 +68,8 @@ public class AttachableTarget : MonoBehaviour
         myGrabCollider.size = unAttachedColliderSize;
         myGrabCollider.center = unAttachedColliderCenter;
 
+        attachedObjectRB.useGravity = true;
+        attachedObjectRB = null;
         attachedObject = null;
 
         myExtraCollider.gameObject.SetActive(false);
