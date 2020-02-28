@@ -60,6 +60,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scannerLight: {fileID: 6556970217831477671}
+  totalPasses: 1
+  scanningIntroSpeed: 1
+  scanningMoveSpeed: 1
 --- !u!64 &7843314634694207304
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -153,6 +156,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d622ededad0420649bb21338d4f58b56, type: 2}
+    - target: {fileID: 2300000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
 --- !u!1 &7843314634694304245 stripped
