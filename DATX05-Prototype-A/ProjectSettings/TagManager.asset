@@ -10,6 +10,18 @@ TagManager:
   - ResetStartingPoint
   - LeftHand
   - RightHand
+  - FRD
+  - FDL
+  - FDR
+  - FTL
+  - FTR
+  - FLD
+  - FLT
+  - FRT
+  - DLF
+  - DLB
+  - DRF
+  - DRB
   layers:
   - Default
   - TransparentFX
