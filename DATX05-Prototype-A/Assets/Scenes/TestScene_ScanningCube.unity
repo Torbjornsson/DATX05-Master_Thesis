@@ -2934,20 +2934,15 @@ PrefabInstance:
       propertyPath: m_Range
       value: 0.12
       objectReference: {fileID: 0}
-    - target: {fileID: 1037483724989683016, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
+    - target: {fileID: 844915258556551578, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
-      propertyPath: scanningIntroSpeed
-      value: 5
+      propertyPath: m_Intensity
+      value: 0.005
       objectReference: {fileID: 0}
     - target: {fileID: 1037483724989683016, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
-      propertyPath: totalPasses
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1037483724989683016, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
-        type: 3}
-      propertyPath: scanningMoveSpeed
-      value: 4
+      propertyPath: useSpotlight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3845872607137174212, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
@@ -2982,7 +2977,7 @@ PrefabInstance:
     - target: {fileID: 7843314634375364850, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.24
+      value: 1.2481
       objectReference: {fileID: 0}
     - target: {fileID: 7843314634375364850, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
