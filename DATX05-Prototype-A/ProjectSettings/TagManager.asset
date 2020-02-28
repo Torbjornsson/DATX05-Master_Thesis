@@ -9,6 +9,18 @@ TagManager:
   - ResetStartingPoint
   - LeftHand
   - RightHand
+  - FRD
+  - FDL
+  - FDR
+  - FTL
+  - FTR
+  - FLD
+  - FLT
+  - FRT
+  - DLF
+  - DLB
+  - DRF
+  - DRB
   - PuzzleCube
   layers:
   - Default
@@ -23,7 +35,7 @@ TagManager:
   - Grabbable
   - Table
   - Player
-  - 
+  - SmollCube
   - 
   - 
   - 
