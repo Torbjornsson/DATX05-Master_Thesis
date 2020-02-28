@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class Attachable : MonoBehaviour
 {
-    public Collider myCollider;
-    public Rigidbody rb;
+    public Collider myGrabCollider;
+    public BoxCollider mySolidCollider;
+    // public Rigidbody rb;
+    public bool correctSolution = false;
 
     private GameObject originalParent;
     private GameObject overlappingTarget = null;
@@ -17,7 +19,8 @@ public class Attachable : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!myCollider) Debug.LogError("Couldn't find my collider!");
+        if (!myGrabCollider) Debug.LogError("Couldn't find my grab collider!");
+        if (!mySolidCollider) Debug.LogError("Couldn't find my solid collider!");
 
         originalParent = transform.parent.gameObject;
         if (!originalParent) Debug.LogError("Couldn't find original parent!");
@@ -49,14 +52,15 @@ public class Attachable : MonoBehaviour
 
     public void AttachToObject(GameObject go) {
         target = go.GetComponentInParent<AttachableTarget>();
-        if (target.IsOccupied()) return;
+        if (target.IsOccupied() || !target.allowAttaching) return;
 
         target.AttachObject(this);
 
         transform.position = go.transform.position;
         transform.rotation = go.transform.rotation;
 
-        myCollider.enabled = false;
+        myGrabCollider.enabled = false;
+        mySolidCollider.enabled = false;
         attachedTo = go;
     }
 
@@ -64,7 +68,8 @@ public class Attachable : MonoBehaviour
     {
         target.DetachObject();
 
-        myCollider.enabled = true;
+        myGrabCollider.enabled = true;
+        mySolidCollider.enabled = true;
         attachedTo = null;
     }
 }

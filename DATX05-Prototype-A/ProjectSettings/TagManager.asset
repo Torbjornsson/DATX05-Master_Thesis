@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - ResetVolume
-  - Grabbable
   - TargetZone
   - ResetStartingPoint
   - LeftHand
@@ -22,6 +21,7 @@ TagManager:
   - DLB
   - DRF
   - DRB
+  - PuzzleCube
   layers:
   - Default
   - TransparentFX
