@@ -2944,6 +2944,11 @@ PrefabInstance:
       propertyPath: useSpotlight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1037483724989683016, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
+        type: 3}
+      propertyPath: scanningIntroSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3845872607137174212, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
       propertyPath: m_IsActive
@@ -3023,16 +3028,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7843314634375364851, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 7843314634375364851, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
-        type: 3}
-      propertyPath: m_Size.y
-      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7843314634694304247, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
