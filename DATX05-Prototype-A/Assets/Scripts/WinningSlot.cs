@@ -39,6 +39,7 @@ public class WinningSlot : MonoBehaviour
 
             if (puzzleCubeAttachableTarget != null && !canAttachTileWhenCubeInSlot) {
                 puzzleCubeAttachableTarget.allowAttaching = false;
+                Debug.Log("Disable attaching!");
             }
             
             CheckIfWinOrFail();
