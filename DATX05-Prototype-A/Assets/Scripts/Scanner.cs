@@ -8,6 +8,7 @@ public class Scanner : MonoBehaviour
     public int totalPasses = 1;
     public float scanningIntroSpeed = 1f;
     public float scanningMoveSpeed = 1f;
+    public float delayBetweenPasses = 0.2f;
 
     private ParticleSystem scannerParticles;
     private Light scannerPointLight;
@@ -17,11 +18,15 @@ public class Scanner : MonoBehaviour
 
     private Vector3 lightStartPosition;
     private Vector3 lightEndPosition;
+    private Vector3 lightTargetPosition;
+    private Vector3 lightPreviousPosition;
     private int passesCount = 0;
     private bool backwards = false;
     private bool intro = false;
     private bool outro = false;
     private bool scanning = false;
+    private float lerpTime;
+    private float delay;
 
     // Start is called before the first frame update
     void Start()
@@ -64,15 +69,62 @@ public class Scanner : MonoBehaviour
             
             if (scannerBarAlpha >= 1 && scannerPointLight.intensity >= 1) {
                 intro = false;
-            } else return;
+                lightPreviousPosition = scannerLight.transform.position;
+                lightTargetPosition = lightEndPosition;
+                lerpTime = 0;
+                delay = delayBetweenPasses;
+            }
+            return;
+        }
+
+        if (outro) {
+            if (scannerBarAlpha > 0)
+                scannerBarAlpha -= scanningIntroSpeed * Time.deltaTime;
+            if (scannerBarAlpha < 0)
+                scannerBarAlpha = 0;
+            UpdateScannerBarAlpha();
+
+            if (scannerPointLight.intensity > 0)
+                scannerPointLight.intensity -= scanningIntroSpeed * Time.deltaTime;
+            if (scannerPointLight.intensity < 0)
+                scannerPointLight.intensity = 0;
+            
+            if (scannerBarAlpha <= 0 && scannerPointLight.intensity <= 0) {
+                outro = false;
+                scanning = false;
+            }
+            return;
         }
 
         if (passesCount < totalPasses) {
 
+            // var vectorToTravel = (lightTargetPosition - scannerLight.transform.position);
+            // if (vectorToTravel.magnitude > Mathf.Epsilon) {
+            //     scannerLight.transform.position += vectorToTravel.normalized * Time.deltaTime;
+            // }
 
+            if (delay < delayBetweenPasses) {
+                delay += Time.deltaTime;
+                return;
+            }
 
-            if (passesCount >= totalPasses)
+            lerpTime += Time.deltaTime * scanningMoveSpeed;
+            scannerLight.transform.position = Vector3.Lerp(lightPreviousPosition, lightTargetPosition, lerpTime);
+
+            if (lerpTime >= 1) {
+                scannerLight.transform.position = lightTargetPosition;
+                var temp = lightPreviousPosition;
+                lightPreviousPosition = lightTargetPosition;
+                lightTargetPosition = temp;
+                lerpTime = 0;
+                passesCount++;
+                delay = 0;
+            }
+
+            if (passesCount >= totalPasses) {
                 outro = true;
+                scannerParticles.Stop();
+            }
         }
     }
 
@@ -82,7 +134,7 @@ public class Scanner : MonoBehaviour
         intro = true;
         outro = false;
         scanning = true;
-        scannerParticles.Stop();
+        scannerParticles.Play();
         scannerPointLight.intensity = 0;
         scannerLight.transform.position = lightStartPosition;
         scannerBarAlpha = 0;
