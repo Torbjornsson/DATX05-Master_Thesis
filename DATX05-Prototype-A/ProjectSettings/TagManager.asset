@@ -22,6 +22,7 @@ TagManager:
   - DRF
   - DRB
   - PuzzleCube
+  - ScannerTarget
   layers:
   - Default
   - TransparentFX

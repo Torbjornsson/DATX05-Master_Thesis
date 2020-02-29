@@ -196,9 +196,13 @@ public class Scanner : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag.Equals("PuzzleCube") && !scanning) {
-            Debug.Log("Found puzzle cube!");
+        if (other.gameObject.tag.Equals("ScannerTarget") && !scanning) {
+            // Debug.Log("Found puzzle cube!");
             StartScanner();
+            var scannable = other.GetComponentInParent<Scannable>();
+            if (scannable) {
+                scannable.ScannedTarget(other);
+            }
         }
     }
 }

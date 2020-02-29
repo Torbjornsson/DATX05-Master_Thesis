@@ -859,6 +859,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1150258926}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1151940003 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9208380789133004287, guid: 031b166f2b028404baeed379ce700c0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 3818611968300040493}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b574ae398a671c1478f8ce88227d0b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1166311118
 GameObject:
   m_ObjectHideFlags: 0
@@ -2063,6 +2075,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle3Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 3675564720601357353, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5224778775118569825, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: indicatorLights
+      value: 
+      objectReference: {fileID: 1151940003}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
 --- !u!4 &2088633896 stripped
@@ -2289,11 +2316,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1083587803610046782, guid: 031b166f2b028404baeed379ce700c0b,
-        type: 3}
-      propertyPath: emissionOffIntensity
-      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1826550129920728345, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
