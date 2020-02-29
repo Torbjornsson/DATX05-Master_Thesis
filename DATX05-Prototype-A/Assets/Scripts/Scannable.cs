@@ -18,6 +18,8 @@ public class Scannable : MonoBehaviour
     }
 
     public IndicatorLightSet indicatorLights;
+    public SlotHatchSet_Rotate slotHatches;
+    public bool canFailAfterOpeninghatch = false;
 
     [Space]
     public Collider ScannerTarget_Front;
@@ -42,6 +44,8 @@ public class Scannable : MonoBehaviour
     {
         if (!indicatorLights)
             Debug.LogError("Scannable: Indicator Light Set was not found!");
+        if (!slotHatches)
+            Debug.LogError("Scannable: Indicator Slot Hatch Set was not found!");
 
         if (!ScannerTarget_Front || !ScannerTarget_Back || !ScannerTarget_Left
                 || !ScannerTarget_Right || !ScannerTarget_Up || !ScannerTarget_Down)
@@ -74,25 +78,43 @@ public class Scannable : MonoBehaviour
     public void ScannedTarget(Collider target) {
         // Debug.Log("Just scanned target: "+target.gameObject.name);
 
+        if (scanningOrderProgress >= scanningOrderAndCount.Length) {
+            if (canFailAfterOpeninghatch) {
+                ResetScanner();
+                slotHatches.CloseHatches();
+            }
+            return;
+        }
+
         var face = colliderToFace[target];
         var info = scanningOrderAndCount[scanningOrderProgress];
         scanningCountPerFaceProgress++;
 
         if (info.face == face && scanningCountPerFaceProgress <= info.times) {
             Debug.Log("Correctly scanned: "+face+" (the "+scanningCountPerFaceProgress+" time)");
+            
             if (scanningCountPerFaceProgress == info.times) {
                 indicatorLights.ToggleLight(scanningOrderProgress, true);
                 scanningOrderProgress++;
                 scanningCountPerFaceProgress = 0;
+
                 if (scanningOrderProgress >= 6) {
                     Debug.Log("AND OPENED THE HATCH!");
+                    slotHatches.OpenHatches();
                 }
             }
+
         } else {
-            indicatorLights.ToggleAllLights(false);
+            ResetScanner();
             Debug.Log("IN-correctly scanned: "+face+" (the "+scanningCountPerFaceProgress+" time)");
         }
 
-        Debug.Log("Correct should have been: "+info.face+", "+info.times+" times");
+        // Debug.Log("Correct should have been: "+info.face+", "+info.times+" times");
+    }
+
+    public void ResetScanner() {
+        scanningOrderProgress = 0;
+        scanningCountPerFaceProgress = 0;
+        indicatorLights.ToggleAllLights(false);
     }
 }
