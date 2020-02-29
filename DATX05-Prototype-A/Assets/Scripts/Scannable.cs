@@ -9,8 +9,8 @@ public class Scannable : MonoBehaviour
     }
 
     public struct ScanningInfo {
-        CubeFace face;
-        int times;
+        public CubeFace face;
+        public int times;
         public ScanningInfo(CubeFace f, int t) {
             face = f;
             times = t;
@@ -72,6 +72,27 @@ public class Scannable : MonoBehaviour
     }
 
     public void ScannedTarget(Collider target) {
-        Debug.Log("Just scanned target: "+target.gameObject.name);
+        // Debug.Log("Just scanned target: "+target.gameObject.name);
+
+        var face = colliderToFace[target];
+        var info = scanningOrderAndCount[scanningOrderProgress];
+        scanningCountPerFaceProgress++;
+
+        if (info.face == face && scanningCountPerFaceProgress <= info.times) {
+            Debug.Log("Correctly scanned: "+face+" (the "+scanningCountPerFaceProgress+" time)");
+            if (scanningCountPerFaceProgress == info.times) {
+                indicatorLights.ToggleLight(scanningOrderProgress, true);
+                scanningOrderProgress++;
+                scanningCountPerFaceProgress = 0;
+                if (scanningOrderProgress >= 6) {
+                    Debug.Log("AND OPENED THE HATCH!");
+                }
+            }
+        } else {
+            indicatorLights.ToggleAllLights(false);
+            Debug.Log("IN-correctly scanned: "+face+" (the "+scanningCountPerFaceProgress+" time)");
+        }
+
+        Debug.Log("Correct should have been: "+info.face+", "+info.times+" times");
     }
 }

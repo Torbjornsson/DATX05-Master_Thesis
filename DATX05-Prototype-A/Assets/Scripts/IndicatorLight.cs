@@ -113,12 +113,12 @@ public class IndicatorLight : MonoBehaviour
     public void TurnOn() {
         isOn = true;
         fading = true;
-        Debug.Log("Turned on light!");
+        // Debug.Log("Turned on light!");
     }
 
     public void TurnOff() {
         isOn = false;
         fading = true;
-        Debug.Log("Turned off light!");
+        // Debug.Log("Turned off light!");
     }
 }
