@@ -7,6 +7,8 @@ public class WinningSlot : MonoBehaviour
     public bool cubeCanFallIn = true;
     public bool canAttachTileWhenCubeInSlot = true;
 
+    public bool active = true;
+
     private GameObject puzzleCubeCloseToSlot = null;
     private OVRGrabbable_EventExtension puzzleCubeGrabbable = null;
     private AttachableTarget puzzleCubeAttachableTarget = null;
@@ -25,11 +27,14 @@ public class WinningSlot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var justReleasedCube = puzzleCubeCloseToSlot != null && cubeWasGrabbedLastFrame && !puzzleCubeGrabbable.isGrabbed;
-        var justAttachedTile = puzzleCubeAttachableTarget != null && !cubeHadAttachedTileLastFrame && puzzleCubeAttachableTarget.attachedObject != null;
+        var justReleasedCube = puzzleCubeCloseToSlot != null
+            && cubeWasGrabbedLastFrame && !puzzleCubeGrabbable.isGrabbed;
+        var justAttachedTile = puzzleCubeAttachableTarget != null
+            && !cubeHadAttachedTileLastFrame && puzzleCubeAttachableTarget.attachedObject != null;
 
         // When cube ends up in slot, snap it into position, and check win or fail
-        if (puzzleCubeCloseToSlot != null && !puzzleCubeInSlot && !puzzleCubeGrabbable.isGrabbed && (cubeCanFallIn || justReleasedCube)) {
+        if (active && puzzleCubeCloseToSlot != null && !puzzleCubeInSlot
+                && !puzzleCubeGrabbable.isGrabbed && (cubeCanFallIn || justReleasedCube)) {
             var pos = transform.position;
             pos.y += 0.07f; // There are probably better ways of doing it...
             puzzleCubeCloseToSlot.transform.position = pos;
