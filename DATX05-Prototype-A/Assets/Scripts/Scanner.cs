@@ -67,7 +67,6 @@ public class Scanner : MonoBehaviour
         for (int i = 0; i < scannerBarRenderers.Length; i++) {
             scannerBarMaterials[i] = scannerBarRenderers[i].material;
         }
-        // scannerBarMaterial = scannerLight.GetComponentInChildren<MeshRenderer>().material;
         scannerBarAlpha = 0;
         UpdateScannerBarAlpha();
 
@@ -148,11 +147,6 @@ public class Scanner : MonoBehaviour
 
         if (passesCount < totalPasses) {
 
-            // var vectorToTravel = (lightTargetPosition - scannerLight.transform.position);
-            // if (vectorToTravel.magnitude > Mathf.Epsilon) {
-            //     scannerLight.transform.position += vectorToTravel.normalized * Time.deltaTime;
-            // }
-
             if (delay < delayBetweenPasses) {
                 delay += Time.deltaTime;
                 return;
@@ -194,9 +188,6 @@ public class Scanner : MonoBehaviour
     }
 
     private void UpdateScannerBarAlpha() {
-        // var col = scannerBarMaterial.color;
-        // col.a = scannerBarAlpha;
-        // scannerBarMaterial.color = col;
         foreach (Material m in scannerBarMaterials) {
             var col = m.color;
             col.a = scannerBarAlpha;

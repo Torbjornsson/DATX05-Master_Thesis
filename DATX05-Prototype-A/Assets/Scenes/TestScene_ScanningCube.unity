@@ -2285,6 +2285,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 902225372758467777, guid: 031b166f2b028404baeed379ce700c0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1083587803610046782, guid: 031b166f2b028404baeed379ce700c0b,
+        type: 3}
+      propertyPath: emissionOffIntensity
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1826550129920728345, guid: 031b166f2b028404baeed379ce700c0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3818611967287719054, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2298,7 +2313,7 @@ PrefabInstance:
     - target: {fileID: 3818611967287719054, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5546
+      value: 0.597
       objectReference: {fileID: 0}
     - target: {fileID: 3818611967287719054, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
@@ -2344,6 +2359,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinningSlotIndicatorLampSet
+      objectReference: {fileID: 0}
+    - target: {fileID: 4896087251211518072, guid: 031b166f2b028404baeed379ce700c0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7675459010019173877, guid: 031b166f2b028404baeed379ce700c0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8425265929408511501, guid: 031b166f2b028404baeed379ce700c0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 031b166f2b028404baeed379ce700c0b, type: 3}
