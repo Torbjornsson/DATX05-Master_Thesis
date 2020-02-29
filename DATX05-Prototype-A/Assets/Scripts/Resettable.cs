@@ -139,7 +139,7 @@ public class Resettable : MonoBehaviour
     }
 
     private void StartPendingReset() {
-        Debug.Log("Start pending");
+        Debug.Log(gameObject.name+": Start pending");
         pending = true;
         fadeOut = false;
         fadeIn = false;
@@ -148,7 +148,7 @@ public class Resettable : MonoBehaviour
     }
 
     private void StopPendingReset() {
-        Debug.Log("STOP pending");
+        Debug.Log(gameObject.name+": STOP pending");
         if (pending) {
             pending = false;
         }

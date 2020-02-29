@@ -10,23 +10,30 @@ public class AttachableTarget : MonoBehaviour
     public Attachable attachedObject {get; private set;}
     public Vector3 attachedColliderCenter;
     public Vector3 attachedColliderSize;
+    public bool canOnlyAttachWhenGrabbed = true;
 
     [HideInInspector] public bool allowAttaching = true;
 
 
     private Vector3 unAttachedColliderCenter;
     private Vector3 unAttachedColliderSize;
+    private Rigidbody attachedObjectRB;
+    private OVRGrabbable_EventExtension grabbable;
     private bool isOccupied;
 
     // Start is called before the first frame update
     void Start()
     {
+        grabbable = GetComponent<OVRGrabbable_EventExtension>();
+
         if (!myGrabCollider)
             Debug.LogError(gameObject.name+": Grab collider was not found!");
         if (!myExtraCollider)
             Debug.LogError(gameObject.name+": Extra collider was not found!");
         if (!attachTarget)
             Debug.LogError(gameObject.name+": Attach target was not found!");
+        if (!grabbable)
+            Debug.LogError(gameObject.name+": OVRGrabbable_EventExtension was not found!");
 
         isOccupied = false;
         unAttachedColliderSize = myGrabCollider.size;
@@ -37,6 +44,8 @@ public class AttachableTarget : MonoBehaviour
     void Update()
     {
         if (attachedObject != null) {
+            // Debug.DrawLine(attachedObject.transform.position, attachTarget.transform.position, Color.red);
+            // Debug.Log("Previous position: "+attachedObject.transform.position+", new position: "+attachTarget.transform.position);
             attachedObject.transform.position = attachTarget.transform.position;
             attachedObject.transform.rotation = attachTarget.transform.rotation;
         }
@@ -49,6 +58,8 @@ public class AttachableTarget : MonoBehaviour
         myGrabCollider.center = attachedColliderCenter;
         
         attachedObject = attachable;
+        attachedObjectRB = attachable.GetComponent<Rigidbody>();
+        attachedObjectRB.useGravity = false;
 
         myExtraCollider.gameObject.SetActive(true);
 
@@ -63,6 +74,8 @@ public class AttachableTarget : MonoBehaviour
         myGrabCollider.size = unAttachedColliderSize;
         myGrabCollider.center = unAttachedColliderCenter;
 
+        attachedObjectRB.useGravity = true;
+        attachedObjectRB = null;
         attachedObject = null;
 
         myExtraCollider.gameObject.SetActive(false);
@@ -72,5 +85,9 @@ public class AttachableTarget : MonoBehaviour
 
     public bool IsOccupied() {
         return isOccupied;
+    }
+
+    public bool CanBeAttachedTo() {
+        return !isOccupied && allowAttaching && (!canOnlyAttachWhenGrabbed || grabbable.isGrabbed);
     }
 }

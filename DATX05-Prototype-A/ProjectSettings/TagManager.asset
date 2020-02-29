@@ -22,6 +22,8 @@ TagManager:
   - DRF
   - DRB
   - PuzzleCube
+  - ScannerTarget
+  - HatchPivotPoint
   layers:
   - Default
   - TransparentFX
