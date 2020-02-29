@@ -67,7 +67,8 @@ public class SlotHatchSet_Rotate : MonoBehaviour
 
         if (!winningSlot) Debug.LogError("Slot Hatch Set: Winning Slot was not found!");
 
-        winningSlot.active = false;
+        // winningSlot.active = false;
+        SetWinningSlotActive(false);
     }
 
     // Update is called once per frame
@@ -112,7 +113,10 @@ public class SlotHatchSet_Rotate : MonoBehaviour
         foreach (bool d in done) {
             allDone &= d;
         }
-        if (allDone) moving = false;
+        if (allDone) {
+            moving = false;
+            if (open) SetWinningSlotActive(true);//winningSlot.active = true;
+        }
     }
 
     public void OpenHatches() {
@@ -123,5 +127,12 @@ public class SlotHatchSet_Rotate : MonoBehaviour
     public void CloseHatches() {
         open = false;
         moving = true;
+        // winningSlot.active = false;
+        SetWinningSlotActive(false);
+    }
+
+    public void SetWinningSlotActive(bool active) {
+        winningSlot.active = active;
+        GameMaster.instance.goalCriteriaSatisfied = active;
     }
 }
