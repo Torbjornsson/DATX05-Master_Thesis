@@ -18,7 +18,7 @@ public class Resettable : MonoBehaviour
     private Material[] attachedMaterials = null;
     private Collider myCollider;
 
-    private bool insideResetVolume = false;
+    private int insideResetVolume = 0;
 
     private bool pending = false;
     private bool fadeOut = false;
@@ -46,11 +46,11 @@ public class Resettable : MonoBehaviour
         if (renderers.Length > 0) {
             materials = new Material[renderers.Length];
             for(int i = 0; i < renderers.Length; i++) {
-                materials[i] = renderers[i].GetComponent<Renderer>().material;
+                materials[i] = renderers[i].material;
             }
         } else {
             materials = new Material[1];
-            materials[0] = GetComponent<Renderer>().material;
+            materials[0] = GetComponentInChildren<Renderer>().material;
         }
 
         if (!rb)
@@ -68,9 +68,12 @@ public class Resettable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (insideResetVolume && !grabbableScript.isGrabbed && !pending && !fadeOut) {
+        if (!pending && !fadeOut && !fadeIn)
+            Debug.Log("inside reset volume: "+insideResetVolume);
+
+        if (insideResetVolume > 0 && !grabbableScript.isGrabbed && !pending && !fadeOut) {
             StartPendingReset();
-        } else  if (!insideResetVolume && (pending || fadeOut)) {
+        } else  if (insideResetVolume <= 0 && (pending || fadeOut)) {
             StopPendingReset();
         }
 
@@ -85,10 +88,12 @@ public class Resettable : MonoBehaviour
                 StartFadeOut();
             }
             previousPosition = transform.position;
+            Debug.Log("Pending, velocity: "+rb.velocity);
 
         } else if (fadeOut || fadeIn) {
 
             if (fadeOut) {
+                Debug.Log("Fade OUT, alpha: "+alpha);
                 if (alpha > 0)
                     alpha -= fadeSpeed * Time.deltaTime;
                 if (alpha <= 0) {
@@ -97,6 +102,7 @@ public class Resettable : MonoBehaviour
                 }
 
             } else if (fadeIn) {
+                Debug.Log("Fade IN, alpha: "+alpha);
                 if (alpha < 1)
                     alpha += fadeSpeed * Time.deltaTime;
                 if (alpha >= 1) {
@@ -127,14 +133,16 @@ public class Resettable : MonoBehaviour
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag.Equals("ResetVolume")) {
             // StartPendingReset();
-            insideResetVolume = true;
+            // insideResetVolume = true;
+            insideResetVolume++;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.tag.Equals("ResetVolume")) {
             // StopPendingReset();
-            insideResetVolume = false;
+            // insideResetVolume = false;
+            insideResetVolume--;
         }
     }
 
@@ -164,6 +172,7 @@ public class Resettable : MonoBehaviour
         fadeOut = true;
         // grabbableScript.enabled = false;
         grabbableScript.allowGrab = false;
+        Debug.Log("Start Fade");
     }
 
     private void ResetToStartingPositon() {
@@ -191,7 +200,8 @@ public class Resettable : MonoBehaviour
         fadeOut = false;
         fadeIn = true;
         rb.isKinematic = true;
-        insideResetVolume = false;
+        // insideResetVolume = false;
+        // insideResetVolume = 0;
     }
 
     private void FadeInDone() {

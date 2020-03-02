@@ -153,6 +153,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 8761819648378520408}
+  - {fileID: 355013896899601489}
+  - {fileID: 2236996150083201129}
   useResetStartingPoint: 1
   fadeSpeed: 5
   stillnessBuffer: 0.001
@@ -168,6 +170,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b143787e99f4fc469a15cd09195480e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  indicatorLights: {fileID: 0}
+  slotHatches: {fileID: 0}
+  canFailAfterOpeninghatch: 0
   ScannerTarget_Front: {fileID: 682269897755739479}
   ScannerTarget_Back: {fileID: 2571081178883342281}
   ScannerTarget_Left: {fileID: 5319375803402663035}
