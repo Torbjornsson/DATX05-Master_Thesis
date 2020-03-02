@@ -157,7 +157,7 @@ MonoBehaviour:
   - {fileID: 6475177007290141151}
   useResetStartingPoint: 1
   fadeSpeed: 5
-  stillnessBuffer: 0.001
+  stillnessBuffer: 0.005
 --- !u!114 &7633843195217981845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,6 +175,7 @@ MonoBehaviour:
   attachTarget: {fileID: 8315139118126587009}
   attachedColliderCenter: {x: 0, y: -0.06, z: 0}
   attachedColliderSize: {x: 0.14, y: 0.02, z: 0.14}
+  canOnlyAttachWhenGrabbed: 1
   allowAttaching: 1
 --- !u!1 &1540709845810616832
 GameObject:
@@ -339,8 +340,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.02, z: 0.14}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.14, y: 0.04, z: 0.14}
+  m_Center: {x: 0, y: 0.01, z: 0}
 --- !u!64 &5007381940084259202
 MeshCollider:
   m_ObjectHideFlags: 0

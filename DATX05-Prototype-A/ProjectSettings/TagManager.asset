@@ -24,6 +24,7 @@ TagManager:
   - PuzzleCube
   - ScannerTarget
   - HatchPivotPoint
+  - ResetVolumeHARD
   layers:
   - Default
   - TransparentFX
