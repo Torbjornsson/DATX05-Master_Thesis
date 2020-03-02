@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17515507, g: 0.21912867, b: 0.3014323, a: 1}
+  m_IndirectSpecularColor: {r: 0.1751553, g: 0.2191292, b: 0.30143312, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -295,11 +295,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: OVRPlayerController_PresenceVariant
       objectReference: {fileID: 0}
-    - target: {fileID: 1992598305438739736, guid: 1f722eab40099d04c89efa1cb9bf1d65,
-        type: 3}
-      propertyPath: SkipMouseRotation
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
 --- !u!1 &975544157
@@ -340,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975544157}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.2086, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 45637417}
@@ -389,7 +384,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 26eecbcbadead4db9a787b61ddfc2ff1, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.222
+  m_Volume: 0.504
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -482,7 +477,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1114060497}
-  - component: {fileID: 1114060498}
   m_Layer: 0
   m_Name: SoundManager
   m_TagString: Untagged
@@ -506,18 +500,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1114060498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1114060496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2050bce2b18b94a858969fdd3432a92d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1330722914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -636,7 +618,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 4d7cd8dfad1a7495db65250a20ee9063, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.4
+  m_Volume: 0.861
   m_Pitch: 1
   Loop: 1
   Mute: 0
