@@ -19,10 +19,12 @@ public class Resettable : MonoBehaviour
     private Collider myCollider;
 
     private int insideResetVolume = 0;
+    private int insideHardResetVolume = 0;
 
     private bool pending = false;
     private bool fadeOut = false;
     private bool fadeIn = false;
+    private bool hardReset = false;
 
     private float alpha;
     private Vector3 previousPosition;
@@ -71,9 +73,12 @@ public class Resettable : MonoBehaviour
         // if (!pending && !fadeOut && !fadeIn)
         //     Debug.Log("inside reset volume: "+insideResetVolume);
 
-        if (insideResetVolume > 0 && !grabbableScript.isGrabbed && !pending && !fadeOut) {
+        if (insideHardResetVolume > 0 && !hardReset)
+            StartHardReset();
+
+        if (insideResetVolume > 0 && !grabbableScript.isGrabbed && !pending && !fadeOut && !hardReset) {
             StartPendingReset();
-        } else  if (insideResetVolume <= 0 && (pending || fadeOut)) {
+        } else  if (insideResetVolume <= 0 && (pending || fadeOut) && !hardReset) {
             StopPendingReset();
         }
 
@@ -135,6 +140,11 @@ public class Resettable : MonoBehaviour
             // StartPendingReset();
             // insideResetVolume = true;
             insideResetVolume++;
+
+        } else if (other.gameObject.tag.Equals("ResetVolumeHARD")) {
+            // StartPendingReset();
+            // StartFadeOut();
+            insideHardResetVolume++;
         }
     }
 
@@ -143,7 +153,18 @@ public class Resettable : MonoBehaviour
             // StopPendingReset();
             // insideResetVolume = false;
             insideResetVolume--;
+
+        } else if (other.gameObject.tag.Equals("ResetVolumeHARD")) {
+            insideHardResetVolume--;
         }
+    }
+
+    private void StartHardReset() {
+        if (grabbableScript.isGrabbed)
+            grabbableScript.grabbedBy.ForceRelease(grabbableScript);
+        StartPendingReset();
+        StartFadeOut();
+        hardReset = true;
     }
 
     private void StartPendingReset() {
@@ -209,6 +230,7 @@ public class Resettable : MonoBehaviour
         fadeIn = false;
         // grabbableScript.enabled = true;
         grabbableScript.allowGrab = true;
+        hardReset = false;
     }
 
     public void SetResetPosition(Vector3 position) {
