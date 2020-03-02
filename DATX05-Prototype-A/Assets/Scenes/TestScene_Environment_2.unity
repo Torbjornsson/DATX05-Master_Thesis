@@ -160,11 +160,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 45637417}
     m_Modifications:
-    - target: {fileID: 424877038853444127, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: stillnessBuffer
-      value: 0.005
-      objectReference: {fileID: 0}
     - target: {fileID: 424877038853444129, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -421,7 +416,7 @@ PrefabInstance:
     - target: {fileID: 689725483663075235, guid: ec267bb2b133f7241b3e56406e60fe1c,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec267bb2b133f7241b3e56406e60fe1c, type: 3}
@@ -501,7 +496,7 @@ PrefabInstance:
     - target: {fileID: 424877038853444134, guid: 6b736e234b3d9414f9251095672dfdcf,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
@@ -571,7 +566,7 @@ PrefabInstance:
     - target: {fileID: 7375337593960257121, guid: 9cd446dd5845bc24c93aad2a7308609e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9cd446dd5845bc24c93aad2a7308609e, type: 3}

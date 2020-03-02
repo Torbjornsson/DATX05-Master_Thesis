@@ -2122,7 +2122,7 @@ MonoBehaviour:
   - {fileID: 7487374652498665771}
   useResetStartingPoint: 1
   fadeSpeed: 5
-  stillnessBuffer: 0.001
+  stillnessBuffer: 0.005
 --- !u!114 &3545687174283096851
 MonoBehaviour:
   m_ObjectHideFlags: 0

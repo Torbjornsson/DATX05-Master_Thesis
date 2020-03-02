@@ -68,8 +68,8 @@ public class Resettable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!pending && !fadeOut && !fadeIn)
-            Debug.Log("inside reset volume: "+insideResetVolume);
+        // if (!pending && !fadeOut && !fadeIn)
+        //     Debug.Log("inside reset volume: "+insideResetVolume);
 
         if (insideResetVolume > 0 && !grabbableScript.isGrabbed && !pending && !fadeOut) {
             StartPendingReset();
@@ -88,12 +88,12 @@ public class Resettable : MonoBehaviour
                 StartFadeOut();
             }
             previousPosition = transform.position;
-            Debug.Log("Pending, velocity: "+rb.velocity);
+            // Debug.Log("Pending, velocity: "+rb.velocity);
 
         } else if (fadeOut || fadeIn) {
 
             if (fadeOut) {
-                Debug.Log("Fade OUT, alpha: "+alpha);
+                // Debug.Log("Fade OUT, alpha: "+alpha);
                 if (alpha > 0)
                     alpha -= fadeSpeed * Time.deltaTime;
                 if (alpha <= 0) {
@@ -102,7 +102,7 @@ public class Resettable : MonoBehaviour
                 }
 
             } else if (fadeIn) {
-                Debug.Log("Fade IN, alpha: "+alpha);
+                // Debug.Log("Fade IN, alpha: "+alpha);
                 if (alpha < 1)
                     alpha += fadeSpeed * Time.deltaTime;
                 if (alpha >= 1) {
@@ -147,7 +147,7 @@ public class Resettable : MonoBehaviour
     }
 
     private void StartPendingReset() {
-        Debug.Log(gameObject.name+": Start pending");
+        // Debug.Log(gameObject.name+": Start pending");
         pending = true;
         fadeOut = false;
         fadeIn = false;
@@ -156,7 +156,7 @@ public class Resettable : MonoBehaviour
     }
 
     private void StopPendingReset() {
-        Debug.Log(gameObject.name+": STOP pending");
+        // Debug.Log(gameObject.name+": STOP pending");
         if (pending) {
             pending = false;
         }
@@ -172,7 +172,7 @@ public class Resettable : MonoBehaviour
         fadeOut = true;
         // grabbableScript.enabled = false;
         grabbableScript.allowGrab = false;
-        Debug.Log("Start Fade");
+        // Debug.Log("Start Fade");
     }
 
     private void ResetToStartingPositon() {
@@ -247,8 +247,17 @@ public class Resettable : MonoBehaviour
         //         return true;
         // }
         // return false;
-        results = new Collider[2];
+
+        // results = new Collider[2];
+        // int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
+        // return hits > 0;
+
+        results = new Collider[10];
         int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
-        return hits > 0;
+        for(int i = 0; i < hits; i++) {
+            if (!results[i].gameObject.Equals(gameObject))
+                return true;
+        }
+        return false;
     }
 }

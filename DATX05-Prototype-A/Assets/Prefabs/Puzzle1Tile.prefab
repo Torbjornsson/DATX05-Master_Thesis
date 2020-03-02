@@ -178,7 +178,7 @@ MonoBehaviour:
   - {fileID: 5378163266822017590}
   useResetStartingPoint: 1
   fadeSpeed: 5
-  stillnessBuffer: 0.001
+  stillnessBuffer: 0.005
 --- !u!114 &114939956910318088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,7 +193,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myGrabCollider: {fileID: 65516038554640390}
   mySolidCollider: {fileID: 4761871226732152200}
-  rb: {fileID: 5104387654293321622}
+  correctSolution: 0
 --- !u!1 &689725484027071199
 GameObject:
   m_ObjectHideFlags: 0
