@@ -1,0 +1,45 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="fail_data" version="1.3.0" audacityversion="2.3.3" sel0="0.0000000000" sel1="0.2612244898" vpos="0" h="0.0000000000" zoom="1171.3086409466" rate="11025.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="BUZZER1" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="11025" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="12001">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f15f.au" len="12001" min="-0.794328" max="0.771136" rms="0.319625"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="BUZZER1" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="11025" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="12001">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1ffa4.au" len="12001" min="-0.794328" max="0.771136" rms="0.319625"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="sound128_alert sound" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="0" solo="0" rate="22050" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="5760">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f962.au" len="5760" min="-0.794328" max="0.512008" rms="0.138241"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="sound128_alert sound" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="0" solo="0" rate="22050" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="5760">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1ffb6.au" len="5760" min="-0.794328" max="0.512008" rms="0.138241"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
