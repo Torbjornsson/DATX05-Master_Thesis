@@ -2206,7 +2206,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 67b297955aed5a9428d2e0dee45f2156, type: 3}
   - {fileID: 8300000, guid: 966671f47b221fe4a81fdf4584edcb32, type: 3}
   - {fileID: 8300000, guid: 8313caf00e52ed140841ebffedbfdcee, type: 3}
-  - {fileID: 8300000, guid: 240ed9d4a39178d45a0223407fd5283f, type: 3}
   normalImpactThreshold: 2
   hardImpactThreshold: 5
 --- !u!82 &7668377398241047620
