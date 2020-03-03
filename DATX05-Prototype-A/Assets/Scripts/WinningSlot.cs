@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class WinningSlot : MonoBehaviour
 {
-    public AudioSource fanfare;
     public bool cubeCanFallIn = true;
     public bool canAttachTileWhenCubeInSlot = true;
-
     public bool active = true;
+    [Space]
+    public AudioClip win;
+    public AudioClip fail;
+    public AudioSource soundSource;
 
     private GameObject puzzleCubeCloseToSlot = null;
     private OVRGrabbable_EventExtension puzzleCubeGrabbable = null;
@@ -22,8 +24,12 @@ public class WinningSlot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!fanfare)
+        if (!soundSource)
             Debug.LogError("Winning Slot: Audio Source was not found!");
+        if (!win)
+            Debug.LogError("Winning Slot: Win Audio Clip was not found!");
+        if (!fail)
+            Debug.LogError("Winning Slot: Fail Audio Clip was not found!");
     }
 
     // Update is called once per frame
@@ -107,11 +113,22 @@ public class WinningSlot : MonoBehaviour
         }
 
         winHasBeenTriggered = true;
-        fanfare.Play();
+        PlayWinSound();
         Debug.Log("WON THE GAME!!!!");
     }
 
     public void TriggerFail() {
+        PlayFailSound();
         Debug.Log("Lost the game...");
+    }
+
+    public void PlayWinSound() {
+        soundSource.clip = win;
+        soundSource.Play();
+    }
+
+    public void PlayFailSound() {
+        soundSource.clip = fail;
+        soundSource.Play();
     }
 }

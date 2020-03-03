@@ -58,10 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66544b7f4e0d75e448a973f7201ba015, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fanfare: {fileID: 6751099687161535441}
   cubeCanFallIn: 1
   canAttachTileWhenCubeInSlot: 0
   active: 1
+  win: {fileID: 8300000, guid: 7f6aa3539a2728e42a49ba73c995c965, type: 3}
+  fail: {fileID: 8300000, guid: b777ab965ce6866498b8ba7a625fc1da, type: 3}
+  soundSource: {fileID: 6751099687161535441}
 --- !u!82 &6751099687161535441
 AudioSource:
   m_ObjectHideFlags: 0
@@ -74,7 +76,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7f6aa3539a2728e42a49ba73c995c965, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.561
+  m_Volume: 0.49
   m_Pitch: 1
   Loop: 0
   Mute: 0
