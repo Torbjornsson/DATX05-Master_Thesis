@@ -2015,7 +2015,7 @@ GameObject:
   - component: {fileID: 7387056161367313140}
   - component: {fileID: 7668377398241047620}
   - component: {fileID: 1236239023338129809}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RubiksCube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2858,6 +2858,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube 0x1x1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.05
@@ -2944,6 +2952,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_Name
       value: Cube 0x0x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3032,6 +3048,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube 1x1x0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05
@@ -3118,6 +3142,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_Name
       value: Cube 1x0x0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3206,6 +3238,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube 0x0x0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.05
@@ -3292,6 +3332,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_Name
       value: Cube 0x1x0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3380,6 +3428,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube 1x0x1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.05
@@ -3466,6 +3522,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_Name
       value: Cube 1x1x1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x

@@ -274,12 +274,19 @@ public class Resettable : MonoBehaviour
         // int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
         // return hits > 0;
 
+        bool colliding = false;
         results = new Collider[10];
-        int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
+        var center = transform.position;
+        var halfExtents = myCollider.bounds.size / 2;
+        int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation, LayerMask.GetMask("Grabbable"));
+        Debug.DrawLine(center, center + halfExtents, Color.red);
         for(int i = 0; i < hits; i++) {
             if (!results[i].gameObject.Equals(gameObject))
-                return true;
+                colliding = true;
+                // return true;
         }
-        return false;
+        // return false;
+        Debug.Log("CollidingWithOtherGrabbables(): "+colliding);
+        return colliding;
     }
 }
