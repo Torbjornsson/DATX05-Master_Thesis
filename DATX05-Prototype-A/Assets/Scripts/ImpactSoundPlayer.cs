@@ -15,7 +15,6 @@ public class ImpactSoundPlayer : MonoBehaviour
     private Rigidbody rb;
     private Vector3 previousVelocity;
     private Vector3 previousAngular;
-    // private OVRGrabbable_EventExtension grabbableScript;
     private bool isGrabbed = false;
 
     // Start is called before the first frame update
@@ -27,36 +26,22 @@ public class ImpactSoundPlayer : MonoBehaviour
             Debug.LogError("Impact Sound Player: No Audio Clips was found!");
         
         rb = GetComponent<Rigidbody>();
-        // grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
 
         if (!rb)
             Debug.LogError("Impact Sound Player: Rigidbody was found!");
-        // if (!grabbableScript)
-        //     Debug.LogError("Impact Sound Player: OVR Grabbable was found!");
 
         previousVelocity = Vector3.zero;
         previousAngular = Vector3.zero;
-
-        // foreach(AudioClip ac in soundClipsNormalImpact) {
-        //     ac.LoadAudioData
-        // }
     }
 
     // Update is called once per frame
     void Update()
     {
-        // debugTime += Time.deltaTime;
-        // if (debugTime > 5) {
-        //     PlaySound();
-        //     debugTime = 0;
-        // }
-
         previousVelocity = rb.velocity;
         previousAngular = rb.angularVelocity;
     }
 
     void OnCollisionEnter(Collision col) {
-        // if (grabbableScript.isGrabbed) return;
         if (isGrabbed || soundSource.isPlaying) return;
 
         var vel = previousVelocity.magnitude + previousAngular.magnitude / 3;
