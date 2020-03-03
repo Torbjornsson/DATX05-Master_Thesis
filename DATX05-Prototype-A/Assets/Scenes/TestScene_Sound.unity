@@ -769,6 +769,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle1Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 1787883108607069761, guid: 6b736e234b3d9414f9251095672dfdcf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
 --- !u!4 &1805134906 stripped
