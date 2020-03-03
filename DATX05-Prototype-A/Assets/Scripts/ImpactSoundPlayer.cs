@@ -15,7 +15,8 @@ public class ImpactSoundPlayer : MonoBehaviour
     private Rigidbody rb;
     private Vector3 previousVelocity;
     private Vector3 previousAngular;
-    private OVRGrabbable_EventExtension grabbableScript;
+    // private OVRGrabbable_EventExtension grabbableScript;
+    private bool isGrabbed = false;
 
     // Start is called before the first frame update
     void Start()
@@ -26,15 +27,19 @@ public class ImpactSoundPlayer : MonoBehaviour
             Debug.LogError("Impact Sound Player: No Audio Clips was found!");
         
         rb = GetComponent<Rigidbody>();
-        grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
+        // grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
 
         if (!rb)
             Debug.LogError("Impact Sound Player: Rigidbody was found!");
-        if (!grabbableScript)
-            Debug.LogError("Impact Sound Player: OVR Grabbable was found!");
+        // if (!grabbableScript)
+        //     Debug.LogError("Impact Sound Player: OVR Grabbable was found!");
 
         previousVelocity = Vector3.zero;
         previousAngular = Vector3.zero;
+
+        // foreach(AudioClip ac in soundClipsNormalImpact) {
+        //     ac.LoadAudioData
+        // }
     }
 
     // Update is called once per frame
@@ -51,7 +56,8 @@ public class ImpactSoundPlayer : MonoBehaviour
     }
 
     void OnCollisionEnter(Collision col) {
-        if (grabbableScript.isGrabbed) return;
+        // if (grabbableScript.isGrabbed) return;
+        if (isGrabbed || soundSource.isPlaying) return;
 
         var vel = previousVelocity.magnitude + previousAngular.magnitude / 3;
         if (vel > hardImpactThreshold)
@@ -78,5 +84,13 @@ public class ImpactSoundPlayer : MonoBehaviour
     public void PlaySound(AudioClip[] soundClips) {
         soundSource.clip = soundClips[Random.Range(0, soundClips.Length)];
         soundSource.Play();
+    }
+
+    public void GrabStart() {
+        isGrabbed = true;
+    }
+
+    public void GrabEnd() {
+        isGrabbed = false;
     }
 }
