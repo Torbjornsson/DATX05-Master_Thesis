@@ -63,16 +63,11 @@ public class Resettable : MonoBehaviour
             Debug.LogError(gameObject.name+": Collider was not found!");
         if (!grabbableScript)
             Debug.LogError(gameObject.name+": Grabber script was not found!");
-
-        // Debug.Log("starting area: "+startingArea+", "+(startingArea != null)+", my collider: "+myCollider);
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if (!pending && !fadeOut && !fadeIn)
-        //     Debug.Log("inside reset volume: "+insideResetVolume);
-
         if (insideHardResetVolume > 0 && !hardReset)
             StartHardReset();
 
@@ -93,12 +88,10 @@ public class Resettable : MonoBehaviour
                 StartFadeOut();
             }
             previousPosition = transform.position;
-            // Debug.Log("Pending, velocity: "+rb.velocity);
 
         } else if (fadeOut || fadeIn) {
 
             if (fadeOut) {
-                // Debug.Log("Fade OUT, alpha: "+alpha);
                 if (alpha > 0)
                     alpha -= fadeSpeed * Time.deltaTime;
                 if (alpha <= 0) {
@@ -107,7 +100,6 @@ public class Resettable : MonoBehaviour
                 }
 
             } else if (fadeIn) {
-                // Debug.Log("Fade IN, alpha: "+alpha);
                 if (alpha < 1)
                     alpha += fadeSpeed * Time.deltaTime;
                 if (alpha >= 1) {
@@ -137,21 +129,15 @@ public class Resettable : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag.Equals("ResetVolume")) {
-            // StartPendingReset();
-            // insideResetVolume = true;
             insideResetVolume++;
 
         } else if (other.gameObject.tag.Equals("ResetVolumeHARD")) {
-            // StartPendingReset();
-            // StartFadeOut();
             insideHardResetVolume++;
         }
     }
 
     private void OnTriggerExit(Collider other) {
         if (other.gameObject.tag.Equals("ResetVolume")) {
-            // StopPendingReset();
-            // insideResetVolume = false;
             insideResetVolume--;
 
         } else if (other.gameObject.tag.Equals("ResetVolumeHARD")) {
@@ -168,7 +154,6 @@ public class Resettable : MonoBehaviour
     }
 
     private void StartPendingReset() {
-        // Debug.Log(gameObject.name+": Start pending");
         pending = true;
         fadeOut = false;
         fadeIn = false;
@@ -177,7 +162,6 @@ public class Resettable : MonoBehaviour
     }
 
     private void StopPendingReset() {
-        // Debug.Log(gameObject.name+": STOP pending");
         if (pending) {
             pending = false;
         }
@@ -191,9 +175,7 @@ public class Resettable : MonoBehaviour
     private void StartFadeOut() {
         pending = false;
         fadeOut = true;
-        // grabbableScript.enabled = false;
         grabbableScript.allowGrab = false;
-        // Debug.Log("Start Fade");
     }
 
     private void ResetToStartingPositon() {
@@ -204,9 +186,9 @@ public class Resettable : MonoBehaviour
         bool collidingWithAnything = CollidingWithOtherGrabbables();
 
         while (infCounter < 50 && (outsideStartingArea || collidingWithAnything)) {
-            if (outsideStartingArea)
+            if (outsideStartingArea) {
                 transform.position = startingPosition;
-            else if (collidingWithAnything) {
+            } else if (collidingWithAnything) {
                 var pos = transform.position;
                 pos += GenerateRandomVector() * Mathf.Max(myCollider.bounds.size.x, myCollider.bounds.size.y, myCollider.bounds.size.z);
                 transform.position = pos;
@@ -221,14 +203,11 @@ public class Resettable : MonoBehaviour
         fadeOut = false;
         fadeIn = true;
         rb.isKinematic = true;
-        // insideResetVolume = false;
-        // insideResetVolume = 0;
     }
 
     private void FadeInDone() {
         rb.isKinematic = false;
         fadeIn = false;
-        // grabbableScript.enabled = true;
         grabbableScript.allowGrab = true;
         hardReset = false;
     }
@@ -247,39 +226,34 @@ public class Resettable : MonoBehaviour
     private static int resultsSize = 20;
     Collider[] results;
     private bool OutsideStartingArea() {
-        // results = new Collider[resultsSize];
-        // int hits = Physics.OverlapBoxNonAlloc(startingArea.transform.position, startingArea.transform.localScale / 2, results, startingArea.transform.rotation, LayerMask.GetMask("Grabbable"));
-        // for (int i = 0; i < hits; i++) {
-        //     var c = results[i];
-        //     Debug.Log("Is me? "+c+" vs "+myCollider);
-        //     if (c.Equals(myCollider))
-        //         return false;
-        // }
-        // return true;
-        return false;
+        bool colliding = false;
+        results = new Collider[resultsSize];
+        
+        var center = transform.position;
+        var halfExtents = myCollider.bounds.size / 2;
+        int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation);
+        
+        for(int i = 0; i < hits; i++) {
+            if (results[i].tag.Equals("ResetStartingPoint"))
+                colliding = true;
+        }
+        
+        return !colliding;
     }
 
     private bool CollidingWithOtherGrabbables() {
-        // results = new Collider[resultsSize];
-        // int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
-        // for (int i = 0; i < hits; i++) {
-        //     var c = results[i];
-        //     Debug.Log("Is me? "+c.gameObject.GetInstanceID()+" vs "+gameObject.GetInstanceID());
-        //     if (!c.gameObject.GetInstanceID().Equals(gameObject.GetInstanceID()))
-        //         return true;
-        // }
-        // return false;
-
-        // results = new Collider[2];
-        // int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
-        // return hits > 0;
-
-        results = new Collider[10];
-        int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
+        bool colliding = false;
+        results = new Collider[resultsSize];
+        
+        var center = transform.position;
+        var halfExtents = myCollider.bounds.size / 2;
+        int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation, LayerMask.GetMask("Grabbable"));
+        
         for(int i = 0; i < hits; i++) {
             if (!results[i].gameObject.Equals(gameObject))
-                return true;
+                colliding = true;
         }
-        return false;
+
+        return colliding;
     }
 }

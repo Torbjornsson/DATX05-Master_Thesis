@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 114939956910318088}
   - component: {fileID: 114355198066725140}
   - component: {fileID: 82351149539341264}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Puzzle1Tile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 689725484027071195}
   - component: {fileID: 689725484027071194}
   - component: {fileID: 4761871226732152200}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
