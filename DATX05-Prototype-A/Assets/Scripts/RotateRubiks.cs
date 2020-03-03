@@ -38,40 +38,67 @@ public class RotateRubiks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (grabbable.isGrabbed)
+        if (!grabbable.isGrabbed) return;
+        // if (grabbable.isGrabbed)
+        // {
+        switch(grabbable.grabbedBy.tag)
         {
-            switch(grabbable.grabbedBy.tag)
-            {
-                case "RightHand":
-                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.7f && !isRotationStarted)
-                    {
-                        int direction = 0;
-                        Vector3 axis = PickAxis("LeftHand", out direction);
-                        if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
-                            RotateFace(axis, direction);
-                    }
+            case "RightHand":
+                // if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) > 0.7f && !isRotationStarted)
+                // {
+                //     int direction = 0;
+                //     Vector3 axis = PickAxis("LeftHand", out direction);
+                //     if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
+                //         RotateFace(axis, direction);
+                // }
 
-                    if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) <= 0.5f && isRotationStarted)
-                        StopRotation();
-                    break;
+                // if (OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger) <= 0.5f && isRotationStarted)
+                //     StopRotation();
+                HandAction("LeftHand", OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger));
+                break;
 
-                case "LeftHand":
-                    if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.7f && !isRotationStarted)
-                    {
-                        int direction = 0;
-                        Vector3 axis = PickAxis("RightHand", out direction);
-                        if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
-                            RotateFace(axis, direction);
-                    }
+            case "LeftHand":
+                // if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) > 0.7f && !isRotationStarted)
+                // {
+                //     int direction = 0;
+                //     Vector3 axis = PickAxis("RightHand", out direction);
+                //     if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
+                //         RotateFace(axis, direction);
+                // }
 
-                    if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) <= 0.5f && isRotationStarted)
-                        StopRotation();
-                    break;
+                // if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) <= 0.5f && isRotationStarted)
+                //     StopRotation();
+                HandAction("RightHand", OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger));
+                break;
 
-                default:
-                    if(isRotationStarted)
-                        StopRotation();
-                    break;
+            default:
+                if(isRotationStarted)
+                    StopRotation();
+                break;
+        }
+        // }
+    }
+
+    private void HandAction(string hand, float input) {
+        // Pressing "TURN" (or trigger)
+        if (input > 0.7f && !isRotationStarted)
+        {
+            int direction = 0;
+            Vector3 axis = PickAxis(hand, out direction);
+            if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
+                RotateFace(axis, direction);
+        }
+
+        // Releasing "TURN" (or trigger)
+        else if (input <= 0.5f && isRotationStarted)
+            StopRotation();
+        
+        // Idle (just for showing hints)
+        else {
+            var collider = GetSmallCubeCollider(hand);
+            if (collider && collider.transform.childCount < 2) {
+                var script = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
+                if (script) script.ShowHint(true);
             }
         }
     }
@@ -83,20 +110,28 @@ public class RotateRubiks : MonoBehaviour
 
         foreach (var smallCube in smallCubes)
         {
-            if (axis.x > 0)
-            {
-                smallCube.transform.SetParent(smallCube.intPos.x == side ? frontFace.transform : backFace.transform);
-            }
+            // if (axis.x > 0)
+            // {
+            //     smallCube.transform.SetParent(smallCube.intPos.x == side ? frontFace.transform : backFace.transform);
+            // }
 
-            else if (axis.y > 0)
-            {
-                smallCube.transform.SetParent(smallCube.intPos.y == side ? frontFace.transform : backFace.transform);
-            }
+            // else if (axis.y > 0)
+            // {
+            //     smallCube.transform.SetParent(smallCube.intPos.y == side ? frontFace.transform : backFace.transform);
+            // }
 
-            else if (axis.z > 0)
-            {
-                smallCube.transform.SetParent(smallCube.intPos.z == side ? frontFace.transform : backFace.transform);
-            }
+            // else if (axis.z > 0)
+            // {
+            //     smallCube.transform.SetParent(smallCube.intPos.z == side ? frontFace.transform : backFace.transform);
+            // }
+
+            int smallCubePos = -1;
+            if (axis.y > 0) smallCubePos = smallCube.intPos.x;
+            if (axis.y > 0) smallCubePos = smallCube.intPos.y;
+            if (axis.z > 0) smallCubePos = smallCube.intPos.z;
+
+            if (smallCubePos != -1)
+                smallCube.transform.SetParent(smallCubePos == side ? frontFace.transform : backFace.transform);
         }
         Debug.Log("Rotates cubes: " + frontFace.transform.childCount);
     }
@@ -129,97 +164,217 @@ public class RotateRubiks : MonoBehaviour
         isRotationStarted = false;
         Debug.Log("Rotation Stopped");
     }
-    Vector3 PickAxis(string hand, out int direction)
-    {
-        direction = 0;
-        int side = 0;
-        int layerMask = 1 << 12;
-        Vector3 axis = Vector3.zero;
+
+    private Collider GetSmallCubeCollider(string hand) {
+        
         RaycastHit hit;
         GameObject activeHand = GameObject.FindGameObjectWithTag(hand);
-        
-        if(Physics.Raycast(activeHand.transform.position, activeHand.transform.TransformDirection(Vector3.forward), out hit, 1f, layerMask))
-        {
-            Debug.DrawRay(activeHand.transform.position, activeHand.transform.TransformDirection(Vector3.forward), Color.red, 1);
-            Debug.Log(hit);
-            if (hit.collider)
-            {
-                
-                switch(hit.collider.tag){
-                    case "FDL":
-                        axis = Vector3.right;
-                        direction = -1;
-                        side = 0;
-                        break;
-                    case "FDR":
-                        axis = Vector3.right;
-                        direction = 1;
-                        side = 1;
-                        break;
-                    case "FLD":
-                        axis = Vector3.up;
-                        direction = 1;
-                        side = 0;
-                        break;
-                    case "FLT":
-                        axis = Vector3.up;
-                        direction = 1;
-                        side = 1;
-                        break;
-                    case "FTL":
-                        axis = Vector3.right;
-                        direction = -1;
-                        side = 0;
-                        break;
-                    case "FTR":
-                        axis = Vector3.right;
-                        direction = 1;
-                        side = 1;
-                        break;
-                    case "FRD":
-                        axis = Vector3.up;
-                        direction = -1;
-                        side = 0;
-                        break;
-                    case "FRT":
-                        axis = Vector3.up;
-                        direction = -1;
-                        side = 1;
-                        break;
-                    case "DLF":
-                        axis = Vector3.forward;
-                        direction = -1;
-                        side = 0;
-                        break;
-                    case "DLB":
-                        axis = Vector3.forward;
-                        direction = -1;
-                        side = 1;
-                        break;
-                    case "DRF":
-                        axis = Vector3.forward;
-                        direction = 1;
-                        side = 0;
-                        break;
-                    case "DRB":
-                        axis = Vector3.forward;
-                        direction = 1;
-                        side = 1;
-                        break;
-                }
 
-                Debug.Log("Collider: " + hit.collider.name);
-                if(axis != Vector3.zero)
-                    StartRotation(axis, side);
-            }
-        }   
+        // int layerMask = 1 << 12;
+        int layerMask = 1 << LayerMask.NameToLayer("SmollCube");
+        var start = activeHand.transform.position;
+        var end = activeHand.transform.TransformDirection(Vector3.forward);
+
+        if (Physics.Raycast(start, end, out hit, 1f, layerMask))
+        {
+            Debug.DrawRay(start, end, Color.red, 1);
+            Debug.Log(hit);
+
+            if (hit.collider) return hit.collider;
+        }
+
+        return null;
+    }
+
+    private Vector3 PickAxis(string hand, out int direction) {
+
+        direction = 0;
+        int side = 0;
+        Vector3 axis = Vector3.zero;
+
+        var collider = GetSmallCubeCollider(hand);
+        if (!collider) return axis;
+
+        switch(collider.tag){
+            case "FDL":
+                axis = Vector3.right;
+                direction = -1;
+                side = 0;
+                break;
+            case "FDR":
+                axis = Vector3.right;
+                direction = 1;
+                side = 1;
+                break;
+            case "FLD":
+                axis = Vector3.up;
+                direction = 1;
+                side = 0;
+                break;
+            case "FLT":
+                axis = Vector3.up;
+                direction = 1;
+                side = 1;
+                break;
+            case "FTL":
+                axis = Vector3.right;
+                direction = -1;
+                side = 0;
+                break;
+            case "FTR":
+                axis = Vector3.right;
+                direction = 1;
+                side = 1;
+                break;
+            case "FRD":
+                axis = Vector3.up;
+                direction = -1;
+                side = 0;
+                break;
+            case "FRT":
+                axis = Vector3.up;
+                direction = -1;
+                side = 1;
+                break;
+            case "DLF":
+                axis = Vector3.forward;
+                direction = -1;
+                side = 0;
+                break;
+            case "DLB":
+                axis = Vector3.forward;
+                direction = -1;
+                side = 1;
+                break;
+            case "DRF":
+                axis = Vector3.forward;
+                direction = 1;
+                side = 0;
+                break;
+            case "DRB":
+                axis = Vector3.forward;
+                direction = 1;
+                side = 1;
+                break;
+        }
+
+        Debug.Log("Collider: " + collider.name);
+        
+        // if (direction != 0) {
+        //     var script = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
+        //     if (script) script.ShowHint(true);
+        // }
+        
+        if(axis != Vector3.zero)
+            StartRotation(axis, side);
+        
         return axis;
     }
+
+    // Vector3 PickAxis(string hand, out int direction)
+    // {
+    //     direction = 0;
+    //     int side = 0;
+    //     Vector3 axis = Vector3.zero;
+    //     RaycastHit hit;
+    //     GameObject activeHand = GameObject.FindGameObjectWithTag(hand);
+
+    //     // int layerMask = 1 << 12;
+    //     int layerMask = 1 << LayerMask.NameToLayer("SmollCube");
+    //     var start = activeHand.transform.position;
+    //     var end = activeHand.transform.TransformDirection(Vector3.forward);
+        
+    //     if(Physics.Raycast(start, end, out hit, 1f, layerMask))
+    //     {
+    //         Debug.DrawRay(start, end, Color.red, 1);
+    //         Debug.Log(hit);
+            
+    //         if (hit.collider)
+    //         {
+                
+    //             switch(hit.collider.tag){
+    //                 case "FDL":
+    //                     axis = Vector3.right;
+    //                     direction = -1;
+    //                     side = 0;
+    //                     break;
+    //                 case "FDR":
+    //                     axis = Vector3.right;
+    //                     direction = 1;
+    //                     side = 1;
+    //                     break;
+    //                 case "FLD":
+    //                     axis = Vector3.up;
+    //                     direction = 1;
+    //                     side = 0;
+    //                     break;
+    //                 case "FLT":
+    //                     axis = Vector3.up;
+    //                     direction = 1;
+    //                     side = 1;
+    //                     break;
+    //                 case "FTL":
+    //                     axis = Vector3.right;
+    //                     direction = -1;
+    //                     side = 0;
+    //                     break;
+    //                 case "FTR":
+    //                     axis = Vector3.right;
+    //                     direction = 1;
+    //                     side = 1;
+    //                     break;
+    //                 case "FRD":
+    //                     axis = Vector3.up;
+    //                     direction = -1;
+    //                     side = 0;
+    //                     break;
+    //                 case "FRT":
+    //                     axis = Vector3.up;
+    //                     direction = -1;
+    //                     side = 1;
+    //                     break;
+    //                 case "DLF":
+    //                     axis = Vector3.forward;
+    //                     direction = -1;
+    //                     side = 0;
+    //                     break;
+    //                 case "DLB":
+    //                     axis = Vector3.forward;
+    //                     direction = -1;
+    //                     side = 1;
+    //                     break;
+    //                 case "DRF":
+    //                     axis = Vector3.forward;
+    //                     direction = 1;
+    //                     side = 0;
+    //                     break;
+    //                 case "DRB":
+    //                     axis = Vector3.forward;
+    //                     direction = 1;
+    //                     side = 1;
+    //                     break;
+    //             }
+
+    //             Debug.Log("Collider: " + hit.collider.name);
+                
+    //             if (direction != 0) {
+    //                 var script = hit.collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
+    //                 if (script) script.ShowHint(true);
+    //             }
+                
+    //             if(axis != Vector3.zero)
+    //                 StartRotation(axis, side);
+    //         }
+    //     }   
+    //     return axis;
+    // }
+
     void RotateFace(Vector3 axis, int direction)
     {
         frontFace.transform.localEulerAngles += axis * (direction * 90);
         PlayShuffleSound();
     }
+
     void SetFace(GameObject face)
     {
         face.transform.position = transform.position;
