@@ -4,20 +4,33 @@ using UnityEngine;
 
 public class RotateRubiks : MonoBehaviour
 {
+    public AudioClip[] shuffleSounds;
+    public AudioSource soundSource;
+    [Range(0, 1)] public float shufflePitchSpan = 0.05f;
+    
     SmallCube[] smallCubes;
     GameObject frontFace, backFace;
     bool isRotationStarted = false;
+
+    private float shufflePitchBase;
 
     OVRGrabbable grabbable;
     // Start is called before the first frame update
     void Start()
     {
+        if (shuffleSounds.Length <= 0)
+            Debug.LogError("Rotate Rubiks: No shuffle sounds were found!");
+        if (!soundSource)
+            Debug.LogError("Rotate Rubiks: Audio Source was not found!");
+
         grabbable = GetComponent<OVRGrabbable>();
         frontFace = new GameObject();
         backFace = new GameObject();
         SetFace(frontFace);
         SetFace(backFace);
         smallCubes = GetComponentsInChildren<SmallCube>();
+
+        shufflePitchBase = soundSource.pitch;
     }
 
 
@@ -205,6 +218,7 @@ public class RotateRubiks : MonoBehaviour
     void RotateFace(Vector3 axis, int direction)
     {
         frontFace.transform.localEulerAngles += axis * (direction * 90);
+        PlayShuffleSound();
     }
     void SetFace(GameObject face)
     {
@@ -212,6 +226,12 @@ public class RotateRubiks : MonoBehaviour
         face.transform.rotation = transform.rotation;
         face.transform.SetParent(transform);
         face.layer = LayerMask.NameToLayer("Ignore Raycast"); //ignore raycast
+    }
+
+    public void PlayShuffleSound() {
+        soundSource.clip = shuffleSounds[Random.Range(0, shuffleSounds.Length)];
+        soundSource.pitch = shufflePitchBase - shufflePitchSpan/2 + Random.Range(0, shufflePitchSpan);
+        soundSource.Play();
     }
 
 }
