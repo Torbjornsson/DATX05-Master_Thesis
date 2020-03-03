@@ -204,9 +204,11 @@ public class Resettable : MonoBehaviour
         bool collidingWithAnything = CollidingWithOtherGrabbables();
 
         while (infCounter < 50 && (outsideStartingArea || collidingWithAnything)) {
-            if (outsideStartingArea)
+            if (outsideStartingArea) {
+                Debug.Log("Outside starting area");
                 transform.position = startingPosition;
-            else if (collidingWithAnything) {
+            } else if (collidingWithAnything) {
+                Debug.Log("Colliding with other cube");
                 var pos = transform.position;
                 pos += GenerateRandomVector() * Mathf.Max(myCollider.bounds.size.x, myCollider.bounds.size.y, myCollider.bounds.size.z);
                 transform.position = pos;
@@ -215,6 +217,7 @@ public class Resettable : MonoBehaviour
             collidingWithAnything = CollidingWithOtherGrabbables();
             infCounter++;
         }
+        Debug.Log("Finished - inf-counter: "+infCounter);
 
         rb.velocity = Vector3.zero;
         pending = false;
@@ -256,37 +259,50 @@ public class Resettable : MonoBehaviour
         //         return false;
         // }
         // return true;
-        return false;
+        // return false;
+        
+        // bool outside = true;
+        // results = new Collider[resultsSize];
+        // var center = startingArea.transform.position;
+        // var halfExtents = startingArea.bounds.size / 2;
+        // int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, startingArea.transform.rotation, LayerMask.GetMask("Grabbable"));
+        // Debug.DrawLine(center, center + halfExtents, Color.red, 0.5f);
+        // for(int i = 0; i < hits; i++) {
+        //     Debug.Log("Starting area colliding with: "+results[i].gameObject.name);
+        //     if (results[i].gameObject.Equals(gameObject))
+        //         outside = false;
+        // }
+        // // Debug.Log("OutsideStartingArea(): "+colliding);
+        // return outside;
+        
+        bool colliding = false;
+        results = new Collider[resultsSize];
+        var center = transform.position;
+        var halfExtents = myCollider.bounds.size / 2;
+        // int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation, LayerMask.GetMask("ResetStartingPoint"));
+        int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation);
+        // Debug.DrawLine(center, center + halfExtents, Color.red, 0.5f);
+        for(int i = 0; i < hits; i++) {
+            // if (!results[i].gameObject.Equals(gameObject))
+            if (results[i].tag.Equals("ResetStartingPoint"))
+                colliding = true;
+        }
+        // Debug.Log("CollidingWithOtherGrabbables(): "+colliding);
+        return !colliding;
     }
 
     private bool CollidingWithOtherGrabbables() {
-        // results = new Collider[resultsSize];
-        // int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
-        // for (int i = 0; i < hits; i++) {
-        //     var c = results[i];
-        //     Debug.Log("Is me? "+c.gameObject.GetInstanceID()+" vs "+gameObject.GetInstanceID());
-        //     if (!c.gameObject.GetInstanceID().Equals(gameObject.GetInstanceID()))
-        //         return true;
-        // }
-        // return false;
-
-        // results = new Collider[2];
-        // int hits = Physics.OverlapBoxNonAlloc(transform.position, transform.localScale / 2, results, transform.rotation, LayerMask.GetMask("Grabbable"));
-        // return hits > 0;
-
         bool colliding = false;
-        results = new Collider[10];
+        results = new Collider[resultsSize];
         var center = transform.position;
         var halfExtents = myCollider.bounds.size / 2;
         int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation, LayerMask.GetMask("Grabbable"));
-        Debug.DrawLine(center, center + halfExtents, Color.red);
+        // Debug.DrawLine(center, center + halfExtents, Color.red, 0.5f);
         for(int i = 0; i < hits; i++) {
             if (!results[i].gameObject.Equals(gameObject))
                 colliding = true;
-                // return true;
         }
-        // return false;
-        Debug.Log("CollidingWithOtherGrabbables(): "+colliding);
+        // Debug.Log("CollidingWithOtherGrabbables(): "+colliding);
         return colliding;
     }
 }

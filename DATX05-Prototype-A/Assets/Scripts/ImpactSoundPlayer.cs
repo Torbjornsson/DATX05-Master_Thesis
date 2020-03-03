@@ -50,7 +50,7 @@ public class ImpactSoundPlayer : MonoBehaviour
         else if (vel > normalImpactThreshold)
             PlaySound();
 
-        Debug.Log("Previous total velocity: "+vel);
+        // Debug.Log("Previous total velocity: "+vel);
     }
 
     public void PlaySound() {
