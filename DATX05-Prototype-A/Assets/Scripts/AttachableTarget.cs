@@ -11,6 +11,13 @@ public class AttachableTarget : MonoBehaviour
     public Vector3 attachedColliderCenter;
     public Vector3 attachedColliderSize;
     public bool canOnlyAttachWhenGrabbed = true;
+    [Space]
+    public AudioClip[] attachSounds;
+    public AudioClip[] detachSounds;
+    public AudioSource soundSource;
+    [Range(0, 1)] public float attachBasePitch;
+    [Range(0, 1)] public float detachBasePitch;
+    [Range(0, 1)] public float pitchSpan = 0.1f;
 
     [HideInInspector] public bool allowAttaching = true;
 
@@ -38,6 +45,11 @@ public class AttachableTarget : MonoBehaviour
         isOccupied = false;
         unAttachedColliderSize = myGrabCollider.size;
         unAttachedColliderCenter = myGrabCollider.center;
+
+        if (attachSounds.Length <= 0 || detachSounds.Length <= 0)
+            Debug.LogError(gameObject.name+": No attach or detach sounds were found!");
+        if (!soundSource)
+            Debug.LogError(gameObject.name+": Audio Source was not found!");
     }
 
     // Update is called once per frame
@@ -66,6 +78,8 @@ public class AttachableTarget : MonoBehaviour
         if (attachable.correctSolution) {
             GameMaster.instance.goalCriteriaSatisfied = true;
         }
+
+        PlayAttachSound();
     }
 
     public void DetachObject() {
@@ -81,6 +95,8 @@ public class AttachableTarget : MonoBehaviour
         myExtraCollider.gameObject.SetActive(false);
 
         GameMaster.instance.goalCriteriaSatisfied = false;
+
+        PlayDetachSound();
     }
 
     public bool IsOccupied() {
@@ -89,5 +105,18 @@ public class AttachableTarget : MonoBehaviour
 
     public bool CanBeAttachedTo() {
         return !isOccupied && allowAttaching && (!canOnlyAttachWhenGrabbed || grabbable.isGrabbed);
+    }
+
+    public void PlayAttachSound() {
+        PlaySound(attachSounds, attachBasePitch);
+    }
+    public void PlayDetachSound() {
+        PlaySound(detachSounds, detachBasePitch);
+    }
+
+    public void PlaySound(AudioClip[] sounds, float basePitch) {
+        soundSource.clip = sounds[Random.Range(0, sounds.Length)];
+        soundSource.pitch = basePitch - pitchSpan/2 + Random.Range(0, pitchSpan);
+        soundSource.Play();
     }
 }
