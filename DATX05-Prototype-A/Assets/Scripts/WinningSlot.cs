@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WinningSlot : MonoBehaviour
 {
+    public AudioSource fanfare;
     public bool cubeCanFallIn = true;
     public bool canAttachTileWhenCubeInSlot = true;
 
@@ -21,7 +22,8 @@ public class WinningSlot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (!fanfare)
+            Debug.LogError("Winning Slot: Audio Source was not found!");
     }
 
     // Update is called once per frame
@@ -105,6 +107,7 @@ public class WinningSlot : MonoBehaviour
         }
 
         winHasBeenTriggered = true;
+        fanfare.Play();
         Debug.Log("WON THE GAME!!!!");
     }
 
