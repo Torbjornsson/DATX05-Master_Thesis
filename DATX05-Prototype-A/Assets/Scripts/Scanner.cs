@@ -19,6 +19,8 @@ public class Scanner : MonoBehaviour
     public float scannerBackFlashGlowSpeed = 1.5f;
     public float scannerBackIdleMaxIntensity = 0.5f;
     public float scannerBackFlashMaxIntensity = 2;
+    [Space]
+    public AudioSource scannerSound;
 
     private ParticleSystem scannerParticles;
     private Light scannerPointLight;
@@ -50,6 +52,8 @@ public class Scanner : MonoBehaviour
             Debug.LogError("Scanner: Scanner light was not found!");
         if (!scannerBack)
             Debug.LogError("Scanner: Scanner back was not found!");
+        if (!scannerSound)
+            Debug.LogError("Scanner: Scanner sound Audio Source was not found!");
 
         lightStartPosition = scannerLight.transform.position;
         lightEndPosition = scannerLight.transform.position;
@@ -185,6 +189,7 @@ public class Scanner : MonoBehaviour
         UpdateScannerBarAlpha();
         scannerBackFlashGlowSpeed = Mathf.Abs(scannerBackFlashGlowSpeed);
         scannerBackFlash = true;
+        scannerSound.Play();
     }
 
     private void UpdateScannerBarAlpha() {
