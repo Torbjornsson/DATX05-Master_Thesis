@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17515507, g: 0.21912867, b: 0.3014323, a: 1}
+  m_IndirectSpecularColor: {r: 0.1751553, g: 0.2191292, b: 0.30143312, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -477,17 +477,17 @@ PrefabInstance:
     - target: {fileID: 1454310589909572154, guid: 87f5c1dc00d44f242b633590ac0f495b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.362
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 1454310589909572154, guid: 87f5c1dc00d44f242b633590ac0f495b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.193
+      value: 1.176
       objectReference: {fileID: 0}
     - target: {fileID: 1454310589909572154, guid: 87f5c1dc00d44f242b633590ac0f495b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.35800004
+      value: -0.52
       objectReference: {fileID: 0}
     - target: {fileID: 1454310589909572154, guid: 87f5c1dc00d44f242b633590ac0f495b,
         type: 3}
@@ -606,7 +606,7 @@ PrefabInstance:
     - target: {fileID: 3818611967287719054, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.355
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 3818611967287719054, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
@@ -616,7 +616,7 @@ PrefabInstance:
     - target: {fileID: 3818611967287719054, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.605
+      value: -0.65
       objectReference: {fileID: 0}
     - target: {fileID: 3818611967287719054, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
@@ -676,17 +676,17 @@ PrefabInstance:
     - target: {fileID: 2101380615756516098, guid: bd4fece472c797449a6cddef3bf92822,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.355
+      value: -0.36
       objectReference: {fileID: 0}
     - target: {fileID: 2101380615756516098, guid: bd4fece472c797449a6cddef3bf92822,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.2469
+      value: 1.258
       objectReference: {fileID: 0}
     - target: {fileID: 2101380615756516098, guid: bd4fece472c797449a6cddef3bf92822,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.365
+      value: -0.52
       objectReference: {fileID: 0}
     - target: {fileID: 2101380615756516098, guid: bd4fece472c797449a6cddef3bf92822,
         type: 3}
