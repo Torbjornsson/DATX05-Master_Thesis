@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RotateRubiks : MonoBehaviour
+public class RotateRubiks_Test : MonoBehaviour
 {
     public AudioClip[] shuffleSounds;
     public AudioSource soundSource;

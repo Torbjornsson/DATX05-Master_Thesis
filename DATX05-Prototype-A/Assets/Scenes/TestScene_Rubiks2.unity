@@ -180,7 +180,7 @@ PrefabInstance:
     - target: {fileID: 1454310589909572154, guid: 87f5c1dc00d44f242b633590ac0f495b,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1454310589909572154, guid: 87f5c1dc00d44f242b633590ac0f495b,
         type: 3}
@@ -243,6 +243,81 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1, y: 0.19, z: 0.19}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1001 &704288095
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1178118448}
+    m_Modifications:
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.409
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.554
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257121, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_Name
+      value: RubiksCubeTest
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9, type: 3}
+--- !u!4 &704288096 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 704288095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &733421740 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1992598305427818974, guid: 1f722eab40099d04c89efa1cb9bf1d65,
@@ -576,6 +651,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 7375337593960257121, guid: 9cd446dd5845bc24c93aad2a7308609e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7487374652496478185, guid: 9cd446dd5845bc24c93aad2a7308609e,
         type: 3}
       propertyPath: m_Layer
@@ -751,6 +831,7 @@ Transform:
   m_Children:
   - {fileID: 1521344852}
   - {fileID: 756690676}
+  - {fileID: 704288096}
   - {fileID: 407208925}
   m_Father: {fileID: 0}
   m_RootOrder: 3
