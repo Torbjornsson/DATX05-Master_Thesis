@@ -111,7 +111,6 @@ public class WinningSlot : MonoBehaviour
         puzzleCubeGrabbable.allowGrab = false;
 
         // Disable attached tile as well
-        // var target = puzzleCubeCloseToSlot.gameObject.GetComponent<AttachableTarget>();
         if (puzzleCubeAttachableTarget != null) {
             puzzleCubeAttachableTarget.attachedObject.GetComponent<OVRGrabbable_EventExtension>().allowGrab = false;
         }
@@ -120,9 +119,8 @@ public class WinningSlot : MonoBehaviour
         PlayWinSound();
         Debug.Log("WON THE GAME!!!!");
 
-        Invoke("ThrowConfetti", 7);
-        // StartCoroutine("ThrowConfetti");
-        // confettiEmitter.Play();
+        // Confetti!
+        Invoke("ThrowConfetti", 5.7f);
     }
 
     public void ThrowConfetti() {

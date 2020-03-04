@@ -5666,6 +5666,16 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 7349930854344302193, guid: 87f5c1dc00d44f242b633590ac0f495b,
+        type: 3}
+      propertyPath: RotationModule.x.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7349930854344302193, guid: 87f5c1dc00d44f242b633590ac0f495b,
+        type: 3}
+      propertyPath: RotationModule.y.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87f5c1dc00d44f242b633590ac0f495b, type: 3}
 --- !u!4 &1454310590172577901 stripped
