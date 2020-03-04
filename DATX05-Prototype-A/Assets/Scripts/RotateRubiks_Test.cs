@@ -12,6 +12,8 @@ public class RotateRubiks_Test : MonoBehaviour
     GameObject frontFace, backFace;
     bool isRotationStarted = false;
 
+    private Dictionary<string, GameObject> hands;
+
     private float shufflePitchBase;
 
     OVRGrabbable grabbable;
@@ -19,9 +21,9 @@ public class RotateRubiks_Test : MonoBehaviour
     void Start()
     {
         if (shuffleSounds.Length <= 0)
-            Debug.LogError("Rotate Rubiks: No shuffle sounds were found!");
+            Debug.LogError(gameObject.name+": No shuffle sounds were found!");
         if (!soundSource)
-            Debug.LogError("Rotate Rubiks: Audio Source was not found!");
+            Debug.LogError(gameObject.name+": Audio Source was not found!");
 
         grabbable = GetComponent<OVRGrabbable>();
         frontFace = new GameObject();
@@ -31,9 +33,18 @@ public class RotateRubiks_Test : MonoBehaviour
         smallCubes = GetComponentsInChildren<SmallCube>();
 
         shufflePitchBase = soundSource.pitch;
+
+        hands = new Dictionary<string, GameObject>();
+        FindAndSaveHand("LeftHand");
+        FindAndSaveHand("RightHand");
     }
 
-
+    private void FindAndSaveHand(string hand) {
+        var obj = GameObject.FindGameObjectWithTag(hand);
+        if (!obj)
+            Debug.LogError(gameObject.name+": "+hand+" object was not found!");
+        hands.Add(hand, obj);
+    }
 
     // Update is called once per frame
     void Update()
@@ -73,9 +84,13 @@ public class RotateRubiks_Test : MonoBehaviour
         // Idle (just for showing hints)
         else {
             var collider = GetSmallCubeCollider(hand);
-            if (collider && collider.transform.childCount < 2) {
+            // if (collider && collider.transform.childCount < 2) {
+            if (collider && !collider.tag.Equals("RubiksBlocker")) {
+                // Debug.Log("Found small cube collider: "+collider.gameObject.name);
+                var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
+
                 var script = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
-                if (script) script.ShowHint(true);
+                if (script) script.ShowHint(true, handDir);
             }
         }
     }
@@ -130,22 +145,48 @@ public class RotateRubiks_Test : MonoBehaviour
     private Collider GetSmallCubeCollider(string hand) {
         
         RaycastHit hit;
-        GameObject activeHand = GameObject.FindGameObjectWithTag(hand);
+        GameObject activeHand = hands[hand];
 
         // int layerMask = 1 << 12;
         int layerMask = 1 << LayerMask.NameToLayer("SmollCube");
         var start = activeHand.transform.position;
+        var up = activeHand.transform.TransformDirection(Vector3.up);
+        start += up * 0.05f;
         var end = activeHand.transform.TransformDirection(Vector3.forward);
 
         if (Physics.Raycast(start, end, out hit, 1f, layerMask))
         {
             Debug.DrawRay(start, end, Color.red, 1);
-            // Debug.Log(hit);
 
             if (hit.collider) return hit.collider;
         }
 
         return null;
+    }
+
+    private Vector2Int GetHandOrientationComparedToSmallCube(GameObject hand, GameObject smallCube) {
+        var handPos = hand.transform.position;
+        var handDown = hand.transform.TransformDirection(Vector3.down);
+        // Debug.DrawLine(handPos, handPos + handDown);
+
+        var cubePos = smallCube.transform.position;
+        var cubeOut = smallCube.transform.TransformDirection(Vector3.back);
+        // Debug.DrawLine(cubePos, cubePos + cubeOut);
+
+        var projected = Vector3.ProjectOnPlane(handDown, cubeOut);
+        var projectedLocal = smallCube.transform.InverseTransformVector(projected);
+
+        var localDir = Vector2Int.zero;
+        if (Mathf.Abs(projectedLocal.x) > Mathf.Abs(projectedLocal.y)) {
+            localDir.x = (int) Mathf.Sign(projectedLocal.x);
+        } else {
+            localDir.y = (int) Mathf.Sign(projectedLocal.y);
+        }
+        
+        // Debug.DrawLine(cubePos, cubePos + projected, Color.blue, 1);
+        // Debug.Log(smallCube.name+": projected: "+projected+", local space: "+projectedLocal+", local direction: "+localDir);
+
+        return localDir;
     }
 
     private Vector3 PickAxis(string hand, out int direction) {

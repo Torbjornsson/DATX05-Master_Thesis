@@ -25,6 +25,7 @@ TagManager:
   - ScannerTarget
   - HatchPivotPoint
   - ResetVolumeHARD
+  - RubiksBlocker
   layers:
   - Default
   - TransparentFX
