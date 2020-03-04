@@ -72,7 +72,8 @@ public class RotateRubiks_Test : MonoBehaviour
         if (input > 0.7f && !isRotationStarted)
         {
             int direction = 0;
-            Vector3 axis = PickAxis(hand, out direction);
+            // Vector3 axis = PickAxis(hand, out direction);
+            Vector3 axis = PickAxisAndRotate(hand, out direction);
             if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
                 RotateFace(axis, direction);
         }
@@ -97,7 +98,7 @@ public class RotateRubiks_Test : MonoBehaviour
 
     void StartRotation(Vector3 axis, int side)
     {
-        Debug.Log("Rotation Started");
+        // Debug.Log("Rotation Started");
         isRotationStarted = true;
 
         foreach (var smallCube in smallCubes)
@@ -110,7 +111,7 @@ public class RotateRubiks_Test : MonoBehaviour
             if (smallCubePos != -1)
                 smallCube.transform.SetParent(smallCubePos == side ? frontFace.transform : backFace.transform);
         }
-        Debug.Log("Rotates cubes: " + frontFace.transform.childCount);
+        // Debug.Log("Rotates cubes: " + frontFace.transform.childCount);
     }
 
     void StopRotation()
@@ -132,14 +133,14 @@ public class RotateRubiks_Test : MonoBehaviour
             smallCube.transform.SetParent(transform);
             prevPos = smallCube.intPos;
             smallCube.UpdatePosition();
-            Debug.Log("from position " + prevPos + " to position " + smallCube.intPos);
+            // Debug.Log("from position " + prevPos + " to position " + smallCube.intPos);
         }
 
         SetFace(frontFace);
         SetFace(backFace);
                 
         isRotationStarted = false;
-        Debug.Log("Rotation Stopped");
+        // Debug.Log("Rotation Stopped");
     }
 
     private Collider GetSmallCubeCollider(string hand) {
@@ -187,6 +188,45 @@ public class RotateRubiks_Test : MonoBehaviour
         // Debug.Log(smallCube.name+": projected: "+projected+", local space: "+projectedLocal+", local direction: "+localDir);
 
         return localDir;
+    }
+
+    private Vector3 PickAxisAndRotate(string hand, out int direction) {
+        
+        direction = 0;
+        int side = 0;
+        Vector3 axis = Vector3.zero;
+
+        var collider = GetSmallCubeCollider(hand);
+
+        if (!collider || collider.tag.Equals("RubiksBlocker")) return axis;
+        var parent = collider.transform.parent;
+        
+        var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
+
+        direction = handDir.x != 0 ? handDir.x : handDir.y;
+
+        var localAxis = handDir.x == 0 ? Vector3.right : Vector3.up;
+        axis = parent.localRotation * localAxis;
+        axis = new Vector3(Mathf.Round(axis.x), Mathf.Round(axis.y), Mathf.Round(axis.z));
+
+        if (axis.x < 0 || axis.y > 0 || (axis.z < 0 && localAxis.x > 0) || (axis.z > 0 && localAxis.y > 0)) direction *= -1;
+        // Debug.Log("Local axis: "+localAxis+", hand dir: "+handDir+", Axis: ("+axis.x+","+axis.y+","+axis.z+"), direction: "+direction);
+        
+        axis = new Vector3(Mathf.Abs(axis.x), Mathf.Abs(axis.y), Mathf.Abs(axis.z));
+        // Debug.Log("FOUND AXIS: ("+axis.x+","+axis.y+","+axis.z+") vs RIGHT: "+Vector3.right);
+
+        // axis = Vector3.right;
+        // direction = 1;
+        side = 0; // ----------------->>> TODO: Just fix the sides
+
+        if(axis != Vector3.zero)
+            StartRotation(axis, side);
+
+        return axis;
+    }
+
+    private void RotateAroundAxis() {
+        
     }
 
     private Vector3 PickAxis(string hand, out int direction) {
