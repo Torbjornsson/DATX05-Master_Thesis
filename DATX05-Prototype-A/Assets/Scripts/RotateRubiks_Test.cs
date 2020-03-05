@@ -211,13 +211,20 @@ public class RotateRubiks_Test : MonoBehaviour
 
         if (axis.x < 0 || axis.y > 0 || (axis.z < 0 && localAxis.x > 0) || (axis.z > 0 && localAxis.y > 0)) direction *= -1;
         // Debug.Log("Local axis: "+localAxis+", hand dir: "+handDir+", Axis: ("+axis.x+","+axis.y+","+axis.z+"), direction: "+direction);
-        
+
+        if (handDir.y != 0)
+            side = collider.transform.localPosition.x < 0 ? 0 : 1;
+        else
+            side = collider.transform.localPosition.y < 0 ? 0 : 1;
+        if (axis.x < 0 || axis.y < 0 || axis.z < 0) side = (side == 0) ? 1 : 0;
+        // Debug.Log("Local position x: "+collider.transform.localPosition.x+", axis: "+axis+", side: "+side);
+
         axis = new Vector3(Mathf.Abs(axis.x), Mathf.Abs(axis.y), Mathf.Abs(axis.z));
         // Debug.Log("FOUND AXIS: ("+axis.x+","+axis.y+","+axis.z+") vs RIGHT: "+Vector3.right);
 
         // axis = Vector3.right;
         // direction = 1;
-        side = 0; // ----------------->>> TODO: Just fix the sides
+        // side = 0; // ----------------->>> TODO: Just fix the sides
 
         if(axis != Vector3.zero)
             StartRotation(axis, side);
