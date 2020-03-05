@@ -17,6 +17,7 @@ TagManager:
   - RubiksSymbol1
   - RubiksSymbol2
   - RubiksSymbol3
+  - FDL
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - Table
   - Player
   - SmollCube
-  - 
+  - RubiksFace
   - 
   - 
   - 
