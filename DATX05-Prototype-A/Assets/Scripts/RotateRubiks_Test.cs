@@ -117,30 +117,29 @@ public class RotateRubiks_Test : MonoBehaviour
     void StopRotation()
     {
         Vector3Int prevPos;
-        // Quaternion rot = frontFace.transform.localRotation;
-        // rot.eulerAngles = rot.eulerAngles/90f;
-        // Vector3 euler = new Vector3();
-        // euler.x = Mathf.Round(rot.eulerAngles.x);
-        // euler.y = Mathf.Round(rot.eulerAngles.y);
-        // euler.z = Mathf.Round(rot.eulerAngles.z);
-        // euler *= 90f;
-        // rot.eulerAngles = euler;
+        
+        Quaternion rot = frontFace.transform.localRotation;
+        rot.eulerAngles = rot.eulerAngles/90f;
+        Vector3 euler = new Vector3();
+        euler.x = Mathf.Round(rot.eulerAngles.x);
+        euler.y = Mathf.Round(rot.eulerAngles.y);
+        euler.z = Mathf.Round(rot.eulerAngles.z);
+        euler *= 90f;
+        rot.eulerAngles = euler;
 
-        // frontFace.transform.localRotation = rot;
+        frontFace.transform.localRotation = rot;
 
         foreach(var smallCube in smallCubes)
         {
             smallCube.transform.SetParent(transform);
             prevPos = smallCube.intPos;
             smallCube.UpdatePosition();
-            // Debug.Log("from position " + prevPos + " to position " + smallCube.intPos);
         }
 
         SetFace(frontFace);
         SetFace(backFace);
                 
         isRotationStarted = false;
-        // Debug.Log("Rotation Stopped");
     }
 
     private Collider GetSmallCubeCollider(string hand) {
@@ -148,7 +147,6 @@ public class RotateRubiks_Test : MonoBehaviour
         RaycastHit hit;
         GameObject activeHand = hands[hand];
 
-        // int layerMask = 1 << 12;
         int layerMask = 1 << LayerMask.NameToLayer("SmollCube");
         var start = activeHand.transform.position;
         var up = activeHand.transform.TransformDirection(Vector3.up);
@@ -168,11 +166,9 @@ public class RotateRubiks_Test : MonoBehaviour
     private Vector2Int GetHandOrientationComparedToSmallCube(GameObject hand, GameObject smallCube) {
         var handPos = hand.transform.position;
         var handDown = hand.transform.TransformDirection(Vector3.down);
-        // Debug.DrawLine(handPos, handPos + handDown);
 
         var cubePos = smallCube.transform.position;
         var cubeOut = smallCube.transform.TransformDirection(Vector3.back);
-        // Debug.DrawLine(cubePos, cubePos + cubeOut);
 
         var projected = Vector3.ProjectOnPlane(handDown, cubeOut);
         var projectedLocal = smallCube.transform.InverseTransformVector(projected);
@@ -184,9 +180,6 @@ public class RotateRubiks_Test : MonoBehaviour
             localDir.y = (int) Mathf.Sign(projectedLocal.y);
         }
         
-        // Debug.DrawLine(cubePos, cubePos + projected, Color.blue, 1);
-        // Debug.Log(smallCube.name+": projected: "+projected+", local space: "+projectedLocal+", local direction: "+localDir);
-
         return localDir;
     }
 
@@ -203,28 +196,20 @@ public class RotateRubiks_Test : MonoBehaviour
         
         var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
 
-        direction = handDir.x != 0 ? handDir.x : handDir.y;
-
         var localAxis = handDir.x == 0 ? Vector3.right : Vector3.up;
         axis = parent.localRotation * localAxis;
         axis = new Vector3(Mathf.Round(axis.x), Mathf.Round(axis.y), Mathf.Round(axis.z));
 
+        direction = handDir.x != 0 ? handDir.x : handDir.y;
         if (axis.x < 0 || axis.y > 0 || (axis.z < 0 && localAxis.x > 0) || (axis.z > 0 && localAxis.y > 0)) direction *= -1;
-        // Debug.Log("Local axis: "+localAxis+", hand dir: "+handDir+", Axis: ("+axis.x+","+axis.y+","+axis.z+"), direction: "+direction);
 
         if (handDir.y != 0)
             side = collider.transform.localPosition.x < 0 ? 0 : 1;
         else
             side = collider.transform.localPosition.y < 0 ? 0 : 1;
         if (axis.x < 0 || axis.y < 0 || axis.z < 0) side = (side == 0) ? 1 : 0;
-        // Debug.Log("Local position x: "+collider.transform.localPosition.x+", axis: "+axis+", side: "+side);
 
         axis = new Vector3(Mathf.Abs(axis.x), Mathf.Abs(axis.y), Mathf.Abs(axis.z));
-        // Debug.Log("FOUND AXIS: ("+axis.x+","+axis.y+","+axis.z+") vs RIGHT: "+Vector3.right);
-
-        // axis = Vector3.right;
-        // direction = 1;
-        // side = 0; // ----------------->>> TODO: Just fix the sides
 
         if(axis != Vector3.zero)
             StartRotation(axis, side);
@@ -232,89 +217,85 @@ public class RotateRubiks_Test : MonoBehaviour
         return axis;
     }
 
-    private void RotateAroundAxis() {
+    // private Vector3 PickAxis(string hand, out int direction) {
+
+    //     direction = 0;
+    //     int side = 0;
+    //     Vector3 axis = Vector3.zero;
+
+    //     var collider = GetSmallCubeCollider(hand);
+    //     if (!collider) return axis;
+
+    //     switch(collider.tag){
+    //         case "FDL":
+    //             axis = Vector3.right;
+    //             direction = -1;
+    //             side = 0;
+    //             break;
+    //         case "FDR":
+    //             axis = Vector3.right;
+    //             direction = 1;
+    //             side = 1;
+    //             break;
+    //         case "FLD":
+    //             axis = Vector3.up;
+    //             direction = 1;
+    //             side = 0;
+    //             break;
+    //         case "FLT":
+    //             axis = Vector3.up;
+    //             direction = 1;
+    //             side = 1;
+    //             break;
+    //         case "FTL":
+    //             axis = Vector3.right;
+    //             direction = -1;
+    //             side = 0;
+    //             break;
+    //         case "FTR":
+    //             axis = Vector3.right;
+    //             direction = 1;
+    //             side = 1;
+    //             break;
+    //         case "FRD":
+    //             axis = Vector3.up;
+    //             direction = -1;
+    //             side = 0;
+    //             break;
+    //         case "FRT":
+    //             axis = Vector3.up;
+    //             direction = -1;
+    //             side = 1;
+    //             break;
+    //         case "DLF":
+    //             axis = Vector3.forward;
+    //             direction = -1;
+    //             side = 0;
+    //             break;
+    //         case "DLB":
+    //             axis = Vector3.forward;
+    //             direction = -1;
+    //             side = 1;
+    //             break;
+    //         case "DRF":
+    //             axis = Vector3.forward;
+    //             direction = 1;
+    //             side = 0;
+    //             break;
+    //         case "DRB":
+    //             axis = Vector3.forward;
+    //             direction = 1;
+    //             side = 1;
+    //             break;
+    //     }
+
+    //     Debug.Log("Collider: " + collider.name);
         
-    }
-
-    private Vector3 PickAxis(string hand, out int direction) {
-
-        direction = 0;
-        int side = 0;
-        Vector3 axis = Vector3.zero;
-
-        var collider = GetSmallCubeCollider(hand);
-        if (!collider) return axis;
-
-        switch(collider.tag){
-            case "FDL":
-                axis = Vector3.right;
-                direction = -1;
-                side = 0;
-                break;
-            case "FDR":
-                axis = Vector3.right;
-                direction = 1;
-                side = 1;
-                break;
-            case "FLD":
-                axis = Vector3.up;
-                direction = 1;
-                side = 0;
-                break;
-            case "FLT":
-                axis = Vector3.up;
-                direction = 1;
-                side = 1;
-                break;
-            case "FTL":
-                axis = Vector3.right;
-                direction = -1;
-                side = 0;
-                break;
-            case "FTR":
-                axis = Vector3.right;
-                direction = 1;
-                side = 1;
-                break;
-            case "FRD":
-                axis = Vector3.up;
-                direction = -1;
-                side = 0;
-                break;
-            case "FRT":
-                axis = Vector3.up;
-                direction = -1;
-                side = 1;
-                break;
-            case "DLF":
-                axis = Vector3.forward;
-                direction = -1;
-                side = 0;
-                break;
-            case "DLB":
-                axis = Vector3.forward;
-                direction = -1;
-                side = 1;
-                break;
-            case "DRF":
-                axis = Vector3.forward;
-                direction = 1;
-                side = 0;
-                break;
-            case "DRB":
-                axis = Vector3.forward;
-                direction = 1;
-                side = 1;
-                break;
-        }
-
-        Debug.Log("Collider: " + collider.name);
+    //     if(axis != Vector3.zero)
+    //         StartRotation(axis, side);
         
-        if(axis != Vector3.zero)
-            StartRotation(axis, side);
-        
-        return axis;
-    }
+    //     return axis;
+    // }
 
     void RotateFace(Vector3 axis, int direction)
     {

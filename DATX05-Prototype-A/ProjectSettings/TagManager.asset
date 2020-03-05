@@ -9,23 +9,14 @@ TagManager:
   - ResetStartingPoint
   - LeftHand
   - RightHand
-  - FRD
-  - FDL
-  - FDR
-  - FTL
-  - FTR
-  - FLD
-  - FLT
-  - FRT
-  - DLF
-  - DLB
-  - DRF
-  - DRB
   - PuzzleCube
   - ScannerTarget
   - HatchPivotPoint
   - ResetVolumeHARD
   - RubiksBlocker
+  - RubiksSymbol1
+  - RubiksSymbol2
+  - RubiksSymbol3
   layers:
   - Default
   - TransparentFX

@@ -250,26 +250,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1178118448}
     m_Modifications:
-    - target: {fileID: 453567035486807306, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 645e86fbb91f40846b1e90a46e342fc3, type: 2}
-    - target: {fileID: 2148555870831576637, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: d622ededad0420649bb21338d4f58b56, type: 2}
-    - target: {fileID: 3479493202796514623, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bfd8c2748fe5bd540a2d8db61dd6aee0, type: 2}
-    - target: {fileID: 4590885516188493977, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 33510cf9a9757944ca9ada5458cf0146, type: 2}
     - target: {fileID: 7375337593960257120, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -330,11 +310,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: RubiksCubeTest
       objectReference: {fileID: 0}
-    - target: {fileID: 7487374652498665771, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: bcf458edc2dda5244bbbd15342b9dfaf, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9, type: 3}
 --- !u!4 &704288096 stripped
