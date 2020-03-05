@@ -5,7 +5,6 @@ using UnityEngine;
 public class AttachableTarget : MonoBehaviour
 {
     public BoxCollider myGrabCollider;
-    public BoxCollider myExtraCollider;
     public GameObject attachTarget;
     public Attachable attachedObject {get; private set;}
     public Vector3 attachedColliderCenter;
@@ -35,8 +34,8 @@ public class AttachableTarget : MonoBehaviour
 
         if (!myGrabCollider)
             Debug.LogError(gameObject.name+": Grab collider was not found!");
-        if (!myExtraCollider)
-            Debug.LogError(gameObject.name+": Extra collider was not found!");
+        // if (!myExtraCollider)
+        //     Debug.LogError(gameObject.name+": Extra collider was not found!");
         if (!attachTarget)
             Debug.LogError(gameObject.name+": Attach target was not found!");
         if (!grabbable)
@@ -68,12 +67,12 @@ public class AttachableTarget : MonoBehaviour
 
         myGrabCollider.size = attachedColliderSize;
         myGrabCollider.center = attachedColliderCenter;
+
+        attachTarget.SetActive(false);
         
         attachedObject = attachable;
         attachedObjectRB = attachable.GetComponent<Rigidbody>();
         attachedObjectRB.useGravity = false;
-
-        myExtraCollider.gameObject.SetActive(true);
 
         if (attachable.correctSolution) {
             GameMaster.instance.goalCriteriaSatisfied = true;
@@ -92,7 +91,7 @@ public class AttachableTarget : MonoBehaviour
         attachedObjectRB = null;
         attachedObject = null;
 
-        myExtraCollider.gameObject.SetActive(false);
+        attachTarget.SetActive(true);
 
         GameMaster.instance.goalCriteriaSatisfied = false;
 
