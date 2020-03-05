@@ -18,6 +18,18 @@ TagManager:
   - RubiksSymbol2
   - RubiksSymbol3
   - FDL
+  - FTL
+  - DRB
+  - FTR
+  - DRF
+  - FRT
+  - FLT
+  - FLD
+  - DLF
+  - FDR
+  - DLB
+  - FRD
+  - OnBoardCube
   layers:
   - Default
   - TransparentFX
