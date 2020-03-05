@@ -55,8 +55,8 @@ public class Scanner : MonoBehaviour
         if (!scannerSound)
             Debug.LogError("Scanner: Scanner sound Audio Source was not found!");
 
-        lightStartPosition = scannerLight.transform.position;
-        lightEndPosition = scannerLight.transform.position;
+        lightStartPosition = scannerLight.transform.localPosition;
+        lightEndPosition = scannerLight.transform.localPosition;
         lightEndPosition.x *= -1;
 
         scannerParticles = scannerLight.GetComponentInChildren<ParticleSystem>();
@@ -120,7 +120,7 @@ public class Scanner : MonoBehaviour
             
             if (scannerBarAlpha >= 1 && (!useSpotlight || scannerPointLight.intensity >= 1)) {
                 intro = false;
-                lightPreviousPosition = scannerLight.transform.position;
+                lightPreviousPosition = scannerLight.transform.localPosition;
                 lightTargetPosition = lightEndPosition;
                 lerpTime = 0;
                 delay = delayBetweenPasses;
@@ -157,10 +157,10 @@ public class Scanner : MonoBehaviour
             }
 
             lerpTime += Time.deltaTime * scanningMoveSpeed;
-            scannerLight.transform.position = Vector3.Lerp(lightPreviousPosition, lightTargetPosition, lerpTime);
+            scannerLight.transform.localPosition = Vector3.Lerp(lightPreviousPosition, lightTargetPosition, lerpTime);
 
             if (lerpTime >= 1) {
-                scannerLight.transform.position = lightTargetPosition;
+                scannerLight.transform.localPosition = lightTargetPosition;
                 var temp = lightPreviousPosition;
                 lightPreviousPosition = lightTargetPosition;
                 lightTargetPosition = temp;
@@ -184,7 +184,7 @@ public class Scanner : MonoBehaviour
         scanning = true;
         if (useParticles) scannerParticles.Play();
         if (useSpotlight) scannerPointLight.intensity = 0;
-        scannerLight.transform.position = lightStartPosition;
+        scannerLight.transform.localPosition = lightStartPosition;
         scannerBarAlpha = 0;
         UpdateScannerBarAlpha();
         scannerBackFlashGlowSpeed = Mathf.Abs(scannerBackFlashGlowSpeed);
