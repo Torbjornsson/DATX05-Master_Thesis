@@ -74,9 +74,7 @@ public class AttachableTarget : MonoBehaviour
         attachedObjectRB = attachable.GetComponent<Rigidbody>();
         attachedObjectRB.useGravity = false;
 
-        if (attachable.correctSolution) {
-            GameMaster.instance.goalCriteriaSatisfied = true;
-        }
+        GameMaster.instance.goalCriteriaSatisfied = IsCorrectSolution(attachable);
 
         PlayAttachSound();
     }
@@ -117,5 +115,17 @@ public class AttachableTarget : MonoBehaviour
         soundSource.clip = sounds[Random.Range(0, sounds.Length)];
         soundSource.pitch = basePitch - pitchSpan/2 + Random.Range(0, pitchSpan);
         soundSource.Play();
+    }
+
+    private bool IsCorrectSolution(Attachable attachable)
+    {
+        bool correct = false;
+        if (attachable.correctSolution)
+        {
+            //Debug.Log("cubes rotation " + transform.localEulerAngles + " tiles rotation " + attachable.transform.localEulerAngles);
+            correct = Mathf.Abs(transform.localEulerAngles.y - attachable.transform.localEulerAngles.y) < 10;
+        }
+
+        return correct;
     }
 }
