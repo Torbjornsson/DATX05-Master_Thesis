@@ -32,7 +32,7 @@ public class RotateRubiks : MonoBehaviour
     public UnityEvent checkSolutionEvent;
     public RubiksCubeFace[] rubiksCubeFaces;
     
-    public float speed;
+    public float speed = 10f;
     SmallCube[] smallCubes;
     GameObject frontFace, backFace, to;
     bool isRotationStarted = false;
@@ -63,7 +63,6 @@ public class RotateRubiks : MonoBehaviour
         SetFace(frontFace);
         SetFace(backFace);
         smallCubes = GetComponentsInChildren<SmallCube>();
-        speed = 10f;
 
         shufflePitchBase = soundSource.pitch;
 
