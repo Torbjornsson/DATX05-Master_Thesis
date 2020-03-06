@@ -32,8 +32,9 @@ public class RotateRubiks : MonoBehaviour
     public UnityEvent checkSolutionEvent;
     public RubiksCubeFace[] rubiksCubeFaces;
     
+    public float speed;
     SmallCube[] smallCubes;
-    GameObject frontFace, backFace;
+    GameObject frontFace, backFace, to;
     bool isRotationStarted = false;
 
     private Dictionary<string, GameObject> hands;
@@ -58,9 +59,11 @@ public class RotateRubiks : MonoBehaviour
         grabbable = GetComponent<OVRGrabbable>();
         frontFace = new GameObject();
         backFace = new GameObject();
+        to = new GameObject();
         SetFace(frontFace);
         SetFace(backFace);
         smallCubes = GetComponentsInChildren<SmallCube>();
+        speed = 10f;
 
         shufflePitchBase = soundSource.pitch;
 
@@ -98,6 +101,8 @@ public class RotateRubiks : MonoBehaviour
                     StopRotation();
                 break;
         }
+        if(isRotationStarted)
+            SmoothRotation();
     }
 
     private void HandAction(string hand, float input) {
@@ -254,8 +259,29 @@ public class RotateRubiks : MonoBehaviour
 
     void RotateFace(Vector3 axis, int direction)
     {
-        frontFace.transform.localEulerAngles += axis * (direction * 90);
+        Vector3 euler = frontFace.transform.localEulerAngles + axis * (direction * 90);
+
+        SetRotation(euler);
+        
         PlayShuffleSound();
+    }
+
+    void SetRotation(Vector3 localEulerAngles)
+    {
+        to.transform.localPosition = frontFace.transform.localPosition;
+        to.transform.localRotation = frontFace.transform.localRotation;
+        to.transform.localEulerAngles = localEulerAngles;
+    }
+
+    void SmoothRotation()
+    {
+        if (Quaternion.Angle(frontFace.transform.localRotation, to.transform.localRotation) <= 0.01f)
+            StopRotation();
+
+        else 
+        {
+            frontFace.transform.localRotation = Quaternion.Lerp(frontFace.transform.localRotation, to.transform.localRotation, Time.deltaTime * speed);
+        }        
     }
 
     void SetFace(GameObject face)
