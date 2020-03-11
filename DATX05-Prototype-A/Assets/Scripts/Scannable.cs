@@ -44,8 +44,8 @@ public class Scannable : MonoBehaviour
     {
         if (!indicatorLights)
             Debug.LogError("Scannable: Indicator Light Set was not found!");
-        if (!slotHatches)
-            Debug.LogError("Scannable: Indicator Slot Hatch Set was not found!");
+        // if (!slotHatches)
+        //     Debug.LogError("Scannable: Indicator Slot Hatch Set was not found!");
 
         if (!ScannerTarget_Front || !ScannerTarget_Back || !ScannerTarget_Left
                 || !ScannerTarget_Right || !ScannerTarget_Up || !ScannerTarget_Down)
@@ -81,7 +81,8 @@ public class Scannable : MonoBehaviour
         if (scanningOrderProgress >= scanningOrderAndCount.Length) {
             if (canFailAfterOpeninghatch) {
                 ResetScanner();
-                slotHatches.CloseHatches();
+                if (slotHatches) slotHatches.CloseHatches();
+                else GameMaster.instance.goalCriteriaSatisfied = false;
             }
             return;
         }
@@ -100,7 +101,8 @@ public class Scannable : MonoBehaviour
 
                 if (scanningOrderProgress >= 6) {
                     Debug.Log("AND OPENED THE HATCH!");
-                    slotHatches.OpenHatches();
+                    if (slotHatches) slotHatches.OpenHatches();
+                    else GameMaster.instance.goalCriteriaSatisfied = true;
                 }
             }
 

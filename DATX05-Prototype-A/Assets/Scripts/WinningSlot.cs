@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WinningSlot : MonoBehaviour
 {
@@ -13,6 +14,9 @@ public class WinningSlot : MonoBehaviour
     public AudioClip win;
     public AudioClip fail;
     public AudioSource soundSource;
+    [Space]
+    public UnityEvent winEvent;
+    public UnityEvent failEvent;
 
     private GameObject puzzleCubeCloseToSlot = null;
     private OVRGrabbable_EventExtension puzzleCubeGrabbable = null;
@@ -34,6 +38,11 @@ public class WinningSlot : MonoBehaviour
             Debug.LogError(gameObject.name+": Win Audio Clip was not found!");
         if (!fail)
             Debug.LogError(gameObject.name+": Fail Audio Clip was not found!");
+            
+        if (winEvent == null)
+            winEvent = new UnityEvent();
+        if (failEvent == null)
+            failEvent = new UnityEvent();
     }
 
     // Update is called once per frame
@@ -119,6 +128,8 @@ public class WinningSlot : MonoBehaviour
         PlayWinSound();
         Debug.Log("WON THE GAME!!!!");
 
+        winEvent.Invoke();
+
         // Confetti!
         Invoke("ThrowConfetti", 5.7f);
     }
@@ -130,6 +141,7 @@ public class WinningSlot : MonoBehaviour
 
     public void TriggerFail() {
         PlayFailSound();
+        failEvent.Invoke();
         Debug.Log("Lost the game...");
     }
 
