@@ -163,6 +163,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 615505052}
     m_Modifications:
+    - target: {fileID: 65516038554640390, guid: ec267bb2b133f7241b3e56406e60fe1c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114939956910318088, guid: ec267bb2b133f7241b3e56406e60fe1c,
         type: 3}
       propertyPath: targetAttachZone
@@ -5512,6 +5517,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633843195217981845, guid: 6b736e234b3d9414f9251095672dfdcf,
+        type: 3}
+      propertyPath: attachedColliderSize.y
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633843195217981845, guid: 6b736e234b3d9414f9251095672dfdcf,
+        type: 3}
+      propertyPath: attachedColliderCenter.y
+      value: -0.055
       objectReference: {fileID: 0}
     - target: {fileID: 8315139118126587009, guid: 6b736e234b3d9414f9251095672dfdcf,
         type: 3}

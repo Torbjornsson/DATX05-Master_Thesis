@@ -59,7 +59,7 @@ public class Attachable : MonoBehaviour
         transform.position = go.transform.position;
         transform.rotation = go.transform.rotation;
 
-        myGrabCollider.enabled = false;
+        // myGrabCollider.enabled = false;
         mySolidCollider.enabled = false;
         attachedTo = go;
     }
