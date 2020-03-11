@@ -26,6 +26,7 @@ public class AttachableTarget : MonoBehaviour
     private Rigidbody attachedObjectRB;
     private OVRGrabbable_EventExtension grabbable;
     private bool isOccupied;
+    private float attachedRotationOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -34,8 +35,6 @@ public class AttachableTarget : MonoBehaviour
 
         if (!myGrabCollider)
             Debug.LogError(gameObject.name+": Grab collider was not found!");
-        // if (!myExtraCollider)
-        //     Debug.LogError(gameObject.name+": Extra collider was not found!");
         if (!attachTarget)
             Debug.LogError(gameObject.name+": Attach target was not found!");
         if (!grabbable)
@@ -44,6 +43,7 @@ public class AttachableTarget : MonoBehaviour
         isOccupied = false;
         unAttachedColliderSize = myGrabCollider.size;
         unAttachedColliderCenter = myGrabCollider.center;
+        attachedRotationOffset = 0;
 
         if (attachSounds.Length <= 0 || detachSounds.Length <= 0)
             Debug.LogError(gameObject.name+": No attach or detach sounds were found!");
@@ -55,10 +55,9 @@ public class AttachableTarget : MonoBehaviour
     void Update()
     {
         if (attachedObject != null) {
-            // Debug.DrawLine(attachedObject.transform.position, attachTarget.transform.position, Color.red);
-            // Debug.Log("Previous position: "+attachedObject.transform.position+", new position: "+attachTarget.transform.position);
             attachedObject.transform.position = attachTarget.transform.position;
             attachedObject.transform.rotation = attachTarget.transform.rotation;
+            attachedObject.transform.Rotate(Vector3.up, attachedRotationOffset, Space.Self);
         }
     }
 
@@ -73,6 +72,11 @@ public class AttachableTarget : MonoBehaviour
         attachedObject = attachable;
         attachedObjectRB = attachable.GetComponent<Rigidbody>();
         attachedObjectRB.useGravity = false;
+
+        Quaternion tileRot = attachedObject.transform.localRotation;
+        Quaternion cubeRot = transform.localRotation;
+        var yDiff = tileRot.eulerAngles.y - cubeRot.eulerAngles.y;
+        attachedRotationOffset = Mathf.Round(yDiff / 90f) * 90;
 
         GameMaster.instance.goalCriteriaSatisfied = IsCorrectSolution(attachable);
 
@@ -119,13 +123,6 @@ public class AttachableTarget : MonoBehaviour
 
     private bool IsCorrectSolution(Attachable attachable)
     {
-        bool correct = false;
-        if (attachable.correctSolution)
-        {
-            //Debug.Log("cubes rotation " + transform.localEulerAngles + " tiles rotation " + attachable.transform.localEulerAngles);
-            correct = Mathf.Abs(transform.localEulerAngles.y - attachable.transform.localEulerAngles.y) < 10;
-        }
-
-        return correct;
+        return attachable.correctSolution && Mathf.Abs(attachedRotationOffset) < Mathf.Epsilon;
     }
 }

@@ -26,8 +26,8 @@ public class Attachable : MonoBehaviour
         if (!originalParent) Debug.LogError("Couldn't find original parent!");
     }
 
-    void OnTriggerEnter(Collider other) {
-        if (other.tag.Equals("TargetZone")) {
+    void OnTriggerStay(Collider other) {
+        if (overlappingTarget == null && other.tag.Equals("TargetZone")) {
             overlappingTarget = other.gameObject;
         }
     }

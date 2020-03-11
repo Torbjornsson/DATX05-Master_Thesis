@@ -60,7 +60,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cubeCanFallIn: 1
-  canAttachTileWhenCubeInSlot: 0
+  canAttachTileWhenCubeInSlot: 1
   active: 1
   confettiEmitter: {fileID: 7349930854344302193}
   win: {fileID: 8300000, guid: 7f6aa3539a2728e42a49ba73c995c965, type: 3}

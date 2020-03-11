@@ -198,7 +198,7 @@ MonoBehaviour:
   attachTarget: {fileID: 8315139118126587009}
   attachedColliderCenter: {x: 0, y: -0.06, z: 0}
   attachedColliderSize: {x: 0.14, y: 0.02, z: 0.14}
-  canOnlyAttachWhenGrabbed: 1
+  canOnlyAttachWhenGrabbed: 0
   attachSounds:
   - {fileID: 8300000, guid: 240ed9d4a39178d45a0223407fd5283f, type: 3}
   detachSounds:
