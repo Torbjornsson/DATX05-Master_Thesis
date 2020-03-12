@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 18ae65a3d13a2485895b4fbd0bf27e02
+guid: 1e3224732d6da31499b5fd2969b439b0
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: //RootNode
-    100002: Cube_Cube.001
-    400000: //RootNode
-    400002: Cube_Cube.001
-    2100000: Cube_Cube.001Mat
-    2300000: Cube_Cube.001
-    3300000: Cube_Cube.001
-    4300000: Cube_Cube.001
+    100000: Triangle
+    100002: //RootNode
+    400000: Triangle
+    400002: //RootNode
+    2100000: TriangleMat
+    2300000: Triangle
+    3300000: Triangle
+    4300000: Triangle
   externalObjects: {}
   materials:
     importMaterials: 1
