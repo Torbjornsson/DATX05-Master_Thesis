@@ -61,8 +61,11 @@ public class RubiksBoxScript : MonoBehaviour
         int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation, LayerMask.GetMask("RubiksFace"));
 
         if (hits > 0)
+        {
             symbol = RotateRubiks.GetSymbol(results[0].tag);
-
+        }
+            
+        //Debug.Log(symbol.ToString());
         return symbol;
     }
 }
