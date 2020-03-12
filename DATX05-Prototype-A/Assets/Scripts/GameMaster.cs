@@ -6,12 +6,14 @@ public class GameMaster : MonoBehaviour
 {
     public static GameMaster instance {get; private set;}
 
+    public TutorialMaster tutorialMaster;
     public bool goalCriteriaSatisfied = false;
 
     // Start is called before the first frame update
     void Start()
     {
-
+        if (!tutorialMaster)
+            Debug.LogWarning("Game Master Script: WARNING! Could not find a Tutorial Master!");
     }
 
     void Awake() {
