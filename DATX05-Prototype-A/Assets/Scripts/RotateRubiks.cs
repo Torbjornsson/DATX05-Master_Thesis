@@ -10,6 +10,7 @@ public class RotateRubiks : MonoBehaviour
     }
 
     public static Symbol GetSymbol(string tag) {
+        //Debug.Log("Tag: " + tag);
         switch(tag) {
             case "RubiksSymbol1": return Symbol.Symbol1;
             case "RubiksSymbol2": return Symbol.Symbol2;
@@ -178,7 +179,7 @@ public class RotateRubiks : MonoBehaviour
                 
         isRotationStarted = false;
 
-        CheckSolution();
+        Invoke("CheckSolution", 0.01f);
     }
 
     private Collider GetSmallCubeCollider(string hand) {
