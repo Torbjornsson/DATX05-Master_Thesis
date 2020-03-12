@@ -42,7 +42,7 @@ public class RubiksCubeFace : MonoBehaviour
     }
 
     public void CheckSolution() {
-        // Debug.Log("Checking solution in face "+gameObject.name+"... "+FacesToString());
+        //Debug.Log("Checking solution in face "+gameObject.name+"... "+FacesToString());
         // First rotation
         if (boxTopLeft.GetActiveSymbol() == main.solutionTopLeft && boxTopRight.GetActiveSymbol() == main.solutionTopRight
                 && boxBottomLeft.GetActiveSymbol() == main.solutionBottomLeft && boxBottomRight.GetActiveSymbol() == main.solutionBottomRight) {
