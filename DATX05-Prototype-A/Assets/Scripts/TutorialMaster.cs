@@ -24,6 +24,7 @@ public class TutorialMaster : MonoBehaviour
 
     private bool firstGrab = false;
     private Hand handGrabbing = Hand.None;
+    private bool objectResetted;
 
 
     // Start is called before the first frame update
@@ -65,6 +66,10 @@ public class TutorialMaster : MonoBehaviour
         if (leftHand.grabbedObject) handGrabbing = Hand.Left;
         else if (rightHand.grabbedObject) handGrabbing = Hand.Right;
         else handGrabbing = Hand.None;
+
+        // Resetting object event
+        if (objectResetted) tutorial.OnObjectReset();
+        objectResetted = false;
     }
 
     public void TriggerNextSlide() {
@@ -88,5 +93,9 @@ public class TutorialMaster : MonoBehaviour
         if (max <= 0)
             Debug.LogError("TutorialMaster.SetMaxStats(): Max States needs to be at least 1!");
         maxStates = max;
+    }
+
+    public void ObjectResetted() {
+        objectResetted = true;
     }
 }

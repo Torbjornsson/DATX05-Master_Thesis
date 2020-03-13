@@ -155,4 +155,10 @@ public abstract class ITutorial : MonoBehaviour
             TriggerNextSlide(currentState + 1);
         }
     }
+
+    public void OnObjectReset() {
+        if (useOnBoarding && !IsTransitioning() && currentState == 2) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
 }
