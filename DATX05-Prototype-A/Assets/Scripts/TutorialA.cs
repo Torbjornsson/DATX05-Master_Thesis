@@ -46,13 +46,17 @@ public class TutorialA : ITutorial
     // Update is called once per frame
     void Update()
     {
-        if (nextState != currentState) {
+        // While transition in progress
+        if (IsTransitioning()) {
+            // Outro for previous slide or transition-slide
             if (outro || middleOutro) {
                 if (transitionAlpha > 0)
                     transitionAlpha -= Time.deltaTime * transitionFadeSpeed;
 
                 if (transitionAlpha <= 0) {
                     transitionAlpha = 0;
+
+                    // Trigger intro for transition-slide
                     if (outro) {
                         outro = false;
                         middleIntro = true;
@@ -60,6 +64,8 @@ public class TutorialA : ITutorial
                         fadeScript = transitionSlideScript;
                         fadeScript.gameObject.SetActive(true);
                         // Debug.Log("Outro done, starting middle-intro");
+
+                    // Trigger intro for next slide
                     } else if (middleOutro) {
                         middleOutro = false;
                         intro = true;
@@ -72,22 +78,28 @@ public class TutorialA : ITutorial
 
                 fadeScript.SetAlpha(transitionAlpha);
             }
-            if (intro || middleIntro) {
+            // Intro for transition-slide or next slide
+            else if (intro || middleIntro) {
                 if (transitionAlpha < 1)
                     transitionAlpha += Time.deltaTime * transitionFadeSpeed;
 
                 if (transitionAlpha >= 1) {
                     transitionAlpha = 1;
+
+                    // Transition is all done!
                     if (intro) {
                         intro = false;
                         ArrivedAtSlide(nextState);
                         // Debug.Log("Intro done, arrived at next state! "+nextState);
+
+                    // Trigger outro for transition-slide
                     } else if (middleIntro) {
                         middleIntro = false;
                         middleOutro = true;
                     }
                 }
                 
+                // Update alpha for whatever slide is active
                 fadeScript.SetAlpha(transitionAlpha);
             }
         }

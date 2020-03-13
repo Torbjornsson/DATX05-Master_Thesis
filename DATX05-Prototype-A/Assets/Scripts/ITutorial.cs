@@ -68,13 +68,18 @@ public abstract class ITutorial : MonoBehaviour
         if (!puzzle3Texts)
             Debug.LogError("ITutorial: Puzzle 3 tutorial texts not found!");
 
+        // Compile active slides
         activeSlides = CompileTutorialSlides();
 
         // Letting tutorial master know how many total slides there are
         master = GameMaster.instance.tutorialMaster;
         master.SetMaxStates(activeSlides.Count - 1);
 
+        // Distribute text files into the active slides
         DistributeTexts();
+
+        // Show the first slide!
+        activeSlides[0].SetActive(true);
     }
 
     public virtual void TriggerNextSlide(int nextState) {
@@ -114,12 +119,6 @@ public abstract class ITutorial : MonoBehaviour
     protected abstract void DistributeTextToSlide(string text, GameObject slide);
 
     protected string[] GetTextsFromFile(TextAsset textFile) {
-        // var splitters = new string[1];
-        // // splitters[0] = ";\n";
-        // splitters[0] = ";";
-        // var strings = textFile.text.Split(splitters, StringSplitOptions.RemoveEmptyEntries);
-        // Debug.Log("Just split a string into "+strings.Length+" parts. First entry: "+strings[0]);
-        // return strings;
         return textFile.text.Split(';');
     }
 
@@ -139,5 +138,21 @@ public abstract class ITutorial : MonoBehaviour
             case 3: return puzzle3Texts;
         }
         throw new ArgumentException("ITutorial.GetSlides() : Puzzle number can only be 1, 2 or 3!");
+    }
+
+    public bool IsTransitioning() {
+        return currentState != nextState;
+    }
+
+    public void OnFirstGrab() {
+        if (useOnBoarding && !IsTransitioning() && currentState == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnSwitchHands() {
+        if (useOnBoarding && !IsTransitioning() && currentState == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
     }
 }
