@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -3305,29 +3305,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6fcd2d0ed406e4e0093d1f6f1bf7c603, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Text: Hello World!
-  CharacterSpacing: 4
-  LineSpacing: 22
-  SpaceWidth: 8
-  BoxColliderIsTrigger: 0
-  Mass: 1
-  Drag: 0
-  AngularDrag: 0.05
-  UseGravity: 1
-  IsKinematic: 0
-  Interpolation: 0
-  CollisionDetection: 0
-  FreezePositionX: 0
-  FreezePositionY: 0
-  FreezePositionZ: 0
-  FreezeRotationX: 0
-  FreezeRotationY: 0
-  FreezeRotationZ: 0
-  CharXLocation: 0
-  CharYLocation: 0
-  ObjScale: {x: 0, y: 0, z: 0}
-  BoxColliderAdded: 0
-  RigidbodyAdded: 0
 --- !u!4 &677411822
 Transform:
   m_ObjectHideFlags: 0
@@ -9885,5 +9862,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 595912a3a429d7d53872007c5cbfc593, type: 2}
+    - target: {fileID: 8015853092690820599, guid: 469180cc45ed9a649a4d479f7e19980c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 469180cc45ed9a649a4d479f7e19980c, type: 3}
