@@ -25,6 +25,8 @@ public class TutorialMaster : MonoBehaviour
     private bool firstGrab = false;
     private Hand handGrabbing = Hand.None;
     private bool objectResetted;
+    private bool tileAttached;
+    private bool tileDetached;
 
 
     // Start is called before the first frame update
@@ -70,6 +72,14 @@ public class TutorialMaster : MonoBehaviour
         // Resetting object event
         if (objectResetted) tutorial.OnObjectReset();
         objectResetted = false;
+
+        // Attaching tile to cube
+        if (tileAttached) tutorial.OnTileAttach();
+        tileAttached = false;
+
+        // Detaching tile from cube
+        if (tileDetached) tutorial.OnTileDetach();
+        tileDetached = false;
     }
 
     public void TriggerNextSlide() {
@@ -97,5 +107,13 @@ public class TutorialMaster : MonoBehaviour
 
     public void ObjectResetted() {
         objectResetted = true;
+    }
+
+    public void TileAttached() {
+        tileAttached = true;
+    }
+
+    public void TileDetached() {
+        tileDetached = true;
     }
 }

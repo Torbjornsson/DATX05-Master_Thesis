@@ -144,6 +144,7 @@ public abstract class ITutorial : MonoBehaviour
         return currentState != nextState;
     }
 
+    // --- > ON-BOARDING tutorial events
     public void OnFirstGrab() {
         if (useOnBoarding && !IsTransitioning() && currentState == 0) {
             TriggerNextSlide(currentState + 1);
@@ -158,6 +159,22 @@ public abstract class ITutorial : MonoBehaviour
 
     public void OnObjectReset() {
         if (useOnBoarding && !IsTransitioning() && currentState == 2) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    protected int GetRelativeCurrentState() {
+        return useOnBoarding ? currentState - onBoardingSlides.Length : currentState;
+    }
+
+    // --- > PUZZLE 1 tutorial events
+    public void OnTileAttach() {
+        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+    public void OnTileDetach() {
+        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 1) {
             TriggerNextSlide(currentState + 1);
         }
     }
