@@ -1,0 +1,41 @@
+Scan one side of the cube
+by placing it above the
+scanner to your right.
+
+
+Try scanning a side of
+the cube!;
+
+The 6 lights on the scanner
+corresponds to each side of
+the cube. Every time you
+scan a side correctly, one
+light will turn on.
+
+
+Try scanning the displayed
+side X times!;
+
+But if you make a mistake,
+all the lights will turn
+off again, and you have to
+start over.
+
+
+Try scanning any side of
+the cube, until all the
+lights are off again!;
+
+The goal of this puzzle
+is to turn on all of the
+lights! In order to do so,
+you must scan each of the
+cube's sides the right
+times, in the right order.
+
+Use this legend to figure
+out in what order to scan.
+
+When all lights are on,
+put the cube in the slot
+to your left!

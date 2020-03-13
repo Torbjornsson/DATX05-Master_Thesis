@@ -1,0 +1,27 @@
+Let go of a tile just above
+the slot in the  cube, to
+attach it.
+
+
+Try attaching a tile to
+the cube!;
+
+To detach an attached tile,
+simply grab it when it's on
+the cube:
+
+
+Try detaching the tile from
+the cube!;
+
+The goal of this puzzle is
+to find a tile that matches
+the other sides of the cube.
+
+However! It also needs to
+have this symbol at its
+back side.
+
+When you're done, put the
+cube in the slot to your
+left!

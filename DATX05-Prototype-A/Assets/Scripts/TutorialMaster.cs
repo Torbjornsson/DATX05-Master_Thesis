@@ -5,10 +5,8 @@ using UnityEngine.Events;
 
 public class TutorialMaster : MonoBehaviour
 {
-    // [Range(0, 10)] public int maxStates = 0;
     public TutorialStateEvent triggerSlideTransitionEvent;
     public TutorialStateEvent setTutorialState;
-    // public UnityEvent firstGrabEvent;
 
     [System.Serializable]
     public class TutorialStateEvent : UnityEvent<int> { }
@@ -23,15 +21,10 @@ public class TutorialMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // if (maxStates <= 0)
-        //     Debug.LogWarning("TutorialMaster: WARNING - Max States is not set to a positive integer!");
-
         if (triggerSlideTransitionEvent == null)
             triggerSlideTransitionEvent = new TutorialStateEvent();
         if (setTutorialState == null)
             setTutorialState = new TutorialStateEvent();
-        // if (firstGrabEvent == null)
-        //     firstGrabEvent = new UnityEvent();
 
         tutorialState = 0;
     }
@@ -44,7 +37,6 @@ public class TutorialMaster : MonoBehaviour
             var rightHand = GameObject.Find("DistanceGrabHandRight").GetComponent<OVRGrabber>();
 
             if (leftHand && leftHand.grabbedObject || rightHand && rightHand.grabbedObject) {
-                // firstGrabEvent.Invoke();
                 firstGrab = true;
                 if (tutorialState == 0) TriggerNextSlide();
             }

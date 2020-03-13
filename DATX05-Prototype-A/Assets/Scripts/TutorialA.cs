@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class TutorialA : ITutorial
 {
+
+    [Header("Tutorial A Parameters")]
     public GameObject back;
     [Range(0,1)] public float backAlpha = 0.8f;
     public float transitionFadeSpeed = 1;
 
     private float transitionAlpha = 1;
     private bool outro, intro, middleIntro, middleOutro;
-
     private TutorialASlide[] slideScripts;
     private TutorialASlide transitionSlideScript;
     private TutorialASlide fadeScript;
@@ -23,16 +24,23 @@ public class TutorialA : ITutorial
         if (!back)
             Debug.LogError("TutorialA: Did not find Back Game Object");
         
+        // Setting back alpha
         var mat = back.GetComponent<Renderer>().material;
         var col = mat.color;
         col.a = backAlpha;
         mat.color = col;
 
-        slideScripts = new TutorialASlide[tutorialSlides.Length];
+        // Finding slide scripts, to interact directly with
+        slideScripts = new TutorialASlide[activeSlides.Count];
         for (int i = 0; i < slideScripts.Length; i++) {
-            slideScripts[i] = tutorialSlides[i].GetComponent<TutorialASlide>();
+            slideScripts[i] = activeSlides[i].GetComponent<TutorialASlide>();
         }
         transitionSlideScript = transitionSlide.GetComponent<TutorialASlide>();
+    }
+
+    protected override void DistributeTextToSlide(string text, GameObject slide) {
+        var textComponent = slide.GetComponentInChildren<TextMesh>();
+        textComponent.text = text;
     }
 
     // Update is called once per frame
@@ -97,10 +105,4 @@ public class TutorialA : ITutorial
         
         // Debug.Log("Trigger next slide: starting outro - current: "+currentState+", next: "+nextState);
     }
-
-    // public void FirstGrab() {
-    //     if (currentState == 0) {
-    //         TriggerNextSlide(1);
-    //     }
-    // }
 }

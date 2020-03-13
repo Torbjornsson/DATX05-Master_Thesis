@@ -77,30 +77,17 @@ TextMesh:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4090090836860216182}
-  m_Text: 'Welcome!
-
-
-    Press the Grip Button
-
-    while holding your hand
-
-    close to object, to pick it
-
-    up.
-
-
-
-    Try picking up an object!'
+  m_Text: '[No text input]'
   m_OffsetZ: 0
   m_CharacterSize: 0.01
   m_LineSpacing: 1
   m_Anchor: 3
   m_Alignment: 0
   m_TabSize: 4
-  m_FontSize: 40
+  m_FontSize: 45
   m_FontStyle: 0
   m_RichText: 1
-  m_Font: {fileID: 12800000, guid: 6921a454aa104cf47a67f59c64acaa17, type: 3}
+  m_Font: {fileID: 12800000, guid: 804cd529c16ec224eaa3dce9992d262e, type: 3}
   m_Color:
     serializedVersion: 2
     rgba: 4294967295
@@ -115,7 +102,7 @@ GameObject:
   - component: {fileID: 4090090837988393766}
   - component: {fileID: 4090090837988393767}
   m_Layer: 0
-  m_Name: Slide1
+  m_Name: TutorialA_Slide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

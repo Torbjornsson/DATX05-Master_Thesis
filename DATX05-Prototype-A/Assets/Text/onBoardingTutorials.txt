@@ -1,0 +1,28 @@
+Welcome!
+
+Press the Grip Button
+while holding your hand
+close to object, to pick
+it up.
+
+
+Try picking up an object!;
+
+While holding an object
+in one hand, hold the
+other hand close to that
+object and press the Grip
+Button, to switch hands.
+
+
+Try switching hands!;
+
+Dropping an object outside
+of the table, or too far
+away to reach, will cause
+it to respawn in front
+of you.
+
+
+Try throwing an object off
+the table!
