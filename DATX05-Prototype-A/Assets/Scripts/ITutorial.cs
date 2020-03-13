@@ -14,6 +14,7 @@ public abstract class ITutorial : MonoBehaviour
     public GameObject[] puzzle2Slides;
     public GameObject[] puzzle3Slides;
     public GameObject transitionSlide;
+    public GameObject winningSlide;
     [Space]
     public TextAsset onBoardingTexts;
     public TextAsset puzzle1Texts;
@@ -26,6 +27,7 @@ public abstract class ITutorial : MonoBehaviour
 
     protected int currentState;
     protected int nextState;
+    protected bool atWinState;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -82,8 +84,20 @@ public abstract class ITutorial : MonoBehaviour
         activeSlides[0].SetActive(true);
     }
 
+    public virtual void Update()
+    {
+        // Checking for winning
+        if (GameMaster.instance.hasWon && !IsTransitioning() && !atWinState) {
+            TriggerWinSlide();
+        }
+    }
+
     public virtual void TriggerNextSlide(int nextState) {
         this.nextState = nextState;
+    }
+
+    public virtual void TriggerWinSlide() {
+        nextState++;
     }
 
     public void ArrivedAtSlide(int state) {
@@ -173,6 +187,7 @@ public abstract class ITutorial : MonoBehaviour
             TriggerNextSlide(currentState + 1);
         }
     }
+
     public void OnTileDetach() {
         if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 1) {
             TriggerNextSlide(currentState + 1);
