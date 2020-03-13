@@ -203,6 +203,8 @@ public class Resettable : MonoBehaviour
         fadeOut = false;
         fadeIn = true;
         rb.isKinematic = true;
+
+        GameMaster.instance.tutorialMaster.ObjectResetted();
     }
 
     private void FadeInDone() {

@@ -14,6 +14,7 @@ public abstract class ITutorial : MonoBehaviour
     public GameObject[] puzzle2Slides;
     public GameObject[] puzzle3Slides;
     public GameObject transitionSlide;
+    public GameObject winningSlide;
     [Space]
     public TextAsset onBoardingTexts;
     public TextAsset puzzle1Texts;
@@ -26,6 +27,7 @@ public abstract class ITutorial : MonoBehaviour
 
     protected int currentState;
     protected int nextState;
+    protected bool atWinState;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -68,17 +70,34 @@ public abstract class ITutorial : MonoBehaviour
         if (!puzzle3Texts)
             Debug.LogError("ITutorial: Puzzle 3 tutorial texts not found!");
 
+        // Compile active slides
         activeSlides = CompileTutorialSlides();
 
         // Letting tutorial master know how many total slides there are
         master = GameMaster.instance.tutorialMaster;
         master.SetMaxStates(activeSlides.Count - 1);
 
+        // Distribute text files into the active slides
         DistributeTexts();
+
+        // Show the first slide!
+        activeSlides[0].SetActive(true);
+    }
+
+    public virtual void Update()
+    {
+        // Checking for winning
+        if (GameMaster.instance.hasWon && !IsTransitioning() && !atWinState) {
+            TriggerWinSlide();
+        }
     }
 
     public virtual void TriggerNextSlide(int nextState) {
         this.nextState = nextState;
+    }
+
+    public virtual void TriggerWinSlide() {
+        nextState++;
     }
 
     public void ArrivedAtSlide(int state) {
@@ -114,12 +133,6 @@ public abstract class ITutorial : MonoBehaviour
     protected abstract void DistributeTextToSlide(string text, GameObject slide);
 
     protected string[] GetTextsFromFile(TextAsset textFile) {
-        // var splitters = new string[1];
-        // // splitters[0] = ";\n";
-        // splitters[0] = ";";
-        // var strings = textFile.text.Split(splitters, StringSplitOptions.RemoveEmptyEntries);
-        // Debug.Log("Just split a string into "+strings.Length+" parts. First entry: "+strings[0]);
-        // return strings;
         return textFile.text.Split(';');
     }
 
@@ -139,5 +152,45 @@ public abstract class ITutorial : MonoBehaviour
             case 3: return puzzle3Texts;
         }
         throw new ArgumentException("ITutorial.GetSlides() : Puzzle number can only be 1, 2 or 3!");
+    }
+
+    public bool IsTransitioning() {
+        return currentState != nextState;
+    }
+
+    // --- > ON-BOARDING tutorial events
+    public void OnFirstGrab() {
+        if (useOnBoarding && !IsTransitioning() && currentState == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnSwitchHands() {
+        if (useOnBoarding && !IsTransitioning() && currentState == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnObjectReset() {
+        if (useOnBoarding && !IsTransitioning() && currentState == 2) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    protected int GetRelativeCurrentState() {
+        return useOnBoarding ? currentState - onBoardingSlides.Length : currentState;
+    }
+
+    // --- > PUZZLE 1 tutorial events
+    public void OnTileAttach() {
+        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnTileDetach() {
+        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
     }
 }

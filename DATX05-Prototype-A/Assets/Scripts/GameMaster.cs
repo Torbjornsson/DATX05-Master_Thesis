@@ -8,12 +8,15 @@ public class GameMaster : MonoBehaviour
 
     public TutorialMaster tutorialMaster;
     public bool goalCriteriaSatisfied = false;
+    public bool hasWon {get; private set;}
 
     // Start is called before the first frame update
     void Start()
     {
         if (!tutorialMaster)
             Debug.LogWarning("Game Master Script: WARNING! Could not find a Tutorial Master!");
+
+        hasWon = false;
     }
 
     void Awake() {
@@ -29,5 +32,9 @@ public class GameMaster : MonoBehaviour
     {
         // if (goalCriteriaSatisfied)
         //     Debug.Log("WON THE GAME!!!!");
+    }
+
+    public void PuzzleWon() {
+        hasWon = true;
     }
 }

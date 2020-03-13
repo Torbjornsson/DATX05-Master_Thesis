@@ -129,6 +129,7 @@ public class WinningSlot : MonoBehaviour
         Debug.Log("WON THE GAME!!!!");
 
         winEvent.Invoke();
+        GameMaster.instance.PuzzleWon();
 
         // Confetti!
         Invoke("ThrowConfetti", 5.7f);

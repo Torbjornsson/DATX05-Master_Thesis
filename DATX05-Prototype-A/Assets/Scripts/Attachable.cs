@@ -102,6 +102,8 @@ public class Attachable : MonoBehaviour
         // myGrabCollider.enabled = false;
         mySolidCollider.enabled = false;
         attachedTo = go;
+
+        GameMaster.instance.tutorialMaster.TileAttached();
     }
 
     public void DetachFromObject()
@@ -111,5 +113,7 @@ public class Attachable : MonoBehaviour
         myGrabCollider.enabled = true;
         mySolidCollider.enabled = true;
         attachedTo = null;
+        
+        GameMaster.instance.tutorialMaster.TileDetached();
     }
 }

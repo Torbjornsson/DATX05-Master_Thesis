@@ -11,9 +11,10 @@ public class TutorialA : ITutorial
     public float transitionFadeSpeed = 1;
 
     private float transitionAlpha = 1;
-    private bool outro, intro, middleIntro, middleOutro;
+    private bool outro, intro, middleIntro, middleOutro, winningOutro, winningIntro;
     private TutorialASlide[] slideScripts;
     private TutorialASlide transitionSlideScript;
+    private TutorialASlide winningSlideScript;
     private TutorialASlide fadeScript;
 
     // Start is called before the first frame update
@@ -36,6 +37,7 @@ public class TutorialA : ITutorial
             slideScripts[i] = activeSlides[i].GetComponent<TutorialASlide>();
         }
         transitionSlideScript = transitionSlide.GetComponent<TutorialASlide>();
+        winningSlideScript = winningSlide.GetComponent<TutorialASlide>();
     }
 
     protected override void DistributeTextToSlide(string text, GameObject slide) {
@@ -44,15 +46,21 @@ public class TutorialA : ITutorial
     }
 
     // Update is called once per frame
-    void Update()
+    public override void Update()
     {
-        if (nextState != currentState) {
-            if (outro || middleOutro) {
+        base.Update();
+
+        // While transition in progress
+        if (IsTransitioning()) {
+            // Outro for previous slide or transition-slide
+            if (outro || middleOutro || winningOutro) {
                 if (transitionAlpha > 0)
                     transitionAlpha -= Time.deltaTime * transitionFadeSpeed;
 
                 if (transitionAlpha <= 0) {
                     transitionAlpha = 0;
+
+                    // Trigger intro for transition-slide
                     if (outro) {
                         outro = false;
                         middleIntro = true;
@@ -60,6 +68,8 @@ public class TutorialA : ITutorial
                         fadeScript = transitionSlideScript;
                         fadeScript.gameObject.SetActive(true);
                         // Debug.Log("Outro done, starting middle-intro");
+
+                    // Trigger intro for next slide
                     } else if (middleOutro) {
                         middleOutro = false;
                         intro = true;
@@ -67,27 +77,47 @@ public class TutorialA : ITutorial
                         fadeScript = slideScripts[nextState];
                         fadeScript.gameObject.SetActive(true);
                         // Debug.Log("Middle Outro done, starting intro");
+
+                    // Trigger intro for winning slide
+                    } else if (winningOutro) {
+                        winningOutro = false;
+                        winningIntro = true;
+                        fadeScript.gameObject.SetActive(false);
+                        fadeScript = winningSlideScript;
+                        fadeScript.gameObject.SetActive(true);
+                        // Debug.Log("Middle Outro done, starting intro");
                     }
                 }
 
                 fadeScript.SetAlpha(transitionAlpha);
             }
-            if (intro || middleIntro) {
+            // Intro for transition-slide or next slide
+            else if (intro || middleIntro || winningIntro) {
                 if (transitionAlpha < 1)
                     transitionAlpha += Time.deltaTime * transitionFadeSpeed;
 
                 if (transitionAlpha >= 1) {
                     transitionAlpha = 1;
+
+                    // Transition is all done!
                     if (intro) {
                         intro = false;
                         ArrivedAtSlide(nextState);
                         // Debug.Log("Intro done, arrived at next state! "+nextState);
+
+                    // Trigger outro for transition-slide
                     } else if (middleIntro) {
                         middleIntro = false;
                         middleOutro = true;
+
+                    // Stop fading because at win-state
+                    } else if (winningIntro) {
+                        winningIntro = false;
+                        atWinState = true;
                     }
                 }
                 
+                // Update alpha for whatever slide is active
                 fadeScript.SetAlpha(transitionAlpha);
             }
         }
@@ -101,8 +131,16 @@ public class TutorialA : ITutorial
         intro = false;
         middleIntro = false;
         middleOutro = false;
+        winningOutro = false;
+        winningIntro = false;
         fadeScript = slideScripts[currentState];
         
         // Debug.Log("Trigger next slide: starting outro - current: "+currentState+", next: "+nextState);
+    }
+
+    public override void TriggerWinSlide() {
+        base.TriggerWinSlide();
+        winningOutro = true;
+        winningIntro = false;
     }
 }

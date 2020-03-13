@@ -1,5 +1,5 @@
 Let go of a tile just above
-the slot in the  cube, to
+the slot in the cube, to
 attach it.
 
 
