@@ -20,6 +20,10 @@ public class Resettable : MonoBehaviour
 
     private int insideResetVolume = 0;
     private int insideHardResetVolume = 0;
+    // private int insideRubiksResetVolume = 0;
+
+    private bool rubiksResetActive = false;
+    private RotateRubiks rubiksScript = null;
 
     private bool pending = false;
     private bool fadeOut = false;
@@ -44,6 +48,8 @@ public class Resettable : MonoBehaviour
         myCollider = GetComponent<Collider>();
         grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
         attachableTarget = GetComponent<AttachableTarget>();
+
+        rubiksScript = GetComponent<RotateRubiks>();
 
         if (renderers.Length > 0) {
             materials = new Material[renderers.Length];
@@ -133,6 +139,10 @@ public class Resettable : MonoBehaviour
 
         } else if (other.gameObject.tag.Equals("ResetVolumeHARD")) {
             insideHardResetVolume++;
+
+        } else if (other.gameObject.tag.Equals("RubiksResetVolume") && !grabbableScript.isGrabbed) {
+            // insideRubiksResetVolume++;
+            rubiksResetActive = true;
         }
     }
 
@@ -142,6 +152,9 @@ public class Resettable : MonoBehaviour
 
         } else if (other.gameObject.tag.Equals("ResetVolumeHARD")) {
             insideHardResetVolume--;
+
+        // } else if (other.gameObject.tag.Equals("RubiksResetVolume")) {
+        //     insideRubiksResetVolume--;
         }
     }
 
@@ -205,6 +218,10 @@ public class Resettable : MonoBehaviour
         rb.isKinematic = true;
 
         GameMaster.instance.tutorialMaster.ObjectResetted();
+
+        if (rubiksScript != null && rubiksResetActive) {
+            rubiksScript.ResetCube();
+        }
     }
 
     private void FadeInDone() {

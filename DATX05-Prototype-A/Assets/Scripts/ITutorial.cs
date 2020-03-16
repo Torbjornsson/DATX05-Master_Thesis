@@ -111,6 +111,7 @@ public abstract class ITutorial : MonoBehaviour
         if (useOnBoarding)
             list.AddRange(onBoardingSlides);
         list.AddRange(GetSlides(tutorialForPuzzle));
+        Debug.Log("Compiled list of slides size: "+list.Count);
         return list;
     }
 
@@ -190,6 +191,38 @@ public abstract class ITutorial : MonoBehaviour
 
     public void OnTileDetach() {
         if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    // --- > PUZZLE 2 tutorial events
+    public void OnRotateRubiks() {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnResetRubiks() {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    // --- > PUZZLE 3 tutorial events
+    public void OnCubeScanned() {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnScanningLightOn() {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnScanningLightOff() {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 2) {
             TriggerNextSlide(currentState + 1);
         }
     }

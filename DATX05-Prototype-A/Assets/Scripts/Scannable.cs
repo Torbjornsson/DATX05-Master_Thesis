@@ -111,6 +111,8 @@ public class Scannable : MonoBehaviour
             Debug.Log("IN-correctly scanned: "+face+" (the "+scanningCountPerFaceProgress+" time)");
         }
 
+        GameMaster.instance.tutorialMaster.ScanningCube();
+
         // Debug.Log("Correct should have been: "+info.face+", "+info.times+" times");
     }
 

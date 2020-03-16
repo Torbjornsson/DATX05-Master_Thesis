@@ -27,6 +27,11 @@ public class TutorialMaster : MonoBehaviour
     private bool objectResetted;
     private bool tileAttached;
     private bool tileDetached;
+    private bool rotatedRubiks;
+    private bool resetRubiks;
+    private bool cubeScanned;
+    private bool scanningLightOn;
+    private bool scanningLightOff;
 
 
     // Start is called before the first frame update
@@ -80,6 +85,26 @@ public class TutorialMaster : MonoBehaviour
         // Detaching tile from cube
         if (tileDetached) tutorial.OnTileDetach();
         tileDetached = false;
+
+        // Rotating rubiks
+        if (rotatedRubiks) tutorial.OnRotateRubiks();
+        rotatedRubiks = false;
+
+        // Resetting rubiks
+        if (resetRubiks) tutorial.OnResetRubiks();
+        resetRubiks = false;
+
+        // Scanning cube
+        if (cubeScanned) tutorial.OnCubeScanned();
+        cubeScanned = false;
+
+        // Scanning light turns on
+        if (scanningLightOn) tutorial.OnScanningLightOn();
+        scanningLightOn = false;
+
+        // Scanning light turns on
+        if (scanningLightOff) tutorial.OnScanningLightOff();
+        scanningLightOff = false;
     }
 
     public void TriggerNextSlide() {
@@ -115,5 +140,25 @@ public class TutorialMaster : MonoBehaviour
 
     public void TileDetached() {
         tileDetached = true;
+    }
+
+    public void RotatedRubiks() {
+        rotatedRubiks = true;
+    }
+
+    public void ResetRubiks() {
+        resetRubiks = true;
+    }
+
+    public void ScanningCube() {
+        cubeScanned = true;
+    }
+
+    public void ScanningLightOn() {
+        scanningLightOn = true;
+    }
+
+    public void ScanningLightOff() {
+        scanningLightOff = true;
     }
 }

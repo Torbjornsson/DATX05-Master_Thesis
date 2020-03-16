@@ -14,7 +14,7 @@ light will turn on.
 
 
 Try scanning the displayed
-side X times!;
+side 2 times!;
 
 But if you make a mistake,
 all the lights will turn
