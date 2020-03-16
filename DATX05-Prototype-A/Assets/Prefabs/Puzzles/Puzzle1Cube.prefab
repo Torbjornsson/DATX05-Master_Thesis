@@ -595,6 +595,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 26e0f2f6d7423f0419da2cf5305f5027, type: 3}
+      propertyPath: m_Name
+      value: CubeWithSlotSymbols
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 26e0f2f6d7423f0419da2cf5305f5027, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -666,7 +670,7 @@ PrefabInstance:
     - target: {fileID: 3300000, guid: 26e0f2f6d7423f0419da2cf5305f5027, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300002, guid: f6f2ca98ca8dc8b4dbf3f902b8069304, type: 3}
+      objectReference: {fileID: 4300000, guid: 332526112ef060c48954080316a5d231, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26e0f2f6d7423f0419da2cf5305f5027, type: 3}
 --- !u!4 &558092233188779992 stripped
