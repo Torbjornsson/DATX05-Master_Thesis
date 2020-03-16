@@ -208,4 +208,11 @@ public abstract class ITutorial : MonoBehaviour
         }
     }
 
+    // --- > PUZZLE 3 tutorial events
+    public void OnCubeScanned() {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
 }

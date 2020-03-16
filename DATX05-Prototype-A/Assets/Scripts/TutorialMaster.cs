@@ -29,6 +29,7 @@ public class TutorialMaster : MonoBehaviour
     private bool tileDetached;
     private bool rotatedRubiks;
     private bool resetRubiks;
+    private bool cubeScanned;
 
 
     // Start is called before the first frame update
@@ -87,9 +88,13 @@ public class TutorialMaster : MonoBehaviour
         if (rotatedRubiks) tutorial.OnRotateRubiks();
         rotatedRubiks = false;
 
-        // Rotating rubiks
+        // Resetting rubiks
         if (resetRubiks) tutorial.OnResetRubiks();
         resetRubiks = false;
+
+        // Scanning cube
+        if (cubeScanned) tutorial.OnCubeScanned();
+        cubeScanned = false;
     }
 
     public void TriggerNextSlide() {
@@ -133,5 +138,9 @@ public class TutorialMaster : MonoBehaviour
 
     public void ResetRubiks() {
         resetRubiks = true;
+    }
+
+    public void ScanningCube() {
+        cubeScanned = true;
     }
 }
