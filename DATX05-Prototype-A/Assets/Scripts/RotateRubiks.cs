@@ -32,11 +32,14 @@ public class RotateRubiks : MonoBehaviour
     [Space]
     public UnityEvent checkSolutionEvent;
     public RubiksCubeFace[] rubiksCubeFaces;
+    public float rotationAngleSnap = 10;
     
     public float speed = 10f;
     SmallCube[] smallCubes;
     GameObject frontFace, backFace, to;
     bool isRotationStarted = false;
+    // Vector3 rotationStartingAngle;
+    bool rotatedEnough = false;
 
     private Dictionary<string, GameObject> hands;
 
@@ -97,12 +100,18 @@ public class RotateRubiks : MonoBehaviour
                 break;
 
             default:
-                if(isRotationStarted)
+                if (isRotationStarted)
                     StopRotation();
                 break;
         }
-        if(isRotationStarted)
+
+        if(isRotationStarted) {
             SmoothRotation();
+            
+            var angles = frontFace.transform.localRotation.eulerAngles;
+            if (!rotatedEnough && angles.magnitude > 90 - rotationAngleSnap && angles.magnitude < 270 + rotationAngleSnap)
+                rotatedEnough = true;
+        }
     }
 
     private void HandAction(string hand, float input) {
@@ -138,6 +147,8 @@ public class RotateRubiks : MonoBehaviour
     {
         // Debug.Log("Rotation Started");
         isRotationStarted = true;
+        // rotationStartingAngle = frontFace.transform.localRotation.eulerAngles;
+        rotatedEnough = false;
 
         foreach (var smallCube in smallCubes)
         {
@@ -154,6 +165,8 @@ public class RotateRubiks : MonoBehaviour
 
     void StopRotation()
     {
+        if (!rotatedEnough) return;
+
         Vector3Int prevPos;
 
         Quaternion rot = frontFace.transform.localRotation;
@@ -163,6 +176,11 @@ public class RotateRubiks : MonoBehaviour
         euler.y = Mathf.Round(rot.eulerAngles.y);
         euler.z = Mathf.Round(rot.eulerAngles.z);
         euler *= 90f;
+
+        // if ((rot.eulerAngles - euler).magnitude > rotationAngleSnap)
+        //     return;
+        // Debug.Log("SNAP! previous angle: "+rotationStartingAngle+", current angle: "+rot.eulerAngles+", new angle: "+euler);
+
         rot.eulerAngles = euler;
 
         frontFace.transform.localRotation = rot;
