@@ -107,7 +107,7 @@ public class RotateRubiks : MonoBehaviour
 
         if(isRotationStarted) {
             SmoothRotation();
-            
+
             var angles = frontFace.transform.localRotation.eulerAngles;
             if (!rotatedEnough && angles.magnitude > 90 - rotationAngleSnap && angles.magnitude < 270 + rotationAngleSnap)
                 rotatedEnough = true;
@@ -147,7 +147,6 @@ public class RotateRubiks : MonoBehaviour
     {
         // Debug.Log("Rotation Started");
         isRotationStarted = true;
-        // rotationStartingAngle = frontFace.transform.localRotation.eulerAngles;
         rotatedEnough = false;
 
         foreach (var smallCube in smallCubes)
@@ -161,6 +160,8 @@ public class RotateRubiks : MonoBehaviour
                 smallCube.transform.SetParent(smallCubePos == side ? frontFace.transform : backFace.transform);
         }
         // Debug.Log("Rotates cubes: " + frontFace.transform.childCount);
+
+        GameMaster.instance.tutorialMaster.RotatedRubiks();
     }
 
     void StopRotation()
@@ -176,11 +177,6 @@ public class RotateRubiks : MonoBehaviour
         euler.y = Mathf.Round(rot.eulerAngles.y);
         euler.z = Mathf.Round(rot.eulerAngles.z);
         euler *= 90f;
-
-        // if ((rot.eulerAngles - euler).magnitude > rotationAngleSnap)
-        //     return;
-        // Debug.Log("SNAP! previous angle: "+rotationStartingAngle+", current angle: "+rot.eulerAngles+", new angle: "+euler);
-
         rot.eulerAngles = euler;
 
         frontFace.transform.localRotation = rot;

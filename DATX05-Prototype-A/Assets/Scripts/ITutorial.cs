@@ -196,5 +196,10 @@ public abstract class ITutorial : MonoBehaviour
     }
 
     // --- > PUZZLE 2 tutorial events
-    
+    public void OnRotateRubiks() {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
 }
