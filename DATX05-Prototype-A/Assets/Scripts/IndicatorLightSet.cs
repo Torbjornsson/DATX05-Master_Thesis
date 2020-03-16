@@ -27,7 +27,10 @@ public class IndicatorLightSet : MonoBehaviour
 
     public void ToggleLight(int lightNumber, bool active) {
         var light = indicatorLights[lightNumber];
-        if (active) light.TurnOn();
+        if (active) {
+            light.TurnOn();
+            GameMaster.instance.tutorialMaster.ScanningLightOn();
+        }
         if (!active) light.TurnOff();
     }
 
@@ -36,5 +39,6 @@ public class IndicatorLightSet : MonoBehaviour
             if (active) l.TurnOn();
             if (!active) l.TurnOff();
         }
+        GameMaster.instance.tutorialMaster.ScanningLightOff();
     }
 }
