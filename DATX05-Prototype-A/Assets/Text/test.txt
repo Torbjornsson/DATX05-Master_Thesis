@@ -1,4 +1,2 @@
-This is a test text file lalalala;This is another text with new rows:
-
-
-adsasdsadsad
+Text text text
+Text

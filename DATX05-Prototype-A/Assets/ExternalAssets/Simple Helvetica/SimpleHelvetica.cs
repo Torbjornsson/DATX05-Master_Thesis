@@ -39,6 +39,8 @@ public class SimpleHelvetica : MonoBehaviour {
 	
 	private float CharXLocation = 0f;
 	private float CharYLocation = 0f;
+
+	public float height {get; private set;}
 	
 	private Vector3 ObjScale; //the scale of the parent object
 	
@@ -85,7 +87,7 @@ public class SimpleHelvetica : MonoBehaviour {
 			//Debug.Log ("ctr"+ctr);
 			
 			//dealing with linebreaks "\n"
-			if ( Text[ctr].ToString().ToCharArray()[0] == "\n"[0] ){
+			if ( Text[ctr].ToString().ToCharArray()[0] == "\n"[0] || Text[ctr].ToString().ToCharArray()[0] == "\r"[0] ){
 				//Debug.Log ("\\n detected");
 				CharXLocation = 0;
 				CharYLocation -= LineSpacing;
@@ -121,6 +123,8 @@ public class SimpleHelvetica : MonoBehaviour {
 				CharXLocation += SpaceWidth;
 			}
 		}
+
+		height = (Mathf.Abs(CharYLocation) + LineSpacing) * transform.localScale.y;
 
 #if !UNITY_3_4 && !UNITY_3_5
 		//disable child objects inside _Alphabets

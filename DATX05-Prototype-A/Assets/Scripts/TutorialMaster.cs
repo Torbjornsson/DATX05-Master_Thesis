@@ -20,7 +20,7 @@ public class TutorialMaster : MonoBehaviour
     private ITutorial tutorial;
     private OVRGrabber leftHand, rightHand;
 
-    private int maxStates = 0;
+    // private int maxStates = 0;
 
     private bool firstGrab = false;
     private Hand handGrabbing = Hand.None;
@@ -124,11 +124,11 @@ public class TutorialMaster : MonoBehaviour
         setTutorialState.Invoke(state);
     }
 
-    public void SetMaxStates(int max) {
-        if (max <= 0)
-            Debug.LogError("TutorialMaster.SetMaxStats(): Max States needs to be at least 1!");
-        maxStates = max;
-    }
+    // public void SetMaxStates(int max) {
+    //     if (max <= 0)
+    //         Debug.LogError("TutorialMaster.SetMaxStats(): Max States needs to be at least 1!");
+    //     maxStates = max;
+    // }
 
     public void ObjectResetted() {
         objectResetted = true;

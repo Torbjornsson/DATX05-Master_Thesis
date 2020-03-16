@@ -12,10 +12,10 @@ public class TutorialB : ITutorial
 
     private float transitionAlpha = 1;
     private bool outro, intro, middleIntro, middleOutro, winningOutro, winningIntro;
-    private TutorialASlide[] slideScripts;
-    private TutorialASlide transitionSlideScript;
-    private TutorialASlide winningSlideScript;
-    private TutorialASlide fadeScript;
+    private TutorialBSlide[] slideScripts;
+    private TutorialBSlide transitionSlideScript;
+    private TutorialBSlide winningSlideScript;
+    private TutorialBSlide fadeScript;
 
     // Start is called before the first frame update
     public override void Start()
@@ -32,17 +32,16 @@ public class TutorialB : ITutorial
         // mat.color = col;
 
         // Finding slide scripts, to interact directly with
-        slideScripts = new TutorialASlide[activeSlides.Count];
+        slideScripts = new TutorialBSlide[activeSlides.Count];
         for (int i = 0; i < slideScripts.Length; i++) {
-            slideScripts[i] = activeSlides[i].GetComponent<TutorialASlide>();
+            slideScripts[i] = activeSlides[i].GetComponent<TutorialBSlide>();
         }
-        transitionSlideScript = transitionSlide.GetComponent<TutorialASlide>();
-        winningSlideScript = winningSlide.GetComponent<TutorialASlide>();
+        transitionSlideScript = transitionSlide.GetComponent<TutorialBSlide>();
+        winningSlideScript = winningSlide.GetComponent<TutorialBSlide>();
     }
 
     protected override void DistributeTextToSlide(string text, GameObject slide) {
-        var textComponent = slide.GetComponentInChildren<TextMesh>();
-        textComponent.text = text;
+        slide.GetComponent<TutorialBSlide>().SetText(text);
     }
 
     // Update is called once per frame
@@ -89,7 +88,7 @@ public class TutorialB : ITutorial
                     }
                 }
 
-                fadeScript.SetAlpha(transitionAlpha);
+                // fadeScript.SetAlpha(transitionAlpha);
             }
             // Intro for transition-slide or next slide
             else if (intro || middleIntro || winningIntro) {
@@ -119,7 +118,7 @@ public class TutorialB : ITutorial
                 }
                 
                 // Update alpha for whatever slide is active
-                fadeScript.SetAlpha(transitionAlpha);
+                // fadeScript.SetAlpha(transitionAlpha);
             }
         }
     }
