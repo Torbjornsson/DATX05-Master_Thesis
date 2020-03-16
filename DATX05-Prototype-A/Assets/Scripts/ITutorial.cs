@@ -111,6 +111,7 @@ public abstract class ITutorial : MonoBehaviour
         if (useOnBoarding)
             list.AddRange(onBoardingSlides);
         list.AddRange(GetSlides(tutorialForPuzzle));
+        Debug.Log("Compiled list of slides size: "+list.Count);
         return list;
     }
 
@@ -193,4 +194,7 @@ public abstract class ITutorial : MonoBehaviour
             TriggerNextSlide(currentState + 1);
         }
     }
+
+    // --- > PUZZLE 2 tutorial events
+    
 }

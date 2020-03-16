@@ -308,6 +308,8 @@ public class RotateRubiks : MonoBehaviour
             //     Debug.Log("Solution found!!\n"+face.FacesToString());
         }
 
+        // Debug.Log("Solution found? "+solutionFound);
+
         GameMaster.instance.goalCriteriaSatisfied = solutionFound;
     }
 }
