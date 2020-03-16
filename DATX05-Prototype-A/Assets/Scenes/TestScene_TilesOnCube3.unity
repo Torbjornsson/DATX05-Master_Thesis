@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1751553, g: 0.2191292, b: 0.30143312, a: 1}
+  m_IndirectSpecularColor: {r: 0.17515518, g: 0.21912885, b: 0.30143255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -5810,6 +5810,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5475681264385709484, guid: 6b736e234b3d9414f9251095672dfdcf,
+        type: 3}
+      propertyPath: MinDistance
+      value: 2.5793889
       objectReference: {fileID: 0}
     - target: {fileID: 7633843195217981845, guid: 6b736e234b3d9414f9251095672dfdcf,
         type: 3}
