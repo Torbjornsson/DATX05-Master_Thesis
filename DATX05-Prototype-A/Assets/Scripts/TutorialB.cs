@@ -10,7 +10,8 @@ public class TutorialB : ITutorial
     // [Range(0,1)] public float backAlpha = 0.8f;
     public float transitionFadeSpeed = 1;
 
-    private float transitionAlpha = 1;
+    // private float transitionAlpha = 1;
+    private float transitionProgress = 1;
     private bool outro, intro, middleIntro, middleOutro, winningOutro, winningIntro;
     private TutorialBSlide[] slideScripts;
     private TutorialBSlide transitionSlideScript;
@@ -22,15 +23,6 @@ public class TutorialB : ITutorial
     {
         base.Start();
 
-        // if (!back)
-        //     Debug.LogError("TutorialA: Did not find Back Game Object");
-        
-        // Setting back alpha
-        // var mat = back.GetComponent<Renderer>().material;
-        // var col = mat.color;
-        // col.a = backAlpha;
-        // mat.color = col;
-
         // Finding slide scripts, to interact directly with
         slideScripts = new TutorialBSlide[activeSlides.Count];
         for (int i = 0; i < slideScripts.Length; i++) {
@@ -41,6 +33,7 @@ public class TutorialB : ITutorial
     }
 
     protected override void DistributeTextToSlide(string text, GameObject slide) {
+        Debug.Log("Distribute text to slide: "+text);
         slide.GetComponent<TutorialBSlide>().SetText(text);
     }
 
@@ -53,11 +46,11 @@ public class TutorialB : ITutorial
         if (IsTransitioning()) {
             // Outro for previous slide or transition-slide
             if (outro || middleOutro || winningOutro) {
-                if (transitionAlpha > 0)
-                    transitionAlpha -= Time.deltaTime * transitionFadeSpeed;
+                if (transitionProgress > 0)
+                    transitionProgress -= Time.deltaTime * transitionFadeSpeed;
 
-                if (transitionAlpha <= 0) {
-                    transitionAlpha = 0;
+                if (transitionProgress <= 0) {
+                    transitionProgress = 0;
 
                     // Trigger intro for transition-slide
                     if (outro) {
@@ -89,14 +82,15 @@ public class TutorialB : ITutorial
                 }
 
                 // fadeScript.SetAlpha(transitionAlpha);
+                fadeScript.SetTransitionPosition(1-transitionProgress);
             }
             // Intro for transition-slide or next slide
             else if (intro || middleIntro || winningIntro) {
-                if (transitionAlpha < 1)
-                    transitionAlpha += Time.deltaTime * transitionFadeSpeed;
+                if (transitionProgress < 1)
+                    transitionProgress += Time.deltaTime * transitionFadeSpeed;
 
-                if (transitionAlpha >= 1) {
-                    transitionAlpha = 1;
+                if (transitionProgress >= 1) {
+                    transitionProgress = 1;
 
                     // Transition is all done!
                     if (intro) {
@@ -119,6 +113,7 @@ public class TutorialB : ITutorial
                 
                 // Update alpha for whatever slide is active
                 // fadeScript.SetAlpha(transitionAlpha);
+                fadeScript.SetTransitionPosition(1-transitionProgress);
             }
         }
     }
@@ -126,7 +121,7 @@ public class TutorialB : ITutorial
     public override void TriggerNextSlide(int nextState) {
         base.TriggerNextSlide(nextState);
 
-        transitionAlpha = 1;
+        transitionProgress = 1;
         outro = true;
         intro = false;
         middleIntro = false;

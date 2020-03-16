@@ -356,6 +356,11 @@ MonoBehaviour:
   - {fileID: 5112912660457197588}
   textScript: {fileID: 5112912660463772718}
   lineSpacing: 18
+  dynamicPosition: 1
+  startingPosition: {x: 0, y: 0, z: 0}
+  startingRotation: {x: 0, y: 0, z: 0}
+  transitionDepth: 0.025
+  transitionRotation: 3
 --- !u!1 &4329011130164620693
 GameObject:
   m_ObjectHideFlags: 0

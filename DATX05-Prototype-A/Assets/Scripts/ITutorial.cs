@@ -135,7 +135,7 @@ public abstract class ITutorial : MonoBehaviour
     protected abstract void DistributeTextToSlide(string text, GameObject slide);
 
     protected string[] GetTextsFromFile(TextAsset textFile) {
-        Debug.Log("Text from file: "+textFile.text+", contains n? "+textFile.text.Contains("\n"));
+        // Debug.Log("Text from file: "+textFile.text+", contains n? "+textFile.text.Contains("\n"));
         return textFile.text.Split(';');
     }
 
