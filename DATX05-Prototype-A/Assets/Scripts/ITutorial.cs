@@ -111,6 +111,7 @@ public abstract class ITutorial : MonoBehaviour
         if (useOnBoarding)
             list.AddRange(onBoardingSlides);
         list.AddRange(GetSlides(tutorialForPuzzle));
+        Debug.Log("Compiled list of slides size: "+list.Count);
         return list;
     }
 
@@ -193,4 +194,18 @@ public abstract class ITutorial : MonoBehaviour
             TriggerNextSlide(currentState + 1);
         }
     }
+
+    // --- > PUZZLE 2 tutorial events
+    public void OnRotateRubiks() {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 0) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnResetRubiks() {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
 }

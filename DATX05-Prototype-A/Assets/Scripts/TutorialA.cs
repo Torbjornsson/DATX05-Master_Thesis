@@ -85,7 +85,7 @@ public class TutorialA : ITutorial
                         fadeScript.gameObject.SetActive(false);
                         fadeScript = winningSlideScript;
                         fadeScript.gameObject.SetActive(true);
-                        // Debug.Log("Middle Outro done, starting intro");
+                        // Debug.Log("Winning Outro done, starting Winning Intro");
                     }
                 }
 
@@ -114,6 +114,7 @@ public class TutorialA : ITutorial
                     } else if (winningIntro) {
                         winningIntro = false;
                         atWinState = true;
+                        // Debug.Log("Winning Intro done, THE END");
                     }
                 }
                 
@@ -142,5 +143,6 @@ public class TutorialA : ITutorial
         base.TriggerWinSlide();
         winningOutro = true;
         winningIntro = false;
+        fadeScript = slideScripts[currentState];
     }
 }

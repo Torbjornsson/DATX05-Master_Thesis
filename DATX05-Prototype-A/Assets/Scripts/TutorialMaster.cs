@@ -27,6 +27,8 @@ public class TutorialMaster : MonoBehaviour
     private bool objectResetted;
     private bool tileAttached;
     private bool tileDetached;
+    private bool rotatedRubiks;
+    private bool resetRubiks;
 
 
     // Start is called before the first frame update
@@ -80,6 +82,14 @@ public class TutorialMaster : MonoBehaviour
         // Detaching tile from cube
         if (tileDetached) tutorial.OnTileDetach();
         tileDetached = false;
+
+        // Rotating rubiks
+        if (rotatedRubiks) tutorial.OnRotateRubiks();
+        rotatedRubiks = false;
+
+        // Rotating rubiks
+        if (resetRubiks) tutorial.OnResetRubiks();
+        resetRubiks = false;
     }
 
     public void TriggerNextSlide() {
@@ -115,5 +125,13 @@ public class TutorialMaster : MonoBehaviour
 
     public void TileDetached() {
         tileDetached = true;
+    }
+
+    public void RotatedRubiks() {
+        rotatedRubiks = true;
+    }
+
+    public void ResetRubiks() {
+        resetRubiks = true;
     }
 }

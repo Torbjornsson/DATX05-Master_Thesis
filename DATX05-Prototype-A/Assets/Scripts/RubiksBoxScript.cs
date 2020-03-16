@@ -57,15 +57,15 @@ public class RubiksBoxScript : MonoBehaviour
 
         var results = new Collider[10];
         var center = transform.position;
-        var halfExtents = myCollider.bounds.size / 2;
+        var halfExtents = myCollider.bounds.size / 4; // Delar på 4 istället för 2 för att kompensera att rubiks-kuben är skala 0.7
         int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation, LayerMask.GetMask("RubiksFace"));
 
         if (hits > 0)
         {
             symbol = RotateRubiks.GetSymbol(results[0].tag);
+            // if (hits > 1)
+            //     Debug.Log("Many hits! Second: "+RotateRubiks.GetSymbol(results[1].tag)+", collider size: "+myCollider.bounds.size);
         }
-            
-        //Debug.Log(symbol.ToString());
         return symbol;
     }
 }
