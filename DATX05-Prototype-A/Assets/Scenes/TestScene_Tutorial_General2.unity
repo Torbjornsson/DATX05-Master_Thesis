@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -179,11 +179,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle3Cube
       objectReference: {fileID: 0}
-    - target: {fileID: 1383067763410435433, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3675564720601357353, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -194,11 +189,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5794371368495969069, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 63e9148bba341814db33079452666729, type: 3}
     - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: indicatorLights
@@ -206,74 +196,29 @@ PrefabInstance:
       objectReference: {fileID: 2006897662}
     - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
-      propertyPath: canFailAfterOpeninghatch
+      propertyPath: scanningCountPerFace.Array.data[0]
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: scanningCountPerFace.Array.data[1]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: scanningOrder.Array.data[2]
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: scanningCountPerFace.Array.data[2]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: scanningOrder.Array.data[3]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: scanningCountPerFace.Array.data[3]
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: scanningOrder.Array.data[4]
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: scanningOrder.Array.data[5]
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: scanningCountPerFace.Array.data[5]
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8761819648376619450, guid: 3ce355dbf52a18f4aab258c830648da4,
+    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.1
+      propertyPath: scanningCountPerFace.Array.data[4]
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8761819648376619450, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8761819648376619450, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8761819648378520408, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100004, guid: 3a51d657d6fa7656cad2449a78ebb3d6, type: 3}
-    - target: {fileID: 8761819648379486616, guid: 3ce355dbf52a18f4aab258c830648da4,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 63e9148bba341814db33079452666729, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
 --- !u!114 &47070589 stripped

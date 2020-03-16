@@ -215,4 +215,15 @@ public abstract class ITutorial : MonoBehaviour
         }
     }
 
+    public void OnScanningLightOn() {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
+    public void OnScanningLightOff() {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 2) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
 }

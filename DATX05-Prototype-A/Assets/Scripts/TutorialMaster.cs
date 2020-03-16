@@ -30,6 +30,8 @@ public class TutorialMaster : MonoBehaviour
     private bool rotatedRubiks;
     private bool resetRubiks;
     private bool cubeScanned;
+    private bool scanningLightOn;
+    private bool scanningLightOff;
 
 
     // Start is called before the first frame update
@@ -95,6 +97,14 @@ public class TutorialMaster : MonoBehaviour
         // Scanning cube
         if (cubeScanned) tutorial.OnCubeScanned();
         cubeScanned = false;
+
+        // Scanning light turns on
+        if (scanningLightOn) tutorial.OnScanningLightOn();
+        scanningLightOn = false;
+
+        // Scanning light turns on
+        if (scanningLightOff) tutorial.OnScanningLightOff();
+        scanningLightOff = false;
     }
 
     public void TriggerNextSlide() {
@@ -142,5 +152,13 @@ public class TutorialMaster : MonoBehaviour
 
     public void ScanningCube() {
         cubeScanned = true;
+    }
+
+    public void ScanningLightOn() {
+        scanningLightOn = true;
+    }
+
+    public void ScanningLightOff() {
+        scanningLightOff = true;
     }
 }
