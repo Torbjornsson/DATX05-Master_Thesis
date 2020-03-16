@@ -9946,6 +9946,11 @@ PrefabInstance:
       propertyPath: tutorialForPuzzle
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8993842095402440113, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3cd957a52fc869559ab73576b28309db, type: 2}
     - target: {fileID: 9026757284363692151, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_Enabled

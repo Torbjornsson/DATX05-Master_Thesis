@@ -46,6 +46,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ca7ebcbc031154b960cfc51279ace2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialForPuzzle: 1
+  useOnBoarding: 0
+  onBoardingSlides: []
+  puzzle1Slides: []
+  puzzle2Slides: []
+  puzzle3Slides: []
+  transitionSlide: {fileID: 0}
+  winningSlide: {fileID: 0}
+  onBoardingTexts: {fileID: 0}
+  puzzle1Texts: {fileID: 0}
+  puzzle2Texts: {fileID: 0}
+  puzzle3Texts: {fileID: 0}
+  speed: 10
 --- !u!1 &8993842095402440127
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +117,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 3cd957a52fc869559ab73576b28309db, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -319,7 +332,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100006, guid: 1d6c00a27b1fbc21b972338a07c9199c, type: 3}
+      objectReference: {fileID: 2100000, guid: 7e37b020ea99fcf4b9b0addbb5e52094, type: 2}
     m_RemovedComponents:
     - {fileID: 424877038853444128, guid: 74ea6f20bedb802438589861810ce921, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 74ea6f20bedb802438589861810ce921, type: 3}
