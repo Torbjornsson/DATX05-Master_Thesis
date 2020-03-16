@@ -35,11 +35,15 @@ public class RotateRubiks : MonoBehaviour
     public float rotationAngleSnap = 10;
     
     public float speed = 10f;
+
     SmallCube[] smallCubes;
     GameObject frontFace, backFace, to;
     bool isRotationStarted = false;
     // Vector3 rotationStartingAngle;
     bool rotatedEnough = false;
+
+    Vector3[] smallCubeStartingPositions;
+    Quaternion[] smallCubeStartingRotations;
 
     private Dictionary<string, GameObject> hands;
 
@@ -76,6 +80,18 @@ public class RotateRubiks : MonoBehaviour
 
         if (checkSolutionEvent == null)
             checkSolutionEvent = new UnityEvent();
+        
+        SaveStartingState();
+    }
+
+    private void SaveStartingState() {
+        smallCubeStartingPositions = new Vector3[smallCubes.Length];
+        smallCubeStartingRotations = new Quaternion[smallCubes.Length];
+
+        for (int i = 0; i < smallCubes.Length; i++) {
+            smallCubeStartingPositions[i] = smallCubes[i].transform.localPosition;
+            smallCubeStartingRotations[i] = smallCubes[i].transform.localRotation;
+        }
     }
 
     private void FindAndSaveHand(string hand) {
@@ -325,5 +341,19 @@ public class RotateRubiks : MonoBehaviour
         // Debug.Log("Solution found? "+solutionFound);
 
         GameMaster.instance.goalCriteriaSatisfied = solutionFound;
+    }
+
+    public void ResetCube() {
+        // Debug.Log("Reset rubiks cube!");
+
+        for (int i = 0; i < smallCubes.Length; i++) {
+            smallCubes[i].transform.localPosition = smallCubeStartingPositions[i];
+            smallCubes[i].transform.localRotation = smallCubeStartingRotations[i];
+            smallCubes[i].UpdatePosition();
+        }
+        SetFace(frontFace);
+        SetFace(backFace);
+
+        GameMaster.instance.tutorialMaster.ResetRubiks();
     }
 }

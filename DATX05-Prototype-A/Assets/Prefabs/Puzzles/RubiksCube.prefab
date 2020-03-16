@@ -2932,6 +2932,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e595d210ec2432d6a861be33f2aea073, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

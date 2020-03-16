@@ -202,4 +202,10 @@ public abstract class ITutorial : MonoBehaviour
         }
     }
 
+    public void OnResetRubiks() {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 1) {
+            TriggerNextSlide(currentState + 1);
+        }
+    }
+
 }
