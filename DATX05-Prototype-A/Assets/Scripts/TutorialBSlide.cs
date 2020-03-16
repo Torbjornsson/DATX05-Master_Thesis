@@ -9,22 +9,34 @@ public class TutorialBSlide : MonoBehaviour
     public int lineSpacing = 30;
     public bool dynamicPosition = true;
 
-    public Vector3 startingPosition;
-    public Vector3 startingRotation;
     public float transitionDepth = 0.3f;
     public float transitionRotation = 5;
+    
+    private Vector3[] startingPosition;
+    private Vector3[] startingRotation;
 
     // Start is called before the first frame update
     void Start()
     {
-        startingPosition = transform.localPosition;
-        startingRotation = transform.localEulerAngles;
-
+        // Updating text position
         textScript.LineSpacing = lineSpacing;
-        
+        var textYpos = textScript.gameObject.transform.localPosition.y;
         if (dynamicPosition)
-            UpdateTextPosition();
+            textYpos = UpdateTextPosition();
+
+        // Saving start positions
+        startingPosition = new Vector3[slideContents.Length];
+        startingRotation = new Vector3[slideContents.Length];
+
+        for (int i = 0; i < slideContents.Length; i++) {
+            startingPosition[i] = slideContents[i].transform.localPosition;
+            if (textScript.gameObject.Equals(slideContents[i]))
+                startingPosition[i].y = textYpos;
+            Debug.Log("Starting y-pos: "+startingPosition[i].y);
+            startingRotation[i] = slideContents[i].transform.localEulerAngles;
+        }
         
+        // Deactivating
         gameObject.SetActive(false);
     }
 
@@ -40,21 +52,26 @@ public class TutorialBSlide : MonoBehaviour
         if (dynamicPosition) UpdateTextPosition();
     }
 
-    public void UpdateTextPosition() {
+    public float UpdateTextPosition() {
         var trans = textScript.gameObject.transform;
         var localPos = trans.localPosition;
-        localPos.y = textScript.height / 2 - (textScript.LineSpacing / 2) * textScript.transform.localScale.y;
+        var textYpos = textScript.height / 2 - (textScript.LineSpacing / 2) * textScript.transform.localScale.y;
+        localPos.y = textYpos;
         trans.localPosition = localPos;
+        return textYpos;
     }
 
     public void SetTransitionPosition(float progress) {
-        var pos = startingPosition;
-        pos.z += progress * transitionDepth;
-        transform.localPosition = pos;
+        for (int i = 0; i < slideContents.Length; i++) {
+            var pos = startingPosition[i];
+            pos.z += progress * transitionDepth;
+            slideContents[i].transform.localPosition = pos;
+            Debug.Log("Transition y-pos: "+pos.y);
 
-        var rot = startingRotation;
-        rot.x -= progress * transitionRotation;
-        rot.y += progress * transitionRotation * 0.1f;
-        transform.localEulerAngles = rot;
+            var rot = startingRotation[i];
+            rot.x -= progress * transitionRotation;
+            rot.y += progress * transitionRotation * 0.1f;
+            slideContents[i].transform.localEulerAngles = rot;
+        }
     }
 }

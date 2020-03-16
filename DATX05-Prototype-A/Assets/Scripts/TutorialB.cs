@@ -33,7 +33,7 @@ public class TutorialB : ITutorial
     }
 
     protected override void DistributeTextToSlide(string text, GameObject slide) {
-        Debug.Log("Distribute text to slide: "+text);
+        // Debug.Log("Distribute text to slide: "+text);
         slide.GetComponent<TutorialBSlide>().SetText(text);
     }
 
