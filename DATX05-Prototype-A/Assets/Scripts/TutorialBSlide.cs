@@ -14,6 +14,8 @@ public class TutorialBSlide : MonoBehaviour
     
     private Vector3[] startingPosition;
     private Vector3[] startingRotation;
+    private float[] transitionDepths;
+    private float[] transitionRotations;
 
     // Start is called before the first frame update
     void Start()
@@ -26,10 +28,26 @@ public class TutorialBSlide : MonoBehaviour
         // Saving start positions
         startingPosition = new Vector3[slideContents.Length];
         startingRotation = new Vector3[slideContents.Length];
+        transitionDepths = new float[slideContents.Length];
+        transitionRotations = new float[slideContents.Length];
 
         for (int i = 0; i < slideContents.Length; i++) {
             startingPosition[i] = slideContents[i].transform.localPosition;
             startingRotation[i] = slideContents[i].transform.localEulerAngles;
+            transitionDepths[i] = transitionDepth;
+            transitionRotations[i] = transitionRotation;
+            var col = slideContents[i].GetComponent<Collider>();
+            if (col)
+            {
+                // Debug.Log("Bounds size: "+col.bounds.size);
+                var newDepth = col.bounds.size.x;
+                if (newDepth > transitionDepth)
+                {
+                    transitionRotations[i] = (newDepth / transitionDepth) * transitionRotation;
+                    // Debug.Log("Bounds size was larger! new rotation: "+transitionRotations[i]);
+                    transitionDepths[i] = newDepth;
+                }
+            }
         }
         
         // Deactivating
@@ -60,12 +78,12 @@ public class TutorialBSlide : MonoBehaviour
     public void SetTransitionPosition(float progress) {
         for (int i = 0; i < slideContents.Length; i++) {
             var pos = startingPosition[i];
-            pos.z += progress * transitionDepth;
+            pos.z += progress * transitionDepths[i];
             slideContents[i].transform.localPosition = pos;
 
             var rot = startingRotation[i];
-            rot.x -= progress * transitionRotation;
-            rot.y += progress * transitionRotation * 0.1f;
+            rot.x -= progress * transitionRotations[i];
+            rot.y += progress * transitionRotations[i] * 0.1f;
             slideContents[i].transform.localEulerAngles = rot;
         }
     }
