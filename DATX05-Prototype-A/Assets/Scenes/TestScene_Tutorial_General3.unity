@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.1751553, g: 0.2191292, b: 0.30143312, a: 1}
+  m_IndirectSpecularColor: {r: 0.17515507, g: 0.21912867, b: 0.3014323, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -814,6 +814,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &748285530 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
+    type: 3}
+  m_PrefabInstance: {fileID: 202455662}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c31bf854a799e2e46b95265826cadd4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &847139168
 GameObject:
   m_ObjectHideFlags: 0
@@ -2164,7 +2176,7 @@ PrefabInstance:
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}
       propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}
@@ -2219,6 +2231,31 @@ PrefabInstance:
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}
       propertyPath: firstGrabEvent.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
+        type: 3}
+      propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
+        type: 3}
+      propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
+        type: 3}
+      propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 748285530}
+    - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
+        type: 3}
+      propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: TriggerNextSlide
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
+        type: 3}
+      propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -20,9 +20,8 @@ public class TutorialBSlide : MonoBehaviour
     {
         // Updating text position
         textScript.LineSpacing = lineSpacing;
-        var textYpos = textScript.gameObject.transform.localPosition.y;
         if (dynamicPosition)
-            textYpos = UpdateTextPosition();
+            UpdateTextPosition();
 
         // Saving start positions
         startingPosition = new Vector3[slideContents.Length];
@@ -30,9 +29,6 @@ public class TutorialBSlide : MonoBehaviour
 
         for (int i = 0; i < slideContents.Length; i++) {
             startingPosition[i] = slideContents[i].transform.localPosition;
-            if (textScript.gameObject.Equals(slideContents[i]))
-                startingPosition[i].y = textYpos;
-            Debug.Log("Starting y-pos: "+startingPosition[i].y);
             startingRotation[i] = slideContents[i].transform.localEulerAngles;
         }
         
@@ -66,7 +62,6 @@ public class TutorialBSlide : MonoBehaviour
             var pos = startingPosition[i];
             pos.z += progress * transitionDepth;
             slideContents[i].transform.localPosition = pos;
-            Debug.Log("Transition y-pos: "+pos.y);
 
             var rot = startingRotation[i];
             rot.x -= progress * transitionRotation;

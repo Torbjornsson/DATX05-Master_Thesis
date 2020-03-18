@@ -9,6 +9,8 @@ public class TutorialMaster : MonoBehaviour
         Right, Left, None
     }
 
+    public bool triggerNextSlide = false;
+    [Space]
     public TutorialStateEvent triggerSlideTransitionEvent;
     public TutorialStateEvent setTutorialState;
 
@@ -57,6 +59,10 @@ public class TutorialMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Trigger next tutorial slide manually
+        if (triggerNextSlide) TriggerNextSlide();
+        triggerNextSlide = false;
+        
         // First grab event
         if (!firstGrab) {
             if (leftHand.grabbedObject || rightHand.grabbedObject) {
@@ -102,7 +108,7 @@ public class TutorialMaster : MonoBehaviour
         if (scanningLightOn) tutorial.OnScanningLightOn();
         scanningLightOn = false;
 
-        // Scanning light turns on
+        // Scanning light turns off
         if (scanningLightOff) tutorial.OnScanningLightOff();
         scanningLightOff = false;
     }

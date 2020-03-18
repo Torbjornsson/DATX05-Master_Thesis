@@ -118,7 +118,10 @@ public class TutorialB : ITutorial
         }
     }
     
-    public override void TriggerNextSlide(int nextState) {
+    public override void TriggerNextSlide(int nextState)
+    {
+        if (!isActiveAndEnabled) return;
+        
         base.TriggerNextSlide(nextState);
 
         transitionProgress = 1;
