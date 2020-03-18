@@ -121,7 +121,6 @@ public class TutorialB : ITutorial
     public override void TriggerNextSlide(int nextState)
     {
         if (!isActiveAndEnabled) return;
-        
         base.TriggerNextSlide(nextState);
 
         transitionProgress = 1;
@@ -137,7 +136,9 @@ public class TutorialB : ITutorial
     }
 
     public override void TriggerWinSlide() {
+        if (!isActiveAndEnabled) return;
         base.TriggerWinSlide();
+        
         winningOutro = true;
         winningIntro = false;
         fadeScript = slideScripts[currentState];

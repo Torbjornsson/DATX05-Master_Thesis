@@ -10,6 +10,7 @@ public class TutorialMaster : MonoBehaviour
     }
 
     public bool triggerNextSlide = false;
+    public bool triggerWinSlide = false;
     [Space]
     public TutorialStateEvent triggerSlideTransitionEvent;
     public TutorialStateEvent setTutorialState;
@@ -62,6 +63,10 @@ public class TutorialMaster : MonoBehaviour
         // Trigger next tutorial slide manually
         if (triggerNextSlide) TriggerNextSlide();
         triggerNextSlide = false;
+        
+        // Trigger win-slide manually
+        if (triggerWinSlide) tutorial.TriggerWinSlide();
+        triggerWinSlide = false;
         
         // First grab event
         if (!firstGrab) {
