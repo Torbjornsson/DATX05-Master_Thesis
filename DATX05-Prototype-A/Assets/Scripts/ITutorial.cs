@@ -75,7 +75,7 @@ public abstract class ITutorial : MonoBehaviour
 
         // Letting tutorial master know how many total slides there are
         master = GameMaster.instance.tutorialMaster;
-        master.SetMaxStates(activeSlides.Count - 1);
+        // master.SetMaxStates(activeSlides.Count - 1);
 
         // Distribute text files into the active slides
         DistributeTexts();
@@ -126,6 +126,7 @@ public abstract class ITutorial : MonoBehaviour
         for(int i = 0; i < slides.Length; i++) {
             if (textsSeparated.Length > i) {
                 var text = textsSeparated[i].Trim(' ', '\n', '\r');
+                text = text.Replace("\\n", "\n");
                 DistributeTextToSlide(text, slides[i]);
             }
         }
@@ -134,6 +135,7 @@ public abstract class ITutorial : MonoBehaviour
     protected abstract void DistributeTextToSlide(string text, GameObject slide);
 
     protected string[] GetTextsFromFile(TextAsset textFile) {
+        // Debug.Log("Text from file: "+textFile.text+", contains n? "+textFile.text.Contains("\n"));
         return textFile.text.Split(';');
     }
 

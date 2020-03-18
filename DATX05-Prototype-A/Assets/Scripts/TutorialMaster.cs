@@ -9,6 +9,9 @@ public class TutorialMaster : MonoBehaviour
         Right, Left, None
     }
 
+    public bool triggerNextSlide = false;
+    public bool triggerWinSlide = false;
+    [Space]
     public TutorialStateEvent triggerSlideTransitionEvent;
     public TutorialStateEvent setTutorialState;
 
@@ -20,7 +23,7 @@ public class TutorialMaster : MonoBehaviour
     private ITutorial tutorial;
     private OVRGrabber leftHand, rightHand;
 
-    private int maxStates = 0;
+    // private int maxStates = 0;
 
     private bool firstGrab = false;
     private Hand handGrabbing = Hand.None;
@@ -57,6 +60,14 @@ public class TutorialMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Trigger next tutorial slide manually
+        if (triggerNextSlide) TriggerNextSlide();
+        triggerNextSlide = false;
+        
+        // Trigger win-slide manually
+        if (triggerWinSlide) tutorial.TriggerWinSlide();
+        triggerWinSlide = false;
+        
         // First grab event
         if (!firstGrab) {
             if (leftHand.grabbedObject || rightHand.grabbedObject) {
@@ -102,7 +113,7 @@ public class TutorialMaster : MonoBehaviour
         if (scanningLightOn) tutorial.OnScanningLightOn();
         scanningLightOn = false;
 
-        // Scanning light turns on
+        // Scanning light turns off
         if (scanningLightOff) tutorial.OnScanningLightOff();
         scanningLightOff = false;
     }
@@ -124,11 +135,11 @@ public class TutorialMaster : MonoBehaviour
         setTutorialState.Invoke(state);
     }
 
-    public void SetMaxStates(int max) {
-        if (max <= 0)
-            Debug.LogError("TutorialMaster.SetMaxStats(): Max States needs to be at least 1!");
-        maxStates = max;
-    }
+    // public void SetMaxStates(int max) {
+    //     if (max <= 0)
+    //         Debug.LogError("TutorialMaster.SetMaxStats(): Max States needs to be at least 1!");
+    //     maxStates = max;
+    // }
 
     public void ObjectResetted() {
         objectResetted = true;
