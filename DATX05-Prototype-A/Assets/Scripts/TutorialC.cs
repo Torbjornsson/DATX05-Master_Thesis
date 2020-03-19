@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class TutorialC : ITutorial
 {
-    private GameObject to;
+    public GameObject transitionSlidePrefab;
+    private GameObject to, anchor, anchorSlides;
     public float speed = 10f;
-    private bool isRotating = false;
+    private bool isRotating, isTransitioning = false;
+    private bool isStarted = true;
     private Queue slides = new Queue();
     int i = 0;
     // Start is called before the first frame update
@@ -17,21 +19,22 @@ public class TutorialC : ITutorial
         to.transform.position = transform.position;
         to.transform.rotation = transform.rotation;
 
-        SpawnSlide(base.GetSlides(tutorialForPuzzle)[0]);
-        toRotation();
+        anchor = GameObject.Find("TransitionSlideAnchor");
+        anchorSlides = GameObject.Find("Slides");
+
     }
 
     // Update is called once per frame
     public override void Update()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Any) && !isRotating)
+        //To spawn the initial slides after all the objects have been loaded
+        if (activeSlides.Count > 0 && !isRotating && isStarted)
         {
-            // if (i < 3)
-            // {
-            //     TriggerNextSlide(i);
-            //     i++;
-            // }
+            isStarted = false;
+            SpawnSlide(activeSlides[0]);
+            ToRotation(90f);
         }
+
         if (isRotating)
         {
             RotateCube();
@@ -41,19 +44,22 @@ public class TutorialC : ITutorial
     public override void TriggerNextSlide(int nextState)
     {
         base.TriggerNextSlide(nextState);
-        SpawnSlide(base.GetSlides(tutorialForPuzzle)[nextState]);
-        toRotation();
+
+        SpawnSlide(base.activeSlides[nextState]);
+        ToRotation(90f);
     }
 
     protected override void DistributeTextToSlide(string text, GameObject slide)
     {
-
+        slide.GetComponent<TutorialBSlide>().SetText(text);
     }
 
     public override void TriggerWinSlide()
     {
         base.TriggerWinSlide();
-        
+        SpawnSlide(winningSlide);
+        atWinState = true;
+        ToRotation(90f);
     }
 
     void RotateCube()
@@ -63,6 +69,27 @@ public class TutorialC : ITutorial
             isRotating = false;
             transform.localRotation = to.transform.localRotation;
             DespawnSlide();
+            if (isTransitioning)
+            {
+                isTransitioning = false;
+                ArrivedAtSlide(nextState);
+                Debug.Log(IsTransitioning());
+            }
+            else
+            {
+                isTransitioning = true;
+                if (currentState < GetSlides(tutorialForPuzzle).Length - 2)
+                    SpawnTransitionSlide();
+                else if (currentState == GetSlides(tutorialForPuzzle).Length - 2)
+                {
+                    //atWinState = true;
+                    winningSlide.GetComponent<TutorialBSlide>().enabled = false;
+                    winningSlide.transform.position = anchor.transform.position;
+                    winningSlide.transform.rotation = anchor.transform.rotation;
+                    SpawnSlide(winningSlide);
+                    ToRotation(90f);
+                }
+            }
         }
         else
         {
@@ -70,17 +97,25 @@ public class TutorialC : ITutorial
         }
     }
 
-    void toRotation()
+    void SpawnTransitionSlide()
+    {
+        GameObject tSlide = Instantiate(transitionSlidePrefab, anchor.transform.position, anchor.transform.rotation);
+        tSlide.GetComponent<TutorialBSlide>().enabled = false;
+        SpawnSlide(tSlide);
+        ToRotation(90f);
+    }
+    void ToRotation(float angle)
     {
         to.transform.localRotation = transform.localRotation;
-        to.transform.Rotate(new Vector3(0,90,0), Space.Self);
+        to.transform.Rotate(new Vector3(0, angle, 0), Space.Self);
         isRotating = true;
     }
 
     void SpawnSlide(GameObject slide)
     {
+        Debug.Log("Spawning slide: " + slide.name);
         slides.Enqueue(slide);
-        slide.active = true;
+        slide.SetActive(true);
         slide.transform.parent = transform;
     }
 
@@ -89,9 +124,9 @@ public class TutorialC : ITutorial
         if (slides.Count > 3)
         {
             GameObject slide = (GameObject)slides.Dequeue();
-            slide.active = false;
-            slide.transform.parent = GameObject.Find("Slides").transform;
+            Debug.Log("Despawning slide: " + slide.name);
+            slide.SetActive(false);
+            slide.transform.parent = anchorSlides.transform;
         }
-            
     }
 }
