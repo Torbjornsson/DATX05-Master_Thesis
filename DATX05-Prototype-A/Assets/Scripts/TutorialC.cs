@@ -5,7 +5,7 @@ using UnityEngine;
 public class TutorialC : ITutorial
 {
     public GameObject transitionSlidePrefab;
-    private GameObject to, anchor, anchorSlides;
+    private GameObject to, anchor, anchorSlides, rotatingCube;
     public float rotationSpeed = 10f;
     public float waitTimer = 0f;
     private bool isRotating, isTransitioning = false;
@@ -19,6 +19,7 @@ public class TutorialC : ITutorial
         to.transform.position = transform.position;
         to.transform.rotation = transform.rotation;
 
+        rotatingCube = GameObject.Find("TutorialC_Cube");
         anchor = GameObject.Find("TransitionSlideAnchor");
         anchorSlides = GameObject.Find("Slides");
     }
@@ -67,10 +68,10 @@ public class TutorialC : ITutorial
 
     void RotateCube()
     {
-        if (Quaternion.Angle(transform.localRotation, to.transform.localRotation) <= 0.01f)
+        if (Quaternion.Angle(rotatingCube.transform.localRotation, to.transform.localRotation) <= 0.01f)
         {
             isRotating = false;
-            transform.localRotation = to.transform.localRotation;
+            rotatingCube.transform.localRotation = to.transform.localRotation;
             DespawnSlide();
             if (isTransitioning)
             {
@@ -85,7 +86,7 @@ public class TutorialC : ITutorial
         }
         else
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, to.transform.localRotation, Time.deltaTime * rotationSpeed);
+            rotatingCube.transform.localRotation = Quaternion.Lerp(rotatingCube.transform.localRotation, to.transform.localRotation, Time.deltaTime * rotationSpeed);
         }
     }
 
@@ -112,7 +113,7 @@ public class TutorialC : ITutorial
 
     void ToRotation(float angle)
     {
-        to.transform.localRotation = transform.localRotation;
+        to.transform.localRotation = rotatingCube.transform.localRotation;
         to.transform.Rotate(new Vector3(0, angle, 0), Space.Self);
         isRotating = true;
     }
@@ -122,7 +123,7 @@ public class TutorialC : ITutorial
         Debug.Log("Spawning slide: " + slide.name);
         slides.Enqueue(slide);
         slide.SetActive(true);
-        slide.transform.parent = transform;
+        slide.transform.parent = rotatingCube.transform;
         if (slide.name.Contains("Puzzle") || slide.name.Contains("Onboarding"))
         {
             slide.transform.GetChild(0).Rotate(new Vector3(0, -7, 0), Space.Self);

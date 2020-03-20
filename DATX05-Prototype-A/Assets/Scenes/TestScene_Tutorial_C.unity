@@ -746,18 +746,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 211592486}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &370168706 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4670590103602298028, guid: 822789b751c97274097e5f4d7b1b18e4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1036507108}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9ca7ebcbc031154b960cfc51279ace2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &569613106
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,20 +1002,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 687579723552421138, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_Name
       value: TutorialC
-      objectReference: {fileID: 0}
-    - target: {fileID: 3299906792631074104, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4022833352348329975, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -1082,16 +1060,6 @@ PrefabInstance:
     - target: {fileID: 4022833352348329975, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4670590103602298028, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: tutorialForPuzzle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4670590103602298028, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: useOnBoarding
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -2388,7 +2356,7 @@ PrefabInstance:
         type: 3}
       propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Target
       value: 
-      objectReference: {fileID: 370168706}
+      objectReference: {fileID: 0}
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}
       propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
