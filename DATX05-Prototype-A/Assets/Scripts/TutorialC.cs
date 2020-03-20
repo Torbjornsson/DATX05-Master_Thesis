@@ -6,11 +6,10 @@ public class TutorialC : ITutorial
 {
     public GameObject transitionSlidePrefab;
     private GameObject to, anchor, anchorSlides;
-    public float speed = 10f;
+    public float rotationSpeed = 10f;
     private bool isRotating, isTransitioning = false;
     private bool isStarted = true;
     private Queue slides = new Queue();
-    int i = 0;
     // Start is called before the first frame update
     public override void Start()
     {
@@ -21,12 +20,13 @@ public class TutorialC : ITutorial
 
         anchor = GameObject.Find("TransitionSlideAnchor");
         anchorSlides = GameObject.Find("Slides");
-
     }
 
     // Update is called once per frame
     public override void Update()
     {
+        //To check for the wincondition
+        base.Update();
         //To spawn the initial slides after all the objects have been loaded
         if (activeSlides.Count > 0 && !isRotating && isStarted)
         {
@@ -46,7 +46,6 @@ public class TutorialC : ITutorial
         base.TriggerNextSlide(nextState);
 
         SpawnSlide(base.activeSlides[nextState]);
-        ToRotation(90f);
     }
 
     protected override void DistributeTextToSlide(string text, GameObject slide)
@@ -57,8 +56,6 @@ public class TutorialC : ITutorial
     public override void TriggerWinSlide()
     {
         base.TriggerWinSlide();
-        SpawnSlide(winningSlide);
-        atWinState = true;
         ToRotation(90f);
     }
 
@@ -73,22 +70,11 @@ public class TutorialC : ITutorial
             {
                 isTransitioning = false;
                 ArrivedAtSlide(nextState);
-                Debug.Log(IsTransitioning());
             }
             else
             {
                 isTransitioning = true;
-                if (currentState < GetSlides(tutorialForPuzzle).Length - 2)
-                    SpawnTransitionSlide();
-                else if (currentState == GetSlides(tutorialForPuzzle).Length - 2)
-                {
-                    //atWinState = true;
-                    winningSlide.GetComponent<TutorialBSlide>().enabled = false;
-                    winningSlide.transform.position = anchor.transform.position;
-                    winningSlide.transform.rotation = anchor.transform.rotation;
-                    SpawnSlide(winningSlide);
-                    ToRotation(90f);
-                }
+                Transitioning();
             }
         }
         else
@@ -97,13 +83,26 @@ public class TutorialC : ITutorial
         }
     }
 
+    void Transitioning()
+    {
+        if (currentState < GetSlides(tutorialForPuzzle).Length - 2)
+            SpawnTransitionSlide();
+        else if (currentState == GetSlides(tutorialForPuzzle).Length - 2)
+        {
+            winningSlide.GetComponent<TutorialBSlide>().enabled = false;
+            winningSlide.transform.position = anchor.transform.position;
+            winningSlide.transform.rotation = anchor.transform.rotation;
+            SpawnSlide(winningSlide);
+        }
+    }
+
     void SpawnTransitionSlide()
     {
         GameObject tSlide = Instantiate(transitionSlidePrefab, anchor.transform.position, anchor.transform.rotation);
         tSlide.GetComponent<TutorialBSlide>().enabled = false;
         SpawnSlide(tSlide);
-        ToRotation(90f);
     }
+
     void ToRotation(float angle)
     {
         to.transform.localRotation = transform.localRotation;
@@ -117,6 +116,7 @@ public class TutorialC : ITutorial
         slides.Enqueue(slide);
         slide.SetActive(true);
         slide.transform.parent = transform;
+        ToRotation(90f);
     }
 
     void DespawnSlide()

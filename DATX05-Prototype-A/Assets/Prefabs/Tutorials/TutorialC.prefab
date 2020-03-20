@@ -8903,6 +8903,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinningSlide
       objectReference: {fileID: 0}
+    - target: {fileID: 1319313849857945020, guid: 880d0a0c9c71f2b48b8d68c7b9a856b1,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 880d0a0c9c71f2b48b8d68c7b9a856b1, type: 3}
 --- !u!4 &2272087395481339363 stripped
