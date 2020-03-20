@@ -7,6 +7,7 @@ public class TutorialC : ITutorial
     public GameObject transitionSlidePrefab;
     private GameObject to, anchor, anchorSlides;
     public float rotationSpeed = 10f;
+    public float waitTimer = 0f;
     private bool isRotating, isTransitioning = false;
     private bool isStarted = true;
     private Queue slides = new Queue();
@@ -35,9 +36,14 @@ public class TutorialC : ITutorial
             ToRotation(90f);
         }
 
-        if (isRotating)
+        if (isRotating && waitTimer <= 0)
         {
             RotateCube();
+        }
+
+        if (waitTimer > 0f)
+        {
+            waitTimer -= Time.deltaTime;
         }
     }
 
@@ -85,9 +91,10 @@ public class TutorialC : ITutorial
 
     void Transitioning()
     {
-        if (currentState < GetSlides(tutorialForPuzzle).Length - 2)
+        waitTimer = 1f;
+        if (currentState < activeSlides.Count - 2)
             SpawnTransitionSlide();
-        else if (currentState == GetSlides(tutorialForPuzzle).Length - 2)
+        else if (currentState == activeSlides.Count - 2)
         {
             winningSlide.GetComponent<TutorialBSlide>().enabled = false;
             winningSlide.transform.position = anchor.transform.position;
@@ -117,7 +124,10 @@ public class TutorialC : ITutorial
         slide.SetActive(true);
         slide.transform.parent = transform;
         if (slide.name.Contains("Puzzle") || slide.name.Contains("Onboarding"))
+        {
             slide.transform.GetChild(0).Rotate(new Vector3(0, -7, 0), Space.Self);
+
+        }
         ToRotation(90f);
     }
 
