@@ -26,11 +26,8 @@ Try scanning any side of
 the cube, until all the
 lights are off again!;
 
-The goal of this puzzle
-is to turn on all of the
-lights! In order to do so,
-you must scan each of the
-cube's sides the right
+You need to scan each of 
+the cube's sides the right
 times, in the right order.
 
 Use this legend to figure

@@ -124,7 +124,9 @@ public class TutorialA : ITutorial
         }
     }
     
-    public override void TriggerNextSlide(int nextState) {
+    public override void TriggerNextSlide(int nextState)
+    {
+        if (!isActiveAndEnabled) return;
         base.TriggerNextSlide(nextState);
 
         transitionAlpha = 1;
@@ -140,7 +142,9 @@ public class TutorialA : ITutorial
     }
 
     public override void TriggerWinSlide() {
+        if (!isActiveAndEnabled) return;
         base.TriggerWinSlide();
+        
         winningOutro = true;
         winningIntro = false;
         fadeScript = slideScripts[currentState];

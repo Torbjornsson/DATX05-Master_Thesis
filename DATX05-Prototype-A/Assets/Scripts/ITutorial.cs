@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class ITutorial : MonoBehaviour
 {
     [Header("ITutorial Parameters")]
-    [Range(1,3)] public int tutorialForPuzzle = 1;
+    [Range(1, 3)] public int tutorialForPuzzle = 1;
     public bool useOnBoarding = false;
     [Space]
     public GameObject[] onBoardingSlides;
@@ -41,25 +41,29 @@ public abstract class ITutorial : MonoBehaviour
             Debug.LogError("ITutorial: Tutorial does not have a single Puzzle 2 slide!");
         if (puzzle3Slides.Length <= 0)
             Debug.LogError("ITutorial: Tutorial does not have a single Puzzle 3 slide!");
-        
+
         // Checking each item in every slide array
-        foreach (GameObject go in onBoardingSlides) {
+        foreach (GameObject go in onBoardingSlides)
+        {
             if (!go)
                 Debug.LogError("ITutorial: One of the given On-Boarding slide Game Objects does not exist!");
         }
-        foreach (GameObject go in puzzle1Slides) {
+        foreach (GameObject go in puzzle1Slides)
+        {
             if (!go)
                 Debug.LogError("ITutorial: One of the given Puzzle 1 slide Game Objects does not exist!");
         }
-        foreach (GameObject go in puzzle2Slides) {
+        foreach (GameObject go in puzzle2Slides)
+        {
             if (!go)
                 Debug.LogError("ITutorial: One of the given Puzzle 2 slide Game Objects does not exist!");
         }
-        foreach (GameObject go in puzzle3Slides) {
+        foreach (GameObject go in puzzle3Slides)
+        {
             if (!go)
                 Debug.LogError("ITutorial: One of the given Puzzle 3 slide Game Objects does not exist!");
         }
-        
+
         // Checking for tutorial texts
         if (!onBoardingTexts)
             Debug.LogError("ITutorial: On-Boarding tutorial texts not found!");
@@ -75,7 +79,7 @@ public abstract class ITutorial : MonoBehaviour
 
         // Letting tutorial master know how many total slides there are
         master = GameMaster.instance.tutorialMaster;
-        master.SetMaxStates(activeSlides.Count - 1);
+        // master.SetMaxStates(activeSlides.Count - 1);
 
         // Distribute text files into the active slides
         DistributeTexts();
@@ -87,45 +91,55 @@ public abstract class ITutorial : MonoBehaviour
     public virtual void Update()
     {
         // Checking for winning
-        if (GameMaster.instance.hasWon && !IsTransitioning() && !atWinState) {
+        if (GameMaster.instance.hasWon && !IsTransitioning() && !atWinState)
+        {
             TriggerWinSlide();
         }
     }
 
-    public virtual void TriggerNextSlide(int nextState) {
+    public virtual void TriggerNextSlide(int nextState)
+    {
         this.nextState = nextState;
     }
 
-    public virtual void TriggerWinSlide() {
+    public virtual void TriggerWinSlide()
+    {
         nextState++;
     }
 
-    public void ArrivedAtSlide(int state) {
+    public void ArrivedAtSlide(int state)
+    {
         currentState = state;
         master.ArrivedAtSlide(state);
     }
 
     // Compiling the active slides for this specific tutorial
-    protected List<GameObject> CompileTutorialSlides() {
+    protected List<GameObject> CompileTutorialSlides()
+    {
         var list = new List<GameObject>();
         if (useOnBoarding)
             list.AddRange(onBoardingSlides);
         list.AddRange(GetSlides(tutorialForPuzzle));
-        Debug.Log("Compiled list of slides size: "+list.Count);
+        Debug.Log("Compiled list of slides size: " + list.Count);
         return list;
     }
 
-    protected void DistributeTexts() {
+    protected void DistributeTexts()
+    {
         if (useOnBoarding)
             DistributeTexts(onBoardingTexts, onBoardingSlides);
         DistributeTexts(GetTexts(tutorialForPuzzle), GetSlides(tutorialForPuzzle));
     }
-    
-    protected void DistributeTexts(TextAsset texts, GameObject[] slides) {
+
+    protected void DistributeTexts(TextAsset texts, GameObject[] slides)
+    {
         var textsSeparated = GetTextsFromFile(texts);
-        for(int i = 0; i < slides.Length; i++) {
-            if (textsSeparated.Length > i) {
+        for (int i = 0; i < slides.Length; i++)
+        {
+            if (textsSeparated.Length > i)
+            {
                 var text = textsSeparated[i].Trim(' ', '\n', '\r');
+                text = text.Replace("\\n", "\n");
                 DistributeTextToSlide(text, slides[i]);
             }
         }
@@ -133,12 +147,16 @@ public abstract class ITutorial : MonoBehaviour
 
     protected abstract void DistributeTextToSlide(string text, GameObject slide);
 
-    protected string[] GetTextsFromFile(TextAsset textFile) {
+    protected string[] GetTextsFromFile(TextAsset textFile)
+    {
+        // Debug.Log("Text from file: "+textFile.text+", contains n? "+textFile.text.Contains("\n"));
         return textFile.text.Split(';');
     }
 
-    protected GameObject[] GetSlides(int puzzleNumber) {
-        switch(tutorialForPuzzle) {
+    protected GameObject[] GetSlides(int puzzleNumber)
+    {
+        switch (tutorialForPuzzle)
+        {
             case 1: return puzzle1Slides;
             case 2: return puzzle2Slides;
             case 3: return puzzle3Slides;
@@ -146,8 +164,10 @@ public abstract class ITutorial : MonoBehaviour
         throw new ArgumentException("ITutorial.GetSlides() : Puzzle number can only be 1, 2 or 3!");
     }
 
-    protected TextAsset GetTexts(int puzzleNumber) {
-        switch(tutorialForPuzzle) {
+    protected TextAsset GetTexts(int puzzleNumber)
+    {
+        switch (tutorialForPuzzle)
+        {
             case 1: return puzzle1Texts;
             case 2: return puzzle2Texts;
             case 3: return puzzle3Texts;
@@ -155,74 +175,96 @@ public abstract class ITutorial : MonoBehaviour
         throw new ArgumentException("ITutorial.GetSlides() : Puzzle number can only be 1, 2 or 3!");
     }
 
-    public bool IsTransitioning() {
+    public bool IsTransitioning()
+    {
         return currentState != nextState;
     }
 
     // --- > ON-BOARDING tutorial events
-    public void OnFirstGrab() {
-        if (useOnBoarding && !IsTransitioning() && currentState == 0) {
+    public void OnFirstGrab()
+    {
+        if (useOnBoarding && !IsTransitioning() && currentState == 0)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
-    public void OnSwitchHands() {
-        if (useOnBoarding && !IsTransitioning() && currentState == 1) {
+    public void OnSwitchHands()
+    {
+        if (useOnBoarding && !IsTransitioning() && currentState == 1)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
-    public void OnObjectReset() {
-        if (useOnBoarding && !IsTransitioning() && currentState == 2) {
+    public void OnObjectReset()
+    {
+        if (useOnBoarding && !IsTransitioning() && currentState == 2)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
-    protected int GetRelativeCurrentState() {
+    protected int GetRelativeCurrentState()
+    {
         return useOnBoarding ? currentState - onBoardingSlides.Length : currentState;
     }
 
     // --- > PUZZLE 1 tutorial events
-    public void OnTileAttach() {
-        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 0) {
+    public void OnTileAttach()
+    {
+        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 0)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
-    public void OnTileDetach() {
-        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 1) {
+    public void OnTileDetach()
+    {
+        if (!IsTransitioning() && tutorialForPuzzle == 1 && GetRelativeCurrentState() == 1)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
     // --- > PUZZLE 2 tutorial events
-    public void OnRotateRubiks() {
-        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 0) {
+    public void OnRotateRubiks()
+    {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 0)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
-    public void OnResetRubiks() {
-        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 1) {
+    public void OnResetRubiks()
+    {
+        if (!IsTransitioning() && tutorialForPuzzle == 2 && GetRelativeCurrentState() == 1)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
     // --- > PUZZLE 3 tutorial events
-    public void OnCubeScanned() {
-        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 0) {
+    public void OnCubeScanned()
+    {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 0)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
-    public void OnScanningLightOn() {
-        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 1) {
+    public void OnScanningLightOn()
+    {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 1)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
 
-    public void OnScanningLightOff() {
-        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 2) {
+    public void OnScanningLightOff()
+    {
+        if (!IsTransitioning() && tutorialForPuzzle == 3 && GetRelativeCurrentState() == 2)
+        {
             TriggerNextSlide(currentState + 1);
         }
     }
