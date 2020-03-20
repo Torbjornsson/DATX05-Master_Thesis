@@ -79,7 +79,7 @@ public class TutorialC : ITutorial
         }
         else
         {
-            transform.localRotation = Quaternion.Lerp(transform.localRotation, to.transform.localRotation, Time.deltaTime * speed);
+            transform.localRotation = Quaternion.Lerp(transform.localRotation, to.transform.localRotation, Time.deltaTime * rotationSpeed);
         }
     }
 
@@ -116,6 +116,8 @@ public class TutorialC : ITutorial
         slides.Enqueue(slide);
         slide.SetActive(true);
         slide.transform.parent = transform;
+        if (slide.name.Contains("Puzzle") || slide.name.Contains("Onboarding"))
+            slide.transform.GetChild(0).Rotate(new Vector3(0, -7, 0), Space.Self);
         ToRotation(90f);
     }
 
