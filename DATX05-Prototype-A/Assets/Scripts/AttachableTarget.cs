@@ -123,6 +123,7 @@ public class AttachableTarget : MonoBehaviour
 
     private bool IsCorrectSolution(Attachable attachable)
     {
+        Debug.Log("IsCorrectSolution() : correct: "+attachable.correctSolution+", offste: "+attachedRotationOffset);
         return attachable.correctSolution && Mathf.Abs(attachedRotationOffset) < Mathf.Epsilon;
     }
 }
