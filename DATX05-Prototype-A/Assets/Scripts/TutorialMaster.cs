@@ -9,6 +9,8 @@ public class TutorialMaster : MonoBehaviour
         Right, Left, None
     }
 
+    public ITutorial tutorial;
+
     public bool triggerNextSlide = false;
     public bool triggerWinSlide = false;
     [Space]
@@ -20,7 +22,7 @@ public class TutorialMaster : MonoBehaviour
 
     public int tutorialState {get; private set;}
 
-    private ITutorial tutorial;
+    // private ITutorial tutorial;
     private OVRGrabber leftHand, rightHand;
 
     // private int maxStates = 0;
@@ -40,9 +42,11 @@ public class TutorialMaster : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        tutorial = GameObject.FindObjectOfType<ITutorial>();
-        if (!tutorial)
-            Debug.LogError("Tutorial Master: Could not find an instance of ITutorial!");
+        if (!tutorial) {
+            tutorial = GameObject.FindObjectOfType<ITutorial>();
+            if (!tutorial)
+                Debug.LogWarning("Tutorial Master: Could not find an instance of ITutorial!");
+        }
 
         if (triggerSlideTransitionEvent == null)
             triggerSlideTransitionEvent = new TutorialStateEvent();
@@ -65,11 +69,11 @@ public class TutorialMaster : MonoBehaviour
         triggerNextSlide = false;
         
         // Trigger win-slide manually
-        if (triggerWinSlide) tutorial.TriggerWinSlide();
+        if (triggerWinSlide && tutorial) tutorial.TriggerWinSlide();
         triggerWinSlide = false;
         
         // First grab event
-        if (!firstGrab) {
+        if (!firstGrab && tutorial) {
             if (leftHand.grabbedObject || rightHand.grabbedObject) {
                 firstGrab = true;
                 tutorial.OnFirstGrab();
@@ -77,7 +81,8 @@ public class TutorialMaster : MonoBehaviour
         }
 
         // Switching hand event
-        if (handGrabbing == Hand.Right && leftHand.grabbedObject || handGrabbing == Hand.Left && rightHand.grabbedObject) {
+        if ((handGrabbing == Hand.Right && leftHand.grabbedObject
+                || handGrabbing == Hand.Left && rightHand.grabbedObject) && tutorial) {
             tutorial.OnSwitchHands();
         }
         // Keeping check of previous grabbed hand
@@ -86,35 +91,35 @@ public class TutorialMaster : MonoBehaviour
         else handGrabbing = Hand.None;
 
         // Resetting object event
-        if (objectResetted) tutorial.OnObjectReset();
+        if (objectResetted && tutorial) tutorial.OnObjectReset();
         objectResetted = false;
 
         // Attaching tile to cube
-        if (tileAttached) tutorial.OnTileAttach();
+        if (tileAttached && tutorial) tutorial.OnTileAttach();
         tileAttached = false;
 
         // Detaching tile from cube
-        if (tileDetached) tutorial.OnTileDetach();
+        if (tileDetached && tutorial) tutorial.OnTileDetach();
         tileDetached = false;
 
         // Rotating rubiks
-        if (rotatedRubiks) tutorial.OnRotateRubiks();
+        if (rotatedRubiks && tutorial) tutorial.OnRotateRubiks();
         rotatedRubiks = false;
 
         // Resetting rubiks
-        if (resetRubiks) tutorial.OnResetRubiks();
+        if (resetRubiks && tutorial) tutorial.OnResetRubiks();
         resetRubiks = false;
 
         // Scanning cube
-        if (cubeScanned) tutorial.OnCubeScanned();
+        if (cubeScanned && tutorial) tutorial.OnCubeScanned();
         cubeScanned = false;
 
         // Scanning light turns on
-        if (scanningLightOn) tutorial.OnScanningLightOn();
+        if (scanningLightOn && tutorial) tutorial.OnScanningLightOn();
         scanningLightOn = false;
 
         // Scanning light turns off
-        if (scanningLightOff) tutorial.OnScanningLightOff();
+        if (scanningLightOff && tutorial) tutorial.OnScanningLightOff();
         scanningLightOff = false;
     }
 
