@@ -17,15 +17,25 @@ public class TutorialBSlide : MonoBehaviour
     private float[] transitionDepths;
     private float[] transitionRotations;
 
+    public bool initiated {get; private set;}
+
     // Start is called before the first frame update
     void Start()
     {
+        Initiate();
+    }
+
+    public void Initiate() {
+        if (initiated) return;
+
+        gameObject.SetActive(true);
+
         // Updating text position
         textScript.LineSpacing = lineSpacing;
         if (dynamicPosition)
             UpdateTextPosition();
 
-        // Saving start positions
+        // Saving start positions and transition values
         startingPosition = new Vector3[slideContents.Length];
         startingRotation = new Vector3[slideContents.Length];
         transitionDepths = new float[slideContents.Length];
@@ -52,6 +62,8 @@ public class TutorialBSlide : MonoBehaviour
         
         // Deactivating
         gameObject.SetActive(false);
+
+        initiated = true;
     }
 
     // Update is called once per frame
