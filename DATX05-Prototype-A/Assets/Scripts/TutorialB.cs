@@ -27,9 +27,15 @@ public class TutorialB : ITutorial
         slideScripts = new TutorialBSlide[activeSlides.Count];
         for (int i = 0; i < slideScripts.Length; i++) {
             slideScripts[i] = activeSlides[i].GetComponent<TutorialBSlide>();
+            slideScripts[i].Initiate();
         }
         transitionSlideScript = transitionSlide.GetComponent<TutorialBSlide>();
+        transitionSlideScript.Initiate();
         winningSlideScript = winningSlide.GetComponent<TutorialBSlide>();
+        winningSlideScript.Initiate();
+        
+        // Show the first slide!
+        activeSlides[0].SetActive(true);
     }
 
     protected override void DistributeTextToSlide(string text, GameObject slide) {
