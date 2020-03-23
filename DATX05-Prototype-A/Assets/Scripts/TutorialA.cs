@@ -9,6 +9,7 @@ public class TutorialA : ITutorial
     public GameObject back;
     [Range(0,1)] public float backAlpha = 0.8f;
     public float transitionFadeSpeed = 1;
+    public float transitionSlideWait = 0.3f;
 
     private float transitionAlpha = 1;
     private bool outro, intro, middleIntro, middleOutro, winningOutro, winningIntro;
@@ -16,6 +17,8 @@ public class TutorialA : ITutorial
     private TutorialASlide transitionSlideScript;
     private TutorialASlide winningSlideScript;
     private TutorialASlide fadeScript;
+
+    private float waitTime = 0;
 
     // Start is called before the first frame update
     public override void Start()
@@ -64,6 +67,7 @@ public class TutorialA : ITutorial
                     if (outro) {
                         outro = false;
                         middleIntro = true;
+                        waitTime = transitionSlideWait;
                         fadeScript.gameObject.SetActive(false);
                         fadeScript = transitionSlideScript;
                         fadeScript.gameObject.SetActive(true);
@@ -107,8 +111,12 @@ public class TutorialA : ITutorial
 
                     // Trigger outro for transition-slide
                     } else if (middleIntro) {
-                        middleIntro = false;
-                        middleOutro = true;
+                        if (waitTime > 0) waitTime -= Time.deltaTime;
+                        if (waitTime <= 0) {
+                            middleIntro = false;
+                            middleOutro = true;
+                            waitTime = 0;
+                        }
 
                     // Stop fading because at win-state
                     } else if (winningIntro) {
