@@ -26,7 +26,7 @@ public class AttachableTarget : MonoBehaviour
     private Rigidbody attachedObjectRB;
     private OVRGrabbable_EventExtension grabbable;
     private bool isOccupied;
-    private float attachedRotationOffset;
+    private int attachedRotationOffset;
 
     // Start is called before the first frame update
     void Start()
@@ -76,7 +76,7 @@ public class AttachableTarget : MonoBehaviour
         Quaternion tileRot = attachedObject.transform.localRotation;
         Quaternion cubeRot = transform.localRotation;
         var yDiff = tileRot.eulerAngles.y - cubeRot.eulerAngles.y;
-        attachedRotationOffset = Mathf.Round(yDiff / 90f) * 90;
+        attachedRotationOffset = ((int) Mathf.Round(yDiff / 90f) * 90) % 360;
 
         GameMaster.instance.goalCriteriaSatisfied = IsCorrectSolution(attachable);
 

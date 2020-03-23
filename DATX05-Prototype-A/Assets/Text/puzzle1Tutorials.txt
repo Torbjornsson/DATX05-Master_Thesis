@@ -14,14 +14,12 @@ the cube:
 Try detaching the tile from
 the cube!;
 
-The goal of this puzzle is
-to find a tile that matches
-the other sides of the cube.
+Find a tile that matches
+the pattern of the cube.
+The symbol on its back and
+the symbol on the opposite
+side of the cube need to match
+this diagram!
 
-However! It also needs to
-have this symbol at its
-back side.
-
-When you're done, put the
-cube in the slot to your
-left!
+When you're done, put the cube
+in the slot to your left!
