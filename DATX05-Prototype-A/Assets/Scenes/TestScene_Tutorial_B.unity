@@ -196,7 +196,7 @@ PrefabInstance:
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: useOnBoarding
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
