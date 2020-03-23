@@ -193,6 +193,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1379857896568836726, guid: eaee0df0b97fe99458bc24e4df8486fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: useOnBoarding
