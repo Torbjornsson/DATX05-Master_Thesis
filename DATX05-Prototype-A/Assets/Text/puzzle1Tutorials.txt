@@ -8,7 +8,7 @@ the cube!;
 
 To detach an attached tile,
 simply grab it when it's on
-the cube:
+the cube.
 
 
 Try detaching the tile from
@@ -18,8 +18,8 @@ Find a tile that matches
 the pattern of the cube.
 The symbol on its back and
 the symbol on the opposite
-side of the cube need to match
-this diagram!
+side of the cube also need
+to match this diagram!
 
 When you're done, put the cube
 in the slot to your left!
