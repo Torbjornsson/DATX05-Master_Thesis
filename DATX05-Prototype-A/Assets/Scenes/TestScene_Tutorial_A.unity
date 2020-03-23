@@ -837,7 +837,7 @@ PrefabInstance:
     - target: {fileID: 5828821611518690359, guid: ac6e551126a3127438f1b0f51a9665f5,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5828821611518690359, guid: ac6e551126a3127438f1b0f51a9665f5,
         type: 3}
@@ -865,7 +865,7 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6822928561410727824, guid: ac6e551126a3127438f1b0f51a9665f5,
+    - target: {fileID: 7429806191433917100, guid: ac6e551126a3127438f1b0f51a9665f5,
         type: 3}
       propertyPath: m_IsActive
       value: 0
