@@ -1,25 +1,22 @@
 To rotate a layer of the
-cube, hold the cube with
-one hand while pointing
-at a layer with the other.
-You can turn your
-pointing hand to choose
-direction, and then press
-the Trigger button.
+cube, hold the cube with one
+hand while pointing at it with
+the other. Then you press the
+Trigger Button.
 
 Try rotating a layer of
 the cube!;
 
 If you want to reset the
 cube to its original
-rotations, simply throw
+rotation, simply throw
 it behind you.
 
 
 Try resetting the cube!;
 
 The goal of this puzzle
-is to make sure a specific
+is to make sure THIS specific
 pattern is visible on ONE
 side of the cube.
 
