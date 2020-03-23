@@ -9,7 +9,7 @@ the cube!;
 
 If you want to reset the
 cube to its original
-rotations, simply throw
+rotation, simply throw
 it behind you.
 
 
