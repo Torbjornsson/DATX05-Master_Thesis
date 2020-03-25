@@ -33,8 +33,10 @@ public class TutorialC : ITutorial
         if (activeSlides.Count > 0 && !isRotating && isStarted)
         {
             isStarted = false;
-            SpawnSlide(activeSlides[0]);
-            ToRotation(90f);
+            SpawnSlide(activeSlides[0], false);
+            rotatingCube.transform.Rotate(new Vector3(0, 90, 0), Space.Self);
+            SpawnTransitionSlide(false);
+            rotatingCube.transform.Rotate(new Vector3(0, 90, 0), Space.Self);
         }
 
         if (isRotating && waitTimer <= 0)
@@ -94,7 +96,8 @@ public class TutorialC : ITutorial
     {
         waitTimer = 1f;
         if (currentState < activeSlides.Count - 2)
-            SpawnTransitionSlide();
+            SpawnTransitionSlide(true);
+
         else if (currentState == activeSlides.Count - 2)
         {
             winningSlide.GetComponent<TutorialBSlide>().enabled = false;
@@ -104,11 +107,11 @@ public class TutorialC : ITutorial
         }
     }
 
-    void SpawnTransitionSlide()
+    void SpawnTransitionSlide(bool rotate)
     {
         GameObject tSlide = Instantiate(transitionSlidePrefab, anchor.transform.position, anchor.transform.rotation);
         tSlide.GetComponent<TutorialBSlide>().enabled = false;
-        SpawnSlide(tSlide);
+        SpawnSlide(tSlide, rotate);
     }
 
     void ToRotation(float angle)
@@ -118,18 +121,27 @@ public class TutorialC : ITutorial
         isRotating = true;
     }
 
-    void SpawnSlide(GameObject slide)
+    void SpawnSlide(GameObject slide, bool rotate)
     {
         Debug.Log("Spawning slide: " + slide.name);
         slides.Enqueue(slide);
         slide.SetActive(true);
         slide.transform.parent = rotatingCube.transform;
-        if (slide.name.Contains("Puzzle") || slide.name.Contains("Onboarding"))
+
+        if (slide.name.Contains("Puzzle") || slide.name.Contains("OnBoarding"))
         {
             slide.transform.GetChild(0).Rotate(new Vector3(0, -7, 0), Space.Self);
-
         }
-        ToRotation(90f);
+
+        if (rotate)
+        {
+            ToRotation(90f);
+        }
+    }
+
+    void SpawnSlide(GameObject slide)
+    {
+        SpawnSlide(slide, true);
     }
 
     void DespawnSlide()
