@@ -217,6 +217,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 192929921035942769, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 438994631649910321, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 494810472475248847, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 494810472475248886, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 676088326192575474, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 743733747037312781, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1155516520479909760, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1363218468522611211, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1748433751530617624, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: tutorialForPuzzle
@@ -225,7 +270,62 @@ PrefabInstance:
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: useOnBoarding
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2009041694474109159, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202937648287913480, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202937648773802569, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202937649079729783, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202937649153134253, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202937649170906584, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202937649200668426, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2202937649931579566, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2248228075999648936, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249099317667351339, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2256489841584035525, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -834,7 +934,7 @@ PrefabInstance:
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}
       propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}

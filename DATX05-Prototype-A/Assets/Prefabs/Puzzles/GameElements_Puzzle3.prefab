@@ -33,6 +33,7 @@ Transform:
   - {fileID: 7948521196451575487}
   - {fileID: 1701788703124440717}
   - {fileID: 7948521195873401494}
+  - {fileID: 7825355267516060540}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -141,6 +142,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ScannerPlate
+      objectReference: {fileID: 0}
+    - target: {fileID: 7843314634375364849, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7843314634375364850, guid: b7fb3bd617fac3a42bddf9e1b5cebd6f,
         type: 3}
@@ -260,6 +266,73 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 771361584819621263}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2728109755516505038
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 7948521196410409897}
+    m_Modifications:
+    - target: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.292
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.255
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.518
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6735846648298403372, guid: 7f36a510c2a29e74082b5db799f400b9,
+        type: 3}
+      propertyPath: m_Name
+      value: Scanner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7f36a510c2a29e74082b5db799f400b9, type: 3}
+--- !u!4 &7825355267516060540 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5279642053503883442, guid: 7f36a510c2a29e74082b5db799f400b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2728109755516505038}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7152837888183722004 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5089012015489592282, guid: 7f36a510c2a29e74082b5db799f400b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2728109755516505038}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b574ae398a671c1478f8ce88227d0b5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6534932722783030808
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -327,6 +400,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinningSlotIndicatorLampSet
       objectReference: {fileID: 0}
+    - target: {fileID: 3818611967287719055, guid: 031b166f2b028404baeed379ce700c0b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4896087251211518072, guid: 031b166f2b028404baeed379ce700c0b,
         type: 3}
       propertyPath: m_IsActive
@@ -350,18 +428,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6534932722783030808}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2700474475014702055 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9208380789133004287, guid: 031b166f2b028404baeed379ce700c0b,
-    type: 3}
-  m_PrefabInstance: {fileID: 6534932722783030808}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b574ae398a671c1478f8ce88227d0b5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7948521195734124818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -453,7 +519,7 @@ PrefabInstance:
         type: 3}
       propertyPath: indicatorLights
       value: 
-      objectReference: {fileID: 2700474475014702055}
+      objectReference: {fileID: 7152837888183722004}
     - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: canFailAfterOpeninghatch
