@@ -15,6 +15,15 @@ public class TutorialC : ITutorial
     public override void Start()
     {
         base.Start();
+
+        for (int i = 0; i < activeSlides.Count; i++) {
+            var slideScript = activeSlides[i].GetComponent<TutorialBSlide>();
+            if (slideScript) slideScript.Initiate();
+        }
+        
+        // Show the first slide!
+        activeSlides[0].SetActive(true);
+
         to = new GameObject();
         to.transform.position = transform.position;
         to.transform.rotation = transform.rotation;
@@ -29,6 +38,7 @@ public class TutorialC : ITutorial
     {
         //To check for the wincondition
         base.Update();
+        
         //To spawn the initial slides after all the objects have been loaded
         if (activeSlides.Count > 0 && !isRotating && isStarted)
         {
