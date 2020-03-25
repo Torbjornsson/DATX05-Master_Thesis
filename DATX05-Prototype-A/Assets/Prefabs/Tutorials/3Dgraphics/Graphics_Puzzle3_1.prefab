@@ -57,6 +57,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5973223821119233359}
   - component: {fileID: 926945308197244382}
+  - component: {fileID: 3966862327201911257}
   m_Layer: 0
   m_Name: Point Light
   m_TagString: Untagged
@@ -116,6 +117,19 @@ Light:
   m_UseColorTemperature: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 1
+--- !u!135 &3966862327201911257
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606051794746434054}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &6718982328648777465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -314,6 +328,11 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5015647977583558084, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: m_Enabled
@@ -321,6 +340,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 424877038853444128, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
+    - {fileID: 5794371368495969069, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
+    - {fileID: 5224206565620723347, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
+    - {fileID: 2543215489435952002, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
+    - {fileID: 424877038853444127, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
+    - {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
+    - {fileID: 114261622372409752, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
+    - {fileID: 82075376313343170, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
 --- !u!4 &7363955555803437372 stripped
 Transform:
@@ -410,7 +436,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6164440424472068927, guid: 7f36a510c2a29e74082b5db799f400b9, type: 3}
+    - {fileID: 3976837960290276996, guid: 7f36a510c2a29e74082b5db799f400b9, type: 3}
+    - {fileID: 9115554709705397361, guid: 7f36a510c2a29e74082b5db799f400b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f36a510c2a29e74082b5db799f400b9, type: 3}
 --- !u!4 &4220880893659170022 stripped
 Transform:

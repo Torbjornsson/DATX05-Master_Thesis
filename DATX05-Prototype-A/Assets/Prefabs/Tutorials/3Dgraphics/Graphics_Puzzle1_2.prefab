@@ -143,6 +143,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle1Tile
       objectReference: {fileID: 0}
+    - target: {fileID: 1950165095864028403, guid: ec267bb2b133f7241b3e56406e60fe1c,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7842150326683983141, guid: ec267bb2b133f7241b3e56406e60fe1c,
         type: 3}
       propertyPath: m_Materials.Array.data[1]
@@ -162,7 +167,6 @@ PrefabInstance:
     - {fileID: 114939956910318088, guid: ec267bb2b133f7241b3e56406e60fe1c, type: 3}
     - {fileID: 114355198066725140, guid: ec267bb2b133f7241b3e56406e60fe1c, type: 3}
     - {fileID: 82351149539341264, guid: ec267bb2b133f7241b3e56406e60fe1c, type: 3}
-    - {fileID: 1950165095864028403, guid: ec267bb2b133f7241b3e56406e60fe1c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ec267bb2b133f7241b3e56406e60fe1c, type: 3}
 --- !u!4 &5371749802495612319 stripped
 Transform:
@@ -267,6 +271,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puzzle1Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 2505537136850433948, guid: 6b736e234b3d9414f9251095672dfdcf,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8315139118126587009, guid: 6b736e234b3d9414f9251095672dfdcf,
         type: 3}
       propertyPath: m_IsActive
@@ -282,7 +291,6 @@ PrefabInstance:
     - {fileID: 1787883108607069761, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
     - {fileID: 360361008424822540, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
     - {fileID: 5475681264385709484, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
-    - {fileID: 2505537136850433948, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
     - {fileID: 5007381940084259202, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 6b736e234b3d9414f9251095672dfdcf, type: 3}
 --- !u!4 &5948458363951569236 stripped
