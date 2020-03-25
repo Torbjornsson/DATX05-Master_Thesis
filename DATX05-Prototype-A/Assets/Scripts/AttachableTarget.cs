@@ -76,7 +76,8 @@ public class AttachableTarget : MonoBehaviour
         Quaternion tileRot = attachedObject.transform.localRotation;
         Quaternion cubeRot = transform.localRotation;
         var yDiff = tileRot.eulerAngles.y - cubeRot.eulerAngles.y;
-        attachedRotationOffset = ((int) Mathf.Round(yDiff / 90f) * 90) % 360;
+
+        attachedRotationOffset = ((int) System.Math.Round(yDiff / 90f, System.MidpointRounding.AwayFromZero) * 90) % 360;
 
         GameMaster.instance.goalCriteriaSatisfied = IsCorrectSolution(attachable);
 
@@ -123,7 +124,7 @@ public class AttachableTarget : MonoBehaviour
 
     private bool IsCorrectSolution(Attachable attachable)
     {
-        Debug.Log("IsCorrectSolution() : correct: "+attachable.correctSolution+", offste: "+attachedRotationOffset);
+        Debug.Log("IsCorrectSolution() : correct: "+attachable.correctSolution+", offset: "+attachedRotationOffset);
         return attachable.correctSolution && Mathf.Abs(attachedRotationOffset) < Mathf.Epsilon;
     }
 }
