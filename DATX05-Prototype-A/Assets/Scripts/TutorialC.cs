@@ -52,7 +52,10 @@ public class TutorialC : ITutorial
 
     public override void TriggerNextSlide(int nextState)
     {
+        if (!isActiveAndEnabled) return;
         base.TriggerNextSlide(nextState);
+
+        Debug.Log("Trigger next slide: "+nextState);
 
         SpawnSlide(base.activeSlides[nextState]);
     }
@@ -64,6 +67,7 @@ public class TutorialC : ITutorial
 
     public override void TriggerWinSlide()
     {
+        if (!isActiveAndEnabled) return;
         base.TriggerWinSlide();
         ToRotation(90f);
     }
