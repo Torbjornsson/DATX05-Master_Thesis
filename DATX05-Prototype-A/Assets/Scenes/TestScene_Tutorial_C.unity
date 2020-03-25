@@ -934,7 +934,7 @@ PrefabInstance:
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}
       propertyPath: triggerSlideTransitionEvent.m_PersistentCalls.m_Calls.Array.data[2].m_Mode
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4870109037951482057, guid: afa92c97e73048542a51fe55aa2b77f4,
         type: 3}
