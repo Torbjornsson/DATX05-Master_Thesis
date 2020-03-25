@@ -7673,8 +7673,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0.285, y: 1.21, z: -0.545}
+  m_Radius: 0.05
+  m_Center: {x: 0, y: -0.03, z: 0}
 --- !u!1 &3844780393607856505
 GameObject:
   m_ObjectHideFlags: 0
@@ -20145,7 +20145,7 @@ PrefabInstance:
     - target: {fileID: 3156227566343189284, guid: 28d1b61e26e0ea84e8726d9ff0899be3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.05
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: 3156227566343189284, guid: 28d1b61e26e0ea84e8726d9ff0899be3,
         type: 3}
