@@ -89,7 +89,7 @@ public class Resettable : MonoBehaviour
             attachedMaterials = null;
         }
         
-        if (pending) {
+        if (pending && !grabbableScript.isGrabbed) {
             if (rb.velocity.magnitude < stillnessBuffer) {
                 StartFadeOut();
             }
@@ -114,6 +114,13 @@ public class Resettable : MonoBehaviour
                 }
             }
 
+            UpdateMaterialAlpha();
+        }
+
+        if (rb.isKinematic && !fadeIn && !grabbableScript.isGrabbed)
+        {
+            alpha = 1;
+            FadeInDone();
             UpdateMaterialAlpha();
         }
     }
@@ -221,12 +228,14 @@ public class Resettable : MonoBehaviour
 
         if (rubiksScript != null && rubiksResetActive) {
             rubiksScript.ResetCube();
+            rubiksResetActive = false;
         }
     }
 
     private void FadeInDone() {
         rb.isKinematic = false;
         fadeIn = false;
+        fadeOut = false;
         grabbableScript.allowGrab = true;
         hardReset = false;
     }
