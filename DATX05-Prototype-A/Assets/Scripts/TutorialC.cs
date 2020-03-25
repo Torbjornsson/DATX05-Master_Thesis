@@ -73,6 +73,17 @@ public class TutorialC : ITutorial
     protected override void DistributeTextToSlide(string text, GameObject slide)
     {
         slide.GetComponent<TutorialBSlide>().SetText(text);
+        if (useOnBoarding && slide.name.Contains("OnBoarding"))
+        {
+            string name = "CubeForPuzzle" + tutorialForPuzzle.ToString();
+            var graphics = slide.transform.GetChild(1);
+            var onBoardCube = graphics.Find("OnBoardCube");
+            var cubeForPuzzle = graphics.Find(name).gameObject;
+            cubeForPuzzle.SetActive(true);
+            cubeForPuzzle.transform.position = onBoardCube.position;
+            cubeForPuzzle.transform.rotation = onBoardCube.rotation;
+            cubeForPuzzle.transform.localScale = onBoardCube.localScale;
+        }
     }
 
     public override void TriggerWinSlide()
