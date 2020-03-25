@@ -103,6 +103,7 @@ public class TutorialC : ITutorial
             winningSlide.GetComponent<TutorialBSlide>().enabled = false;
             winningSlide.transform.position = anchor.transform.position;
             winningSlide.transform.rotation = anchor.transform.rotation;
+            winningSlide.GetComponentInChildren<SimpleHelvetica>().AddBoxCollider();
             SpawnSlide(winningSlide);
         }
     }
@@ -111,6 +112,7 @@ public class TutorialC : ITutorial
     {
         GameObject tSlide = Instantiate(transitionSlidePrefab, anchor.transform.position, anchor.transform.rotation);
         tSlide.GetComponent<TutorialBSlide>().enabled = false;
+        tSlide.GetComponentInChildren<SimpleHelvetica>().AddBoxCollider();
         SpawnSlide(tSlide, rotate);
     }
 
