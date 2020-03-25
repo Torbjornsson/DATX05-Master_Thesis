@@ -38,6 +38,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3964212367899540794}
     m_Modifications:
+    - target: {fileID: 114261622372409752, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 424877038853444127, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 424877038853444129, guid: 3ce355dbf52a18f4aab258c830648da4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -102,6 +112,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Puzzle3Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 2543215489435952002, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6844776816187804569, guid: 3ce355dbf52a18f4aab258c830648da4,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 424877038853444128, guid: 3ce355dbf52a18f4aab258c830648da4, type: 3}
