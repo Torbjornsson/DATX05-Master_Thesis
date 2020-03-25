@@ -131,6 +131,11 @@ PrefabInstance:
       propertyPath: main
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4732211841963464497, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5489665106817107218, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9,
         type: 3}
       propertyPath: m_IsActive
@@ -276,7 +281,6 @@ PrefabInstance:
     - {fileID: 7387056161367313140, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9, type: 3}
     - {fileID: 7668377398241047620, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9, type: 3}
     - {fileID: 1236239023338129809, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9, type: 3}
-    - {fileID: 4732211841963464497, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 1f8f20f0afdca704ca5a55b52c0ed1b9, type: 3}
 --- !u!4 &7286091946938871446 stripped
 Transform:

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5129002233437302926}
   - component: {fileID: 701284555451349053}
   - component: {fileID: 1896935892044698057}
+  - component: {fileID: 8884148560604578337}
   m_Layer: 13
   m_Name: SymbolSquare (1)
   m_TagString: RubiksSymbol3
@@ -77,6 +78,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8884148560604578337
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2279748796375127273}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: f6f2ca98ca8dc8b4dbf3f902b8069304, type: 3}
 --- !u!1 &2972997361050215974
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +103,7 @@ GameObject:
   - component: {fileID: 4423701567247885499}
   - component: {fileID: 6379156619377920812}
   - component: {fileID: 7510396276400086966}
+  - component: {fileID: 4320857353646557918}
   m_Layer: 13
   m_Name: SymbolTriangle (1)
   m_TagString: RubiksSymbol2
@@ -154,6 +170,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &4320857353646557918
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2972997361050215974}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300008, guid: f6f2ca98ca8dc8b4dbf3f902b8069304, type: 3}
 --- !u!1 &3767510459195609453
 GameObject:
   m_ObjectHideFlags: 0
@@ -165,6 +195,7 @@ GameObject:
   - component: {fileID: 4946556578641870778}
   - component: {fileID: 8381140296288101665}
   - component: {fileID: 6733270536434889999}
+  - component: {fileID: 3910686877219707359}
   m_Layer: 13
   m_Name: SymbolSquare
   m_TagString: RubiksSymbol3
@@ -231,6 +262,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &3910686877219707359
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3767510459195609453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300006, guid: f6f2ca98ca8dc8b4dbf3f902b8069304, type: 3}
 --- !u!1 &3835386520955811773
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +287,7 @@ GameObject:
   - component: {fileID: 4365916526586996031}
   - component: {fileID: 1022642030110414672}
   - component: {fileID: 1375996845890318035}
+  - component: {fileID: 8973943095893597813}
   m_Layer: 13
   m_Name: SymbolCircle
   m_TagString: RubiksSymbol1
@@ -308,6 +354,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &8973943095893597813
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3835386520955811773}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: f6f2ca98ca8dc8b4dbf3f902b8069304, type: 3}
 --- !u!1 &4120769228104412774
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,6 +379,7 @@ GameObject:
   - component: {fileID: 7389634895391698337}
   - component: {fileID: 1581322011895264850}
   - component: {fileID: 755197899260631774}
+  - component: {fileID: 2557960061447763860}
   m_Layer: 13
   m_Name: SymbolCircle (1)
   m_TagString: RubiksSymbol1
@@ -385,6 +446,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &2557960061447763860
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4120769228104412774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300004, guid: f6f2ca98ca8dc8b4dbf3f902b8069304, type: 3}
 --- !u!1 &5806635037598514509
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +471,7 @@ GameObject:
   - component: {fileID: 1719117955342935911}
   - component: {fileID: 4150464035712019784}
   - component: {fileID: 3587824615815016342}
+  - component: {fileID: 5538886277711985285}
   m_Layer: 13
   m_Name: SymbolTriangle
   m_TagString: RubiksSymbol2
@@ -462,6 +538,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &5538886277711985285
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5806635037598514509}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 4300008, guid: f6f2ca98ca8dc8b4dbf3f902b8069304, type: 3}
 --- !u!1 &6793981965626007407
 GameObject:
   m_ObjectHideFlags: 0
