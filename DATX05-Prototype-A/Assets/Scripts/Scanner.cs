@@ -9,6 +9,8 @@ public class Scanner : MonoBehaviour
     public Renderer scannerBack;
     public bool useParticles = true;
     public bool useSpotlight = true;
+    public bool canScan = true;
+
     [Space]
     public int totalPasses = 1;
     public float scanningIntroSpeed = 1f;
@@ -201,7 +203,7 @@ public class Scanner : MonoBehaviour
     }
 
     void OnTriggerEnter(Collider other) {
-        if (other.gameObject.tag.Equals("ScannerTarget") && !scanning) {
+        if (other.gameObject.tag.Equals("ScannerTarget") && !scanning && canScan) {
             Vector3 direction = other.transform.position - transform.position;
             if (direction.y > 0)
             {

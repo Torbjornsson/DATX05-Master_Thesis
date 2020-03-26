@@ -134,6 +134,11 @@ PrefabInstance:
       propertyPath: tutorialForPuzzle
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3297592998506833712, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: m_IsActive
@@ -230,12 +235,12 @@ PrefabInstance:
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: useOnBoarding
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -527,6 +532,11 @@ PrefabInstance:
     - target: {fileID: 7948521196410409902, guid: 6409924360c2fe846bb1af91f964e434,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7948521196451575484, guid: 6409924360c2fe846bb1af91f964e434,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -664,6 +674,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameElements_Puzzle1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339311859194012689, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5339311859194012694, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
@@ -993,12 +1008,17 @@ PrefabInstance:
     - target: {fileID: 5828821611518690359, guid: ac6e551126a3127438f1b0f51a9665f5,
         type: 3}
       propertyPath: useOnBoarding
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5828821611518690359, guid: ac6e551126a3127438f1b0f51a9665f5,
         type: 3}
       propertyPath: tutorialForPuzzle
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5828821611518690359, guid: ac6e551126a3127438f1b0f51a9665f5,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5828821611828128008, guid: ac6e551126a3127438f1b0f51a9665f5,
         type: 3}
