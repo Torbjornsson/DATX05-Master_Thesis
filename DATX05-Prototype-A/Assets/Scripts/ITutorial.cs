@@ -89,7 +89,10 @@ public abstract class ITutorial : MonoBehaviour
         // Show the first slide!
         activeSlides[0].SetActive(true);
 
-        scanner = GameObject.Find("Scanner").GetComponentInChildren<Scanner>();
+        var scanObject = GameObject.Find("Scanner");
+        if (scanObject != null)
+            scanner = scanObject.GetComponentInChildren<Scanner>();
+
     }
 
     public virtual void Update()
@@ -104,7 +107,9 @@ public abstract class ITutorial : MonoBehaviour
     public virtual void TriggerNextSlide(int nextState)
     {
         this.nextState = nextState;
-        scanner.canScan = false;
+
+        if (scanner)
+            scanner.canScan = false;
     }
 
     public virtual void TriggerWinSlide()
@@ -116,7 +121,9 @@ public abstract class ITutorial : MonoBehaviour
     {
         currentState = state;
         master.ArrivedAtSlide(state);
-        scanner.canScan = true;
+
+        if (scanner)
+            scanner.canScan = true;
     }
 
     // Compiling the active slides for this specific tutorial
