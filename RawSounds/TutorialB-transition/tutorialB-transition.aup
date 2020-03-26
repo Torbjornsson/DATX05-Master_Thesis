@@ -1,0 +1,107 @@
+<?xml version="1.0" standalone="no" ?>
+<!DOCTYPE project PUBLIC "-//audacityproject-1.3.0//DTD//EN" "http://audacity.sourceforge.net/xml/audacityproject-1.3.0.dtd" >
+<project xmlns="http://audacity.sourceforge.net/xml/" projname="tutorialB-transition_data" version="1.3.0" audacityversion="2.3.3" sel0="0.0000000000" sel1="2.0068027211" vpos="0" h="0.0000000000" zoom="372.7324358417" rate="22050.0" snapto="off" selectionformat="hh:mm:ss + milliseconds" frequencyformat="Hz" bandwidthformat="octaves">
+	<tags/>
+	<wavetrack name="sound108" isSelected="0" height="150" minimized="0" channel="2" linked="0" mute="0" solo="1" rate="22050" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="18120">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1ffd8.au" len="18120" min="-0.794328" max="0.70484" rms="0.194623"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX4-S" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="268377">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fa2e.au" len="262144" min="-0.794068" max="0.713499" rms="0.127284"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="eff1f251.au" len="6233" min="0.000385" max="0.000506" rms="0.000453"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX4-S" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="268377">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f1da.au" len="262144" min="-0.794328" max="0.713239" rms="0.128186"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="eff1f6ec.au" len="6233" min="0.000076" max="0.000246" rms="0.000184"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX4-S" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="88317">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f404.au" len="88317" min="-0.794068" max="0.713499" rms="0.171518"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX4-S" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="88317">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f3a3.au" len="88317" min="-0.794328" max="0.713239" rms="0.171007"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX5-S" isSelected="0" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="351242">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f25e.au" len="262144" min="-0.977325" max="0.996307" rms="0.220384"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="eff1ff51.au" len="89098" min="-0.04599" max="0.043182" rms="0.006949"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX5-S" isSelected="0" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="351242">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f3ca.au" len="262144" min="-0.978516" max="0.99942" rms="0.219346"/>
+				</waveblock>
+				<waveblock start="262144">
+					<simpleblockfile filename="eff1fa7e.au" len="89098" min="-0.040405" max="0.029877" rms="0.006161"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX5-S" isSelected="1" height="150" minimized="0" channel="0" linked="1" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="88500">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1f071.au" len="88500" min="-0.735412" max="0.79178" rms="0.178852"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+	<wavetrack name="PROPHE FX5-S" isSelected="1" height="150" minimized="0" channel="1" linked="0" mute="1" solo="0" rate="44100" gain="1.0" pan="0.0" colorindex="0">
+		<waveclip offset="0.00000000" colorindex="0">
+			<sequence maxsamples="262144" sampleformat="262159" numsamples="88500">
+				<waveblock start="0">
+					<simpleblockfile filename="eff1fcca.au" len="88500" min="-0.737204" max="0.774259" rms="0.179072"/>
+				</waveblock>
+			</sequence>
+			<envelope numpoints="0"/>
+		</waveclip>
+	</wavetrack>
+</project>
