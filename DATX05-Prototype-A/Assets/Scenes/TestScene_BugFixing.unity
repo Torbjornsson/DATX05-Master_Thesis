@@ -240,7 +240,7 @@ PrefabInstance:
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -400,11 +400,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameElements_Puzzle2
       objectReference: {fileID: 0}
-    - target: {fileID: 6131099921255913102, guid: fa221628416c76545afc81ac83e6a0e4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6131099921255913105, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -532,7 +527,7 @@ PrefabInstance:
     - target: {fileID: 7948521196410409902, guid: 6409924360c2fe846bb1af91f964e434,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7948521196451575484, guid: 6409924360c2fe846bb1af91f964e434,
         type: 3}
