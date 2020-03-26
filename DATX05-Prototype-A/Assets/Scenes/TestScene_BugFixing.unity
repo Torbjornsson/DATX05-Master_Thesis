@@ -398,7 +398,7 @@ PrefabInstance:
     - target: {fileID: 6131099921255913102, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6131099921255913105, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
@@ -615,20 +615,55 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2796139385002059005, guid: 2767f72eb3eb7754e890e05e242b2e10,
+    - target: {fileID: 4867105269017899799, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105269350598677, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105269990881807, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105270000524441, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105270178552270, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105270197088724, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105270365742350, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105270589529364, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
+    - target: {fileID: 4867105270688373476, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
       objectReference: {fileID: 0}
     - target: {fileID: 5339311859194012689, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
       propertyPath: m_Name
       value: GameElements_Puzzle1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5339311859194012689, guid: 2767f72eb3eb7754e890e05e242b2e10,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5339311859194012694, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
@@ -684,31 +719,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6215301707097687097, guid: 2767f72eb3eb7754e890e05e242b2e10,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6215301707097687097, guid: 2767f72eb3eb7754e890e05e242b2e10,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6215301707097687097, guid: 2767f72eb3eb7754e890e05e242b2e10,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6215301707097687097, guid: 2767f72eb3eb7754e890e05e242b2e10,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6215301707097687097, guid: 2767f72eb3eb7754e890e05e242b2e10,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 90
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2767f72eb3eb7754e890e05e242b2e10, type: 3}
