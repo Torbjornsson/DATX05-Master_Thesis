@@ -4,17 +4,32 @@ using UnityEngine;
 
 public class TutorialC : ITutorial
 {
+    [Header("Tutorial C Parameters")]
     public GameObject transitionSlidePrefab;
+    public AudioClip[] transitionSounds;
+
     private GameObject to, anchor, anchorSlides, rotatingCube;
     public float rotationSpeed = 10f;
     public float waitTimer = 0f;
     private bool isRotating, isTransitioning = false;
     private bool isStarted = true;
     private Queue slides = new Queue();
+
+    private bool transitionSoundHasPlayed = true;
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
+        
+        if (!audioSource)
+            Debug.LogError("TutorialC: AudioSource not found!");
+        if (transitionSounds.Length <= 0)
+            Debug.LogError("TutorialC: No audio clips for transition sounds found!");
+        foreach(AudioClip c in transitionSounds) {
+            if (!c) Debug.LogError("TutorialC: One audio clip in transition sounds array was not defined!");
+        }
+        baseTransitionPitch = audioSource.pitch;
 
         for (int i = 0; i < activeSlides.Count; i++) {
             var slideScript = activeSlides[i].GetComponent<TutorialBSlide>();
@@ -96,6 +111,8 @@ public class TutorialC : ITutorial
 
     void RotateCube()
     {
+        if (!transitionSoundHasPlayed) PlayTransitionSound();
+
         if (Quaternion.Angle(rotatingCube.transform.localRotation, to.transform.localRotation) <= 0.01f)
         {
             isRotating = false;
@@ -147,6 +164,7 @@ public class TutorialC : ITutorial
         to.transform.localRotation = rotatingCube.transform.localRotation;
         to.transform.Rotate(new Vector3(0, angle, 0), Space.Self);
         isRotating = true;
+        transitionSoundHasPlayed = false;
     }
 
     void SpawnSlide(GameObject slide, bool rotate)
@@ -181,5 +199,11 @@ public class TutorialC : ITutorial
             slide.SetActive(false);
             slide.transform.parent = anchorSlides.transform;
         }
+    }
+
+    protected void PlayTransitionSound() {
+        transitionSoundHasPlayed = true;
+        var clip = transitionSounds[Random.Range(0, transitionSounds.Length)];
+        PlaySound(clip);
     }
 }
