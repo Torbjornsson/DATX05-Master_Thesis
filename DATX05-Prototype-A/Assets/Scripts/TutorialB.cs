@@ -43,6 +43,7 @@ public class TutorialB : ITutorial
     {
         // Debug.Log("Distribute text to slide: "+text);
         slide.GetComponent<TutorialBSlide>().SetText(text);
+
         if (useOnBoarding && slide.name.Contains("OnBoarding"))
         {
             string name = "CubeForPuzzle" + tutorialForPuzzle.ToString();
@@ -52,7 +53,7 @@ public class TutorialB : ITutorial
             cubeForPuzzle.gameObject.SetActive(true);
             cubeForPuzzle.position = onBoardCube.position;
             cubeForPuzzle.rotation = onBoardCube.rotation;
-            cubeForPuzzle.localScale = onBoardCube.localScale;
+            // cubeForPuzzle.localScale = onBoardCube.localScale;
             cubeForPuzzle.parent = onBoardCube;
         }
     }
