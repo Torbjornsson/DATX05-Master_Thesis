@@ -9,6 +9,9 @@ public abstract class ITutorial : MonoBehaviour
     [Range(1, 3)] public int tutorialForPuzzle = 1;
     public bool useOnBoarding = false;
     [Space]
+    public AudioSource audioSource;
+    public float transitionPitchSpan = 0.1f;
+    [Space]
     public GameObject[] onBoardingSlides;
     public GameObject[] puzzle1Slides;
     public GameObject[] puzzle2Slides;
@@ -30,6 +33,8 @@ public abstract class ITutorial : MonoBehaviour
     protected bool atWinState;
 
     private Scanner scanner;
+
+    protected float baseTransitionPitch;
 
     // Start is called before the first frame update
     public virtual void Start()
@@ -280,5 +285,16 @@ public abstract class ITutorial : MonoBehaviour
         {
             TriggerNextSlide(currentState + 1);
         }
+    }
+    
+    protected virtual void PlaySound(AudioClip clip) {
+        if (!audioSource)
+            throw new MissingFieldException("ITutorial: AudioSource not found!");
+
+        if (audioSource.isPlaying) audioSource.Stop();
+
+        audioSource.clip = clip;
+        audioSource.pitch = baseTransitionPitch - transitionPitchSpan/2 + UnityEngine.Random.Range(0, transitionPitchSpan);
+        audioSource.Play();
     }
 }

@@ -9,6 +9,9 @@ public class TutorialB : ITutorial
     // public GameObject back;
     // [Range(0,1)] public float backAlpha = 0.8f;
     public float transitionFadeSpeed = 1;
+    [Space]
+    public AudioClip transitionIntroSound;
+    public AudioClip transitionOutroSound;
 
     // private float transitionAlpha = 1;
     private float transitionProgress = 1;
@@ -22,6 +25,14 @@ public class TutorialB : ITutorial
     public override void Start()
     {
         base.Start();
+
+        if (!audioSource)
+            Debug.LogError("TutorialB: AudioSource not found!");
+        if (!transitionIntroSound)
+            Debug.LogError("TutorialB: Audio clip \"transition intro\" not found!");
+        if (!transitionOutroSound)
+            Debug.LogError("TutorialB: Audio clip \"Transition Outro\" not found!");
+        baseTransitionPitch = audioSource.pitch;
 
         // Finding slide scripts, to interact directly with
         slideScripts = new TutorialBSlide[activeSlides.Count];
@@ -96,6 +107,7 @@ public class TutorialB : ITutorial
                         fadeScript = slideScripts[nextState];
                         fadeScript.gameObject.SetActive(true);
                         // Debug.Log("Middle Outro done, starting intro");
+                        PlaySound(transitionIntroSound);
 
                         // Trigger intro for winning slide
                     }
@@ -168,6 +180,8 @@ public class TutorialB : ITutorial
         winningIntro = false;
         fadeScript = slideScripts[currentState];
 
+        PlaySound(transitionOutroSound);
+
         // Debug.Log("Trigger next slide: starting outro - current: "+currentState+", next: "+nextState);
     }
 
@@ -179,5 +193,7 @@ public class TutorialB : ITutorial
         winningOutro = true;
         winningIntro = false;
         fadeScript = slideScripts[currentState];
+        
+        PlaySound(transitionOutroSound);
     }
 }

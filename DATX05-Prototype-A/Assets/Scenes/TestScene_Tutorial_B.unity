@@ -201,8 +201,18 @@ PrefabInstance:
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
+        type: 3}
+      propertyPath: transition1
+      value: 
+      objectReference: {fileID: 8300000, guid: 37b633ddfb48a2d44bf03c014366e564, type: 3}
+    - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
+        type: 3}
+      propertyPath: transition2
+      value: 
+      objectReference: {fileID: 8300000, guid: 4de8a84cdaa0a8b4cad89950536663a2, type: 3}
     - target: {fileID: 3254505057798951060, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: slideContents.Array.size
