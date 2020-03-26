@@ -400,11 +400,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameElements_Puzzle2
       objectReference: {fileID: 0}
-    - target: {fileID: 6131099921255913102, guid: fa221628416c76545afc81ac83e6a0e4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6131099921255913105, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
       propertyPath: m_LocalPosition.x
