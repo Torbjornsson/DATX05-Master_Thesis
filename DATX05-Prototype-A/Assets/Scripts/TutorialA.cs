@@ -46,6 +46,13 @@ public class TutorialA : ITutorial
     protected override void DistributeTextToSlide(string text, GameObject slide) {
         var textComponent = slide.GetComponentInChildren<TextMesh>();
         textComponent.text = text;
+
+        if (useOnBoarding && slide.name.Contains("OnBoarding"))
+        {
+            string name = "cube" + tutorialForPuzzle.ToString();
+            var cubeSlide = slide.transform.Find(name);
+            if (cubeSlide) cubeSlide.gameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
