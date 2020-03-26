@@ -263,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 733435619514408367}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.338, y: 0, z: 0}
-  m_LocalScale: {x: 0.88172, y: 0.88172, z: 0.88172}
+  m_LocalScale: {x: 0.9787092, y: 0.9787092, z: 0.9787092}
   m_Children: []
   m_Father: {fileID: 3232971081671258778}
   m_RootOrder: 1
@@ -305,7 +305,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec5334685b872364480a66ada4ab9f05, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 83cc5cc26ca85da4a8b72ddf6f7ba412, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -342,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 864699935529417639}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.332, y: 0, z: 0}
-  m_LocalScale: {x: 0.80673, y: 0.80673, z: 0.80673}
+  m_LocalScale: {x: 0.83899915, y: 0.83899915, z: 0.83899915}
   m_Children: []
   m_Father: {fileID: 4307777085985635767}
   m_RootOrder: 1
@@ -384,7 +384,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ba319e2d30001cd42806dcf9d0543678, type: 3}
+  m_Sprite: {fileID: 21300000, guid: aa609908d4d3dd94088f3cc10a41d37d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -827,7 +827,7 @@ Transform:
   m_GameObject: {fileID: 2493664611168548477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.337, y: 0, z: 0}
-  m_LocalScale: {x: 0.77586, y: 0.77586, z: 0.77586}
+  m_LocalScale: {x: 0.8224116, y: 0.8224116, z: 0.8224116}
   m_Children: []
   m_Father: {fileID: 5049481112786585201}
   m_RootOrder: 1
@@ -869,7 +869,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac2b1c4fe6820a945bdb456c2a40fdba, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8d03f726511dfb54083555afc5069c8f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1874,7 +1874,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3167598175934778430
 Transform:
   m_ObjectHideFlags: 0
@@ -2866,7 +2866,7 @@ PrefabInstance:
     - target: {fileID: 2910852661195732184, guid: a1adf78aead888344a57d3115deff056,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3089577001702246092, guid: a1adf78aead888344a57d3115deff056,
         type: 3}
