@@ -193,6 +193,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 453567035486807306}
 --- !u!1 &575949706855506797
 GameObject:
   m_ObjectHideFlags: 0
@@ -674,6 +675,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 1413756456582380400}
 --- !u!1 &1491045743516158041
 GameObject:
   m_ObjectHideFlags: 0
@@ -747,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 1617270427903338652}
 --- !u!1 &1669109659652231245
 GameObject:
   m_ObjectHideFlags: 0
@@ -1078,6 +1081,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 2148555870831576637}
 --- !u!1 &2258265738199875382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1633,6 +1637,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 3479493202796514623}
 --- !u!1 &3660532486455363458
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,6 +1974,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 4590885516188493977}
 --- !u!1 &4669809701911537814
 GameObject:
   m_ObjectHideFlags: 0
@@ -3327,6 +3333,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 7294222112375450127}
 --- !u!1 &7319803571302860966
 GameObject:
   m_ObjectHideFlags: 0
@@ -4062,6 +4069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
+  cubeRenderer: {fileID: 7487374652498665771}
 --- !u!1 &7556889788132526338
 GameObject:
   m_ObjectHideFlags: 0

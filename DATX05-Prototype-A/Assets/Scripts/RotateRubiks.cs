@@ -157,13 +157,31 @@ public class RotateRubiks : MonoBehaviour
                 var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
 
                 var rubiksBoxScript = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
-                if (rubiksBoxScript) rubiksBoxScript.ShowHint(true, handDir);
+                if (rubiksBoxScript) {
+                    rubiksBoxScript.ShowHint(true, handDir);
+                    HighlightSelectedFace(hand);
+                }
             }
         }
     }
 
-    void HighlightSelectedFace() {
+    void HighlightSelectedFace(string hand) {
+        int direction = 0;
+        int side = 0;
+        Vector3 axis = PickAxis(hand, out direction, out side);
 
+        foreach (var smallCube in smallCubes)
+        {
+            int smallCubePos = -1;
+            if (axis.x > 0) smallCubePos = smallCube.intPos.x;
+            if (axis.y > 0) smallCubePos = smallCube.intPos.y;
+            if (axis.z > 0) smallCubePos = smallCube.intPos.z;
+
+            if (smallCubePos != -1) {
+                // smallCube.transform.SetParent(smallCubePos == side ? frontFace.transform : backFace.transform);
+                smallCube.SetHighlighted(smallCubePos == side);
+            }
+        }
     }
 
     void StartRotation(Vector3 axis, int side)
