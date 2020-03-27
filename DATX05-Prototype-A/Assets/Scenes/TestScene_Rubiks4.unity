@@ -119,11 +119,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1815243345544906459, guid: eaee0df0b97fe99458bc24e4df8486fb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: useOnBoarding
@@ -133,6 +128,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tutorialForPuzzle
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3144533344937282796, guid: eaee0df0b97fe99458bc24e4df8486fb,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5828821611518690356, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
@@ -175,11 +175,6 @@ PrefabInstance:
       value: TutorialB
       objectReference: {fileID: 0}
     - target: {fileID: 5828821611518690357, guid: eaee0df0b97fe99458bc24e4df8486fb,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9038784636899829234, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -265,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -337,6 +332,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2340130953782946595, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4022833352348329975, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -392,12 +392,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5106153826003597966, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5377324079955657018, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8035338788641643357, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8606495274984943749, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_IsActive
       value: 0
