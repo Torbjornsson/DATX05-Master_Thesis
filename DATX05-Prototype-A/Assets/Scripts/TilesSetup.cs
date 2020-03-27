@@ -13,22 +13,17 @@ public class TilesSetup : MonoBehaviour
         tiles = GameObject.FindGameObjectsWithTag("Tile");
 
         ScrambleTiles(tiles);
-        
-        ScrambleTiles(tiles);
-   }
 
-    private Vector3 GetRandomPosition(List<Vector3> positions, int i)
+        ScrambleTiles(tiles);
+    }
+
+    private Vector3 GetRandomPosition(List<Vector3> positions)
     {
         int index = -1;
         Vector3 newPos = Vector3.zero;
-        while (tiles[i].transform.position.Equals(newPos) || index == -1)
-        {
-            index = Random.Range(0, positions.Count - 1);
-            newPos = positions[index];
-            if (positions.Count == 1)
-                return newPos;
-        }
-        
+        index = Random.Range(0, positions.Count - 1);
+        newPos = positions[index];
+
         positions.RemoveAt(index);
         return newPos;
     }
@@ -42,13 +37,13 @@ public class TilesSetup : MonoBehaviour
 
         for (int i = 0; i < tiles.Length; i++)
         {
-            tiles[i].transform.position = GetRandomPosition(positions, i);
+            tiles[i].transform.position = GetRandomPosition(positions);
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }
