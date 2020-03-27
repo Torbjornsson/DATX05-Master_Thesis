@@ -1,1 +1,5 @@
 This is a test text file lalalala
+
+"C:\Program Files\Unity\Editor\Unity.exe" -quit -batchmode -projectPath "D:\Unity\DATX05-Master_Thesis\DATX05-Prototype-A"
+"C:\Program Files\Unity\Editor\Unity.exe" -batchmode -projectPath "D:\Unity\DATX05-Master_Thesis\DATX05-Prototype-A" -executeMethod AutomatedBuild.BuildTutorial -quit
+"C:\Program Files\Unity\Editor\Unity.exe" -projectPath "D:\Unity\DATX05-Master_Thesis\DATX05-Prototype-A" -executeMethod AutomatedBuild.BuildTutorial1
