@@ -31,7 +31,7 @@ public class Resettable : MonoBehaviour
     private bool hardReset = false;
 
     private float alpha;
-    private Vector3 previousPosition;
+    private Vector3 previousPosition, originalScale;
 
     // Start is called before the first frame update
     void Start()
@@ -69,6 +69,8 @@ public class Resettable : MonoBehaviour
             Debug.LogError(gameObject.name+": Collider was not found!");
         if (!grabbableScript)
             Debug.LogError(gameObject.name+": Grabber script was not found!");
+
+        originalScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -115,6 +117,7 @@ public class Resettable : MonoBehaviour
             }
 
             UpdateMaterialAlpha();
+            ScaleTransform();
         }
 
         if (rb.isKinematic && !fadeIn && !grabbableScript.isGrabbed && !GameMaster.instance.hasWon)
@@ -122,6 +125,7 @@ public class Resettable : MonoBehaviour
             alpha = 1;
             FadeInDone();
             UpdateMaterialAlpha();
+            ScaleTransform();
         }
     }
 
@@ -138,6 +142,11 @@ public class Resettable : MonoBehaviour
                 m.color = col;
             }
         }
+    }
+
+    private void ScaleTransform()
+    {
+        transform.localScale = originalScale * alpha;
     }
 
     private void OnTriggerEnter(Collider other) {
