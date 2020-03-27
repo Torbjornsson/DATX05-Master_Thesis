@@ -104,6 +104,15 @@ public class RotateRubiks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isRotationStarted) {
+            SmoothRotation();
+
+            var angles = frontFace.transform.localRotation.eulerAngles;
+            if (!rotatedEnough && angles.magnitude > 90 - rotationAngleSnap && angles.magnitude < 270 + rotationAngleSnap)
+                rotatedEnough = true;
+        }
+
         if (!grabbable.isGrabbed) return;
         switch(grabbable.grabbedBy.tag)
         {
@@ -116,17 +125,7 @@ public class RotateRubiks : MonoBehaviour
                 break;
 
             default:
-                if (isRotationStarted)
-                    StopRotation();
                 break;
-        }
-
-        if(isRotationStarted) {
-            SmoothRotation();
-
-            var angles = frontFace.transform.localRotation.eulerAngles;
-            if (!rotatedEnough && angles.magnitude > 90 - rotationAngleSnap && angles.magnitude < 270 + rotationAngleSnap)
-                rotatedEnough = true;
         }
     }
 
@@ -149,18 +148,16 @@ public class RotateRubiks : MonoBehaviour
             StopRotation();
         
         // Idle (just for showing hints)
-        else {
-            var collider = GetSmallCubeCollider(hand);
-            // if (collider && collider.transform.childCount < 2) {
-            if (collider && !collider.tag.Equals("RubiksBlocker")) {
-                // Debug.Log("Found small cube collider: "+collider.gameObject.name);
-                var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
+        var collider = GetSmallCubeCollider(hand);
+        // if (collider && collider.transform.childCount < 2) {
+        if (collider && !collider.tag.Equals("RubiksBlocker")) {
+            // Debug.Log("Found small cube collider: "+collider.gameObject.name);
+            var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
 
-                var rubiksBoxScript = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
-                if (rubiksBoxScript) {
-                    rubiksBoxScript.ShowHint(true, handDir);
-                    HighlightSelectedFace(hand);
-                }
+            var rubiksBoxScript = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
+            if (rubiksBoxScript) {
+                if (!isRotationStarted) rubiksBoxScript.ShowHint(true, handDir);
+                HighlightSelectedFace(hand);
             }
         }
     }
@@ -306,9 +303,6 @@ public class RotateRubiks : MonoBehaviour
         if (axis.x < 0 || axis.y < 0 || axis.z < 0) side = (side == 0) ? 1 : 0;
 
         axis = new Vector3(Mathf.Abs(axis.x), Mathf.Abs(axis.y), Mathf.Abs(axis.z));
-
-        // if(axis != Vector3.zero)
-        //     StartRotation(axis, side);
 
         return axis;
     }
