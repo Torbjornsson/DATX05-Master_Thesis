@@ -135,8 +135,11 @@ public class RotateRubiks : MonoBehaviour
         if (input > 0.7f && !isRotationStarted)
         {
             int direction = 0;
+            int side = 0;
             // Vector3 axis = PickAxis(hand, out direction);
-            Vector3 axis = PickAxisAndRotate(hand, out direction);
+            Vector3 axis = PickAxis(hand, out direction, out side);
+            if (axis != Vector3.zero)
+                StartRotation(axis, side);
             if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
                 RotateFace(axis, direction);
         }
@@ -153,10 +156,14 @@ public class RotateRubiks : MonoBehaviour
                 // Debug.Log("Found small cube collider: "+collider.gameObject.name);
                 var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
 
-                var script = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
-                if (script) script.ShowHint(true, handDir);
+                var rubiksBoxScript = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
+                if (rubiksBoxScript) rubiksBoxScript.ShowHint(true, handDir);
             }
         }
+    }
+
+    void HighlightSelectedFace() {
+
     }
 
     void StartRotation(Vector3 axis, int side)
@@ -253,10 +260,10 @@ public class RotateRubiks : MonoBehaviour
         return localDir;
     }
 
-    private Vector3 PickAxisAndRotate(string hand, out int direction) {
+    private Vector3 PickAxis(string hand, out int direction, out int side) {
         
         direction = 0;
-        int side = 0;
+        side = 0;
         Vector3 axis = Vector3.zero;
 
         var collider = GetSmallCubeCollider(hand);
@@ -281,8 +288,8 @@ public class RotateRubiks : MonoBehaviour
 
         axis = new Vector3(Mathf.Abs(axis.x), Mathf.Abs(axis.y), Mathf.Abs(axis.z));
 
-        if(axis != Vector3.zero)
-            StartRotation(axis, side);
+        // if(axis != Vector3.zero)
+        //     StartRotation(axis, side);
 
         return axis;
     }
