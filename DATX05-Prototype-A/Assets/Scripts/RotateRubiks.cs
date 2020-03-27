@@ -104,6 +104,15 @@ public class RotateRubiks : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (isRotationStarted) {
+            SmoothRotation();
+
+            var angles = frontFace.transform.localRotation.eulerAngles;
+            if (!rotatedEnough && angles.magnitude > 90 - rotationAngleSnap && angles.magnitude < 270 + rotationAngleSnap)
+                rotatedEnough = true;
+        }
+
         if (!grabbable.isGrabbed) return;
         switch(grabbable.grabbedBy.tag)
         {
@@ -116,17 +125,7 @@ public class RotateRubiks : MonoBehaviour
                 break;
 
             default:
-                if (isRotationStarted)
-                    StopRotation();
                 break;
-        }
-
-        if(isRotationStarted) {
-            SmoothRotation();
-
-            var angles = frontFace.transform.localRotation.eulerAngles;
-            if (!rotatedEnough && angles.magnitude > 90 - rotationAngleSnap && angles.magnitude < 270 + rotationAngleSnap)
-                rotatedEnough = true;
         }
     }
 
@@ -135,8 +134,11 @@ public class RotateRubiks : MonoBehaviour
         if (input > 0.7f && !isRotationStarted)
         {
             int direction = 0;
+            int side = 0;
             // Vector3 axis = PickAxis(hand, out direction);
-            Vector3 axis = PickAxisAndRotate(hand, out direction);
+            Vector3 axis = PickAxis(hand, out direction, out side);
+            if (axis != Vector3.zero)
+                StartRotation(axis, side);
             if (axis != Vector3.zero && direction != 0 && frontFace.transform.childCount == 4)
                 RotateFace(axis, direction);
         }
@@ -146,15 +148,35 @@ public class RotateRubiks : MonoBehaviour
             StopRotation();
         
         // Idle (just for showing hints)
-        else {
-            var collider = GetSmallCubeCollider(hand);
-            // if (collider && collider.transform.childCount < 2) {
-            if (collider && !collider.tag.Equals("RubiksBlocker")) {
-                // Debug.Log("Found small cube collider: "+collider.gameObject.name);
-                var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
+        var collider = GetSmallCubeCollider(hand);
+        // if (collider && collider.transform.childCount < 2) {
+        if (collider && !collider.tag.Equals("RubiksBlocker")) {
+            // Debug.Log("Found small cube collider: "+collider.gameObject.name);
+            var handDir = GetHandOrientationComparedToSmallCube(hands[hand], collider.gameObject);
 
-                var script = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
-                if (script) script.ShowHint(true, handDir);
+            var rubiksBoxScript = collider.gameObject.GetComponentInChildren<RubiksBoxScript>();
+            if (rubiksBoxScript) {
+                if (!isRotationStarted) rubiksBoxScript.ShowHint(true, handDir);
+                HighlightSelectedFace(hand);
+            }
+        }
+    }
+
+    void HighlightSelectedFace(string hand) {
+        int direction = 0;
+        int side = 0;
+        Vector3 axis = PickAxis(hand, out direction, out side);
+
+        foreach (var smallCube in smallCubes)
+        {
+            int smallCubePos = -1;
+            if (axis.x > 0) smallCubePos = smallCube.intPos.x;
+            if (axis.y > 0) smallCubePos = smallCube.intPos.y;
+            if (axis.z > 0) smallCubePos = smallCube.intPos.z;
+
+            if (smallCubePos != -1) {
+                // smallCube.transform.SetParent(smallCubePos == side ? frontFace.transform : backFace.transform);
+                smallCube.SetHighlighted(smallCubePos == side);
             }
         }
     }
@@ -227,7 +249,8 @@ public class RotateRubiks : MonoBehaviour
         {
             Debug.DrawRay(start, end, Color.red, 1);
 
-            if (hit.collider) return hit.collider;
+            if (hit.collider && !hit.collider.transform.root.tag.Equals("Tutorial"))
+                return hit.collider;
         }
 
         return null;
@@ -253,10 +276,10 @@ public class RotateRubiks : MonoBehaviour
         return localDir;
     }
 
-    private Vector3 PickAxisAndRotate(string hand, out int direction) {
+    private Vector3 PickAxis(string hand, out int direction, out int side) {
         
         direction = 0;
-        int side = 0;
+        side = 0;
         Vector3 axis = Vector3.zero;
 
         var collider = GetSmallCubeCollider(hand);
@@ -280,9 +303,6 @@ public class RotateRubiks : MonoBehaviour
         if (axis.x < 0 || axis.y < 0 || axis.z < 0) side = (side == 0) ? 1 : 0;
 
         axis = new Vector3(Mathf.Abs(axis.x), Mathf.Abs(axis.y), Mathf.Abs(axis.z));
-
-        if(axis != Vector3.zero)
-            StartRotation(axis, side);
 
         return axis;
     }
