@@ -126,6 +126,11 @@ public abstract class ITutorial : MonoBehaviour
     {
         currentState = state;
         master.ArrivedAtSlide(state);
+        Debug.Log("arrived at slide " + state + " last slide " + activeSlides.Count);
+        if (state == activeSlides.Count - 1)
+        {
+            GameMaster.instance.LastSlideReached = true;
+        }
 
         if (scanner)
             scanner.canScan = true;
