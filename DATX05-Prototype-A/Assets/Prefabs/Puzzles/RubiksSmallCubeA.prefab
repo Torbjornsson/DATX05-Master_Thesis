@@ -47,6 +47,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intPos: {x: 0, y: 0, z: 0}
   cubeRenderer: {fileID: 180482249474938658}
+  defaultMaterial: {fileID: 2100000, guid: 1a0badadbd449c642887f8431b43a7b3, type: 2}
+  highlightMaterial: {fileID: 2100000, guid: 5aa8fb96327286745b3f874f605a03b6, type: 2}
   highlightDelay: 0.1
 --- !u!1001 &180482249472642882
 PrefabInstance:

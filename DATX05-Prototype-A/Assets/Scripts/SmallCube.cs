@@ -6,6 +6,8 @@ public class SmallCube : MonoBehaviour
 {
     public Vector3Int intPos;
     public Renderer cubeRenderer;
+    public Material defaultMaterial;
+    public Material highlightMaterial;
     public float highlightDelay = 0.1f;
 
     Vector3 floatPos;
@@ -16,6 +18,10 @@ public class SmallCube : MonoBehaviour
     {
         if (!cubeRenderer)
             Debug.LogError("SmallCube: Cube Renderer was not found!");
+        if (!defaultMaterial)
+            Debug.LogError("SmallCube: Default Material was not found!");
+        if (!highlightMaterial)
+            Debug.LogError("SmallCube: Highlight Material was not found!");
 
         UpdatePosition();
     }
@@ -44,12 +50,14 @@ public class SmallCube : MonoBehaviour
     }
 
     public void SetHighlighted(bool isHighlighted) {
-        var mat = cubeRenderer.material;
+        // var mat = cubeRenderer.material;
         if (!isHighlighted) {
-            mat.DisableKeyword("_EMISSION");
+            // mat.DisableKeyword("_EMISSION");
+            cubeRenderer.material = defaultMaterial;
             delay = -1;
         } else if (isHighlighted) {
-            mat.EnableKeyword("_EMISSION");
+            // mat.EnableKeyword("_EMISSION");
+            cubeRenderer.material = highlightMaterial;
             delay = highlightDelay;
         }
     }
