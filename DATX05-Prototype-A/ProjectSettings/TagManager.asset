@@ -32,6 +32,7 @@ TagManager:
   - OnBoardCube
   - RubiksResetVolume
   - Tile
+  - Tutorial
   layers:
   - Default
   - TransparentFX

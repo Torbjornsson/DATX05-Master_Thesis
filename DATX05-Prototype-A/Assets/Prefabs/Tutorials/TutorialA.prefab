@@ -1836,7 +1836,7 @@ GameObject:
   - component: {fileID: 5828821611518690359}
   m_Layer: 0
   m_Name: TutorialA
-  m_TagString: Untagged
+  m_TagString: Tutorial
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1886,6 +1886,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialForPuzzle: 1
   useOnBoarding: 1
+  audioSource: {fileID: 0}
+  transitionPitchSpan: 0.1
   onBoardingSlides:
   - {fileID: 5828821612541926166}
   - {fileID: 7504907577723703923}

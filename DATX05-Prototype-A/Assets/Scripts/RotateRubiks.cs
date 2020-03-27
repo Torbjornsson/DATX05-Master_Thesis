@@ -252,7 +252,8 @@ public class RotateRubiks : MonoBehaviour
         {
             Debug.DrawRay(start, end, Color.red, 1);
 
-            if (hit.collider) return hit.collider;
+            if (hit.collider && !hit.collider.transform.root.tag.Equals("Tutorial"))
+                return hit.collider;
         }
 
         return null;
