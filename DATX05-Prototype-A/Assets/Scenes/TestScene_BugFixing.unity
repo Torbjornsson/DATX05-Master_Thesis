@@ -232,25 +232,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: useOnBoarding
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: tutorialForPuzzle
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_Name
       value: TutorialC
-      objectReference: {fileID: 0}
-    - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4022833352348329975, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}

@@ -19330,7 +19330,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialForPuzzle: 2
-  useOnBoarding: 1
+  useOnBoarding: 0
   audioSource: {fileID: 7989673746012944671}
   transitionPitchSpan: 0.1
   onBoardingSlides:
@@ -43978,78 +43978,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: onBoardingSlides.Array.data[0]
-      value: 
-      objectReference: {fileID: 5377324079955657018}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: onBoardingSlides.Array.data[1]
-      value: 
-      objectReference: {fileID: 6791530528128411237}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: onBoardingSlides.Array.data[2]
-      value: 
-      objectReference: {fileID: 3795940830314004486}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle1Slides.Array.data[0]
-      value: 
-      objectReference: {fileID: 7611346175290032827}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle1Slides.Array.data[1]
-      value: 
-      objectReference: {fileID: 3888570985270068700}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle1Slides.Array.data[2]
-      value: 
-      objectReference: {fileID: 8416970406497905060}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle2Slides.Array.data[0]
-      value: 
-      objectReference: {fileID: 2340130953782946595}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle2Slides.Array.data[1]
-      value: 
-      objectReference: {fileID: 5106153826003597966}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle2Slides.Array.data[2]
-      value: 
-      objectReference: {fileID: 8606495274984943749}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle3Slides.Array.data[0]
-      value: 
-      objectReference: {fileID: 2882238926563307602}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle3Slides.Array.data[1]
-      value: 
-      objectReference: {fileID: 7296317091927583464}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle3Slides.Array.data[2]
-      value: 
-      objectReference: {fileID: 8640966250848537515}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: puzzle3Slides.Array.data[3]
-      value: 
-      objectReference: {fileID: 8035338788641643357}
-    - target: {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9,
-        type: 3}
-      propertyPath: winningSlide
-      value: 
-      objectReference: {fileID: 687579723552421138}
-    m_RemovedComponents:
-    - {fileID: 7189784913191327317, guid: c558249d90081da4985a7655f61071a9, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c558249d90081da4985a7655f61071a9, type: 3}
 --- !u!4 &8734165030603922382 stripped
 Transform:
