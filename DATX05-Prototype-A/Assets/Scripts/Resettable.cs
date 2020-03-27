@@ -117,7 +117,7 @@ public class Resettable : MonoBehaviour
             UpdateMaterialAlpha();
         }
 
-        if (rb.isKinematic && !fadeIn && !grabbableScript.isGrabbed)
+        if (rb.isKinematic && !fadeIn && !grabbableScript.isGrabbed && !GameMaster.instance.hasWon)
         {
             alpha = 1;
             FadeInDone();
