@@ -8,6 +8,7 @@ public class GameMaster : MonoBehaviour
 
     public TutorialMaster tutorialMaster;
     public bool goalCriteriaSatisfied = false;
+    public bool LastSlideReached = false;
     public bool hasWon {get; private set;}
 
     // Start is called before the first frame update

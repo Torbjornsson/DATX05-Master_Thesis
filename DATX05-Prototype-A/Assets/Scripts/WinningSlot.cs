@@ -114,7 +114,7 @@ public class WinningSlot : MonoBehaviour
 
     public void CheckIfWinOrFail()
     {
-        if (GameMaster.instance.goalCriteriaSatisfied)
+        if (GameMaster.instance.goalCriteriaSatisfied && GameMaster.instance.LastSlideReached)
         {
             TriggerWin();
         }
