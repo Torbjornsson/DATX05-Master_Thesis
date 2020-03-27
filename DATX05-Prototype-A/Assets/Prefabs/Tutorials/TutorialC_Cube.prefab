@@ -198,6 +198,7 @@ MonoBehaviour:
   transitionSlidePrefab: {fileID: 7004429601835410840, guid: b567016885fd3bf40876016549392b07,
     type: 3}
   rotationSpeed: 10
+  waitTimer: 0
 --- !u!1001 &2764872118520625198
 PrefabInstance:
   m_ObjectHideFlags: 0
