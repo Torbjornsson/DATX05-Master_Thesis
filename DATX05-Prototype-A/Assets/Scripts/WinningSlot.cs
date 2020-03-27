@@ -9,7 +9,7 @@ public class WinningSlot : MonoBehaviour
     public bool canAttachTileWhenCubeInSlot = true;
     public bool active = true;
     [Space]
-    public ParticleSystem confettiEmitter;
+    public ParticleSystem[] confettiEmitter;
     [Space]
     public AudioClip win;
     public AudioClip fail;
@@ -30,7 +30,7 @@ public class WinningSlot : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if (!confettiEmitter)
+        if (confettiEmitter.Length == 0 || !confettiEmitter[0])
             Debug.LogError(gameObject.name + ": Confetti Particle System was not found!");
         if (!soundSource)
             Debug.LogError(gameObject.name + ": Audio Source was not found!");
@@ -147,8 +147,10 @@ public class WinningSlot : MonoBehaviour
 
     public void ThrowConfetti()
     {
-        confettiEmitter.Play();
-
+        foreach (var confetti in confettiEmitter)
+        {
+            confetti.Play();
+        }
     }
 
     public void TriggerFail()

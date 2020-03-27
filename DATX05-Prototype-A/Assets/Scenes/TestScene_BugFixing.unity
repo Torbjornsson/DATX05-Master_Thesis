@@ -127,12 +127,12 @@ PrefabInstance:
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: useOnBoarding
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
@@ -187,7 +187,7 @@ PrefabInstance:
     - target: {fileID: 5828821611518690357, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5890194542040557710, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
@@ -236,6 +236,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: TutorialC
+      objectReference: {fileID: 0}
+    - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4022833352348329975, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -384,6 +389,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GameElements_Puzzle2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6131099921255913102, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6131099921255913105, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
@@ -658,7 +668,7 @@ PrefabInstance:
     - target: {fileID: 5339311859194012689, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5339311859194012694, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
