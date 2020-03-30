@@ -17,7 +17,13 @@ public class AutomatedBuild
         List<string> names = new List<string>()
         {"Tutorial1AO", "Tutorial1A",
         "Tutorial1BO", "Tutorial1B",
-        "Tutorial1CO", "Tutorial1C"};
+        "Tutorial1CO", "Tutorial1C",
+        "Tutorial2AO", "Tutorial2A",
+        "Tutorial2BO", "Tutorial2B",
+        "Tutorial2CO", "Tutorial2C",
+        "Tutorial3AO", "Tutorial3A",
+        "Tutorial3BO", "Tutorial3B",
+        "Tutorial3CO", "Tutorial3C"};
 
         for (int i = 0; i < names.Count; i++)
         {
