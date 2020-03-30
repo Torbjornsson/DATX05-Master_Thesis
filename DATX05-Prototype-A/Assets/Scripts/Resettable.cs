@@ -31,7 +31,7 @@ public class Resettable : MonoBehaviour
     private bool hardReset = false;
 
     private float alpha;
-    private Vector3 previousPosition, originalScale;
+    private Vector3 previousPosition, originalScale, originalColliderBounds;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +46,8 @@ public class Resettable : MonoBehaviour
 
         rb = GetComponent<Rigidbody>();
         myCollider = GetComponent<Collider>();
+        originalColliderBounds = myCollider.bounds.size;
+
         grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
         attachableTarget = GetComponent<AttachableTarget>();
 
@@ -81,7 +83,7 @@ public class Resettable : MonoBehaviour
 
         if (insideResetVolume > 0 && !grabbableScript.isGrabbed && !pending && !fadeOut && !hardReset) {
             StartPendingReset();
-        } else  if (insideResetVolume <= 0 && (pending || fadeOut) && !hardReset) {
+        } else  if (insideResetVolume <= 0 && (pending || fadeOut) && !hardReset && alpha == 1) {
             StopPendingReset();
         }
 
@@ -219,7 +221,7 @@ public class Resettable : MonoBehaviour
                 transform.position = startingPosition;
             } else if (collidingWithAnything) {
                 var pos = transform.position;
-                pos += GenerateRandomVector() * Mathf.Max(myCollider.bounds.size.x, myCollider.bounds.size.y, myCollider.bounds.size.z);
+                pos += GenerateRandomVector() * Mathf.Max(originalColliderBounds.x, originalColliderBounds.y, originalColliderBounds.z);
                 transform.position = pos;
             }
             outsideStartingArea = OutsideStartingArea();
@@ -267,7 +269,7 @@ public class Resettable : MonoBehaviour
         results = new Collider[resultsSize];
         
         var center = transform.position;
-        var halfExtents = myCollider.bounds.size / 2;
+        var halfExtents = originalColliderBounds / 2;
         int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation);
         
         for(int i = 0; i < hits; i++) {
@@ -283,7 +285,7 @@ public class Resettable : MonoBehaviour
         results = new Collider[resultsSize];
         
         var center = transform.position;
-        var halfExtents = myCollider.bounds.size / 2;
+        var halfExtents = originalColliderBounds / 2;
         int hits = Physics.OverlapBoxNonAlloc(center, halfExtents, results, transform.rotation, LayerMask.GetMask("Grabbable"));
         
         for(int i = 0; i < hits; i++) {
