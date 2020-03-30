@@ -3,11 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using System.IO;
+using System;
 
 public class AutomatedBuild
 {
     private static string filePath = "D:/Builds/";
+    private static string serverFilePath = "E:/Drive/ID2 - DATX05 - Master's thesis in Computer science and engineering/Build/";
 
+    public static void BuildOnServer()
+    {
+        Console.WriteLine("Starting BuildOnServer");
+        List<string> enabledScenes = new List<string>();
+        List<string> names = new List<string>()
+        {"Tutorial1AO", "Tutorial1A",
+        "Tutorial1BO", "Tutorial1B",
+        "Tutorial1CO", "Tutorial1C"};
+
+        for (int i = 0; i < names.Count; i++)
+        {
+            enabledScenes.Clear();
+            var buildSettingScene = EditorBuildSettings.scenes[i];
+
+            if (buildSettingScene.enabled)
+            {
+                enabledScenes.Add(buildSettingScene.path);
+            }
+
+            //Get the name of the tutorial
+            string executableBuildPath = serverFilePath + names[i].Substring(0,9);
+
+            Console.WriteLine("Building " + names[i]);
+
+            if (!Directory.Exists(executableBuildPath))
+            {
+                Directory.CreateDirectory(executableBuildPath);
+            }
+
+            string executableName = names[i];
+            string locationPathName = executableBuildPath + "/" + executableName + ".exe";
+
+            WindowsBuild(enabledScenes, locationPathName);
+        }
+ 
+    }
     public static void BuildTutorial1()
     {
         List<string> enabledScenes = new List<string>();
