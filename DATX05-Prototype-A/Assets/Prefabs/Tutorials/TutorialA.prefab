@@ -1143,7 +1143,7 @@ Transform:
   m_GameObject: {fileID: 2493664611168548477}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.337, y: 0, z: 0}
-  m_LocalScale: {x: 0.8224116, y: 0.8224116, z: 0.8224116}
+  m_LocalScale: {x: 0.6264474, y: 0.6264474, z: 0.6264474}
   m_Children: []
   m_Father: {fileID: 5049481112786585201}
   m_RootOrder: 1
@@ -1185,7 +1185,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8d03f726511dfb54083555afc5069c8f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0a733ad3c13f7a6418141785a45cd4a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3579,7 +3579,7 @@ PrefabInstance:
     - target: {fileID: 2910852661195732184, guid: a1adf78aead888344a57d3115deff056,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3089577001702246092, guid: a1adf78aead888344a57d3115deff056,
         type: 3}
@@ -3636,6 +3636,11 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: df4b6af58b0a10e42b5c19af8932f385, type: 2}
+    - target: {fileID: 7981159730707261776, guid: a1adf78aead888344a57d3115deff056,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 180.00002
+      objectReference: {fileID: 0}
     - target: {fileID: 8166872922075733761, guid: a1adf78aead888344a57d3115deff056,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4115,7 +4120,7 @@ PrefabInstance:
     - target: {fileID: 5064916796303626413, guid: 4b5c02c64ba39a4428b46fecb301b370,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5714073800974323352, guid: 4b5c02c64ba39a4428b46fecb301b370,
         type: 3}
