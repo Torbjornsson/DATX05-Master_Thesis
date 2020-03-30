@@ -81,7 +81,7 @@ public class Resettable : MonoBehaviour
 
         if (insideResetVolume > 0 && !grabbableScript.isGrabbed && !pending && !fadeOut && !hardReset) {
             StartPendingReset();
-        } else  if (insideResetVolume <= 0 && (pending || fadeOut) && !hardReset) {
+        } else  if (insideResetVolume <= 0 && (pending || fadeOut) && !hardReset && alpha == 1) {
             StopPendingReset();
         }
 
