@@ -9,6 +9,10 @@ public class WinningSlot : MonoBehaviour
     public bool canAttachTileWhenCubeInSlot = true;
     public bool active = true;
     [Space]
+    public Renderer winRenderer;
+    public Renderer failRenderer;
+    public VLight slotLight;
+    [Space]
     public ParticleSystem[] confettiEmitter;
     [Space]
     public AudioClip winSound;
