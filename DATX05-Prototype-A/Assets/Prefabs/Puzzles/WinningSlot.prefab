@@ -69,7 +69,7 @@ MonoBehaviour:
   winSound: {fileID: 8300000, guid: 7f6aa3539a2728e42a49ba73c995c965, type: 3}
   winVolume: 0.5
   failSound: {fileID: 8300000, guid: b777ab965ce6866498b8ba7a625fc1da, type: 3}
-  failVolume: 0.25
+  failVolume: 0.15
   soundSource: {fileID: 8488842526683990057}
   winEvent:
     m_PersistentCalls:
