@@ -32,8 +32,10 @@ public class CollisionTestReset : MonoBehaviour
 
     public void ResetCubes() {
         for (int i = 0; i < cubes.Length; i++) {
-            cubes[i].transform.position = startPositions[i];
-            cubes[i].transform.localRotation = Quaternion.Euler(Vector3.zero);
+            var trans = cubes[i].transform;
+            trans.position = startPositions[i];
+            trans.localRotation = Quaternion.Euler(Vector3.zero);
+            trans.GetComponent<Rigidbody>().velocity = Vector3.zero;
         }
     }
 }

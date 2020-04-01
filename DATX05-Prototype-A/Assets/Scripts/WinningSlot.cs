@@ -11,8 +11,10 @@ public class WinningSlot : MonoBehaviour
     [Space]
     public ParticleSystem[] confettiEmitter;
     [Space]
-    public AudioClip win;
-    public AudioClip fail;
+    public AudioClip winSound;
+    [Range (0,1)] public float winVolume = 0.5f;
+    public AudioClip failSound;
+    [Range (0,1)] public float failVolume = 0.25f;
     public AudioSource soundSource;
     [Space]
     public UnityEvent winEvent;
@@ -34,9 +36,9 @@ public class WinningSlot : MonoBehaviour
             Debug.LogError(gameObject.name + ": Confetti Particle System was not found!");
         if (!soundSource)
             Debug.LogError(gameObject.name + ": Audio Source was not found!");
-        if (!win)
+        if (!winSound)
             Debug.LogError(gameObject.name + ": Win Audio Clip was not found!");
-        if (!fail)
+        if (!failSound)
             Debug.LogError(gameObject.name + ": Fail Audio Clip was not found!");
 
         if (winEvent == null)
@@ -162,13 +164,15 @@ public class WinningSlot : MonoBehaviour
 
     public void PlayWinSound()
     {
-        soundSource.clip = win;
+        soundSource.clip = winSound;
+        soundSource.volume = winVolume;
         soundSource.Play();
     }
 
     public void PlayFailSound()
     {
-        soundSource.clip = fail;
+        soundSource.clip = failSound;
+        soundSource.volume = failVolume;
         soundSource.Play();
     }
 
