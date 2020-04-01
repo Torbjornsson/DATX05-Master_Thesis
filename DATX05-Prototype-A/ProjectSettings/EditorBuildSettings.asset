@@ -8,55 +8,55 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle1AO.unity
     guid: 5c25d526f61d277448d505bb7d5c1f22
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle1A.unity
     guid: 456b8391ef6624d4784fd1d86f6e5384
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle1BO.unity
     guid: 929f9221b5a87d549a27747164db7239
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle1B.unity
     guid: 1238072c3143dd34abae8f816e371b9a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle1CO.unity
     guid: 5b8f2b53376b6f24b82932d6deb03acc
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle1C.unity
     guid: 64a5034d5f6a2a9428394be407f82ab3
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle2AO.unity
     guid: b23e64e35a152cb40b2fd7e4e647da9e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle2A.unity
     guid: 4d75ceeb6624be045a2f6ae28777c25e
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle2BO.unity
     guid: 002b2277f3e83fd41bd91d0f7f5959c1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle2B.unity
     guid: f268c17b5378c3f4bb2fe201ab767f22
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle2CO.unity
     guid: b381068b06c373b4f846b2acf1149dd2
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle2C.unity
     guid: 73855c2162211de48afaebbe8f04ac5d
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle3AO.unity
     guid: d502657292738ad4990592a7571b0eb1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle3A.unity
     guid: d03c0f6b621b8984fa41ed7520b7a581
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle3BO.unity
     guid: d3b7099064f38b4468129e79ee29ef3a
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle3B.unity
     guid: f2b0d8ad3d867044a8e044480f077118
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle3CO.unity
     guid: f13b1760282aace44b4d21ee12c44610
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilot Testing/PilotTestPuzzle3C.unity
     guid: 9174fa6388c9f6349b51e9d535cc2c50
   m_configObjects: {}
