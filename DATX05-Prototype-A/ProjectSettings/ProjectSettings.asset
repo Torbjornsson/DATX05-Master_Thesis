@@ -159,6 +159,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.oculus.UnitySample
     Standalone: com.oculus.UnitySample
+    WebGL: com.oculus.UnitySample
   buildNumber: {}
   AndroidBundleVersionCode: 1
   AndroidMinSdkVersion: 24
@@ -311,6 +312,9 @@ PlayerSettings:
     - Oculus
     - daydream
     - cardboard
+  - m_BuildTarget: WebGL
+    m_Enabled: 1
+    m_Devices: []
   m_BuildTargetEnableVuforiaSettings: []
   openGLRequireES31: 0
   openGLRequireES31AEP: 0

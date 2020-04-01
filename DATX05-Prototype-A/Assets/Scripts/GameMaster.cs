@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class GameMaster : MonoBehaviour
 {
-    public static GameMaster instance {get; private set;}
+    public static GameMaster instance { get; private set; }
 
     public TutorialMaster tutorialMaster;
     public bool goalCriteriaSatisfied = false;
     public bool LastSlideReached = false;
-    public bool hasWon {get; private set;}
+    public bool hasWon { get; private set; }
+
+    private bool isPaused = false;
+    private Camera pauseCamera;
+    private GameObject ovrCameraRig;
 
     // Start is called before the first frame update
     void Start()
@@ -18,9 +22,14 @@ public class GameMaster : MonoBehaviour
             Debug.LogWarning("Game Master Script: WARNING! Could not find a Tutorial Master!");
 
         hasWon = false;
+
+        pauseCamera = GameObject.Find("PauseCamera").GetComponent<Camera>();
+        pauseCamera.gameObject.SetActive(false);
+        ovrCameraRig = GameObject.Find("OVRCameraRig");
     }
 
-    void Awake() {
+    void Awake()
+    {
         instance = this;
 
         var objects = GameObject.FindObjectsOfType<GameMaster>();
@@ -31,11 +40,36 @@ public class GameMaster : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!OVRManager.hasVrFocus && !isPaused)
+        {
+            PauseGame();
+        }
+        else if (OVRManager.hasVrFocus && isPaused)
+        {
+            UnPauseGame();
+        }
         // if (goalCriteriaSatisfied)
         //     Debug.Log("WON THE GAME!!!!");
     }
 
-    public void PuzzleWon() {
+    public void PuzzleWon()
+    {
         hasWon = true;
+    }
+
+    private void PauseGame()
+    {
+        Debug.Log("Pausing game");
+        isPaused = true;
+        ovrCameraRig.GetComponent<OVRCameraRig>().disableEyeAnchorCameras = true;
+        pauseCamera.gameObject.SetActive(true);
+    }
+
+    private void UnPauseGame()
+    {
+        Debug.Log("Unpausing game");
+        isPaused = false;
+        ovrCameraRig.GetComponent<OVRCameraRig>().disableEyeAnchorCameras = false;
+        pauseCamera.gameObject.SetActive(false);
     }
 }
