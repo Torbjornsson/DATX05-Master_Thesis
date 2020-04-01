@@ -319,7 +319,6 @@ public class Resettable : MonoBehaviour
         resetSoundSource.clip = sound;
         var size = (1 + (1 - soundSize));
         resetSoundSource.pitch = (startingPitch - pitchSpan/2 + Random.Range(0, pitchSpan)) * size;
-        Debug.Log("Sound size: "+size+", resulting pitch: "+resetSoundSource.pitch);
         resetSoundSource.Play();
     }
 }
