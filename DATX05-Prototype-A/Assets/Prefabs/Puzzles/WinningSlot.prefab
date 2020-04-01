@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 1454310589909572154}
   - component: {fileID: 1454310589909572155}
   - component: {fileID: 1199368460460757810}
-  - component: {fileID: 6751099687161535441}
   m_Layer: 0
   m_Name: WinningSlot
   m_TagString: Untagged
@@ -32,6 +31,7 @@ Transform:
   m_Children:
   - {fileID: 1483761953150797137}
   - {fileID: 8244194618103725767}
+  - {fileID: 9015488559349350152}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -66,22 +66,55 @@ MonoBehaviour:
   confettiEmitter:
   - {fileID: 7349930854344302193}
   - {fileID: 71514273752901095}
-  win: {fileID: 8300000, guid: 7f6aa3539a2728e42a49ba73c995c965, type: 3}
-  fail: {fileID: 8300000, guid: b777ab965ce6866498b8ba7a625fc1da, type: 3}
-  soundSource: {fileID: 6751099687161535441}
+  winSound: {fileID: 8300000, guid: 7f6aa3539a2728e42a49ba73c995c965, type: 3}
+  winVolume: 0.5
+  failSound: {fileID: 8300000, guid: b777ab965ce6866498b8ba7a625fc1da, type: 3}
+  failVolume: 0.25
+  soundSource: {fileID: 8488842526683990057}
   winEvent:
     m_PersistentCalls:
       m_Calls: []
   failEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!82 &6751099687161535441
+--- !u!1 &4756611023457445866
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9015488559349350152}
+  - component: {fileID: 8488842526683990057}
+  m_Layer: 0
+  m_Name: Audio Source
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9015488559349350152
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4756611023457445866}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1454310589909572154}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &8488842526683990057
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1454310589909572153}
+  m_GameObject: {fileID: 4756611023457445866}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
