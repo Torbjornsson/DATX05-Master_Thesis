@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -132,7 +132,7 @@ PrefabInstance:
     - target: {fileID: 2929202616543943632, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5828821611518690356, guid: eaee0df0b97fe99458bc24e4df8486fb,
         type: 3}
@@ -395,7 +395,7 @@ PrefabInstance:
     - target: {fileID: 5377324079955657018, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8035338788641643357, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
