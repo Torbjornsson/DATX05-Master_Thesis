@@ -8,6 +8,12 @@ public class Resettable : MonoBehaviour
     public bool useResetStartingPoint = true;
     public float fadeSpeed = 5;
     [Range(0,0.5f)] public float stillnessBuffer = 0.001f;
+    [Space]
+    public AudioSource resetSoundSource;
+    public AudioClip resetOutSound;
+    public AudioClip resetInSound;
+    public float soundSize = 1;
+    public float pitchSpan = 0.1f;
 
     private Vector3 startingPosition;
     private Rigidbody rb;
@@ -32,6 +38,8 @@ public class Resettable : MonoBehaviour
 
     private float alpha;
     private Vector3 previousPosition, originalScale, originalColliderBounds;
+
+    private float startingPitch;
 
     // Start is called before the first frame update
     void Start()
@@ -73,6 +81,14 @@ public class Resettable : MonoBehaviour
             Debug.LogError(gameObject.name+": Grabber script was not found!");
 
         originalScale = transform.localScale;
+        
+        if (!resetSoundSource)
+            Debug.LogError(gameObject.name+": Reset sound Audio Source was not found!");
+        startingPitch = resetSoundSource.pitch;
+        if (!resetOutSound)
+            Debug.LogError(gameObject.name+": Reset OUT sound Audio Clip was not found!");
+        if (!resetInSound)
+            Debug.LogError(gameObject.name+": Reset IN sound Audio Clip was not found!");
     }
 
     // Update is called once per frame
@@ -207,6 +223,7 @@ public class Resettable : MonoBehaviour
         pending = false;
         fadeOut = true;
         grabbableScript.allowGrab = false;
+        PlaySound(resetOutSound);
     }
 
     private void ResetToStartingPositon() {
@@ -241,6 +258,8 @@ public class Resettable : MonoBehaviour
             rubiksScript.ResetCube();
             rubiksResetActive = false;
         }
+
+        PlaySound(resetInSound);
     }
 
     private void FadeInDone() {
@@ -294,5 +313,13 @@ public class Resettable : MonoBehaviour
         }
 
         return colliding;
+    }
+
+    public void PlaySound(AudioClip sound) {
+        resetSoundSource.clip = sound;
+        var size = (1 + (1 - soundSize));
+        resetSoundSource.pitch = (startingPitch - pitchSpan/2 + Random.Range(0, pitchSpan)) * size;
+        Debug.Log("Sound size: "+size+", resulting pitch: "+resetSoundSource.pitch);
+        resetSoundSource.Play();
     }
 }
