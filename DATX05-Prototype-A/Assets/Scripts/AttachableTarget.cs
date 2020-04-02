@@ -58,6 +58,7 @@ public class AttachableTarget : MonoBehaviour
             attachedObject.transform.position = attachTarget.transform.position;
             attachedObject.transform.rotation = attachTarget.transform.rotation;
             attachedObject.transform.Rotate(Vector3.up, attachedRotationOffset, Space.Self);
+            attachedObjectRB.velocity = Vector3.zero;
         }
     }
 
@@ -124,7 +125,7 @@ public class AttachableTarget : MonoBehaviour
 
     private bool IsCorrectSolution(Attachable attachable)
     {
-        Debug.Log("IsCorrectSolution() : correct: "+attachable.correctSolution+", offset: "+attachedRotationOffset);
+        // Debug.Log("IsCorrectSolution() : correct: "+attachable.correctSolution+", offset: "+attachedRotationOffset);
         return attachable.correctSolution && Mathf.Abs(attachedRotationOffset) < Mathf.Epsilon;
     }
 }

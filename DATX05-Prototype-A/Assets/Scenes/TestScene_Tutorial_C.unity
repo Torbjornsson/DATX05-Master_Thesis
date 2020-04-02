@@ -237,11 +237,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 676088326192575474, guid: 822789b751c97274097e5f4d7b1b18e4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 743733747037312781, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_Layer
@@ -265,7 +260,7 @@ PrefabInstance:
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: tutorialForPuzzle
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -333,6 +328,11 @@ PrefabInstance:
       value: TutorialC
       objectReference: {fileID: 0}
     - target: {fileID: 2318760924390926100, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2882238926563307602, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -495,6 +495,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4557786138619997803, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022368618118999887, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: fadeSpeed
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5551298603524345507, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: lightMultiplier
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6131099921255913102, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
       propertyPath: m_Name
@@ -503,7 +518,7 @@ PrefabInstance:
     - target: {fileID: 6131099921255913102, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6131099921255913105, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
@@ -569,6 +584,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7758477853765737229, guid: 6409924360c2fe846bb1af91f964e434,
+        type: 3}
+      propertyPath: renderers.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7948521196410409897, guid: 6409924360c2fe846bb1af91f964e434,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -817,7 +837,7 @@ PrefabInstance:
     - target: {fileID: 5339311859194012689, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5339311859194012694, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
@@ -873,11 +893,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5661789289808440276, guid: 2767f72eb3eb7754e890e05e242b2e10,
-        type: 3}
-      propertyPath: neverendingWinFade
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6135962754389345291, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}

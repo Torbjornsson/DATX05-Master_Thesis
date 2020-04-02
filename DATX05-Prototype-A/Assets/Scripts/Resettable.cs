@@ -20,8 +20,10 @@ public class Resettable : MonoBehaviour
     public Material[] materials {get; private set;}
     private BoxCollider startingArea;
     private OVRGrabbable_EventExtension grabbableScript;
-    private AttachableTarget attachableTarget;
+    private AttachableTarget attachableTargetScript;
+    private Attachable attachableScript;
     private Material[] attachedMaterials = null;
+    private Resettable attachedResettable = null;
     private Collider myCollider;
 
     private int insideResetVolume = 0;
@@ -57,7 +59,8 @@ public class Resettable : MonoBehaviour
         originalColliderBounds = myCollider.bounds.size;
 
         grabbableScript = GetComponent<OVRGrabbable_EventExtension>();
-        attachableTarget = GetComponent<AttachableTarget>();
+        attachableTargetScript = GetComponent<AttachableTarget>();
+        attachableScript = GetComponent<Attachable>();
 
         rubiksScript = GetComponent<RotateRubiks>();
 
@@ -94,27 +97,42 @@ public class Resettable : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Hard reset goes directly without pending
         if (insideHardResetVolume > 0 && !hardReset)
             StartHardReset();
 
+        // No resetting at all when attached to other object
+        if (attachableScript != null && attachableScript.attachedTo != null) return;
+
+        // Start or stop pending
         if (insideResetVolume > 0 && !grabbableScript.isGrabbed && !pending && !fadeOut && !hardReset) {
             StartPendingReset();
         } else  if (insideResetVolume <= 0 && (pending || fadeOut) && !hardReset && alpha == 1) {
             StopPendingReset();
         }
 
-        if (attachableTarget != null && attachableTarget.attachedObject != null && attachedMaterials == null) {
-            attachedMaterials = attachableTarget.attachedObject.gameObject.GetComponent<Resettable>().materials;
-        } else if (attachableTarget != null && attachableTarget.attachedObject == null && attachedMaterials != null) {
+        // Making sure attached materials are accounted for (MAY BE OBSOLETE!)
+        if (attachableTargetScript != null && attachableTargetScript.attachedObject != null && attachedMaterials == null) {
+            attachedMaterials = attachableTargetScript.attachedObject.gameObject.GetComponent<Resettable>().materials;
+        } else if (attachableTargetScript != null && attachableTargetScript.attachedObject == null && attachedMaterials != null) {
             attachedMaterials = null;
         }
+
+        // Making sure attached resettable is accounted for
+        if (attachableTargetScript != null && attachableTargetScript.attachedObject && attachedResettable == null) {
+            attachedResettable = attachableTargetScript.attachedObject.GetComponent<Resettable>();
+        } else if ((attachableTargetScript == null || !attachableTargetScript.attachedObject) && attachedResettable != null) {
+            attachedResettable = null;
+        }
         
+        // When pending reset
         if (pending && !grabbableScript.isGrabbed) {
             if (rb.velocity.magnitude < stillnessBuffer) {
                 StartFadeOut();
             }
             previousPosition = transform.position;
 
+        // When fade in or fade out is active
         } else if (fadeOut || fadeIn) {
 
             if (fadeOut) {
@@ -138,6 +156,7 @@ public class Resettable : MonoBehaviour
             ScaleTransform();
         }
 
+        // Resetting cube if getting stuck
         if (rb.isKinematic && !fadeIn && !grabbableScript.isGrabbed && !GameMaster.instance.hasWon)
         {
             alpha = 1;
@@ -162,9 +181,13 @@ public class Resettable : MonoBehaviour
         }
     }
 
-    private void ScaleTransform()
+    private void ScaleTransform() {
+        ScaleTransform(alpha);
+    }
+    private void ScaleTransform(float a)
     {
-        transform.localScale = originalScale * alpha;
+        transform.localScale = originalScale * a;
+        if (attachedResettable != null) attachedResettable.ScaleTransform(a);
     }
 
     private void OnTriggerEnter(Collider other) {
@@ -175,7 +198,6 @@ public class Resettable : MonoBehaviour
             insideHardResetVolume++;
 
         } else if (other.gameObject.tag.Equals("RubiksResetVolume") && !grabbableScript.isGrabbed) {
-            // insideRubiksResetVolume++;
             rubiksResetActive = true;
         }
     }
@@ -186,9 +208,6 @@ public class Resettable : MonoBehaviour
 
         } else if (other.gameObject.tag.Equals("ResetVolumeHARD")) {
             insideHardResetVolume--;
-
-        // } else if (other.gameObject.tag.Equals("RubiksResetVolume")) {
-        //     insideRubiksResetVolume--;
         }
     }
 
