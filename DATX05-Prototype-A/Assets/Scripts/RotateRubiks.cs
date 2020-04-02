@@ -20,7 +20,8 @@ public class RotateRubiks : MonoBehaviour
         return Symbol.None;
     }
 
-
+    public bool disableRotationDuringOnboarding = true;
+    [Space]
     public AudioClip[] shuffleSounds;
     public AudioSource soundSource;
     [Range(0, 1)] public float shufflePitchSpan = 0.05f;
@@ -113,7 +114,13 @@ public class RotateRubiks : MonoBehaviour
                 rotatedEnough = true;
         }
 
-        if (!grabbable.isGrabbed) return;
+        // No turning cube if it isn't grabbed, OR player hasn't gone through on-boaring yet
+        var tutorial = GameMaster.instance.tutorialMaster.tutorial;
+        if (!grabbable.isGrabbed
+                || (disableRotationDuringOnboarding && tutorial.useOnBoarding
+                    && tutorial.onBoardingSlides.Length > GameMaster.instance.tutorialMaster.tutorialState))
+            return;
+
         switch(grabbable.grabbedBy.tag)
         {
             case "RightHand":

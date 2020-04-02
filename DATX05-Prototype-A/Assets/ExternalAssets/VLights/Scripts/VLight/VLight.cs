@@ -1201,6 +1201,8 @@ public partial class VLight : MonoBehaviour
 
     void UpdateViewMatrices(Camera targetCamera)
     {
+        if (!targetCamera) return;
+
         _viewWorldToCameraMatrixCached = targetCamera.worldToCameraMatrix;
         _viewCameraToWorldMatrixCached = targetCamera.cameraToWorldMatrix;
 
