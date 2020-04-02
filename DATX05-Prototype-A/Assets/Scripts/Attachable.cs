@@ -11,7 +11,7 @@ public class Attachable : MonoBehaviour
     }
 
     public Collider myGrabCollider;
-    public BoxCollider mySolidCollider;
+    public Collider mySolidCollider;
     // public Rigidbody rb;
     public bool correctSolution = false;
     [Space]
@@ -28,13 +28,15 @@ public class Attachable : MonoBehaviour
     private GameObject originalParent;
     private GameObject overlappingTarget = null;
 
-    private GameObject attachedTo = null;
+    public GameObject attachedTo {get; private set;}
 
     private AttachableTarget target;
 
     // Start is called before the first frame update
     void Start()
     {
+        attachedTo = null;
+
         if (!myGrabCollider)
             Debug.LogError(gameObject.name+": Couldn't find my grab collider!");
         if (!mySolidCollider)

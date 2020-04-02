@@ -58,6 +58,7 @@ public class AttachableTarget : MonoBehaviour
             attachedObject.transform.position = attachTarget.transform.position;
             attachedObject.transform.rotation = attachTarget.transform.rotation;
             attachedObject.transform.Rotate(Vector3.up, attachedRotationOffset, Space.Self);
+            attachedObjectRB.velocity = Vector3.zero;
         }
     }
 
