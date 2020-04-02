@@ -804,6 +804,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -1.434
       objectReference: {fileID: 0}
+    - target: {fileID: 2642533265887288086, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5339311859194012689, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}
       propertyPath: m_Name
@@ -868,6 +873,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661789289808440276, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: neverendingWinFade
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6135962754389345291, guid: 2767f72eb3eb7754e890e05e242b2e10,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8366885919075968250, guid: 2767f72eb3eb7754e890e05e242b2e10,
         type: 3}

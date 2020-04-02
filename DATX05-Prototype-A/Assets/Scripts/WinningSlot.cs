@@ -9,9 +9,13 @@ public class WinningSlot : MonoBehaviour
     public bool canAttachTileWhenCubeInSlot = true;
     public bool active = true;
     [Space]
+    public bool neverendingWinFade = false;
     public Renderer winRenderer;
     public Renderer failRenderer;
-    public VLight slotLight;
+    public VLight winLight;
+    public VLight failLight;
+    public float fadeSpeed = 1;
+    public float fadeWait = 0.5f;
     [Space]
     public ParticleSystem[] confettiEmitter;
     [Space]
@@ -33,6 +37,14 @@ public class WinningSlot : MonoBehaviour
 
     private bool winHasBeenTriggered = false;
 
+    private bool fading = false;
+    private Renderer currentFade = null;
+    private VLight currentLight = null;
+    private float fadeAlpha = 0;
+    private bool fadeIn = true;
+    private float fadeTime = 0;
+    private float fadeLightMax;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,7 +56,15 @@ public class WinningSlot : MonoBehaviour
             Debug.LogError(gameObject.name + ": Win Audio Clip was not found!");
         if (!failSound)
             Debug.LogError(gameObject.name + ": Fail Audio Clip was not found!");
+            
+        if (!winRenderer)
+            Debug.LogError(gameObject.name + ": Win Renderer was not found!");
+        if (!failRenderer)
+            Debug.LogError(gameObject.name + ": Fail Renderer was not found!");
 
+        if (winLight || failLight)
+            fadeLightMax = winLight ? winLight.lightMultiplier : failLight.lightMultiplier;
+        
         if (winEvent == null)
             winEvent = new UnityEvent();
         if (failEvent == null)
@@ -91,6 +111,48 @@ public class WinningSlot : MonoBehaviour
 
         cubeWasGrabbedLastFrame = puzzleCubeCloseToSlot != null && puzzleCubeGrabbable.isGrabbed;
         cubeHadAttachedTileLastFrame = puzzleCubeAttachableTarget != null && puzzleCubeAttachableTarget.attachedObject != null;
+
+        // Fading slot-back when win or fail
+        if (fading) {
+            if (fadeIn) {
+                if (fadeAlpha < 1) fadeAlpha += fadeSpeed * Time.deltaTime;
+
+                if (fadeAlpha >= 1) {
+                    fadeAlpha = 1;
+
+                    if (fadeTime > 0) fadeTime -= Time.deltaTime;
+                    if (fadeTime <= 0) {
+                        fadeTime = 0;
+                        fadeIn = false;
+                    }
+                }
+            } else {
+                if (fadeAlpha > 0) fadeAlpha -= fadeSpeed * Time.deltaTime;
+
+                if (fadeAlpha <= 0) {
+                    fadeAlpha = 0;
+
+                    if (neverendingWinFade && winHasBeenTriggered) {
+                        if (fadeTime < fadeWait) fadeTime += Time.deltaTime;
+                        if (fadeTime >= fadeWait) {
+                            fadeTime = fadeWait;
+                            fadeIn = true;
+                        }
+                        
+                    } else {
+                        fading = false;
+                        currentFade.gameObject.SetActive(false);
+                        if (currentLight) currentLight.gameObject.SetActive(false);
+                    }
+                }
+            }
+
+            var col = currentFade.material.color;
+            col.a = fadeAlpha;
+            currentFade.material.color = col;
+
+            if (currentLight) currentLight.lightMultiplier = fadeLightMax * fadeAlpha;
+        }
     }
 
     void OnTriggerEnter(Collider other)
@@ -146,6 +208,8 @@ public class WinningSlot : MonoBehaviour
 
         winEvent.Invoke();
         GameMaster.instance.PuzzleWon();
+        
+        TriggerFade(true);
 
         // Confetti!
         Invoke("ThrowConfetti", 5.7f);
@@ -163,7 +227,27 @@ public class WinningSlot : MonoBehaviour
     {
         PlayFailSound();
         failEvent.Invoke();
+        TriggerFade(false);
         Debug.Log("Lost the game...");
+    }
+
+    public void TriggerFade(bool win) {
+        fading = true;
+        currentFade = win ? winRenderer : failRenderer;
+        currentLight = win ? winLight : failLight;
+        fadeIn = true;
+        fadeTime = fadeWait;
+        fadeAlpha = 0;
+        
+        currentFade.gameObject.SetActive(true);
+        var col = currentFade.material.color;
+        col.a = fadeAlpha;
+        currentFade.material.color = col;
+
+        if (currentLight) {
+            currentLight.gameObject.SetActive(true);
+            currentLight.lightMultiplier = 0;
+        }
     }
 
     public void PlayWinSound()
