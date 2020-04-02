@@ -127,7 +127,6 @@ public class Resettable : MonoBehaviour
         
         // When pending reset
         if (pending && !grabbableScript.isGrabbed) {
-            Debug.Log("Pending... stillness: "+rb.velocity.magnitude+" vs stillness-buffer: "+stillnessBuffer);
             if (rb.velocity.magnitude < stillnessBuffer) {
                 StartFadeOut();
             }
@@ -226,7 +225,6 @@ public class Resettable : MonoBehaviour
         fadeIn = false;
         previousPosition = transform.position;
         alpha = 1;
-        Debug.Log("Pending: START");
     }
 
     private void StopPendingReset() {
@@ -238,7 +236,6 @@ public class Resettable : MonoBehaviour
             alpha = 1;
             UpdateMaterialAlpha();
         }
-        Debug.Log("Pending: STOP");
     }
 
     private void StartFadeOut() {
@@ -246,7 +243,6 @@ public class Resettable : MonoBehaviour
         fadeOut = true;
         grabbableScript.allowGrab = false;
         PlaySound(resetOutSound);
-        Debug.Log("Fade-out: START");
     }
 
     private void ResetToStartingPositon() {
@@ -283,7 +279,6 @@ public class Resettable : MonoBehaviour
         }
 
         PlaySound(resetInSound);
-        Debug.Log("Resetting to start position!");
     }
 
     private void FadeInDone() {
@@ -292,7 +287,6 @@ public class Resettable : MonoBehaviour
         fadeOut = false;
         grabbableScript.allowGrab = true;
         hardReset = false;
-        Debug.Log("Fade-in: DONE");
     }
 
     public void SetResetPosition(Vector3 position) {

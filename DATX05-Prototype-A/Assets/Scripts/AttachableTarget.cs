@@ -125,7 +125,7 @@ public class AttachableTarget : MonoBehaviour
 
     private bool IsCorrectSolution(Attachable attachable)
     {
-        Debug.Log("IsCorrectSolution() : correct: "+attachable.correctSolution+", offset: "+attachedRotationOffset);
+        // Debug.Log("IsCorrectSolution() : correct: "+attachable.correctSolution+", offset: "+attachedRotationOffset);
         return attachable.correctSolution && Mathf.Abs(attachedRotationOffset) < Mathf.Epsilon;
     }
 }
