@@ -301,7 +301,7 @@ MonoBehaviour:
   cubeCanFallIn: 1
   canAttachTileWhenCubeInSlot: 1
   active: 1
-  neverendingWinFade: 0
+  neverendingWinFade: 1
   winRenderer: {fileID: 8928611268014787894}
   failRenderer: {fileID: 1256477872010184949}
   winLight: {fileID: 1737305674312823518}
