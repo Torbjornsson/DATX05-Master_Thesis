@@ -637,6 +637,11 @@ PrefabInstance:
       propertyPath: otherHand
       value: 
       objectReference: {fileID: 5953489138856491489}
+    - target: {fileID: 3912093117707684890, guid: 2976315e52e8c1948a5ee4ec71b95739,
+        type: 3}
+      propertyPath: previousMultiplier
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 7030033122364845492, guid: 2976315e52e8c1948a5ee4ec71b95739,
         type: 3}
       propertyPath: m_LocalPosition.x

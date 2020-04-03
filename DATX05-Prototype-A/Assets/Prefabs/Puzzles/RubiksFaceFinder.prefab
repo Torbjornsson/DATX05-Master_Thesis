@@ -109,4 +109,6 @@ MonoBehaviour:
   myHand: {fileID: 0}
   otherHand: {fileID: 0}
   myCollider: {fileID: 7030033121834875180}
-  faceAngleRange: 55
+  faceAngleRange: 70
+  distanceMultiplier: 10
+  previousMultiplier: 0.7

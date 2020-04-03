@@ -9,9 +9,12 @@ public class RubiksFaceFinder : MonoBehaviour
     public Collider myCollider;
     [Space]
     [Range (0, 90)] public float faceAngleRange = 45;
+    public float distanceMultiplier = 10;
+    [Range (0,1)] public float previousMultiplier = 0.8f;
 
     private RotateRubiks rubiksScript;
     private List<Collider> rubiksFaceColliders;
+    private Collider closest = null;
 
     // Start is called before the first frame update
     void Start()
@@ -48,8 +51,12 @@ public class RubiksFaceFinder : MonoBehaviour
         // Finding the closest small-cube
         float bestDistance = -1;
         var handDir = transform.TransformDirection(Vector3.forward);
-        Collider closest = null;
-        if (rubiksFaceColliders.Count > 0) Debug.Log("-- Going through colliders... (size: "+rubiksFaceColliders.Count+")");
+        Collider previousClosest = closest;
+        closest = null;
+        if (previousClosest != null && !rubiksFaceColliders.Contains(previousClosest))
+            rubiksFaceColliders.Add(previousClosest);
+        if (rubiksFaceColliders.Count > 0)
+            Debug.Log("-- Going through colliders... (size: "+rubiksFaceColliders.Count+")");
 
         foreach (Collider face in rubiksFaceColliders) {
             // Facing cut-off
@@ -66,7 +73,8 @@ public class RubiksFaceFinder : MonoBehaviour
             float distanceToRay = Vector3.Cross(ray.direction, face.transform.position - ray.origin).magnitude;
             Debug.Log("Distance to ray: "+distanceToRay);
 
-            var distance = (face.transform.position - transform.position).magnitude + distanceToRay * 2;
+            var distance = ((face.transform.position - transform.position).magnitude + distanceToRay * distanceMultiplier) * distanceMultiplier;
+            if (face.Equals(previousClosest)) distance *= previousMultiplier;
             Debug.Log("Candidate face: "+face.name+", angle: "+angle+", distance: "+distance);
             if (bestDistance > 0 && bestDistance <= distance) continue;
 
