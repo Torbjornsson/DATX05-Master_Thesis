@@ -66,7 +66,10 @@ public class GameMaster : MonoBehaviour
     }
 
     private void UnPauseGame()
-    {
+    {   
+        if (!ovrCameraRig)
+            ovrCameraRig = GameObject.Find("OVRCameraRig");
+            
         Debug.Log("Unpausing game");
         isPaused = false;
         ovrCameraRig.GetComponent<OVRCameraRig>().disableEyeAnchorCameras = false;
