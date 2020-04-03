@@ -21,6 +21,7 @@ public class RotateRubiks : MonoBehaviour
     }
 
     public bool disableRotationDuringOnboarding = true;
+    public bool useNewPointingSystem = true;
     [Space]
     public AudioClip[] shuffleSounds;
     public AudioSource soundSource;
@@ -34,9 +35,10 @@ public class RotateRubiks : MonoBehaviour
     public UnityEvent checkSolutionEvent;
     public RubiksCubeFace[] rubiksCubeFaces;
     public float rotationAngleSnap = 10;
-    
     public float speed = 10f;
-
+    [Space]
+    public GameObject[] onlyUsedInOldSystem;
+    
     SmallCube[] smallCubes;
     GameObject frontFace, backFace, to;
     bool isRotationStarted = false;
@@ -66,6 +68,12 @@ public class RotateRubiks : MonoBehaviour
         foreach (RubiksCubeFace f in rubiksCubeFaces) {
             if (!f)
                 Debug.LogError(gameObject.name+": One of the given RukibsCubeFace was not found!");
+        }
+
+        if (useNewPointingSystem) {
+            foreach (GameObject go in onlyUsedInOldSystem) {
+                go.SetActive(false);
+            }
         }
 
         grabbable = GetComponent<OVRGrabbable>();
@@ -140,7 +148,7 @@ public class RotateRubiks : MonoBehaviour
     }
 
     private void HandAction(string hand, float input) {
-        if (selectedHand == null || !selectedHand.Equals(hand)) return;
+        if (useNewPointingSystem && (selectedHand == null || !selectedHand.Equals(hand))) return;
 
         // Pressing "TURN" (or trigger)
         if (input > 0.7f && !isRotationStarted)
@@ -162,6 +170,7 @@ public class RotateRubiks : MonoBehaviour
         // Idle (just for showing hints)
         // var collider = GetSmallCubeCollider(hand);
         var collider = selectedCollider;
+        if (!useNewPointingSystem) collider = GetSmallCubeCollider(hand);
         // if (collider && collider.transform.childCount < 2) {
         if (collider && !collider.tag.Equals("RubiksBlocker")) {
             // Debug.Log("Found small cube collider: "+collider.gameObject.name);
@@ -296,7 +305,8 @@ public class RotateRubiks : MonoBehaviour
         side = 0;
         Vector3 axis = Vector3.zero;
 
-        // var collider = GetSmallCubeCollider(hand);
+        if (!useNewPointingSystem)
+            collider = GetSmallCubeCollider(hand);
 
         if (!collider || collider.tag.Equals("RubiksBlocker")) return axis;
         var parent = collider.transform.parent;

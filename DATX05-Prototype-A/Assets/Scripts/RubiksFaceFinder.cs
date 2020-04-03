@@ -31,7 +31,7 @@ public class RubiksFaceFinder : MonoBehaviour
                 break;
             }
         }
-        if (!rubiksPresent) gameObject.SetActive(false);
+        if (!rubiksPresent || !rubiksScript.useNewPointingSystem) gameObject.SetActive(false);
 
         rubiksFaceColliders = new List<Collider>();
     }

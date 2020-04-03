@@ -5221,6 +5221,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16eb264e41405d418730fbbaf6b3200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  disableRotationDuringOnboarding: 1
+  useNewPointingSystem: 1
   shuffleSounds:
   - {fileID: 8300000, guid: 9dc1c1f898a6e864fb99f06a09da8e16, type: 3}
   soundSource: {fileID: 1236239023338129809}
@@ -5307,6 +5309,12 @@ MonoBehaviour:
   - {fileID: 4622728213711333937}
   rotationAngleSnap: 5
   speed: 10
+  onlyUsedInOldSystem:
+  - {fileID: 884143373828589751}
+  - {fileID: 1669109659652231245}
+  - {fileID: 834303022262272555}
+  - {fileID: 4246655022472877019}
+  - {fileID: 4126211830607703619}
 --- !u!114 &7387056161367313140
 MonoBehaviour:
   m_ObjectHideFlags: 0
