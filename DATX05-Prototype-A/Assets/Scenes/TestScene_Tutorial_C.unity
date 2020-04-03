@@ -265,7 +265,7 @@ PrefabInstance:
     - target: {fileID: 1929951512331699668, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: useOnBoarding
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2009041694474109159, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
@@ -397,6 +397,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7031406417763898211, guid: 822789b751c97274097e5f4d7b1b18e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8035338788641643357, guid: 822789b751c97274097e5f4d7b1b18e4,
         type: 3}
       propertyPath: m_IsActive
@@ -500,6 +505,11 @@ PrefabInstance:
       propertyPath: lightMultiplier
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4773767780377754291, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5022368618118999887, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
       propertyPath: fadeSpeed
@@ -573,6 +583,26 @@ PrefabInstance:
     - target: {fileID: 6131099921255913105, guid: fa221628416c76545afc81ac83e6a0e4,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6436507337815614025, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6810006450830190805, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7806203978391389373, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8068529525803170085, guid: fa221628416c76545afc81ac83e6a0e4,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -737,13 +767,46 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1119627085939861, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119627085939861, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1119627085939861, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1138043540254191, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1173658856703954, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
       propertyPath: m_TagString
       value: RightHand
       objectReference: {fileID: 0}
+    - target: {fileID: 1493363430883484, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493363430883484, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
+      propertyPath: m_Layer
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 1493363430883484, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1620806102990289, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}
       propertyPath: m_TagString
       value: LeftHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1222377707160658168, guid: 1f722eab40099d04c89efa1cb9bf1d65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 1992598305427899604, guid: 1f722eab40099d04c89efa1cb9bf1d65,
         type: 3}
@@ -804,6 +867,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: OVRPlayerController_PresenceVariant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8830083086752352133, guid: 1f722eab40099d04c89efa1cb9bf1d65,
+        type: 3}
+      propertyPath: m_Layer
+      value: 16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1f722eab40099d04c89efa1cb9bf1d65, type: 3}

@@ -33,6 +33,7 @@ TagManager:
   - RubiksResetVolume
   - Tile
   - Tutorial
+  - HandCones
   layers:
   - Default
   - TransparentFX
@@ -50,7 +51,7 @@ TagManager:
   - RubiksFace
   - TutorialC
   - vlight
-  - 
+  - HandCones
   - 
   - 
   - 
