@@ -233,8 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   renderers:
   - {fileID: 8761819648378520408}
-  - {fileID: 0}
-  - {fileID: 0}
   useResetStartingPoint: 1
   fadeSpeed: 5
   stillnessBuffer: 0.005
