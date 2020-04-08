@@ -15,15 +15,15 @@ public class AutomatedBuild
         Console.WriteLine("Starting BuildOnServer");
         List<string> enabledScenes = new List<string>();
         List<string> names = new List<string>()
-        {"Tutorial1AO", "Tutorial1A",
-        "Tutorial1BO", "Tutorial1B",
-        "Tutorial1CO", "Tutorial1C",
-        "Tutorial2AO", "Tutorial2A",
-        "Tutorial2BO", "Tutorial2B",
-        "Tutorial2CO", "Tutorial2C",
-        "Tutorial3AO", "Tutorial3A",
-        "Tutorial3BO", "Tutorial3B",
-        "Tutorial3CO", "Tutorial3C"};
+        {"T1AO", "T1A",
+        "T1BO", "T1B",
+        "T1CO", "T1C",
+        "T2AO", "T2A",
+        "T2BO", "T2B",
+        "T2CO", "T2C",
+        "T3AO", "T3A",
+        "T3BO", "T3B",
+        "T3CO", "T3C"};
 
         for (int i = 0; i < names.Count; i++)
         {
@@ -77,7 +77,7 @@ public class AutomatedBuild
             }
 
             //Get the name of the tutorial
-            string executableBuildPath = filePath + names[i].Substring(0,9);
+            string executableBuildPath = filePath + names[i].Substring(0,2);
             Debug.Log(executableBuildPath);
 
             if (!Directory.Exists(executableBuildPath))
