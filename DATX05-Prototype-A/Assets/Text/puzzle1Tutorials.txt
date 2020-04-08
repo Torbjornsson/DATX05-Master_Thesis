@@ -16,9 +16,9 @@ the cube!;
 
 Find a tile that matches
 the pattern of the cube.
-The symbol on its back and
-the symbol on the opposite
-side of the cube also need
+The symbol on the tile's
+back and the symbol on the
+back of the cube also need
 to match this diagram!
 
 When you're done, put the cube
