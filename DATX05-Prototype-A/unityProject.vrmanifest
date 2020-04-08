@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.datx05prototypea.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\Unity\\DATX05-Master_Thesis\\DATX05-Prototype-A\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "DATX05-Prototype-A [Testing]"
+        }
+      }
+    }
+  ]
+}
