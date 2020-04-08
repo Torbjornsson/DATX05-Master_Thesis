@@ -27,8 +27,8 @@ the cube, until all the
 lights are off again!;
 
 You need to scan each of 
-the cube's sides the right
-times, in the right order.
+the cube's sides the correct
+times, in the correct order.
 
 Use this legend to figure
 out in what order to scan.
