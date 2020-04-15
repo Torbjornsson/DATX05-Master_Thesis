@@ -437,6 +437,11 @@ PrefabInstance:
       propertyPath: otherHand
       value: 
       objectReference: {fileID: 7734673314175389328}
+    - target: {fileID: 3912093117707684890, guid: 2976315e52e8c1948a5ee4ec71b95739,
+        type: 3}
+      propertyPath: myCollider
+      value: 
+      objectReference: {fileID: 8830083088327693084}
     - target: {fileID: 7030033122364845492, guid: 2976315e52e8c1948a5ee4ec71b95739,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -499,6 +504,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2976315e52e8c1948a5ee4ec71b95739, type: 3}
+--- !u!64 &8830083088327693084 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7030033121834875180, guid: 2976315e52e8c1948a5ee4ec71b95739,
+    type: 3}
+  m_PrefabInstance: {fileID: 1947085732397345328}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1992598305428037202
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -642,6 +653,11 @@ PrefabInstance:
       propertyPath: previousMultiplier
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 3912093117707684890, guid: 2976315e52e8c1948a5ee4ec71b95739,
+        type: 3}
+      propertyPath: myCollider
+      value: 
+      objectReference: {fileID: 1222377706668242017}
     - target: {fileID: 7030033122364845492, guid: 2976315e52e8c1948a5ee4ec71b95739,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -704,3 +720,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2976315e52e8c1948a5ee4ec71b95739, type: 3}
+--- !u!64 &1222377706668242017 stripped
+MeshCollider:
+  m_CorrespondingSourceObject: {fileID: 7030033121834875180, guid: 2976315e52e8c1948a5ee4ec71b95739,
+    type: 3}
+  m_PrefabInstance: {fileID: 8176694058356542797}
+  m_PrefabAsset: {fileID: 0}
