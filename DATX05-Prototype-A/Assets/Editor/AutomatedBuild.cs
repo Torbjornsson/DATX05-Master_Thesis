@@ -77,7 +77,7 @@ public class AutomatedBuild
             }
 
             //Get the name of the tutorial
-            string executableBuildPath = filePath + names[i].Substring(0,9);
+            string executableBuildPath = filePath + names[i].Substring(0,2);
             Debug.Log(executableBuildPath);
 
             if (!Directory.Exists(executableBuildPath))
@@ -86,10 +86,24 @@ public class AutomatedBuild
             }
 
             string executableName = names[i];
-            string locationPathName = executableBuildPath + "/" + executableName + ".exe";
+            string locationPathName = executableBuildPath + "/" + executableName + ".apk";
 
-            WindowsBuild(enabledScenes, locationPathName);
+            // WindowsBuild(enabledScenes, locationPathName);
+            AndroidBuild(enabledScenes, locationPathName);
         }
+    }
+
+    private static void AndroidBuild(List<string> enabledScenes, string locationPathName)
+    {
+        Debug.Log("Starting Android Build");
+        BuildPlayerOptions buildPlayerOptions = new BuildPlayerOptions();
+
+        buildPlayerOptions.scenes = enabledScenes.ToArray();
+        buildPlayerOptions.locationPathName = locationPathName;
+        buildPlayerOptions.target = BuildTarget.Android;
+        buildPlayerOptions.options = BuildOptions.None;
+
+        BuildPipeline.BuildPlayer(buildPlayerOptions);
     }
 
     private static void WindowsBuild(List<string> enabledScenes, string locationPathName)
