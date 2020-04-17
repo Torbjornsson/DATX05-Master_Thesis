@@ -7,7 +7,7 @@ using System;
 
 public class AutomatedBuild
 {
-    private static string filePath = "D:/Drive/ID2 - DATX05 - Master's thesis in Computer science and engineering/Build/";
+    private static string filePath = "C:/Users/thommy/Documents/MasterThesis-Presence_in_VR/Builds/";
     private static string serverFilePath = "E:/Drive/ID2 - DATX05 - Master's thesis in Computer science and engineering/Build/";
 
     public static void BuildOnServer()
