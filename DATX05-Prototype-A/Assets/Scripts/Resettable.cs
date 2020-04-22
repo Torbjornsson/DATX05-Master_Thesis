@@ -157,13 +157,13 @@ public class Resettable : MonoBehaviour
         }
 
         // Resetting cube if getting stuck
-        if (rb.isKinematic && !fadeIn && !grabbableScript.isGrabbed && !GameMaster.instance.hasWon)
-        {
-            alpha = 1;
-            FadeInDone();
-            UpdateMaterialAlpha();
-            ScaleTransform();
-        }
+        // if (rb.isKinematic && !fadeIn && !grabbableScript.isGrabbed && !GameMaster.instance.hasWon)
+        // {
+        //     alpha = 1;
+        //     FadeInDone();
+        //     UpdateMaterialAlpha();
+        //     ScaleTransform();
+        // }
     }
 
     private void UpdateMaterialAlpha() {

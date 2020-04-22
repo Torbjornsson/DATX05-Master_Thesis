@@ -56,7 +56,7 @@ public class RubiksFaceFinder : MonoBehaviour
         if (previousClosest != null && !rubiksFaceColliders.Contains(previousClosest))
             rubiksFaceColliders.Add(previousClosest);
         if (rubiksFaceColliders.Count > 0)
-            Debug.Log("-- Going through colliders... (size: "+rubiksFaceColliders.Count+")");
+            // Debug.Log("-- Going through colliders... (size: "+rubiksFaceColliders.Count+")");
 
         foreach (Collider face in rubiksFaceColliders) {
             // Facing cut-off
@@ -71,11 +71,11 @@ public class RubiksFaceFinder : MonoBehaviour
             
             Ray ray = new Ray(startingPoint, direction);
             float distanceToRay = Vector3.Cross(ray.direction, face.transform.position - ray.origin).magnitude;
-            Debug.Log("Distance to ray: "+distanceToRay);
+            // Debug.Log("Distance to ray: "+distanceToRay);
 
             var distance = ((face.transform.position - transform.position).magnitude + distanceToRay * distanceMultiplier) * distanceMultiplier;
             if (face.Equals(previousClosest)) distance *= previousMultiplier;
-            Debug.Log("Candidate face: "+face.name+", angle: "+angle+", distance: "+distance);
+            // Debug.Log("Candidate face: "+face.name+", angle: "+angle+", distance: "+distance);
             if (bestDistance > 0 && bestDistance <= distance) continue;
 
             bestDistance = distance;
@@ -83,7 +83,7 @@ public class RubiksFaceFinder : MonoBehaviour
         }
         var hand = closest ? myHand.tag : null;
 
-        if (closest) Debug.Log("-- Chosen face: "+closest.name+", with hand: "+hand);
+        // if (closest) Debug.Log("-- Chosen face: "+closest.name+", with hand: "+hand);
         rubiksScript.SetSelectedCollider(closest, hand);
 
         // rubiksFaceColliders.Clear();

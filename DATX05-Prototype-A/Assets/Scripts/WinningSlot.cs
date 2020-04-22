@@ -84,8 +84,6 @@ public class WinningSlot : MonoBehaviour
         if (active && puzzleCubeCloseToSlot != null && !puzzleCubeInSlot
                 && !puzzleCubeGrabbable.isGrabbed && (cubeCanFallIn || justReleasedCube))
         {
-            Debug.Log("Attaching cube to slot and checking win/fail");
-
             SnapCube(puzzleCubeCloseToSlot);
             puzzleCubeInSlot = true;
 
@@ -101,8 +99,6 @@ public class WinningSlot : MonoBehaviour
         // When grabbing the cube out of the slot, release it
         if (puzzleCubeCloseToSlot != null && puzzleCubeInSlot && puzzleCubeGrabbable.isGrabbed)
         {
-            Debug.Log("Detaching cube from slot");
-
             puzzleCubeInSlot = false;
 
             if (puzzleCubeAttachableTarget != null) puzzleCubeAttachableTarget.allowAttaching = true;
