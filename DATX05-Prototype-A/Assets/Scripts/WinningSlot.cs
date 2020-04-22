@@ -12,6 +12,7 @@ public class WinningSlot : MonoBehaviour
     public bool neverendingWinFade = false;
     public Renderer winRenderer;
     public Renderer failRenderer;
+    public bool useVLight = true;
     public VLight winLight;
     public VLight failLight;
     public float fadeSpeed = 1;
@@ -83,6 +84,8 @@ public class WinningSlot : MonoBehaviour
         if (active && puzzleCubeCloseToSlot != null && !puzzleCubeInSlot
                 && !puzzleCubeGrabbable.isGrabbed && (cubeCanFallIn || justReleasedCube))
         {
+            Debug.Log("Attaching cube to slot and checking win/fail");
+
             SnapCube(puzzleCubeCloseToSlot);
             puzzleCubeInSlot = true;
 
@@ -98,6 +101,8 @@ public class WinningSlot : MonoBehaviour
         // When grabbing the cube out of the slot, release it
         if (puzzleCubeCloseToSlot != null && puzzleCubeInSlot && puzzleCubeGrabbable.isGrabbed)
         {
+            Debug.Log("Detaching cube from slot");
+
             puzzleCubeInSlot = false;
 
             if (puzzleCubeAttachableTarget != null) puzzleCubeAttachableTarget.allowAttaching = true;
@@ -142,7 +147,7 @@ public class WinningSlot : MonoBehaviour
                     } else {
                         fading = false;
                         currentFade.gameObject.SetActive(false);
-                        if (currentLight) currentLight.gameObject.SetActive(false);
+                        if (useVLight && currentLight) currentLight.gameObject.SetActive(false);
                     }
                 }
             }
@@ -151,7 +156,7 @@ public class WinningSlot : MonoBehaviour
             col.a = fadeAlpha;
             currentFade.material.color = col;
 
-            if (currentLight) currentLight.lightMultiplier = fadeLightMax * fadeAlpha;
+            if (useVLight && currentLight) currentLight.lightMultiplier = fadeLightMax * fadeAlpha;
         }
     }
 
@@ -244,7 +249,7 @@ public class WinningSlot : MonoBehaviour
         col.a = fadeAlpha;
         currentFade.material.color = col;
 
-        if (currentLight) {
+        if (useVLight && currentLight) {
             currentLight.gameObject.SetActive(true);
             currentLight.lightMultiplier = 0;
         }
